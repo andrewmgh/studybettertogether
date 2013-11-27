@@ -1,0 +1,678 @@
+/*
+Inspiration was taken from - http://www.wix.com/website-template/view/html/979?originUrl=http%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fbusiness-services%2Fcommunity-education%2F1&bookName=create-master-current-141013&galleryDocIndex=4
+
+Menu bar was adapted from this tutorial - http://www.1stwebdesigner.com/css/create-a-responsive-website-video-tutorial/
+http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
+
+*/
+/*  ==============GLOBAL CSS STYLES===============
+		
+		TEXT STYLES */
+		h1 {font-size:1.7em; font-weight: bold; padding: .5em;}
+		h2 {font-size:1.5em; font-weight: bold;	padding: .4em;}
+		h3 {font-size:1.3em; font-weight: bold; padding: .3em;}
+		h4 {font-size:1.2em; font-weight: bold; padding: .2em;}
+		h5 {font-size:1em; font-weight: bold; padding: .1em;}
+		h6 {font-size:0.8em; font-weight: bold; padding: .1em;}
+		p {font-size:0.9em; padding: .1em; }
+		
+		/* *{border: solid grey 1px !important;}
+		
+		=======FORMATTING WRAPPER STYLES======== */
+		
+		#outer_header_wrapper{
+		width: 100%;	
+		
+		}
+		
+		#outer_content_wrapper {
+		width: 100%;		
+		background-image: url("../img/background.png");	
+		min-height: 400px;
+		
+		}
+		
+		#inner_content_wrapper {
+		width: 1060px;
+		margin: 0 auto;
+		overflow: auto;
+		background-color: #FFFFFF;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-o-border-radius: 15px;  
+	border: 2px solid #F36E21; 
+		}
+		
+		#outer_footer_wrapper {
+		
+		width: 100%;		
+		background-image: url("../img/background.png");	
+		min-height: 400px;
+		padding-top: 50px;
+		
+		}
+		
+		/* this is only used to apply left and right padding to the main content on all pages. I tried to do this on the inner-content wrapper but it won't work*/
+		#main_content {
+		width: 95%;
+		margin: 0 auto 20px auto;
+		padding: 1% 0%;
+		min-height: 500px;
+       
+		}
+		
+		body {
+			height: 100%;
+			font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+			line-height:1.45;
+			text-align:justify;
+			background-image: url("../img/background.png");	
+		}
+		
+		.clearfloats {
+		    clear:both;
+		}
+/*  MAIN HEADER  --previous color -- #28475D --*/	
+		#main_header {
+			width: 1060px;
+			margin: 0% auto;
+			padding: 1% 0 0 0;
+		}	
+		#main_header nav {
+			margin: 0.5% auto;
+			font-size: 1em;
+			height: 43px;
+			text-align: center;
+		}		
+				
+	#main_header nav ul {
+	width: 97%;
+	background: #3B5998; 
+	padding: 0 20px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;         
+	list-style: none;
+	position: relative;
+	display: inline-table;
+	min-height: 33px;
+	}	
+	
+	#main_header nav p{
+	width: 97%;
+	background: #3B5998; 
+	padding: 0 20px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;         
+	height: 29px;
+	color: #ffffff;
+	padding-top: 4px;
+	font-size: 1em;
+		}	
+	
+	#main_header nav ul li{
+		text-align: center;
+		display: inline-block;
+		
+		}	
+
+	#main_header nav ul li a {
+		display: block; padding: 5px 25px;
+		color: #FFFFFF; text-decoration: none;
+	
+		}	
+	#main_header nav ul li:hover {
+			background: #293E6A;
+		}	
+	#main_header nav ul li:hover a {
+		color: #fff;
+		}
+	#main_header nav ul:after {
+			content: ""; clear: both; display: block;
+		}		
+	#main_header nav ul li:hover > ul {
+			display: block;
+		}	
+	#main_header nav ul ul {
+		display: none;
+		background: #293E6A; 
+		border-radius: 0px; 
+		padding: 0;
+		position: absolute; 
+		top: 100%;
+		width: 175px;
+	}
+	#main_header nav ul ul li {
+			float: none; 
+			border-left: none;
+			border-top: 1px solid #3B5998;
+			
+			position: relative;
+		}
+	#main_header nav ul ul li a {
+				padding: 5px 20px;
+				color: #fff;
+			}				
+	#main_header nav ul ul li a:hover {
+					background: #003D99;
+				}
+	#main_header nav ul ul ul {
+		position: absolute; left: 100%; top:0;
+	}
+		/* ======= GLOBAL TABLE STYLES ======== */		
+		table tr, table td{
+			border: solid black 1px;
+			padding: 5px;
+			
+		}
+		
+		table th {
+			border: solid black 1px;
+			font-size: 1em;	
+			text-align: center;
+			padding: 5px;
+		}
+
+		table {
+		margin: 0 auto;
+		}
+		/* ======= GLOBAL BUTTON STYLES ======== */
+		
+		 form input[type = "submit"], a button {
+		 background: #627AAD; 
+		     color: #FFFFFF;
+		     font-size: 0.8em;
+		     font-style:italic;
+		     border: 1px solid #ddd;
+		     -moz-border-radius: 5px; 
+		     -webkit-border-radius: 5px;
+		 	 -o-border-radius: 5px;         
+		     border-radius: 5px;
+		   	 height: 25px;
+		  	  margin-bottom: -1px;
+		  	  vertical-align: bottom;
+		 }
+		
+		form input[type = "submit"]:hover, a button:hover {
+				background-color: #293E6A; 
+				font-weight: bold;
+			}
+			
+
+		form input[type = "submit"]:active, a button:active {
+				background-color: #FF0000; 
+			}
+	
+		#main_footer p {
+			font-size: 0.9em;
+			text-align: center;
+			font-family:"Times New Roman", Times, serif;
+			color: red;	
+			 font-weight: bold;
+		}
+		
+		strong {
+		    font-style: normal;
+		    font-weight: bold;
+		}
+	
+/* =======LOGOUT======== */
+		#logout p {
+		color: #003D99;
+		display: inline;
+		font-size: 0.8em;
+		margin-right: 4px; 
+		font-weight: bold;  
+		}
+		
+		#logout p strong {
+		font-weight: bold;
+		color: red;  
+		}
+		
+		 #logout button {
+		   	 width: 80px;
+		    }
+
+.mainPageHeading {
+	color: #000055;
+	}
+
+/* =======INDEX PAGE CSS======== login form - http://stackoverflow.com/questions/6106353/css-html-header-with-login-form*/
+
+	#inner_content_wrapperNoBorder {
+		width: 1060px;
+		margin: 0 auto;
+		overflow: auto;
+		background-color: #FFFFFF;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-o-border-radius: 15px;  
+		}
+		
+		#login, #logout, #returnHome {
+		     float: right; 
+		     margin-right: 30px; 
+		     height: 40px; 
+		     padding-top: 8px;
+		     
+		 }
+		 
+		 #login form label {
+		     display: inline-block; 
+		     margin: auto;
+		     color: #3B5998;
+		     font-weight:bold;
+		 }
+		 
+		  
+		 #login form #myusername, 
+		 #login form #mypassword {
+		     display: block;
+		     width: 150px;
+		     border: 1px solid #eee;
+		     -moz-border-radius: 5px;
+		     -webkit-border-radius: 5px;
+		 	 -o-border-radius: 5px;         
+		     border-radius: 5px;
+		     padding: 3px 0 3px 0;
+		     margin-bottom: -1px;
+		     font-size: 0.8em;
+		     
+		 }
+		  
+		 #login form input[type = "submit"] {
+		     width: 55px;     
+		    }
+		
+		#login_error {
+			width: 260px;
+			margin: 0 auto;
+			color: red;
+			font-size: 0.8em;
+			font-style:italic;
+			padding: 3px 0 0 0;
+		}	
+			
+ 		#promotion_wraper {
+			width: 925px;
+			margin: 1% auto 3% auto;
+						}	 
+											
+
+		#regImg{	
+			float: right;
+			width: 260px;
+			margin: 10px 40px 20px 20px;
+			border: 2px solid #ffffff; 
+			-moz-border-radius: 50px;
+		    -webkit-border-radius: 50px;
+		 	-o-border-radius: 50px;    
+		     border-radius: 50px;
+		     padding: 2%;
+		background-image: url("../img/background.png");	
+		}	
+	
+	#regImg p{	
+			text-align: center;
+			
+		}
+	#regText {
+	float: left;
+	width: 570px;
+	margin: 20px 0 0 50px;
+	}
+		
+/* =======MAIN FORM======== */
+
+		.main_form {
+			padding: 1% 0;
+			background-image: url("../img/background.png");	
+		     -moz-border-radius: 10px;
+		     -webkit-border-radius: 10px;
+		 	 -o-border-radius: 10px;    
+		     border-radius: 10px;
+		     font-color: #3B5998;  	     
+		}	
+		
+		.main_form h2, .main_form h3 {  	
+		text-align: center;
+		color: #000000;	
+		}
+		
+		.main_form form  {
+		margin: 1% 0;
+		} 
+		
+		 .submit {
+		 text-align:center;
+		} 
+		
+		.main_form label {
+			font-size: 1.1em;
+			color: #293E6A;
+			font-weight: bold;
+			display: inline-block;
+			padding: 1% 0.7%;
+			text-align:left;
+			vertical-align: top;
+		}
+		
+		.main_form input[type = "text"], .main_form input[type = "password"], .main_form input[type = "file"], .main_form textarea, .main_form select {
+		padding: 1% 5px;
+		     -moz-border-radius: 5px;
+		     -webkit-border-radius: 5px;
+		 	 -o-border-radius: 5px;    
+		     border-radius: 5px;
+		 border: none;
+		 background-color: #FFFFFF;
+		}
+				
+		.main_form input[type ="checkbox"] {
+		cursor: pointer;
+		}
+		
+		.main_form input[type = "submit"]	{
+		margin-top: 2%;
+		width: 100px;
+		font-size: 1em;
+		height: 30px;
+		}
+		
+		.hiddenField{
+			font-size: 0.8em;
+		    
+		    text-align: center;
+		    			color: red;
+		    padding: 1%;
+		    -moz-border-radius: 15px;
+		     -webkit-border-radius: 15px;
+		 	 -o-border-radius: 15px;    
+		     border-radius: 15px;
+		     width: 95%;
+		     margin: 0 auto 10px auto;
+		}	
+		
+		.hiddenField p {
+			font-size: 1.2em;
+			font-weight: bold;
+			font-style: normal;
+			margin: 0 0 5px 0;
+		
+		}
+	
+/* =======REGISTRATION PAGE CSS======== */	
+
+#registerForm {
+	width: 60%;
+	margin: 1% auto;
+		border: 2px solid #F36E21; 
+			     -moz-border-radius: 10px;
+		     -webkit-border-radius: 10px;
+		 	 -o-border-radius: 10px;    
+		     border-radius: 10px;
+}	
+	
+#registerForm.hiddenField {
+	margin: 0 0 30px 0;
+}		
+
+#registerForm label{
+	width: 150px;
+}	
+	
+#registerForm input[type = "text"], #registerForm input[type = "password"]{	
+	width: 250px;
+}
+
+#registerForm fieldset {
+margin-left: 22%;
+}	
+
+
+/* =======UPLOADS PAGE CSS======== */	
+
+#uploadForm {
+	width: 70%;
+	margin: 2% auto 3% auto;
+}	
+
+#uploadForm fieldset {
+margin: 2% 7% 0 7%;
+}	
+
+#uploadForm.hiddenField {
+	margin: 0 0 30px 0;
+}		
+
+#uploadForm p {
+	margin: 5px 0;
+	}
+	
+#uploadForm label {
+	width: 150px;
+}	
+#uploadForm .outside_label {
+	width: 300px;	
+}
+
+#uploadForm input[type = "text"], #uploadForm input[type = "password"], #uploadForm input[type = "file"], #uploadForm textarea {	
+	width: 400px;
+}
+
+#uploadForm textarea {
+	resize: none;
+	height: 75px
+}		
+
+.filesBtn:hover {
+	font-weight: normal; 
+	}
+
+#uploadForm select {
+	width: 410px;
+	
+}		
+
+.uploadSuccess {
+	text-align:left;
+	margin-left: 20%;
+	font-style: normal;
+	color: #000000;;
+}
+
+.uploadSuccess ul li {
+	list-style:none;
+}
+
+.TaC_bullets {
+	margin: 0 0 10px 50px ;
+}
+
+/* ========	UPDATE USER PASSWORD CSS ========== */
+
+.inline_form {
+	width: 70%;
+	margin: 1% auto 2% auto;
+	text-align: center;
+}
+
+ .inline_form p {
+	display: inline-block;
+	margin: 0 20px;
+	text-align: center;
+	}
+		
+.inline_form input[type = "password"], .inline_form input[type = "text"] {	
+	width: 250px;
+	margin-right: 10px;
+	height: 30px; 
+	display: block;
+	margin-top: 5px;
+}
+
+/* =======PUBLIC SEARCH PAGE CSS======== */
+
+.searchForm {
+	width: 80%;
+	margin: 1% auto 2% auto;
+	
+}
+
+.searchForm.hiddenField {
+	margin: 0 0 30px 0;
+}	
+
+.searchForm fieldset {
+	text-align: center;
+}
+	
+.searchForm fieldset.bottom {
+	margin-top: 20px;
+
+}		
+
+.searchForm label {
+display: block;
+text-align: center;
+}	
+
+.searchForm input[type = "text"], .searchForm select {
+	margin-right: 10px;
+	min-width: 200px;
+	height: 30px; 
+	display: block;
+}
+
+ .searchForm p {
+	display: inline-block;
+	margin: 0 18px;
+	
+	}
+
+.searchResults table{
+	margin: 0 auto;
+}
+
+.searchResults H4 {
+	text-align: center;
+}
+
+
+
+/* =======ADMIN PAGE CSS======== */
+		
+		
+#userdetails {
+	margin-top: 20px;
+}
+
+
+#changeStudentPassword input[type = "password"] {
+	width: 200px;;
+}
+
+#changeStudentPassword input[type = "text"] {
+	width: 75px;
+}
+
+
+
+
+
+
+
+
+
+/* UNSLIDER CSS - Source: http://unslider.com/style.css */
+
+.banner *  {
+	-webkit-font-smoothing: antialiased;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.banner {
+	position: relative;
+	overflow: automatic;
+	font-size: 18px;
+	line-height: 24px;
+	text-align: center;
+	color: rgba(255,255,255,.6);
+	text-shadow: 0 0 1px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.3);
+	margin: 0 0 20px 5px;
+	padding: 0;
+	
+}
+	.banner ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.banner ul li {
+		display: block;
+		float: left;
+		overflow: hidden;
+		height: 300px;
+		-webkit-background-size: 100% 100%;
+		-moz-background-size: 100% 100%;
+		-o-background-size: 100% 100%;
+		-ms-background-size: 100% 100%;
+		background-size: 100% 100%;	
+		-moz-border-radius: 50px;
+		-webkit-border-radius: 50px;
+		-o-border-radius: 50px;         
+		border-radius: 50px;
+	}
+	
+	.banner h1, .banner h2 {
+		font-size: 30px;
+		line-height: 20px;
+		font-weight: 350;
+		font-family: bree-web, Bree, sans-serif;
+		color: #fff;
+		margin-top: 160px;
+		padding: 0;
+		bottom: 0;
+	}
+		
+	.banner .btn, .banner .dot {
+		-webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+		-moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+		-ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+		-o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+		filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+	}
+	
+	.banner .dots {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 10px;
+	}
+	
+	.banner .dots li {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			margin: 0 4px;
+			text-indent: -999em;
+			border: 1px solid #000000;
+			border-radius: 6px;
+			cursor: pointer;
+			opacity: .4;
+			-webkit-transition: background .5s, opacity .5s;
+			-moz-transition: background .5s, opacity .5s;
+			transition: background .5s, opacity .5s;
+		}
+	
+	.banner .dots li.active {
+				background: #fff;
+				opacity: 1;
+			}
