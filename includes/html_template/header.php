@@ -1,21 +1,26 @@
 <?php 
-require_once 'includes/db_connect.php';
+require_once 'includes/db/sql_functions.php';
+require_once 'includes/functionality/common_functions.php';
 
-// start session and store username / firstname in variables. If the session variable username is not set redirect users to the index page to log in.
+// start session and store username in a variable. If the session variable username is not set redirect users to the index page to log in.
 session_start ();
 if (isset ( $_SESSION ['username'] )) {
 	$username = $_SESSION ['username'];
-	$firstname = $_SESSION['firstname'];
-
+	
 
 // select the account type from the database based on the above username and store in the variable $account_type
-	$account_search = newQuery($db_con, "SELECT account_type FROM users WHERE username = '".$username."'");
+	$account_search = newQuery($db_con, "SELECT first_name, account_type FROM users WHERE username = '".$username."'");
 	
 	if (mysqli_num_rows ( $account_search ) == 1) {
 		$row = mysqli_fetch_array ( $account_search );
 		$account_type = $row ['account_type'];
+		$firstname_fromDB = $row ['first_name'];
 		mysqli_free_result($account_search);
 	}
+	
+//store firstname in a variable	
+	$_SESSION ['firstname'] = $firstname_fromDB;
+	$firstname = $_SESSION ['firstname'];
 	
 }
 else {
@@ -43,45 +48,23 @@ else {
 			<img src="img/sbt2.PNG" alt="logo">
 
 			<span id="logout" onClick="return confirm('Are you sure you want to logout?');">
-			<?php echo "<p>You are logged in as: <strong> $username </strong></p> <a href='includes/logout.php'><button>Logout</button></a>" ?>
+			<?php echo "<p>You are logged in as: <strong> $username </strong></p> <a href='includes/functionality/logout.php'><button>Logout</button></a>" ?>
 			</span>
 
-<?php 
-
-/* $currentPage = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  //http://webcheatsheet.com/php/get_current_page_url.php
-
-if($currentPage == "admin.php") {
-$selected = "class='selected'";
-}
-else{
-$selected = "";
-}
-
-This code works but instead of checking if current page == admin.php, I need to store menu links in an array check if current page == array link for that page. 
-Wait until menu is final before doing this - ie dropdown links are in place
-
- */
-?>
-				<nav>
+						<nav>
 					<ul>
 						<?php echo ($account_type == 'Admin') ? "<li><a href='admin.php'>Admin</a>\n<ul><li><a href='manageusers.php'>Manage Users</a>\n<li><a href='changeFileTypes.php'>Change File Types</a></li></li>\n</ul></li>\n" : ""; ?>
 						<li><a href="profile.php"><?php echo "$firstname" ?></a>
 								<ul>
-									<li><a href="profileDetails.php">Change Password</a></li>
+									<li><a href="changepassword.php">Change Password</a></li>
 								</ul>
 						</li>		
 						<li><a href="study.php">Study Advice</a>
 								<ul>
+									<li><a href="#">Academic Writing</a></li>
+									<li><a href="#">Presentation Skils</a></li>
 									<li><a href="#">Exam Stress</a></li>
-									<li><a href="#">Note Taking</a></li>
-									<li><a href="#">Learning Types</a>
-										<ul>
-											<li><a href="#">Visual</a></li>
-											<li><a href="#">Auditory</a></li>
-											<li><a href="#">Read / Write</a></li>
-											<li><a href="#">Kinesthetic</a></li>											
-										</ul>
-									</li>
+									<li><a href="#">Useful Links</a></li>
 								</ul>
 						</li>		
 						<li><a href="upload.php">Upload Files</a>

@@ -1,8 +1,3 @@
-<?php
-require_once 'includes/db_connect.php';
-require_once 'includes/validate_registration.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +17,7 @@ require_once 'includes/validate_registration.php';
 				<span id="returnHome">
 					<a href="index.php"><button>Back to Home Page</button></a>
 				</span>
-				<nav><p>a collaborative learning website.... "study better by studying together"</p></nav>	
+				<nav><p>.... collaborative learning through sharing resources, asking questions and discussing issues ....</p></nav>	
 			</div>
 			<div class="clearfloats"></div>
 		</header>
@@ -34,36 +29,36 @@ require_once 'includes/validate_registration.php';
 		
 					<div class="main_form">
 					<h3>Registration Form</h3>
-					<?php print isset($loginMsg) ? '<div class = "hiddenField">' . $loginMsg . '</div>': ""; ?>
-					<form name="registerForm" action="register.php" method="POST">
+					<?php print isset($_GET['Error']) ? '<div class = "hiddenField">' . ($_GET['Error']) . '</div>': ""; ?>
+					<form name="registerForm" action="includes/functionality/registerNewUser.php" method="POST">
 						<fieldset>
 						<p>
 						<label for="firstname">First Name: </label> 
-						<input type="text" id="firstname" name="firstname" value ="<?php print isset($firstname) ? $firstname : ""; ?>" />
+						<input type="text" id="firstname" name="firstname" autofocus/>
 						</p>			
 						<p>
 						<label for="lastname">Last Name: </label> 
-						<input type="text" id="lastname" name="lastname" value ="<?php print isset($lastname) ? $lastname : ""; ?>" />
+						<input type="text" id="lastname" name="lastname" />
 						</p>
 						<p>
 						<label for="email">Email: </label> 
-						<input type="text" id="email" name="email" value ="<?php print isset($email) ? $email : ""; ?>"  />
+						<input type="text" id="email" name="email" />
 						</p>	
 						<p>
 						<label for="username">Username: </label> 
-						<input type="text" id="username" name="username" value ="<?php print isset($username) ? $username : ""; ?>" />
+						<input type="text" id="username" name="username" />
 						</p>
 						<p>
 						<label for="password">Password: </label> 
-						<input type="password" id="password" name="password" value ="<?php print isset($password) ? $password : ""; ?>" />
+						<input type="password" id="password" name="password" />
 						</p>
 						<p>
 						<label for="password_confirm">Confirm Password: </label> 
-						<input type="password" id="password_confirm" name="password_confirm" value ="<?php print isset($password_confirm) ? $password_confirm : ""; ?>" />
+						<input type="password" id="password_confirm" name="password_confirm" />
 						</p>				
 						<p>
 						<label for="register_code">Registration Code: </label> 
-						<input type="password" id="register_code" name="register_code" value ="<?php print isset($register_code) ? $register_code : ""; ?>" />
+						<input type="password" id="register_code" name="register_code" />
 						</p>
 						</fieldset>
 						<p class = "submit">

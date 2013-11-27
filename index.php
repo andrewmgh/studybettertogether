@@ -1,8 +1,3 @@
-<?php
-require_once 'includes/db_connect.php';
-require_once 'includes/validate_login.php';
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,19 +17,19 @@ require_once 'includes/validate_login.php';
 				<img src="img/sbt2.PNG" alt="logo">
 
 				<span id="login">
-					<form name="login" action="index.php" method="POST">
-						<label for = "myusername">Username: <input type="text" id="myusername" name="myusername" value = "<?php print isset($myusername) ? $myusername : ""; ?>" autofocus></label> 
-						<label for = "mypassword">Password: <input type="password" id="mypassword" name="mypassword" ></label> 
+					<form name="login" action="includes/functionality/login.php" method="POST">
+						<label for = "username">Username: <input type="text" id="username" name="username" autofocus></label> 
+						<label for = "password">Password: <input type="password" id="password" name="password" ></label> 
 						<input type="submit" name="login" value="Log In">
 					</form>
-					<span id="login_error"><?php print isset($login_error_msg) ? $login_error_msg : ""; ?></span>
+					<?php print isset($_GET['Error']) ? '<span id = "login_error">' . ($_GET['Error']) . '</span>': ""; ?>
 				</span>
-				<nav><p>a collaborative learning website.... "study better by studying together"</p></nav>		
+				<nav><p>.... collaborative learning through sharing resources, asking questions and discussing issues ....</p></nav>		
 		</div>
 				
 			<div class="clearfloats"></div>
 			
-							<script>
+				<script>
 				$(function() {
 				    $('.banner').unslider();
 				});
@@ -51,10 +46,7 @@ require_once 'includes/validate_login.php';
 						<li style="background-image: url(img/slider/Collaborative_Learning.jpg);">
 							
 						</li>	
-								
-						<li style="background-image: url(img/slider/teamwork.png);">
-						</li>
-						
+											
 						<li style="background-image: url(img/slider/Student-alone-in-library-008.jpg);">
 							<h1>Tired of studying alone??</h1>
 							<p>Time to start studying together.</p>
@@ -66,7 +58,14 @@ require_once 'includes/validate_login.php';
 							<p>Share files either publicly or with specific users.</p>
 							<!-- 	<a class="btn" href="#">Button</a> -->
 						</li>
+						<li style="background-image: url(img/slider/shop.jpg);">
+							<h1>Discuss college related topics</h1>
+							<p>Chat with your friends on our study forum.</p>
+		
+						</li>
 						
+						<li style="background-image: url(img/slider/teamwork.png);">
+						</li>
 						<li style="background-image: url(img/slider/subway.jpg);">
 							<h1>Upload personal files</h1>
 							<p>Not ready to shared files just yet?? Upload them so only you have access.</p>
@@ -76,18 +75,15 @@ require_once 'includes/validate_login.php';
 							<h1>Share files with specific users</h1>
 							<p>Choose the users that you want to share files with</p>
 		
-						</li>				
+						</li>	
+									
 						<li style="background-image: url(img/slider/subway.jpg);">
 							<h1>Study Tips &amp; Advice</h1>
 							<p>Detailed advice on study tips, exam pressure.</p>
 		
 						</li>
 						
-						<li style="background-image: url(img/slider/shop.jpg);">
-							<h1>Discuss college related topics</h1>
-							<p>Chat with your friends on our study forum.</p>
-		
-						</li>	
+						
 					</ul>		
 					</div>	
 			</div>	
@@ -96,7 +92,8 @@ require_once 'includes/validate_login.php';
 				</div>
 				<div id="regText">
 				<h3>How to register?</h3>
-				<p>To register a new account you will first  need a registration code from your lecturer. Once you have this code, use the registration form opposite to create a new account. <strong>Happy Studying!</strong></p>
+				<p>To register a new account you will first  need a registration code from your lecturer. 
+				Once you have this code, click the registration button opposite to create a new account. <strong>Happy Studying!</strong></p>
 				</div>	
 				
 

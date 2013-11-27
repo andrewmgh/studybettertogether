@@ -1,4 +1,4 @@
-<?php require_once 'includes/header.php';?>
+<?php require_once 'includes/html_template/header.php';?>
 
 <h2 class = "mainPageHeading">Acceptable File Types</h2>
 
@@ -21,4 +21,4 @@
 				</table>
 
 
-<?php require_once 'includes/footer.php';?>
+<?php require_once 'includes/html_template/footer.php';?>

@@ -271,8 +271,8 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		 }
 		 
 		  
-		 #login form #myusername, 
-		 #login form #mypassword {
+		 #login form #username, 
+		 #login form #password {
 		     display: block;
 		     width: 150px;
 		     border: 1px solid #eee;
@@ -315,7 +315,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		 	-o-border-radius: 50px;    
 		     border-radius: 50px;
 		     padding: 2%;
-		background-image: url("../img/background.png");	
+		
 		}	
 	
 	#regImg p{	
@@ -324,7 +324,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		}
 	#regText {
 	float: left;
-	width: 570px;
+	width: 580px;
 	margin: 20px 0 0 50px;
 	}
 		
@@ -582,11 +582,45 @@ text-align: center;
 }
 
 
+/* =======PROFILE PAGE CSS======== */
+		
+		
+#siteContent {
+	 text-align: center;
+	 width: 1000px;
+	 margin: 5px auto;
+	 border: none;
+}
 
+#siteContent table{
+border: none;
+font-size: 14px;
+}
 
+#siteContent .column1, #siteContent .column2, #siteContent .column3,  #siteContent .description{
+width: 333px;
+border: none;
+padding: 5px 15px;
+}
 
+#siteContent .description{
+	text-align: justify;
+	}
+	
+#siteContent table tr{
+border: none;
+}
 
+#siteContent p{
+font-size: 18px;
+font-weight: bold;
+color: #FF3300;
+}
 
+#siteContent .addSpace td{
+height: 10px;
+border: none;
+}
 
 
 /* UNSLIDER CSS - Source: http://unslider.com/style.css */

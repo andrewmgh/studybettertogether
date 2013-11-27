@@ -1,4 +1,4 @@
-<?php require_once 'includes/header.php';?>
+<?php require_once 'includes/html_template/header.php';?>
 
 <?php
 echo "<h2 class = \"mainPageHeading\"> $firstname's files </h2>";
@@ -38,4 +38,4 @@ else {
 ?>
 				
 			
-<?php require_once 'includes/footer.php';?>
+<?php require_once 'includes/html_template/footer.php';?>

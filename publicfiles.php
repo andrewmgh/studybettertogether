@@ -1,4 +1,4 @@
-<?php require_once 'includes/header.php';?>
+<?php require_once 'includes/html_template/header.php';?>
 
 <h2 class = "mainPageHeading">Public Files</h2>
 <h5>This page displays the full list of public files available to download</h5> <br />
@@ -26,4 +26,4 @@
 				</table>
 
 		
-<?php require_once 'includes/footer.php';?>
+<?php require_once 'includes/html_template/footer.php';?>
