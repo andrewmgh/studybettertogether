@@ -15,7 +15,7 @@
 		this.sizes = [];
 		this.max = [0,0];
 		
-		//  Current inded
+		// Current index
 		this.current = 0;
 		
 		//  Start/stop timer
