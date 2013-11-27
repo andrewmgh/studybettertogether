@@ -55,12 +55,12 @@
 												
 						<li style="background-image: url(img/slider/subway.jpg);">
 							<h1>Share Study Resources Online.</h1>
-							<p>Share files either publicly or with specific users.</p>
+							<p>Share files either publicly or with specific users</p>
 							<!-- 	<a class="btn" href="#">Button</a> -->
 						</li>
 						<li style="background-image: url(img/slider/shop.jpg);">
 							<h1>Discuss college related topics</h1>
-							<p>Chat with your friends on our study forum.</p>
+							<p>Chat with your friends on our study forum</p>
 		
 						</li>
 						
@@ -68,7 +68,7 @@
 						</li>
 						<li style="background-image: url(img/slider/subway.jpg);">
 							<h1>Upload personal files</h1>
-							<p>Not ready to shared files just yet?? Upload them so only you have access.</p>
+							<p>Not ready to shared files just yet?? Upload them so only you have access</p>
 		
 						</li>
 						<li style="background-image: url(img/slider/subway.jpg);">
@@ -79,7 +79,7 @@
 									
 						<li style="background-image: url(img/slider/subway.jpg);">
 							<h1>Study Tips &amp; Advice</h1>
-							<p>Detailed advice on study tips, exam pressure.</p>
+							<p>Detailed advice on study tips, exam pressure</p>
 		
 						</li>
 						
