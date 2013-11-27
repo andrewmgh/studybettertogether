@@ -1,2 +1,2 @@
-studybettertogether
+sbt
 ===================
