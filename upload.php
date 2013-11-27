@@ -2,7 +2,6 @@
 require_once 'includes/html_template/header.php';
 require_once 'includes/functionality/common_functions.php';
 require_once 'includes/functionality/upload_logic.php';
-
 ?>
 
 <h2 class = "mainPageHeading">Upload Files</h2>
