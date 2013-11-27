@@ -1,4 +1,4 @@
-<?php require_once 'includes/html_template/header.php';?>
+	<?php require_once 'includes/html_template/header.php';?>
 
 <h2 class = "mainPageHeading">Hi <?php echo "$firstname"; ?></h2> 
 
