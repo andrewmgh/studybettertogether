@@ -9,18 +9,21 @@ if (isset ( $_SESSION ['username'] )) {
 	
 
 // select the account type from the database based on the above username and store in the variable $account_type
-	$account_search = newQuery($db_con, "SELECT first_name, account_type FROM users WHERE username = '".$username."'");
+	$account_search = newQuery($db_con, "SELECT first_name, user_id, account_type FROM users WHERE username = '".$username."'");
 	
 	if (mysqli_num_rows ( $account_search ) == 1) {
 		$row = mysqli_fetch_array ( $account_search );
 		$account_type = $row ['account_type'];
 		$firstname_fromDB = $row ['first_name'];
+		$userID_fromDB = $row ['first_name'];
 		mysqli_free_result($account_search);
 	}
 	
-//store firstname in a variable	
+//store firstname and userID in a variable	
 	$_SESSION ['firstname'] = $firstname_fromDB;
+	$_SESSION ['userID'] = $userID_fromDB;
 	$firstname = $_SESSION ['firstname'];
+	$userID = $_SESSION ['userID'];
 	
 }
 else {

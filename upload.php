@@ -1,7 +1,5 @@
 <?php 
 require_once 'includes/html_template/header.php';
-require_once 'includes/functionality/common_functions.php';
-require_once 'includes/functionality/upload_logic.php';
 ?>
 
 <h2 class = "mainPageHeading">Upload Files</h2>
@@ -13,9 +11,8 @@ The maximum allowed file size is 2mb. </p>
 			<div class="main_form">
 			
 		
-				<?php print isset($uploadMsg) ? '<div class = "hiddenField">' . $uploadMsg . '</div>': ""; ?>
-
-				<form name="upload" action="upload.php" method="POST" enctype="multipart/form-data">
+				<?php print isset($_GET['Error']) ? '<div class = "hiddenField">' . ($_GET['Error']) . '</div>': ""; ?>
+				<form name="upload" action="includes/functionality/uploadFiles.php" method="POST" enctype="multipart/form-data">
 					<fieldset>
 
 					<p>
@@ -33,7 +30,7 @@ The maximum allowed file size is 2mb. </p>
 					<p>
 					<label for="sharingStatus">Sharing Status: </label> 
 					<select name ="sharingStatus">
-						  <option value="" disabled selected style='display:none;'>Select a Sharing Status:</option>
+						  <option value="none" selected style='display:none;'>Select a Sharing Status:</option>
 						  <option value="public">Public</option>
 						  <option value="private">Private</option>
 					</select>
