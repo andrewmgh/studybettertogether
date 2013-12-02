@@ -13,7 +13,7 @@ if ($_SERVER ['REQUEST_METHOD'] == "POST")
 	}
 	
 	else {
-		$uploadMsg = "You have not entered a file";
+		$uploadMsg = "There was an error with your file upload - please read the terms and conditions and try again";
 		header("Location:../../upload.php?Error=$uploadMsg");
 		exit();	
 	}
@@ -50,24 +50,24 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	
 	
 	if ($uploadMsg=="")	{
+ 		//Set additional data for uploaded file
 		$fileName = stripFileExtension($fileName, $fileExtension);
 		$Size_in_KB = number_format ( $fileSize / 1024 ) . ' kb';
-		
 		$Result_fileID = newQuery ( $db_con, "SELECT file_type_id, file_description from allowed_file_types WHERE file_ext ='$fileExtension'" );
 		if ($row = mysqli_fetch_array ( $Result_fileID )) {
 			$file_type_ID = $row ['file_type_id'];
 			$file_description = $row ['file_description'];
 		} 
+		mysqli_free_result($Result_fileID);
 		
- 	move_uploaded_file ( $fileTempName, $filePath );
+		//upload file
+ 		//move_uploaded_file($fileTempName, $filePath);
  		
-		//$NewFile = newQuery ( $db_con, "INSERT INTO files (`user_id`, `sharing_status`, `file_name`, `file_type_id`, `file_path`, `file_size`, `description`, `subject`) VALUES ('" . $userID . "', '" . $sharingStatus . "', '" . $fileName . "', '" . $file_type_ID . "', '" . $filePath . "', '" . $Size_in_KB . "', '" . $description . "', '" . $subject . "')" );
-		//mysqli_close ( $db_con );
+		$NewFile = newQuery ( $db_con, "INSERT INTO files (`user_id`, `sharing_status`, `file_name`, `file_type_id`, `file_path`, `file_size`, `description`, `subject`) VALUES ('" . $userID . "', '" . $sharingStatus . "', '" . $fileName . "', '" . $file_type_ID . "', '" . $filePath . "', '" . $Size_in_KB . "', '" . $description . "', '" . $subject . "')" );
+		mysqli_close ($db_con);
 		
 		// return information on file uploaded
-		$uploadMsg = "$filePath". "$fileTempName";
-/* 		
-		"<p> The following file was successfully uploaded: </p>
+		$uploadMsg = "<p> The following file was successfully uploaded: </p>
 		<div class=\"uploadSuccess\">
 		<ul>
 		<li><strong>Name:</strong> $fileName </li>
@@ -76,8 +76,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 		<li><strong>Sharing Status:</strong> $sharingStatus</li>
 		<li><strong>Owner:</strong> $username</li>
 		</ul>
-		</div>	" */
-				
+		</div>";		 
 		
 		header("Location:../../upload.php?Error=$uploadMsg");
 		exit();
@@ -136,8 +135,8 @@ function validateFileType($db_con, $fileExtension){
 
 function setFilePath ($fileName, $sharingStatus, $username){
 	$fileName = str_replace ( ' ', '_', $fileName );
-	$publicFolder = "http://localhost/studybettertogether/files/public/";
-	$privateFolder = "http://localhost/studybettertogether/files/$username/";
+	$publicFolder = "C:/xampp/htdocs/studybettertogether/files/public/";
+	$privateFolder = "C:/xampp/htdocs/studybettertogether/files/$username/";
 	
 	if ($sharingStatus == "public") {
 		$filePath = $publicFolder . $fileName;
@@ -146,7 +145,7 @@ function setFilePath ($fileName, $sharingStatus, $username){
 		
 	elseif ($sharingStatus == "private") {
 		$filePath = $privateFolder . $fileName;
-	//	if (! is_dir ($privateFolder)) {mkdir ( $privateFolder);}
+	//	if (! is_dir ($privateFolder)) {mkdir ( $privateFolder);}  write new function for this that also creates a blank index.php page 
 		return $filePath;
 	}
 }
