@@ -3,6 +3,7 @@ chat.png   // http://www.marchsoft.com/ccdata/images/smallMain_11_272.png
 upload.png   // http://icons.iconarchive.com/icons/gakuseisean/ivista-2/256/Network-Download-icon.png
  
 search.jpg    // http://www.graphicsfuel.com/wp-content/uploads/2011/12/search-icon-512.png
+			// http://cooltext.com/Logo-Design-Easy
 
 support.jpg    // http://www.geaprocess.co.uk/gpuk/cmsresources.nsf/0/03738F5BE9B62CE3C125786A0051E3D6/$File/Image.jpg
 
