@@ -32,12 +32,12 @@ if ($_SERVER['REQUEST_METHOD']== "POST") //only runs the below php code if the l
 function publicSearch($db_con, $fileName, $fileOwner, $fileType, $description, $subject) {
 	
 $query = <<<_QUERY
-	SELECT file_name, first_name, file_short_name, description, subject, file_path FROM files 
-	INNER JOIN users ON files.user_id = users.user_id 
+	SELECT file_name, username, file_short_name, description, subject, file_path FROM files 
+	INNER JOIN users ON files.owner_id = users.user_id 
 	INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id 
 	WHERE sharing_status = 'public' 
 	AND file_name LIKE '%$fileName%' 
-	AND first_name LIKE '%$fileOwner%' 
+	AND username LIKE '%$fileOwner%' 
 	AND file_short_name LIKE '%$fileType%' 
 	AND description LIKE '%$description%' 
 	AND subject LIKE '%$subject%';
@@ -61,7 +61,7 @@ $searchResults = <<<_Search
 	</tr>
 _Search;
 		while ( $row = mysqli_fetch_array ( $searchQuery ) ) {
-			$searchResults .= "<tr><td>" . htmlentities ( $row ["first_name"] ) . "</td>";
+			$searchResults .= "<tr><td>" . htmlentities ( $row ["username"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["file_name"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["file_short_name"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["description"] ) . "</td>";

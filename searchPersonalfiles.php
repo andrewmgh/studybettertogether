@@ -16,7 +16,7 @@ require_once 'includes/functionality/personalSearch.php';
 					<fieldset>
 						<p>
 						<label for="fileOwner">File Owner</label> 
-						<input type="text" id="fileOwner" name = "fileOwner"  placeholder="Owner's First Name"/>
+						<input type="text" id="fileOwner" name = "fileOwner"  placeholder="Owner's username"/>
 						</p>
 						
 						<p>
@@ -63,10 +63,4 @@ require_once 'includes/functionality/personalSearch.php';
 
 	<?php print isset($searchResults) ? '<div class = "searchResults">' . $searchResults . '</div>': ""; ?>
 	
-	
-
-	
-
-
-
 <?php require_once 'includes/html_template/footer.php';?>

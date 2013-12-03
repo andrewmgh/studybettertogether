@@ -15,7 +15,7 @@ require_once 'includes/functionality/publicSearch.php';
 					<fieldset>
 						<p>
 						<label for="fileOwner">File Owner</label> 
-						<input type="text" id="fileOwner" name = "fileOwner"  placeholder="Owner's First Name" />
+						<input type="text" id="fileOwner" name = "fileOwner"  placeholder="Owner's username" />
 						</p>
 						
 						<p>

@@ -59,7 +59,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
  		move_uploaded_file($fileTempName, $filePath);
  			
  		//enter file details in db
-		$NewFile = newQuery ( $db_con, "INSERT INTO files (`user_id`, `sharing_status`, `file_name`, `file_type_id`, `file_path`, `file_size`, `description`, `subject`) VALUES ('" . $userID . "', '" . $sharingStatus . "', '" . $fileName . "', '" . $file_type_ID . "', '" . $filePath . "', '" . $Size_in_KB . "', '" . $description . "', '" . $subject . "')" );
+		$NewFile = newQuery ( $db_con, "INSERT INTO files (`owner_id`, `sharing_status`, `file_name`, `file_type_id`, `file_path`, `file_size`, `description`, `subject`) VALUES ('" . $userID . "', '" . $sharingStatus . "', '" . $fileName . "', '" . $file_type_ID . "', '" . $filePath . "', '" . $Size_in_KB . "', '" . $description . "', '" . $subject . "')" );
 		mysqli_close ($db_con);
 	
 		//return success msg and file details

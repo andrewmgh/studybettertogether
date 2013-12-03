@@ -3,7 +3,7 @@
 <?php
 echo "<h2 class = \"mainPageHeading\"> $firstname's files </h2>";
 
-$personalFiles = newQuery ( $db_con, "SELECT username, file_name, file_short_name, file_size, DATE_FORMAT(DATE(upload_date),'%D %b %Y') AS new_date, file_path FROM files INNER JOIN users ON files.user_id = users.user_id INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id WHERE sharing_status = 'private' AND username ='$username'" );
+$personalFiles = newQuery ( $db_con, "SELECT username, file_name, file_short_name, file_size, DATE_FORMAT(DATE(upload_date),'%D %b %Y') AS new_date, file_path FROM files INNER JOIN users ON files.owner_id = users.user_id INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id WHERE sharing_status = 'private' AND username ='$username'" );
 
 if (mysqli_num_rows ( $personalFiles ) >= 1) {
 	
