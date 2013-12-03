@@ -1,35 +1,7 @@
 <?php 
 require_once 'includes/db/sql_functions.php';
 require_once 'includes/functionality/common_functions.php';
-
-// start session and store username in a variable. If the session variable username is not set redirect users to the index page to log in.
-session_start ();
-if (isset ( $_SESSION ['username'] )) {
-	$username = $_SESSION ['username'];
-	
-
-// select the account type from the database based on the above username and store in the variable $account_type
-	$account_search = newQuery($db_con, "SELECT first_name, user_id, account_type FROM users WHERE username = '".$username."'");
-	
-	if (mysqli_num_rows ( $account_search ) == 1) {
-		$row = mysqli_fetch_array ( $account_search );
-		$account_type = $row ['account_type'];
-		$firstname_fromDB = $row ['first_name'];
-		$userID_fromDB = $row ['first_name'];
-		mysqli_free_result($account_search);
-	}
-	
-//store firstname and userID in a variable	
-	$_SESSION ['firstname'] = $firstname_fromDB;
-	$_SESSION ['userID'] = $userID_fromDB;
-	$firstname = $_SESSION ['firstname'];
-	$userID = $_SESSION ['userID'];
-	
-}
-else {
-	closeMySql($db_con, $account_search);
-	header ( "location: index.php" );
-}
+require_once 'includes/functionality/sessionManagement.php';
 ?>
 
 
@@ -75,14 +47,14 @@ else {
 									<li><a href="acceptablefiles.php">Acceptable Files</a></li>
 								</ul>
 						</li>								
-						<li><a href="publicfiles.php">Public Files</a>
+						<li><a href="searchPublicfiles.php">Public Files</a>
 								<ul>
-									<li><a href="searchPublicfiles.php">Search Files</a></li>
+									<li><a href="publicfilelist.php">Full File list</a></li>
 								</ul>
 						</li>
-						<li><a href="personalfiles.php"><?php echo "$firstname's Files"?></a>
+						<li><a href="searchPersonalfiles.php"><?php echo "$firstname's Files"?></a>
 								<ul>
-									<li><a href="searchPersonalfiles.php">Search My Files</a></li>
+									<li><a href="personalfilelist.php">Full File list</a></li>
 								</ul>
 						</li>	
 						<li><a href="studyforum.php">Study Forum</a></li>

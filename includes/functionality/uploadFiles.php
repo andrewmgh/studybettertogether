@@ -4,17 +4,13 @@ if ($_SERVER ['REQUEST_METHOD'] == "POST")
 	if ( ($_FILES ['uploadfile'] ['name']) != "") {
 		require_once '../db/sql_functions.php';
 		require_once 'common_functions.php';
-		
-		session_start ();
-		$username = $_SESSION ['username'];
-		$userID = $_SESSION ['userID'];
-		
+		require_once 'sessionManagement.php';
 		validateFileUpload($db_con, $_FILES ['uploadfile'] ['name'], $_FILES ['uploadfile'] ['size'], $_FILES ['uploadfile'] ['tmp_name'], $_FILES ['uploadfile'] ['error'], $_POST ['description'], $_POST ['subject'], $_POST ['sharingStatus'], $_POST ['terms'], $username, $userID);
 	}
 	
 	else {
 		$uploadMsg = "There was an error with your file upload - please read the terms and conditions and try again";
-		header("Location:../../upload.php?Error=$uploadMsg");
+		header("Location:../../upload.php?Upload=$uploadMsg");
 		exit();	
 	}
 }
@@ -39,8 +35,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	
 	$fileExtension = pathinfo ( $fileName, PATHINFO_EXTENSION );
 	$filePath = setFilePath($fileName, $sharingStatus, $username);
-	$uploadMsg = "";
-	
+		
  	//Validate upload form against custom validation functions
 	$uploadMsg.= validateSharingStatus($sharingStatus);
 	$uploadMsg.= validateFileSize($fileSize);
@@ -49,8 +44,8 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	$uploadMsg.= checkIfFileExists ($filePath);
 	
 	
-	if ($uploadMsg=="")	{
- 		//Set additional data for uploaded file
+	if ($uploadMsg == "")	{
+ 		//retreive additional data to display info on uploaded file
 		$fileName = stripFileExtension($fileName, $fileExtension);
 		$Size_in_KB = number_format ( $fileSize / 1024 ) . ' kb';
 		$Result_fileID = newQuery ( $db_con, "SELECT file_type_id, file_description from allowed_file_types WHERE file_ext ='$fileExtension'" );
@@ -61,12 +56,13 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 		mysqli_free_result($Result_fileID);
 		
 		//upload file
- 		//move_uploaded_file($fileTempName, $filePath);
- 		
+ 		move_uploaded_file($fileTempName, $filePath);
+ 			
+ 		//enter file details in db
 		$NewFile = newQuery ( $db_con, "INSERT INTO files (`user_id`, `sharing_status`, `file_name`, `file_type_id`, `file_path`, `file_size`, `description`, `subject`) VALUES ('" . $userID . "', '" . $sharingStatus . "', '" . $fileName . "', '" . $file_type_ID . "', '" . $filePath . "', '" . $Size_in_KB . "', '" . $description . "', '" . $subject . "')" );
 		mysqli_close ($db_con);
-		
-		// return information on file uploaded
+	
+		//return success msg and file details
 		$uploadMsg = "<p> The following file was successfully uploaded: </p>
 		<div class=\"uploadSuccess\">
 		<ul>
@@ -78,11 +74,11 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 		</ul>
 		</div>";		 
 		
-		header("Location:../../upload.php?Error=$uploadMsg");
-		exit();
+		header("Location:../../upload.php?Upload=$uploadMsg");
+		exit(); 		
 	}
 	else {
-		header("Location:../../upload.php?Error=$uploadMsg");
+		header("Location:../../upload.php?Upload=$uploadMsg");
 		exit();	
 	} 
 }
@@ -135,8 +131,8 @@ function validateFileType($db_con, $fileExtension){
 
 function setFilePath ($fileName, $sharingStatus, $username){
 	$fileName = str_replace ( ' ', '_', $fileName );
-	$publicFolder = "C:/xampp/htdocs/studybettertogether/files/public/";
-	$privateFolder = "C:/xampp/htdocs/studybettertogether/files/$username/";
+	$publicFolder = "../../../studybettertogether/files/public/";
+	$privateFolder = "../../../studybettertogether/files/$username/";
 	
 	if ($sharingStatus == "public") {
 		$filePath = $publicFolder . $fileName;
@@ -145,13 +141,13 @@ function setFilePath ($fileName, $sharingStatus, $username){
 		
 	elseif ($sharingStatus == "private") {
 		$filePath = $privateFolder . $fileName;
-	//	if (! is_dir ($privateFolder)) {mkdir ( $privateFolder);}  write new function for this that also creates a blank index.php page 
+		makeNewUserDirectory($privateFolder);
 		return $filePath;
 	}
 }
 
 function checkIfFileExists ($filePath){
-	if (file_exists ( $filePath )) {
+	if (file_exists($filePath)) {
 		return "Sorry a file with this name already exists, please rename file and try again <br />";
 	} else {
 		return "";
@@ -164,11 +160,20 @@ function stripFileExtension ($fileName,$fileExtension){
 	if (substr ( $fileName, - strlen ( $fileExtension_withDot ) ) === $fileExtension_withDot) {
 		$fileName = substr ( $fileName, 0, - strlen ( $fileExtension_withDot ) );
 	}
-	
 	return $fileName;
 }
 
-
+function makeNewUserDirectory ($dirPath){
+			//Create a new directory for the user
+		if (!is_dir ($dirPath)) {
+			mkdir ($dirPath);
+			
+			//Add a blank index file in directory to stop other users viewing directory contents
+			$indexFile = "$dirPath"."index.html";
+			$fh = fopen("$indexFile", 'w');
+			fclose($fh);
+		}  
+}
 
 
 

@@ -1,6 +1,6 @@
 <?php 
 require_once 'includes/html_template/header.php';
-require_once 'includes/functionality/searchPersonalFiles_logic.php';
+require_once 'includes/functionality/personalSearch.php';
 ?>
 
 

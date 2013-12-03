@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2013 at 03:25 PM
+-- Generation Time: Dec 03, 2013 at 02:11 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `files` (
   PRIMARY KEY (`file_id`),
   KEY `user_id` (`user_id`),
   KEY `file_type_id` (`file_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
 
 --
 -- Dumping data for table `files`
@@ -102,7 +102,11 @@ INSERT INTO `files` (`file_id`, `user_id`, `sharing_status`, `file_name`, `file_
 (33, 2, 'private', 'BDA-07-Student-t-test', 12, '..//studybettertogether/files/amonaghan/BDA-07-Student-t-test.pptx', '903 kb', '', '', '2013-11-13 23:30:00'),
 (34, 1, 'private', 'Lab Master Sem1', 19, '..//studybettertogether/files/MimiSBT/Lab_Master_Sem1.pdf', '48 kb', '', '', '2013-11-13 23:40:44'),
 (35, 13, 'private', 'Semester One Timetable by Programme - Jan 2014', 19, '..//studybettertogether/files/Brian2013/Semester_One_Timetable_by_Programme_-_Jan_2014.pdf', '323 kb', '', '', '2013-11-14 10:32:56'),
-(36, 2, 'private', 'brainpowerREPORT-090612', 19, '..//studybettertogether/files/amonaghan/brainpowerREPORT-090612.pdf', '1,567 kb', 'jhj', 'jjh', '2013-11-19 19:01:41');
+(36, 2, 'private', 'StudyBetterTogether- Requirement Questionnaire', 2, '..//studybettertogether/files/amonaghan/StudyBetterTogether-_Requirement_Questionnaire.docx', '72 kb', 'terst', 'test', '2013-12-02 23:12:51'),
+(49, 2, 'private', 'Questionnaire Results', 2, '../../../studybettertogether/files/amonaghan/Questionnaire_Results.docx', '37 kb', '', '', '2013-12-03 09:47:10'),
+(50, 2, 'private', 'Questionnaire Results Screenshots', 2, '../../../studybettertogether/files/amonaghan/Questionnaire_Results_Screenshots.docx', '375 kb', '', '', '2013-12-03 09:48:13'),
+(51, 2, 'public', 'Questionnaire Results Screenshots', 2, '../../../studybettertogether/files/public/Questionnaire_Results_Screenshots.docx', '375 kb', '', '', '2013-12-03 09:48:34'),
+(52, 2, 'private', 'Project RS - StudyBetterTogether', 19, '../../../studybettertogether/files/amonaghan/Project_RS_-_StudyBetterTogether.pdf', '1,595 kb', '', '', '2013-12-03 09:52:05');
 
 -- --------------------------------------------------------
 
@@ -133,9 +137,7 @@ INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `username`, `email`, 
 (1, 'Mimi', 'Kelly', 'MimiSBT', 'Mimi.Kelly@sbt.com', 'Admin', 'b04fbf77b7d07f2a5c4fb13e070a9558f09576e9', '2013-10-18 18:36:41', 'a2331f024b63e5f1f9a06ec62ade80509f6ed476'),
 (2, 'Andrew', 'Monagahn', 'amonaghan', 'Andrew.Monaghan@student.ie', 'Student', 'e79947c608a8ff67a064e3847a70f70f0b8f011a', '2013-10-18 18:36:41', NULL),
 (8, 'Sarah', 'Smith', 'Ssmith', 'sarahsmith@college.ie', 'Student', '574e8ecda5d4f43b7cbcb1b92eb92c8bfdfe9ba0', '2013-10-31 13:31:26', NULL),
-(13, 'Brian', 'Jones', 'Brian2013', 'brianjones@test.com', 'Student', 'e9f2cc0c8ed013031c5c7b054347e5facfcbbe20', '2013-11-06 23:02:20', NULL),
-(14, 'Paul', 'Hayes', 'phayes', 'ph@nci.ie', 'Student', '944b71b56d7ae36df8c6804374f31878a3821c6d', '2013-11-19 16:41:18', NULL),
-(16, 'Daniel', 'Ozac', 'danyboy', 'doc@d.com', 'Student', '0c586633c2b7fd6bc664a64420c7c163a6752013', '2013-11-19 19:05:23', NULL);
+(13, 'Brian', 'Jones', 'Brian2013', 'brianjones@test.com', 'Student', 'e9f2cc0c8ed013031c5c7b054347e5facfcbbe20', '2013-11-06 23:02:20', NULL);
 
 --
 -- Constraints for dumped tables

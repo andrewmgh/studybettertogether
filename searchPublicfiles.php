@@ -1,6 +1,6 @@
 <?php 
 require_once 'includes/html_template/header.php';
-require_once 'includes/functionality/searchPublicFiles_logic.php';
+require_once 'includes/functionality/publicSearch.php';
 ?>
 
 <h2 class = "mainPageHeading">Search Public Files</h2>
@@ -15,7 +15,7 @@ require_once 'includes/functionality/searchPublicFiles_logic.php';
 					<fieldset>
 						<p>
 						<label for="fileOwner">File Owner</label> 
-						<input type="text" id="fileOwner" name = "fileOwner"  placeholder="Owner's First Name"/>
+						<input type="text" id="fileOwner" name = "fileOwner"  placeholder="Owner's First Name" />
 						</p>
 						
 						<p>

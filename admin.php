@@ -39,8 +39,8 @@ if ($account_type != 'Admin') {
 				<?php print isset($PwdMsg) ? '<div class = "hiddenField">' . $PwdMsg . '</div>': ""; ?>
 				<form name="changeStudentPassword" id="changeStudentPassword" action="admin.php" method="POST">
 					<p>
-					<label for="userID">User Id: </label> 
-					<input type="text" id="userID" name="userID" value ="<?php print isset($userID) ? $userID : ""; ?>" />
+					<label for="studentID">User Id: </label> 
+					<input type="text" id="studentID" name="studentID" value ="<?php print isset($studentID) ? $studentID : ""; ?>" />
 					</p>						<p>
 					<label for="newPassword">New Password: </label> 
 					<input type="password" id="newPassword" name="newPassword" />

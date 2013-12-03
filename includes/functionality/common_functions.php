@@ -1,5 +1,4 @@
 <?php
-
 //functions to sanatise all input 
 function sanatiseInput($db_con,$userInput)
 {
