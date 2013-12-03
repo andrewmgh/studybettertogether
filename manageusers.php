@@ -8,7 +8,7 @@ if ($account_type != 'Admin') {
 ?>
 
 <h2 class = "mainPageHeading">Details of Registered Users</h2>
-<div id = "userdetails">
+<div class = "userdetails">
 				
 				<table>
 					<tr>

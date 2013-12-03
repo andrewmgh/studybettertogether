@@ -568,7 +568,7 @@ text-align: center;
 /* =======ADMIN PAGE CSS======== */
 		
 		
-#userdetails {
+.userdetails {
 	margin-top: 20px;
 }
 
@@ -580,6 +580,14 @@ text-align: center;
 #changeStudentPassword input[type = "text"] {
 	width: 75px;
 }
+
+
+/* =======HELP PAGES CSS======== */
+
+#help_userdetails {
+	margin: 0;
+}
+
 
 
 /* =======PROFILE PAGE CSS======== */

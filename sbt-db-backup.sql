@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2013 at 02:11 PM
+-- Generation Time: Dec 03, 2013 at 07:06 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -71,7 +71,7 @@ INSERT INTO `allowed_file_types` (`file_type_id`, `file_ext`, `file_short_name`,
 
 CREATE TABLE IF NOT EXISTS `files` (
   `file_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
+  `owner_id` int(11) NOT NULL,
   `sharing_status` varchar(20) NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `file_type_id` int(10) NOT NULL,
@@ -81,15 +81,15 @@ CREATE TABLE IF NOT EXISTS `files` (
   `subject` varchar(255) DEFAULT NULL,
   `upload_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`file_id`),
-  KEY `user_id` (`user_id`),
+  KEY `user_id` (`owner_id`),
   KEY `file_type_id` (`file_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=54 ;
 
 --
 -- Dumping data for table `files`
 --
 
-INSERT INTO `files` (`file_id`, `user_id`, `sharing_status`, `file_name`, `file_type_id`, `file_path`, `file_size`, `description`, `subject`, `upload_date`) VALUES
+INSERT INTO `files` (`file_id`, `owner_id`, `sharing_status`, `file_name`, `file_type_id`, `file_path`, `file_size`, `description`, `subject`, `upload_date`) VALUES
 (17, 1, 'public', 'Computer Architecture Exam Prac', 2, '..//studybettertogether/files/public/Computer_Architecture_Exam_Prac.docx', '33 kb', '', '', '2013-11-13 13:08:42'),
 (19, 1, 'public', 'Semester One Timetable by Programme - Jan 2014', 19, '..//studybettertogether/files/public/Semester_One_Timetable_by_Programme_-_Jan_2014.pdf', '323 kb', '', '', '2013-11-13 15:53:34'),
 (21, 2, 'public', 'example1_lecture5 _thur', 5, '..//studybettertogether/files/public/example1_lecture5__thur.xls', '31 kb', '', '', '2013-11-13 22:10:29'),
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `users`
@@ -147,7 +147,7 @@ INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `username`, `email`, 
 -- Constraints for table `files`
 --
 ALTER TABLE `files`
-  ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `files_ibfk_2` FOREIGN KEY (`file_type_id`) REFERENCES `allowed_file_types` (`file_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

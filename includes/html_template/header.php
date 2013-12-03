@@ -58,7 +58,12 @@ require_once 'includes/functionality/sessionManagement.php';
 								</ul>
 						</li>	
 						<li><a href="studyforum.php">Study Forum</a></li>
-						<li id="rightMenu"><a href="help.php">Help</a></li>
+						<li id="rightMenu"><a href="help.php">Help</a>
+								<ul>
+									<li><a href="siteusers.php">List of Users</a></li>
+								</ul>
+						
+						</li>
 					</ul>
 				</nav>		
 			</div>
