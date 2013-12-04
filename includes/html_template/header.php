@@ -11,9 +11,10 @@ require_once 'includes/functionality/sessionManagement.php';
 <head>
 	<meta charset="utf-8">
 	<title>Study Better Together</title>
-		<link rel="stylesheet" href="css\reset.css" />
-		<link rel="stylesheet" href="css\style.css" />
-		<link rel="shortcut icon" href="img/sbt_favicon.ico" />
+	<link rel="stylesheet" href="css/ui.dropdownchecklist.standalone.css" />   
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="shortcut icon" href="img/sbt_favicon.ico">
 </head>
 
 <body>
@@ -29,9 +30,9 @@ require_once 'includes/functionality/sessionManagement.php';
 						<nav>
 					<ul>
 						<?php echo ($account_type == 'Admin') ? "<li><a href='admin.php'>Admin</a>\n<ul><li><a href='manageusers.php'>Manage Users</a>\n<li><a href='changeFileTypes.php'>Change File Types</a></li></li>\n</ul></li>\n" : ""; ?>
-						<li><a href="profile.php"><?php echo "$firstname" ?></a>
+						<li><a href="home.php">Home</a>
 								<ul>
-									<li><a href="changepassword.php">Change Password</a></li>
+									<li><a href="uploadTest.php">Upload test</a></li>
 								</ul>
 						</li>		
 						<li><a href="study.php">Study Advice</a>
@@ -61,6 +62,7 @@ require_once 'includes/functionality/sessionManagement.php';
 						<li id="rightMenu"><a href="help.php">Help</a>
 								<ul>
 									<li><a href="siteusers.php">List of Users</a></li>
+									<li><a href="changepassword.php">Change Password</a></li>
 								</ul>
 						
 						</li>

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <title>Study Better Together</title>
-<link rel="stylesheet" href="css\reset.css" />
-<link rel="stylesheet" href="css\style.css" />
-<link rel="shortcut icon" href="img/sbt_favicon.ico" />
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="shortcut icon" href="img/sbt_favicon.ico">
 </head>
 
 <body>

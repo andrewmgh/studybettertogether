@@ -32,7 +32,7 @@ function loginUser($db_con, $username, $password) {
 		else {
 			session_start();
 			$_SESSION ['username'] = $username;
-			header('Location:../../profile.php');
+			header('Location:../../home.php');
 			closeMySql($db_con, $result);
 			exit();		
 		}	

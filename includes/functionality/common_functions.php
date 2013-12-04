@@ -27,21 +27,10 @@ function ProtectURL ($file_path){
 }
 
 
-/* <button class ="hide">Hide</button>
-<button class ="show">Show</button>
-<script>
-$(document).ready(function(){
-	$(".hide").click(function(){
-		$(".banner").hide();
-	});
-	$(".show").click(function(){
-		$(".banner").show();
-	});
-});
-</script>
 
 
 
+/* 
 
 //if the page is not index.php than redirect users to index.php. This stops people navigating directly to this page by typing in the URL - ie "/studybettertogether/includes/validate_login.php".
 if(($_SERVER['PHP_SELF']) == "/studybettertogether/index.php"){
@@ -51,8 +40,8 @@ else {
 	header ( "location:/studybettertogether/index.php" );
 	exit ();
 } 
-
-
  */
+
+ 
 
 ?>

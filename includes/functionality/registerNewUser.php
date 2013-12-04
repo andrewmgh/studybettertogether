@@ -46,7 +46,7 @@ else {
 				$_SESSION ['username'] = $userName;
 			
 				mysqli_close($db_con);
-				header('Location:../../profile.php');
+				header('Location:../../home.php');
 				exit();
 			}
 			else {

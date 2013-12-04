@@ -9,6 +9,5 @@
 
 
 	</div>
-<script type="text/javascript" src="js\commonFunctions.js"></script>
 </body>
 </html>
