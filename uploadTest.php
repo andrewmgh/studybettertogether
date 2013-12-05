@@ -6,7 +6,30 @@ require_once 'includes/html_template/header.php';
 if ($_SERVER['REQUEST_METHOD']== "POST") //only runs the below php code if the login form was submitted.
 {
 	
+	$specificData = $_POST['specificSharing'];
+	if(isset($specificData)){
 	
+		$serializedoptions = implode(',',$specificData);
+		
+		$query = "INSERT INTO specific_sharing (`shared_with`) VALUES ('$serializedoptions')";
+		
+	//	echo $query;
+		$result = newQuery($db_con, $query);
+		
+	echo "	<br /><br />";
+echo "$serializedoptions <br />";
+echo 'The following options were saved to database:<br /><br />';
+
+
+$temp = explode(',', $serializedoptions);
+	foreach($temp as $key => $value){
+	echo $value . "<br />";
+}
+
+
+exit();
+} 
+
 	
 
 }
@@ -16,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST") //only runs the below php code if the l
 
 <h1>Upload test</h1>
 
-<form name="upload" action="#" method="POST" enctype="multipart/form-data">
+<form name="upload" action="uploadTest.php" method="POST" enctype="multipart/form-data">
 		<p>
 		<label for="sharingStatus">Sharing Status: </label>
 		<select name ="sharingStatus" id = "sharingStatus">

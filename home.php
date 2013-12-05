@@ -4,6 +4,7 @@
 
 <h4>Welcome to StudyBetterTogether. What would you like to do?</h4>
 
+
 <div id="siteContent">
 <table >
 	<tr>
