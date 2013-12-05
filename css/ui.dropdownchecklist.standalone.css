@@ -2,28 +2,46 @@
     We highly recommend using JQuery ThemeRoller instead  
 */
 .ui-dropdownchecklist {
-	font-size: medium;
-	color: black;
+	font-size: 13px;
+	font-color: #000;  
+    font-weight: normal;
+    font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   	
 }
 .ui-dropdownchecklist-selector {
-	height: 20px;
 	border: 1px solid #ddd;
 	background: #fff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;    
+	border-radius: 5px;
+	font-color: #000; 
+	padding-left: 10px !important;
+	padding-top: 7px !important;
+	line-height: 15px;
 }
+
 .ui-state-hover, .ui-state-active {
-	border-color: #5794bf;
+	
 }
 .ui-dropdownchecklist-dropcontainer {
 	background-color: #fff;
 	border: 1px solid #999;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;    
+	border-radius: 5px;
+	padding-left: 5px; 
 }
-.ui-dropdownchecklist-item {
+.ui-dropdownchecklist-item label{
+	color: #000 !important;
+	font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-weight: normal !important;
 }
 .ui-state-hover {
 	background-color: #39f;
 }
 .ui-state-disabled label {
-	color: #ccc;
 }
 .ui-dropdownchecklist-group {
 	font-weight: bold;
@@ -43,9 +61,10 @@
 	font-size: 0px;
 }
 .ui-dropdownchecklist-text {
-	font-size: medium;
-	/* line-height: 20px; */
+	font-size: 14px;
+	line-height: 18px;
 }
 .ui-dropdownchecklist-group {
 	padding: 1px 2px 2px 2px;
+	
 }

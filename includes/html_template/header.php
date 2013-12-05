@@ -11,17 +11,17 @@ require_once 'includes/functionality/sessionManagement.php';
 <head>
 	<meta charset="utf-8">
 	<title>Study Better Together</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/ui.dropdownchecklist.standalone.css" />   
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="shortcut icon" href="img/sbt_favicon.ico">
+	<link rel="shortcut icon" href="img/sbt_favicon.ico">
 </head>
 
 <body>
 <div id="outer_header_wrapper">
 	<header>
 		<div id="main_header">
-			<img src="img/sbt2.PNG" alt="logo">
+			<img src="img/SBT_logo.PNG" alt="logo">
 
 			<span id="logout" onClick="return confirm('Are you sure you want to logout?');">
 			<?php echo "<p>You are logged in as: <strong> $username </strong></p> <a href='includes/functionality/logout.php'><button>Logout</button></a>" ?>

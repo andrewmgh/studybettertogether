@@ -14,7 +14,7 @@
 	<div id="outer_header_wrapper">
 		<header>
 			<div id="main_header">
-				<img src="img/sbt2.PNG" alt="logo">
+				<img src="img/SBT_logo.PNG" alt="logo">
 
 				<span id="login">
 					<form name="login" action="includes/functionality/login.php" method="POST">
@@ -46,7 +46,7 @@
 						<li style="background-image: url(img/slider/Collaborative_Learning.jpg);">
 							
 						</li>	
-											
+						<li style="background-image: url(img/slider/teamwork.png);"></li>					
 						<li style="background-image: url(img/slider/Student-alone-in-library-008.jpg);">
 							<h1>Tired of studying alone??</h1>
 							<p>Time to start studying together.</p>
@@ -63,9 +63,7 @@
 							<p>Chat with your friends on our study forum</p>
 		
 						</li>
-						
-						<li style="background-image: url(img/slider/teamwork.png);">
-						</li>
+
 						<li style="background-image: url(img/slider/subway.jpg);">
 							<h1>Upload personal files</h1>
 							<p>Not ready to shared files just yet?? Upload them so only you have access</p>

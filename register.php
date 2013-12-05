@@ -13,7 +13,7 @@
 	<div id="outer_header_wrapper">
 		<header>
 			<div id="main_header">
-				<img src="img/sbt2.PNG" alt="logo">
+				<img src="img/SBT_logo.PNG" alt="logo">
 				<span id="returnHome">
 					<a href="index.php"><button>Back to Home Page</button></a>
 				</span>

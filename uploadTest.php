@@ -78,29 +78,25 @@ exit();
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/ui.dropdownchecklist-1.4-min.js"></script>
-	
 <script type="text/javascript">
-//Function for Drop Down Check List - https://code.google.com/p/dropdown-check-list/
-$(document).ready(function() {
-    $("#s1").dropdownchecklist( { emptyText: "Click here to share with specific users...", width: 350, maxDropHeight: 150 } );
-});
-
-//Functions to show / hide Specific Sharing box - amended from http://stackoverflow.com/questions/7019096/jquery-dropdown-hide-show-div-based-on-value
-toggle_SpecificSharingBox = function () {
-    $("#specificSharingBox").hide();
-    
-    if ($(this).val() == 'specific' ){
-    $("#specificSharingBox").show();
-    }
-    
-};
-
-$(document).ready(function() {
-    
-    $("#sharingStatus").change(toggle_SpecificSharingBox);
-    toggle_SpecificSharingBox.apply($("#sharingStatus"));
-    
-});
+	//Function for Drop Down Check List - https://code.google.com/p/dropdown-check-list/
+		$(document).ready(function() {
+		    $("#s1").dropdownchecklist( { emptyText: "Click here to share with specific users...", width: 350, maxDropHeight: 150 } );
+		});
+		
+	//Functions to show / hide Specific Sharing box - amended from http://stackoverflow.com/questions/7019096/jquery-dropdown-hide-show-div-based-on-value
+		toggle_SpecificSharingBox = function () {
+		    $("#specificSharingBox").hide();
+		    
+		    if ($(this).val() == 'specific' ){
+		    $("#specificSharingBox").show();
+		    }
+		};
+	
+		$(document).ready(function() {
+		    $("#sharingStatus").change(toggle_SpecificSharingBox);
+		    toggle_SpecificSharingBox.apply($("#sharingStatus"));
+		});
 </script>	
 
 

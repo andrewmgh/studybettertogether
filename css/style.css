@@ -386,9 +386,8 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		
 		.hiddenField{
 			font-size: 0.8em;
-		    
 		    text-align: center;
-		    			color: red;
+		    color: red;
 		    padding: 1%;
 		    -moz-border-radius: 15px;
 		     -webkit-border-radius: 15px;
@@ -436,6 +435,7 @@ margin-left: 22%;
 
 
 /* =======UPLOADS PAGE CSS======== */	
+
 
 #uploadForm {
 	width: 70%;
