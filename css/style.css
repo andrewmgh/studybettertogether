@@ -557,6 +557,7 @@ text-align: center;
 
 .searchResults table{
 	margin: 0 auto;
+	text-align: center;
 }
 
 .searchResults H4 {
