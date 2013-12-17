@@ -490,6 +490,11 @@ margin: 2% 7% 0 7%;
 	list-style:none;
 }
 
+.specificuser {
+	list-style-type:disc !important; 
+	margin-left: 100px;
+	}
+
 .TaC_bullets {
 	margin: 0 0 10px 50px ;
 }
@@ -516,7 +521,7 @@ margin: 2% 7% 0 7%;
 	margin-top: 5px;
 }
 
-/* =======PUBLIC SEARCH PAGE CSS======== */
+/* =======SEARCH PAGES CSS======== */
 
 .searchForm {
 	width: 80%;
@@ -533,7 +538,7 @@ margin: 2% 7% 0 7%;
 }
 	
 .searchForm fieldset.bottom {
-	margin-top: 20px;
+	margin: 20px 0;
 
 }		
 
@@ -557,7 +562,6 @@ text-align: center;
 
 .searchResults table{
 	margin: 0 auto;
-	text-align: center;
 }
 
 .searchResults H4 {

@@ -15,15 +15,21 @@ require_once 'includes/functionality/personalSearch.php';
 				<form name="upload" action="searchPersonalfiles.php" method="POST" >
 					<fieldset>
 						<p>
-						<label for="fileOwner">File Owner</label> 
-						<input type="text" id="fileOwner" name = "fileOwner"  placeholder="Owner's username"/>
+						<label for="sharingStatus">*Sharing Status:</label> 
+						<select name ="sharingStatus" >
+						 	  <option value="null" selected style='display:none;'>Select a Sharing Status:</option>
+							  <option value="public">My Public Files</option>
+							  <option value="private">My Private Files</option>
+							  <option value="specific">My Specifically Shared Files</option>
+							  <option value="shared_with_me">Files Shared With Me</option>
+						</select>
 						</p>
 						
 						<p>
 						<label for="fileName">File Name</label> 
-						<input type="text" id="fileName" name="fileName" placeholder="File Name" />
+						<input type="text" id="fileName" name="fileName" placeholder="File Name"/>
 						</p>
-							
+
 						<p>
 						<label for="fileType">File Type: </label> 
 						<select name ="fileType">
@@ -37,25 +43,29 @@ require_once 'includes/functionality/personalSearch.php';
 								?>
 						</select>
 						</p>	
-										
 					</fieldset>
-					
+						
 					<fieldset class ="bottom">
 						<p>
 						<label for="description">Description </label> 
 						<input type="text" id="description" name="description" placeholder="File Description" />
 						</p>
+
 						<p>
 						<label for="subject">Subject </label> 
 						<input type="text" id="subject" name="subject" placeholder="File Subject" />
 						</p>
+						
+						<p>
+						<label for="sharedBy">Shared By:</label> 
+						<input type="text" id="sharedBy" name = "sharedBy"  placeholder="Owner of files shared with me"/>
+						</p>
 					</fieldset>
 						
-					
-					
 					<div class = "submit">
-					<input type="submit" name ="search" value="Search" />
+						<input type="submit" name ="search" value="Search" />
 					</div>
+					
 				</form>
 				</div>		
 	</div>

@@ -1,10 +1,20 @@
-<?php require_once 'includes/html_template/header.php';?>
+<?php require_once 'includes/html_template/header.php';
 
-<?php
+$search = <<<_SEARCH
+SELECT 
+username, sharing_status, file_name, owner_id, file_short_name, file_size, DATE_FORMAT(DATE(upload_date),'%D %b %Y') AS new_date, file_path 
+FROM 
+files 
+INNER JOIN users ON files.owner_id = users.user_id 
+INNER JOIN file_sharing ON files.file_sharing_id = file_sharing.sharing_id
+INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id 
+WHERE owner_id = '$userID'
+_SEARCH;
+
+
 echo "<h2 class = \"mainPageHeading\"> $firstname's files </h2>";
 
-$personalFiles = newQuery ( $db_con, "SELECT username, file_name, file_short_name, file_size, DATE_FORMAT(DATE(upload_date),'%D %b %Y') AS new_date, file_path FROM files INNER JOIN users ON files.owner_id = users.user_id INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id WHERE sharing_status = 'private' AND username ='$username'" );
-
+$personalFiles = newQuery ( $db_con, $search);
 if (mysqli_num_rows ( $personalFiles ) >= 1) {
 	
 	echo <<<_Table
