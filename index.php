@@ -14,7 +14,7 @@
 	<div id="outer_header_wrapper">
 		<header>
 			<div id="main_header">
-				<img src="img/SBT_logo.PNG" alt="logo">
+				<img src="img/SBT_logo.png" alt="logo">
 
 				<span id="login">
 					<form name="login" action="includes/functionality/login.php" method="POST">

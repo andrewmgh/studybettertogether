@@ -21,7 +21,7 @@ require_once 'includes/functionality/sessionManagement.php';
 <div id="outer_header_wrapper">
 	<header>
 		<div id="main_header">
-			<img src="img/SBT_logo.PNG" alt="logo">
+			<img src="img/SBT_logo.png" alt="logo">
 
 			<span id="logout" onClick="return confirm('Are you sure you want to logout?');">
 			<?php echo "<p>You are logged in as: <strong> $username </strong></p> <a href='includes/functionality/logout.php'><button>Logout</button></a>" ?>
