@@ -16,6 +16,14 @@ if (isset ( $_SESSION ['username'] )) {
 	$userID = $_SESSION ['userID'];
 	$account_type = $_SESSION['accountType'];
 	
+// session variables to auto log in user to study forum	
+	$account_type == 'Admin' ? $forumType = "2" : $forumType = "0";
+	
+	$_SESSION['forum_user_id'] = $userID;
+    $_SESSION['forum_user_name'] = $username;
+    $_SESSION['forum_user_type'] = $forumType;
+		 
+	
 }
 else {
 	closeMySql($db_con, $sessionSearch);

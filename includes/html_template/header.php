@@ -58,7 +58,9 @@ require_once 'includes/functionality/sessionManagement.php';
 									<li><a href="personalfilelist.php">Full File list</a></li>
 								</ul>
 						</li>	
-						<li><a href="studyforum.php">Study Forum</a></li>
+						<li><a href="studyforum.php">Study Forum</a>
+								<?php echo ($account_type == 'Admin') ? "<ul><li><a href='studyforum_admin.php'>Forum Admin</a></li></ul></li>" : ""; ?>
+						</li>						
 						<li id="rightMenu"><a href="help.php">Help</a>
 								<ul>
 									<li><a href="siteusers.php">List of Users</a></li>

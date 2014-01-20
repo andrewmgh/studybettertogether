@@ -332,7 +332,8 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 
 		.main_form {
 			padding: 1% 0;
-			background-image: url("../img/background.png");	
+			background:#d2ddea url(../img/bg_form.png) repeat-x;
+			
 		     -moz-border-radius: 10px;
 		     -webkit-border-radius: 10px;
 		 	 -o-border-radius: 10px;    
