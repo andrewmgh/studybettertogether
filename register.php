@@ -34,31 +34,49 @@
 						<fieldset>
 						<p>
 						<label for="firstname">First Name: </label> 
-						<input type="text" id="firstname" name="firstname" autofocus/>
+						<input type="text" id="firstname" name="firstname" value ="<?php print isset($_GET['Fname']) ? ($_GET['Fname']) : "";?>" autofocus required/>
 						</p>			
 						<p>
 						<label for="lastname">Last Name: </label> 
-						<input type="text" id="lastname" name="lastname" />
+						<input type="text" id="lastname" name="lastname" value ="<?php print isset($_GET['Lname']) ? ($_GET['Lname']) : "";?>" required/>
 						</p>
 						<p>
 						<label for="email">Email: </label> 
-						<input type="text" id="email" name="email" />
+						<input type="email" id="email" name="email" value ="<?php print isset($_GET['email']) ? ($_GET['email']) : "";?>" required/>
 						</p>	
 						<p>
 						<label for="username">Username: </label> 
-						<input type="text" id="username" name="username" />
+						<input type="text" id="username" name="username" value ="<?php print isset($_GET['Uname']) ? ($_GET['Uname']) : "";?>" required/>
 						</p>
 						<p>
-						<label for="password">Password: </label> 
-						<input type="password" id="password" name="password" />
+						<label for="password">Password: </label>  
+						<input type="password" id="password" name="password" required/>
 						</p>
 						<p>
 						<label for="password_confirm">Confirm Password: </label> 
-						<input type="password" id="password_confirm" name="password_confirm" />
-						</p>				
+						<input type="password" id="password_confirm" name="password_confirm" required/>
+						</p>
+						<p>
+						<label for="classname">Select Your Class: </label> 
+						<select name ="classname" required>
+								<?php print isset($_GET['Cname']) ? "<option value=\"$_GET[Cname]\">$_GET[Cname]</option>" : "<option value=\"\" disabled selected style='display:none;'>Choose from one of the following: </option>";?>
+								<?php
+								if(!(isset($_GET['Cname']))) {
+								require_once 'includes/functionality/common_functions.php';
+								require_once 'includes/db/sql_functions.php';
+								$list_of_classes =newQuery($db_con, "SELECT * FROM classes");
+								while ( $row = mysqli_fetch_array ( $list_of_classes ) ) {
+									echo '<option values=' . $row["class_name"] . '>' . $row["class_name"] . '</option>';
+								}
+								
+								closeMySql($db_con, $list_of_classes);
+								}
+								?>
+						</select>
+						</p>					
 						<p>
 						<label for="register_code">Registration Code: </label> 
-						<input type="password" id="register_code" name="register_code" />
+						<input type="password" id="register_code" name="register_code" required/>
 						</p>
 						</fieldset>
 						<p class = "submit">
@@ -74,10 +92,10 @@
 	</div>
 	<div class="clearfloats"></div>
 	<div id="outer_footer_wrapper">
-		<footer id="main_footer">
-			<p>StudyBetterTogether &copy; 2013  -  <a href ="mailto:admin@studybettertogether.com">Contact Us</a></p>
-		</footer>
-
+	<footer id="main_footer">
+				<p><b>Note:</b> This website is a fourth year college project and not for commercial use. I do not own or claim to own any of the images used on this site.</p>
+				<p>If you are the owner of an image I am using and you wish for me to take it down, please contact me <a href ="mailto:admin@studybettertogether.com">here</a> with the name of the image and I will take it down immediately.</p>
+	</footer>
 
 	</div>
 

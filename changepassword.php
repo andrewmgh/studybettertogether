@@ -16,9 +16,9 @@ require_once 'includes/functionality/changeUserPassword.php';
 						<label for="confirmPassword">Confirm Password: </label> 
 						<input type="password" id="confirmPassword" name="confirmPassword" />
 						</p>	
-						<div class = "submit">
+						<p>
 						<input type="submit" name ="changePassword" value="Confirm" />
-						</div>
+						</p>
 					</form>
 	</div>				
 </div>	

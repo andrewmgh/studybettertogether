@@ -1,6 +1,10 @@
 <?php
 session_start ();
 if (isset ( $_SESSION ['username'] )) {
+	require_once 'includes/functionality/common_functions.php';
+	require_once 'includes/db/sql_functions.php';
+		
+	
 	$username = $_SESSION ['username'];
 	
 // select the data from DB and store in session
@@ -26,7 +30,6 @@ if (isset ( $_SESSION ['username'] )) {
 	
 }
 else {
-	closeMySql($db_con, $sessionSearch);
 	session_destroy();
 	header ( 'Location:http://localhost/studybettertogether/' );
 	exit();

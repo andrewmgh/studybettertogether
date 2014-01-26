@@ -49,4 +49,31 @@ if (isset ($_POST ['changeStudentPassword'])){  //only runs the below php code i
 	}
 }
 
+<!--
+<h2>&nbsp;</h2>
+
+<h4>Change Student Password</h4>
+<div class ="inline_form">
+<div class="main_form">
+				<?php print isset($PwdMsg) ? '<div class = "hiddenField">' . $PwdMsg . '</div>': ""; ?>
+				<form name="changeStudentPassword" id="changeStudentPassword" action="admin.php" method="POST">
+					<p>
+					<label for="studentID">User Id: </label> 
+					<input type="text" id="studentID" name="studentID" value ="<?php print isset($studentID) ? $studentID : ""; ?>" />
+					</p>						<p>
+					<label for="newPassword">New Password: </label> 
+					<input type="password" id="newPassword" name="newPassword" />
+					</p>				
+					<p>
+					<label for="confirmPassword">Confirm Password: </label> 
+					<input type="password" id="confirmPassword" name="confirmPassword" />
+					</p>	
+					
+					<div class = "submit">
+						<input type="submit" name ="changeStudentPassword" value="Confirm" />
+					</div>
+					</form>
+	</div>				
+</div>	
+-->	
 ?>

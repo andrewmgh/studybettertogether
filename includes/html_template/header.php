@@ -1,6 +1,4 @@
 <?php 
-require_once 'includes/db/sql_functions.php';
-require_once 'includes/functionality/common_functions.php';
 require_once 'includes/functionality/sessionManagement.php';
 ?>
 
@@ -29,12 +27,8 @@ require_once 'includes/functionality/sessionManagement.php';
 
 						<nav>
 					<ul>
-						<?php echo ($account_type == 'Admin') ? "<li><a href='admin.php'>Admin</a>\n<ul><li><a href='manageusers.php'>Manage Users</a>\n<li><a href='changeFileTypes.php'>Change File Types</a></li></li>\n</ul></li>\n" : ""; ?>
-						<li><a href="home.php">Home</a>
-								<ul>
-									<li><a href="uploadTest.php">Upload test</a></li>
-								</ul>
-						</li>		
+						<?php echo ($account_type == 'Admin') ? "<li><a href='admin.php'>Admin</a>\n<ul><li><a href='manageclasses.php'>Manage Classes</a>\n<li><a href='changeFileTypes.php'>Change File Types</a></li></li>\n</ul></li>\n" : ""; ?>
+						<li><a href="home.php">Home</a></li>		
 						<li><a href="study.php">Study Advice</a>
 								<ul>
 									<li><a href="#">Academic Writing</a></li>

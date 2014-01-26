@@ -364,7 +364,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 			vertical-align: top;
 		}
 		
-		.main_form input[type = "text"], .main_form input[type = "password"], .main_form input[type = "file"], .main_form textarea, .main_form select {
+		.main_form input[type = "text"], .main_form input[type = "password"], .main_form input[type = "file"], .main_form input[type = "email"],.main_form textarea, .main_form select {
 		padding: 1% 5px;
 		     -moz-border-radius: 5px;
 		     -webkit-border-radius: 5px;
@@ -426,7 +426,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 	width: 150px;
 }	
 	
-#registerForm input[type = "text"], #registerForm input[type = "password"]{	
+#registerForm input[type = "text"], #registerForm input[type = "password"], #registerForm input[type = "email"], #registerForm select{	
 	width: 250px;
 }
 
@@ -503,19 +503,19 @@ margin: 2% 7% 0 7%;
 /* ========	UPDATE USER PASSWORD CSS ========== */
 
 .inline_form {
-	width: 70%;
+	width: 75%;
 	margin: 1% auto 2% auto;
 	text-align: center;
 }
 
  .inline_form p {
 	display: inline-block;
-	margin: 0 20px;
+	margin: 0 8px;
 	text-align: center;
 	}
 		
 .inline_form input[type = "password"], .inline_form input[type = "text"] {	
-	width: 250px;
+	width: 200px;
 	margin-right: 10px;
 	height: 30px; 
 	display: block;
@@ -575,16 +575,12 @@ text-align: center;
 		
 		
 .userdetails {
-	margin-top: 20px;
+	
 }
 
 
-#changeStudentPassword input[type = "password"] {
-	width: 200px;;
-}
-
-#changeStudentPassword input[type = "text"] {
-	width: 75px;
+#add_new_class input[type = "password"], #add_new_class input[type = "text"] {	
+	width: 150px;
 }
 
 
@@ -635,92 +631,3 @@ color: #FF3300;
 height: 10px;
 border: none;
 }
-
-
-/* UNSLIDER CSS - Source: http://unslider.com/style.css */
-
-.banner *  {
-	-webkit-font-smoothing: antialiased;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.banner {
-	position: relative;
-	overflow: automatic;
-	font-size: 18px;
-	line-height: 24px;
-	text-align: center;
-	color: rgba(255,255,255,.6);
-	text-shadow: 0 0 1px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.3);
-	margin: 0 0 20px 5px;
-	padding: 0;
-	
-}
-	.banner ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-	.banner ul li {
-		display: block;
-		float: left;
-		overflow: hidden;
-		height: 300px;
-		-webkit-background-size: 100% 100%;
-		-moz-background-size: 100% 100%;
-		-o-background-size: 100% 100%;
-		-ms-background-size: 100% 100%;
-		background-size: 100% 100%;	
-		-moz-border-radius: 50px;
-		-webkit-border-radius: 50px;
-		-o-border-radius: 50px;         
-		border-radius: 50px;
-	}
-	
-	.banner h1, .banner h2 {
-		font-size: 30px;
-		line-height: 20px;
-		font-weight: 350;
-		font-family: bree-web, Bree, sans-serif;
-		color: #fff;
-		margin-top: 160px;
-		padding: 0;
-		bottom: 0;
-	}
-		
-	.banner .btn, .banner .dot {
-		-webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-		-moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-		-ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-		-o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-		filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-	}
-	
-	.banner .dots {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 10px;
-	}
-	
-	.banner .dots li {
-			display: inline-block;
-			width: 10px;
-			height: 10px;
-			margin: 0 4px;
-			text-indent: -999em;
-			border: 1px solid #000000;
-			border-radius: 6px;
-			cursor: pointer;
-			opacity: .4;
-			-webkit-transition: background .5s, opacity .5s;
-			-moz-transition: background .5s, opacity .5s;
-			transition: background .5s, opacity .5s;
-		}
-	
-	.banner .dots li.active {
-				background: #fff;
-				opacity: 1;
-			}

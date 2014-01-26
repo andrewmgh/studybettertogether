@@ -1,62 +1,47 @@
 <?php 
 require_once 'includes/html_template/header.php';
-require_once 'includes/functionality/admin_changeRegCode.php';
-require_once 'includes/functionality/admin_changeUserPassword.php';
-
 if ($account_type != 'Admin') {
 	header ( "location: profile.php" );
 }
 ?>
 	
-	<h2 class = "mainPageHeading">Admin Section</h2>
+<h2 class = "mainPageHeading">Details of Registered Users</h2>
+<div class = "userdetails">
+				
+				<table>
+					<tr>
+						<th>User ID</th>
+						<th>Class Name</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Username</th>
+						<th>Email</th>
+						<th>Registration Date</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+					<?php				
+					$userdetails =newQuery($db_con, "SELECT user_id, class_name, first_name, last_name, username, email, DATE_FORMAT(DATE(register_date),'%D %b %Y') AS new_date FROM users INNER JOIN classes ON classes.class_id = users.class_id WHERE account_type = 'Student'");
+					while ( $row = mysqli_fetch_array ( $userdetails ) ) {
+						echo "<tr><td>" . htmlentities ( $row ["user_id"] ) . "</td>";
+						echo "<td>" . htmlentities ( $row ["class_name"] ) . "</td>";	
+						echo "<td>" . htmlentities ( $row ["first_name"] ) . "</td>";						
+						echo "<td>" . htmlentities ( $row ["last_name"] ) . "</td>";
+						echo "<td>" . htmlentities ( $row ["username"] ) . "</td>";
+						echo "<td>" . htmlentities ( $row ["email"] ) . "</td>";
+						echo "<td>" . htmlentities ( $row ["new_date"] ) . "</td>";
+						echo "<td><form><input type = 'submit' name ='editUser'  value = 'Edit'/></form></td>";
+						echo "<td><form><input type = 'submit' name ='deleteUser'  value = 'Delete' onClick=\"return confirm('Are you sure you want to Delete this user? This cannot be undone!');\"/></form></td></tr>\n";
+					}
+					closeMySql($db_con, $userdetails);
+					?>
+				</table>
+				</div>	
+				
+				
 
-	<h4>Change Registration Code</h4>
-
-	<div class ="inline_form">
-	<div class="main_form">
-				<?php print isset($regMsg) ? '<div class = "hiddenField">' . $regMsg . '</div>': ""; ?>
-				<form name="changeRegCode" action="admin.php" method="POST">
-					<p>
-					<label for="NewRegCode">New Registration Code: </label> 
-					<input type="password" id="NewRegCode" name="NewRegCode" />
-					</p>				
-					<p>
-					<label for="ConfirmRegCode">Confirm Registration Code: </label> 
-					<input type="password" id="ConfirmRegCode" name="ConfirmRegCode" />
-					</p>	
-						<div class = "submit">
-						<input type="submit" name ="changeRegCode" value="Confirm" />
-						</div>
-					</form>
-	</div>				
-</div>
 	
-<h2>&nbsp;</h2>
-
-<h4>Change Student Password</h4>
-<div class ="inline_form">
-	<div class="main_form">
-				<?php print isset($PwdMsg) ? '<div class = "hiddenField">' . $PwdMsg . '</div>': ""; ?>
-				<form name="changeStudentPassword" id="changeStudentPassword" action="admin.php" method="POST">
-					<p>
-					<label for="studentID">User Id: </label> 
-					<input type="text" id="studentID" name="studentID" value ="<?php print isset($studentID) ? $studentID : ""; ?>" />
-					</p>						<p>
-					<label for="newPassword">New Password: </label> 
-					<input type="password" id="newPassword" name="newPassword" />
-					</p>				
-					<p>
-					<label for="confirmPassword">Confirm Password: </label> 
-					<input type="password" id="confirmPassword" name="confirmPassword" />
-					</p>	
-					
-					<div class = "submit">
-						<input type="submit" name ="changeStudentPassword" value="Confirm" />
-					</div>
-					</form>
-	</div>				
-</div>	
-			
+		
 <?php require_once 'includes/html_template/footer.php';?>
 
 
