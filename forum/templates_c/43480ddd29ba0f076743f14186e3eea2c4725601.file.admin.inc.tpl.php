@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2013-12-18 18:23:35
+<?php /* Smarty version Smarty-3.1.15, created on 2014-01-28 16:09:46
          compiled from "themes\default\subtemplates\admin.inc.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2632752b1e827f02ed2-11389556%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '43480ddd29ba0f076743f14186e3eea2c4725601' => 
     array (
       0 => 'themes\\default\\subtemplates\\admin.inc.tpl',
-      1 => 1353919006,
+      1 => 1390923675,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_52b1e828c30743_42423200',
   'variables' => 
   array (
     'language_file' => 0,
@@ -154,8 +156,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'access' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_52b1e828c30743_42423200',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_52b1e828c30743_42423200')) {function content_52b1e828c30743_42423200($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_replace')) include 'C:\\xampp\\htdocs\\studybettertogether\\forum\\modules\\smarty\\plugins\\modifier.replace.php';
 if (!is_callable('smarty_function_cycle')) include 'C:\\xampp\\htdocs\\studybettertogether\\forum\\modules\\smarty\\plugins\\function.cycle.php';

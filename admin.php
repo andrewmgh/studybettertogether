@@ -1,7 +1,7 @@
 <?php 
 require_once 'includes/html_template/header.php';
 if ($account_type != 'Admin') {
-	header ( "location: profile.php" );
+	header ( "location: index.php" );
 }
 ?>
 	
