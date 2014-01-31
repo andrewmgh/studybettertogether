@@ -8,15 +8,15 @@ echo "<h2 class = \"mainPageHeading\">Edit Classes </h2>";
 
 if (isset($_GET['edit'])){
 	
-	
-	
+	//displayEditClassesTable($db_con, $_GET ['edit']);
+		
 	
 }
 
 elseif (isset($_GET['del'])){
 	
 
-	
+	header ( "location: manageclasses.php" );	
 	
 }
 
@@ -44,8 +44,9 @@ function displayEditClassesTable($db_con, $edit_id)
 	$row = mysqli_fetch_array ( $classResult );
 	
 	
-	
+			
 	closeMySql($db_con, $classResult);
+	
 }
 
 

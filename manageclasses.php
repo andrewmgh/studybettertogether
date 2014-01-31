@@ -39,44 +39,35 @@ if ($account_type != 'Admin') {
 <h4>Class Details</h4>				
 				<table>
 					<tr>
-						<th>Class ID</th>
 						<th>Class Name</th>
 						<th>Class Code</th>
 						<th>Class Created</th>
-						<th>Class Size</th>
+						<th>No. of Students</th>
 						<th>Edit</th>
 						<th>Delete</th>
 					</tr>
-					<?php				
-					$classdetails =newQuery($db_con, "SELECT * FROM classes");
+					
+					<?php		
+					$classdetails = newQuery($db_con, "SELECT class_id, class_name, class_code, DATE_FORMAT(DATE(class_register_date),'%D %b %Y') AS new_date FROM classes");
 					while ( $row = mysqli_fetch_array ( $classdetails ) ) {
-						echo "<tr><td>" . htmlentities ( $row ["class_id"] ) . "</td>\n";
-						echo "<td>" . htmlentities ( $row ["class_name"] ) . "</td>\n";						
+						$classID =  htmlentities ( $row ["class_id"] );
+						echo "<tr><td>" . htmlentities ( $row ["class_name"] ) . "</td>\n";						
 						echo "<td>" . htmlentities ( $row ["class_code"] ) . "</td>\n";
-						echo "<td></td>\n";
-						echo "<td></td>\n";
-						echo "<td><a href=\"editclasses.php?edit=". htmlentities ( $row ["class_id"] ) . "\"><button>Edit</button></a></td>\n";
-						echo "<td><span onClick=\"return confirm('Are you sure you want to Delete this user? This cannot be undone!');\"><a href=\"editclasses.php?del=". htmlentities ( $row ["class_id"] ) . "\"><button>Delete</button></a></span></td>\n";
+						echo "<td>" . htmlentities ( $row ["new_date"] ) . "</td>\n";
+
+							$countQuery = " SELECT COUNT(class_assigned_to) AS NoPerClass FROM classes INNER JOIN users ON classes.class_id = users.class_assigned_to WHERE users.class_assigned_to = \"$classID\" AND account_type = 'Student'";
+							$classdetails2 =newQuery($db_con, $countQuery);
+							while ( $row2 = mysqli_fetch_array ( $classdetails2 ) ) {
+								echo "<td>" . htmlentities ( $row2 ["NoPerClass"] ) . "</td>\n";
+							}  
+						
+						echo "<td><a href=\"editclasses.php?edit=". $classID . "\"><button>Edit</button></a></td>\n";
+						echo "<td><span onClick=\"return confirm('Are you sure you want to Delete this user? This cannot be undone!');\"><a href=\"editclasses.php?del=". $classID . "\"><button>Delete</button></a></span></td>\n";
 						echo "</form></td></tr>\n\n";
-				}
+					}
 					closeMySql($db_con, $classdetails);
 					?>
 				</table>
 </div>		
 						
 <?php require_once 'includes/html_template/footer.php';?>
-
-
-				<?php				
-// 					$classdetails =newQuery($db_con, "SELECT * FROM classes");
-// 					while ( $row = mysqli_fetch_array ( $classdetails ) ) {
-// 						echo "<form name=\"edit_classes\" method=\"POST\" action=\"includes/functionality/editclasses.php\">";
-// 						echo "<tr><td>" . htmlentities ( $row ["class_id"] ) . "</td><input type=\"hidden\" name=\"class_id\" value=\"".htmlentities ( $row ["class_id"] )."\">\n";
-// 						echo "<td>" . htmlentities ( $row ["class_name"] ) . "</td><input type=\"hidden\" name=\"class_name\" value=\"".htmlentities ( $row ["class_name"] )."\">\n";
-// 						echo "<td>" . htmlentities ( $row ["class_code"] ) . "</td><input type=\"hidden\" name=\"class_code\" value=\"".htmlentities ( $row ["class_code"] )."\">\n";
-// 						echo "<td><input type = 'submit' name ='editUser'  value = 'Edit'/></td>\n";
-// 						echo "<td><input type = 'submit' name ='deleteUser'  value = 'Delete' onClick=\"return confirm('Are you sure you want to Delete this user? This cannot be undone!');\"/>\n";
-// 						echo "</td></tr></form>\n\n";
-// 					}
-// 					closeMySql($db_con, $classdetails);
-// 					?>

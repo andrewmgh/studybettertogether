@@ -21,7 +21,7 @@ if ($account_type != 'Admin') {
 						<th>Delete</th>
 					</tr>
 					<?php				
-					$userdetails =newQuery($db_con, "SELECT user_id, class_name, first_name, last_name, username, email, DATE_FORMAT(DATE(register_date),'%D %b %Y') AS new_date FROM users INNER JOIN classes ON classes.class_id = users.class_id WHERE account_type = 'Student'");
+					$userdetails =newQuery($db_con, "SELECT user_id, class_name, first_name, last_name, username, email, DATE_FORMAT(DATE(register_date),'%D %b %Y') AS new_date FROM users INNER JOIN classes ON classes.class_id = users.class_assigned_to WHERE account_type = 'Student'");
 					while ( $row = mysqli_fetch_array ( $userdetails ) ) {
 						echo "<tr><td>" . htmlentities ( $row ["user_id"] ) . "</td>";
 						echo "<td>" . htmlentities ( $row ["class_name"] ) . "</td>";	

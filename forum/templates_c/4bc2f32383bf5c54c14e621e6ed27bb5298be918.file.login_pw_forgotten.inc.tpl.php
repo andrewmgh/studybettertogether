@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2013-12-18 21:14:25
+<?php /* Smarty version Smarty-3.1.15, created on 2014-01-30 21:14:25
          compiled from "themes\default\subtemplates\login_pw_forgotten.inc.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:42852b2103176e739-95612506%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (

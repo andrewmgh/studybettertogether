@@ -48,7 +48,7 @@ else {
 						
 				$password = encryptPwd($password);
 				
-				$NewUser = newQuery($db_con, "INSERT INTO users (`class_id`,`first_name`, `last_name`, `username`, `email`, `password`) VALUES ('" . $class_id . "','" . $firstName . "','" . $lastName . "','" . $userName . "','" . $email . "','" . $password . "')");
+				$NewUser = newQuery($db_con, "INSERT INTO users (`class_assigned_to`,`first_name`, `last_name`, `username`, `email`, `password`) VALUES ('" . $class_id . "','" . $firstName . "','" . $lastName . "','" . $userName . "','" . $email . "','" . $password . "')");
 					
 				session_start ();
 				$_SESSION ['username'] = $userName;

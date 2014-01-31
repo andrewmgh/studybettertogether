@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-01-28 16:07:35
+<?php /* Smarty version Smarty-3.1.15, created on 2014-01-30 19:20:04
          compiled from "themes\default\subtemplates\posting.inc.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2860152b1f564303d08-84881056%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7eadd15b978bdecd3ef08c71a1fc592faf1e6ddd' => 
     array (
       0 => 'themes\\default\\subtemplates\\posting.inc.tpl',
-      1 => 1390923675,
+      1 => 1351953704,
       2 => 'file',
     ),
   ),
@@ -15,8 +15,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_52b1f56459fd26_78050070',
   'variables' => 
   array (
     'language_file' => 0,
@@ -85,6 +83,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'theme' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_52b1f56459fd26_78050070',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_52b1f56459fd26_78050070')) {function content_52b1f56459fd26_78050070($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_replace')) include 'C:\\xampp\\htdocs\\studybettertogether\\forum\\modules\\smarty\\plugins\\modifier.replace.php';
 ?><?php  $_config = new Smarty_Internal_Config($_smarty_tpl->tpl_vars['language_file']->value, $_smarty_tpl->smarty, $_smarty_tpl);$_config->loadConfigVars("posting", 'local'); ?>
@@ -452,7 +452,7 @@ $_smarty_tpl->tpl_vars['smiley']->_loop = true;
 </label>
 </p>
 <?php }?>
-
+<!--
 <?php if ($_smarty_tpl->tpl_vars['provide_email_notification']->value) {?>
 <p>
 <input id="email_notification" type="checkbox" name="email_notification" value="1"<?php if ($_smarty_tpl->tpl_vars['email_notification']->value&&$_smarty_tpl->tpl_vars['email_notification']->value==1) {?> checked="checked"<?php }?> />&nbsp;<label for="email_notification"><?php if ($_smarty_tpl->tpl_vars['id']->value==0) {?><?php echo $_smarty_tpl->getConfigVariable('email_notific_reply_thread');?>
@@ -467,7 +467,7 @@ $_smarty_tpl->tpl_vars['smiley']->_loop = true;
 </label>
 </p>
 <?php }?>
-
+-->
 <?php if ($_smarty_tpl->tpl_vars['terms_of_use_agreement']->value) {?>
 <?php $_smarty_tpl->tpl_vars['terms_of_use_url'] = new Smarty_variable($_smarty_tpl->tpl_vars['settings']->value['terms_of_use_url'], null, 0);?>
 <p>

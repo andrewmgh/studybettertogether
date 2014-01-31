@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-01-28 16:07:14
+<?php /* Smarty version Smarty-3.1.15, created on 2014-01-30 18:23:12
          compiled from "themes\default\subtemplates\subnavigation_2.inc.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1198652b1e810ed6b97-95887633%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f42214cda77a1d8b9a99d4f85e78639ccdc2195b' => 
     array (
       0 => 'themes\\default\\subtemplates\\subnavigation_2.inc.tpl',
-      1 => 1390923675,
+      1 => 1273229736,
       2 => 'file',
     ),
   ),
@@ -15,8 +15,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_52b1e81104c149_67890655',
   'variables' => 
   array (
     'mode' => 0,
@@ -37,6 +35,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'page' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_52b1e81104c149_67890655',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_52b1e81104c149_67890655')) {function content_52b1e81104c149_67890655($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['mode']->value=='index') {?>
 <ul id="subnavmenu"><li><a class="refresh" href="index.php?refresh=1&amp;category=<?php echo $_smarty_tpl->tpl_vars['category']->value;?>
@@ -50,11 +50,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 "><?php echo $_smarty_tpl->getConfigVariable('fold_threads');?>
 </a><?php } else { ?><a class="fold-2" href="index.php?fold_threads=true" title="<?php echo $_smarty_tpl->getConfigVariable('expand_threads_linktitle');?>
 "><?php echo $_smarty_tpl->getConfigVariable('expand_threads');?>
-</a><?php }?></li><li><?php if ($_smarty_tpl->tpl_vars['usersettings']->value['user_view']==0) {?><a class="tableview" href="index.php?toggle_view=true" title="<?php echo $_smarty_tpl->getConfigVariable('table_view_linktitle');?>
+</a><?php }?></li>
+
+
+<!--
+<li><?php if ($_smarty_tpl->tpl_vars['usersettings']->value['user_view']==0) {?><a class="tableview" href="index.php?toggle_view=true" title="<?php echo $_smarty_tpl->getConfigVariable('table_view_linktitle');?>
 "><?php echo $_smarty_tpl->getConfigVariable('table_view');?>
 </a><?php } else { ?><a class="threadview" href="index.php?toggle_view=true" title="<?php echo $_smarty_tpl->getConfigVariable('thread_view_linktitle');?>
 "><?php echo $_smarty_tpl->getConfigVariable('thread_view');?>
-</a><?php }?></li></ul>
+</a><?php }?></li>
+-->
+
+
+</ul>
 <?php } elseif ($_smarty_tpl->tpl_vars['mode']->value=='entry') {?>
 <ul id="subnavmenu"><li><a class="openthread" href="index.php?mode=thread&amp;id=<?php echo $_smarty_tpl->tpl_vars['tid']->value;?>
 #p<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
