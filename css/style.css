@@ -438,20 +438,20 @@ margin-left: 22%;
 /* =======UPLOADS PAGE CSS======== */	
 
 
-#uploadForm {
+#uploadForm, #editDetailsForm {
 	width: 70%;
 	margin: 2% auto 3% auto;
 }	
 
-#uploadForm fieldset {
+#uploadForm, #editDetailsForm fieldset {
 margin: 2% 7% 0 7%;
 }	
 
-#uploadForm.hiddenField {
+#uploadForm.hiddenField, #editDetailsForm.hiddenField, {
 	margin: 0 0 30px 0;
 }		
 
-#uploadForm p {
+#uploadForm p, #editDetailsForm p {
 	margin: 5px 0;
 	}
 	
@@ -575,7 +575,7 @@ text-align: center;
 		
 		
 .userdetails {
-	
+	margin-top: 10px;
 }
 
 
@@ -583,6 +583,13 @@ text-align: center;
 	width: 150px;
 }
 
+#editDetailsForm label {
+	width: 250px;
+}	
+
+ #editDetailsForm input[type = "password"], #editDetailsForm input[type = "text"], #editDetailsForm input[type = "email"], #editDetailsForm select {	
+	width: 250px;
+}
 
 /* =======HELP PAGES CSS======== */
 

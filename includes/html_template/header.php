@@ -1,4 +1,6 @@
 <?php 
+require_once 'includes/db/sql_functions.php';
+require_once 'includes/functionality/common_functions.php';
 require_once 'includes/functionality/sessionManagement.php';
 ?>
 

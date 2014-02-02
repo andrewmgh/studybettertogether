@@ -1,9 +1,6 @@
 <?php
 session_start ();
 if (isset ( $_SESSION ['username'] )) {
-	require_once 'includes/functionality/common_functions.php';
-	require_once 'includes/db/sql_functions.php';
-		
 	
 	$username = $_SESSION ['username'];
 	

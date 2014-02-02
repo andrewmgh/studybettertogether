@@ -37,6 +37,8 @@ if ($account_type != 'Admin') {
 
 <div class = "classdetails">
 <h4>Class Details</h4>				
+				<?php print isset($_GET['UpdateClass']) ? '<div class = "hiddenField"><p>' . ($_GET['UpdateClass']) . '</p></div>': ""; ?>
+				
 				<table>
 					<tr>
 						<th>Class Name</th>
@@ -46,7 +48,7 @@ if ($account_type != 'Admin') {
 						<th>Edit</th>
 						<th>Delete</th>
 					</tr>
-					
+		
 					<?php		
 					$classdetails = newQuery($db_con, "SELECT class_id, class_name, class_code, DATE_FORMAT(DATE(class_register_date),'%D %b %Y') AS new_date FROM classes");
 					while ( $row = mysqli_fetch_array ( $classdetails ) ) {
@@ -61,9 +63,9 @@ if ($account_type != 'Admin') {
 								echo "<td>" . htmlentities ( $row2 ["NoPerClass"] ) . "</td>\n";
 							}  
 						
-						echo "<td><a href=\"editclasses.php?edit=". $classID . "\"><button>Edit</button></a></td>\n";
-						echo "<td><span onClick=\"return confirm('Are you sure you want to Delete this user? This cannot be undone!');\"><a href=\"editclasses.php?del=". $classID . "\"><button>Delete</button></a></span></td>\n";
-						echo "</form></td></tr>\n\n";
+						echo "<td><a href=\"editclasses.php?editClass=". $classID . "\"><button>Edit</button></a></td>\n";
+						echo "<td><span onClick=\"return confirm('Are you sure you want to Delete this class? This cannot be undone! Also - you can only delete classes that have no students');\"><a href=\"includes/functionality/deleteclass.php?deleteClass=". $classID . "\"><button>Delete</button></a></span></td>\n";
+						echo "</td></tr>\n\n";
 					}
 					closeMySql($db_con, $classdetails);
 					?>
