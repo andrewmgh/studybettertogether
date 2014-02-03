@@ -27,7 +27,7 @@
 		<div id="main_content">
 		<div id ="registerForm">
 		
-					<div class="main_form">
+			<div class="main_form">
 					<h3>Registration Form</h3>
 					<?php print isset($_GET['Error']) ? '<div class = "hiddenField">' . ($_GET['Error']) . '</div>': ""; ?>
 					<form name="registerForm" action="includes/functionality/registerNewUser.php" method="POST">
@@ -50,7 +50,7 @@
 						</p>
 						<p>
 						<label for="password">Password: </label>  
-						<input type="password" id="password" name="password" required/>
+						<input type="password" id="password" name="password" value ="<?php print isset($_GET['pwd']) ? ($_GET['pwd']) : "";?>" required/>
 						</p>
 						<p>
 						<label for="password_confirm">Confirm Password: </label> 
@@ -61,22 +61,19 @@
 						<select name ="classname" required>
 								<?php print isset($_GET['Cname']) ? "<option value=\"$_GET[Cname]\">$_GET[Cname]</option>" : "<option value=\"\" disabled selected style='display:none;'>Choose from one of the following: </option>";?>
 								<?php
-								if(!(isset($_GET['Cname']))) {
 								require_once 'includes/functionality/common_functions.php';
 								require_once 'includes/db/sql_functions.php';
-								$list_of_classes =newQuery($db_con, "SELECT * FROM classes");
-								while ( $row = mysqli_fetch_array ( $list_of_classes ) ) {
+								isset($_GET['Cname']) ? $list_of_classes =newQuery($db_con, "SELECT * FROM classes WHERE class_name != '" . $_GET['Cname'] ."'") : $list_of_classes =newQuery($db_con, "SELECT * FROM classes");
+ 								while ( $row = mysqli_fetch_array ( $list_of_classes ) ) {
 									echo '<option values=' . $row["class_name"] . '>' . $row["class_name"] . '</option>';
 								}
-								
 								closeMySql($db_con, $list_of_classes);
-								}
 								?>
 						</select>
 						</p>					
 						<p>
 						<label for="register_code">Registration Code: </label> 
-						<input type="password" id="register_code" name="register_code" required/>
+						<input type="password" id="register_code" name="register_code" value ="<?php print isset($_GET['reg']) ? ($_GET['reg']) : "";?>" required/>
 						</p>
 						</fieldset>
 						<p class = "submit">

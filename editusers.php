@@ -104,7 +104,10 @@ function updateUserDetails($db_con, $user_id, $fname, $lname, $username, $email,
 	else {
 		$newPwd = encryptPwd($password);
 		$updateUser = newQuery($db_con, "UPDATE `users` SET `class_assigned_to` = \"$classID\", `first_name` = \"$fname\", `last_name` = \"$lname\", `username` = \"$username\", `email` = \"$email\", `password` = \"$newPwd\" WHERE `user_id` = \"$user_id\"");
+		$updateUser2 = newQuery($db_con, "UPDATE `forum_userdata` SET `user_name` = \"$username\", `user_real_name` = \"$fname\", `user_pw` = \"$newPwd\" WHERE `user_id` = \"$user_id\"");
+		
 		header("Location:admin.php?UpdateUser=The user \"$username\" has been sucessfully updated");
+		mysqli_free_result($updateUser2);
 		closeMySql($db_con, $updateUser);
 		exit(); 
 	}	

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2014 at 10:42 PM
+-- Generation Time: Feb 04, 2014 at 12:48 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -73,18 +73,19 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `class_id` int(11) NOT NULL AUTO_INCREMENT,
   `class_name` varchar(255) NOT NULL,
   `class_code` varchar(15) NOT NULL,
+  `class_register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `register_code` varchar(100) NOT NULL,
   PRIMARY KEY (`class_id`),
   UNIQUE KEY `class_name` (`class_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `classes`
 --
 
-INSERT INTO `classes` (`class_id`, `class_name`, `class_code`, `register_code`) VALUES
-(1, 'IBI Test Class', 'IBI', 'a2331f024b63e5f1f9a06ec62ade80509f6ed476'),
-(8, 'NCI 4th Year Computing', 'BSHBISE4', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70');
+INSERT INTO `classes` (`class_id`, `class_name`, `class_code`, `class_register_date`, `register_code`) VALUES
+(1, 'IBI Test Class', 'IBI', '2014-01-08 11:33:30', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70'),
+(8, 'NCI 4th Year Computing', 'BSHBIS4', '2014-01-31 11:33:30', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70');
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,6 @@ INSERT INTO `classes` (`class_id`, `class_name`, `class_code`, `register_code`) 
 CREATE TABLE IF NOT EXISTS `files` (
   `file_id` int(11) NOT NULL AUTO_INCREMENT,
   `owner_id` int(11) NOT NULL,
-  `file_sharing_id` int(11) NOT NULL,
   `file_type_id` int(10) NOT NULL,
   `file_name` varchar(255) CHARACTER SET latin1 NOT NULL,
   `file_path` varchar(255) CHARACTER SET latin1 NOT NULL,
@@ -104,21 +104,19 @@ CREATE TABLE IF NOT EXISTS `files` (
   `subject` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
   `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`file_id`),
-  UNIQUE KEY `file_sharing_id` (`file_sharing_id`),
   KEY `user_id` (`owner_id`),
   KEY `file_type_id` (`file_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `files`
 --
 
-INSERT INTO `files` (`file_id`, `owner_id`, `file_sharing_id`, `file_type_id`, `file_name`, `file_path`, `file_size`, `description`, `subject`, `upload_date`) VALUES
-(1, 2, 1, 2, 'Personal Study Helper', '../../../studybettertogether/files/amonaghan/Personal_Study_Helper.docx', '17 kb', 'studyhelper', 'study', '2013-12-07 12:52:18'),
-(2, 2, 2, 2, 'ProjectProposal2- Studytogether.com', '../../../studybettertogether/files/amonaghan/ProjectProposal2-_Studytogether.com.docx', '674 kb', 'test', 'test', '2013-12-07 12:53:42'),
-(5, 2, 5, 19, 'Group1_SKO_RequirementsSpecification', '../../../studybettertogether/files/public/Group1_SKO_RequirementsSpecification.pdf', '828 kb', 'desc', 'sub', '2013-12-07 13:10:47'),
-(6, 15, 6, 2, 'usecases - Study Smart Mobile Website', '../../../studybettertogether/files/stuartSmith/usecases_-_Study_Smart_Mobile_Website.docx', '48 kb', '', '', '2013-12-07 16:41:59'),
-(7, 2, 7, 19, 'Lab Master Sem1', '../../../studybettertogether/files/amonaghan/Lab_Master_Sem1.pdf', '48 kb', '', '', '2013-12-17 12:14:46');
+INSERT INTO `files` (`file_id`, `owner_id`, `file_type_id`, `file_name`, `file_path`, `file_size`, `description`, `subject`, `upload_date`) VALUES
+(1, 2, 2, 'Personal Study Helper', '../../../studybettertogether/files/amonaghan/Personal_Study_Helper.docx', '17 kb', 'studyhelper', 'study', '2013-12-07 12:52:18'),
+(2, 2, 2, 'ProjectProposal2- Studytogether.com', '../../../studybettertogether/files/amonaghan/ProjectProposal2-_Studytogether.com.docx', '674 kb', 'test', 'test', '2013-12-07 12:53:42'),
+(5, 2, 19, 'Group1_SKO_RequirementsSpecification', '../../../studybettertogether/files/public/Group1_SKO_RequirementsSpecification.pdf', '828 kb', 'desc', 'sub', '2013-12-07 13:10:47'),
+(12, 1, 1, 'CA BPE(1)', '../../../studybettertogether/files/MimiSBT/CA_BPE(1).doc', '26 kb', 'CA for Business Process Engineering', 'BPE', '2014-02-03 23:42:17');
 
 -- --------------------------------------------------------
 
@@ -127,12 +125,12 @@ INSERT INTO `files` (`file_id`, `owner_id`, `file_sharing_id`, `file_type_id`, `
 --
 
 CREATE TABLE IF NOT EXISTS `file_sharing` (
-  `sharing_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sharing_id` int(11) NOT NULL,
   `sharing_status` enum('public','private','specific') CHARACTER SET latin1 NOT NULL,
   `shared_with` mediumtext CHARACTER SET latin1,
   PRIMARY KEY (`sharing_id`),
   FULLTEXT KEY `shared_with` (`shared_with`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `file_sharing`
@@ -140,10 +138,9 @@ CREATE TABLE IF NOT EXISTS `file_sharing` (
 
 INSERT INTO `file_sharing` (`sharing_id`, `sharing_status`, `shared_with`) VALUES
 (1, 'private', ''),
-(2, 'specific', 'jonoB,rachael14,Ssmith'),
+(2, 'specific', 'Ssmith'),
 (5, 'public', ''),
-(6, 'specific', 'amonaghan,MimiSBT'),
-(7, 'specific', 'MimiSBT');
+(12, 'specific', 'amonaghan,eoin_oreilly');
 
 -- --------------------------------------------------------
 
@@ -178,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
   `description` varchar(255) NOT NULL DEFAULT '',
   `accession` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `forum_categories`
@@ -230,15 +227,16 @@ CREATE TABLE IF NOT EXISTS `forum_entries` (
   KEY `category` (`category`),
   KEY `pid` (`pid`),
   KEY `sticky` (`sticky`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `forum_entries`
 --
 
 INSERT INTO `forum_entries` (`id`, `pid`, `tid`, `uniqid`, `time`, `last_reply`, `edited`, `edited_by`, `user_id`, `name`, `subject`, `category`, `email`, `hp`, `location`, `ip`, `text`, `tags`, `show_signature`, `email_notification`, `marked`, `locked`, `sticky`, `views`, `spam`, `spam_check_status`, `edit_key`) VALUES
-(19, 0, 19, '52b2e68319d7d', '2013-12-19 12:29:25', '2014-01-25 16:10:26', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', '[b]Hi all[/b]\r\n\r\nWelcome to our new collaborative learning website! \r\n\r\nHope you have fun :-)', '', 0, 0, 0, 0, 0, 11, 0, 0, ''),
-(20, 19, 19, '52e3e1e9a0b9b', '2014-01-25 16:10:26', '2014-01-25 16:10:26', '0000-00-00 00:00:00', NULL, 2, '', 'Welcome', 1, '', '', '', '::1', 'Thanks Mimi', '', 0, 0, 0, 0, 0, 1, 0, 0, '');
+(19, 0, 19, '52b2e68319d7d', '2013-12-19 12:29:25', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', '[b]Hi all[/b]\r\n\r\nWelcome to our new collaborative learning website! \r\n\r\nHope you have fun :-)', '', 0, 0, 0, 0, 0, 29, 0, 0, ''),
+(20, 19, 19, '52e3e1e9a0b9b', '2014-01-25 16:10:26', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 2, '', 'Welcome', 1, '', '', '', '::1', 'Thanks Mimi', '', 0, 0, 0, 0, 0, 18, 0, 0, ''),
+(21, 20, 19, '52eba2a710f1b', '2014-01-31 13:18:41', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', 'No Prob', '', 0, 0, 0, 0, 0, 13, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -258,7 +256,8 @@ CREATE TABLE IF NOT EXISTS `forum_entries_cache` (
 
 INSERT INTO `forum_entries_cache` (`cache_id`, `cache_text`) VALUES
 (19, '<p><strong>Hi all</strong></p>\n<p>Welcome to our new collaborative learning website! </p>\n<p>Hope you have fun <img src="images/smilies/smile.png" alt=":-)" /></p>\n'),
-(20, '<p>Thanks Mimi</p>\n');
+(20, '<p>Thanks Mimi</p>\n'),
+(21, '<p>No Prob</p>\n');
 
 -- --------------------------------------------------------
 
@@ -414,7 +413,7 @@ INSERT INTO `forum_settings` (`name`, `value`) VALUES
 ('cookie_validity_days', '30'),
 ('access_permission_checks', '0'),
 ('daily_actions_time', '3:30'),
-('next_daily_actions', '1390793400'),
+('next_daily_actions', '1391484600'),
 ('auto_lock_old_threads', '0'),
 ('max_read_items', '0'),
 ('delete_ips', '0'),
@@ -460,7 +459,7 @@ INSERT INTO `forum_smilies` (`id`, `order_id`, `file`, `code_1`, `code_2`, `code
 --
 
 CREATE TABLE IF NOT EXISTS `forum_userdata` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `user_type` tinyint(4) NOT NULL DEFAULT '0',
   `user_name` varchar(255) NOT NULL DEFAULT '',
   `user_real_name` varchar(255) NOT NULL DEFAULT '',
@@ -496,15 +495,17 @@ CREATE TABLE IF NOT EXISTS `forum_userdata` (
   `theme` varchar(255) NOT NULL DEFAULT '',
   `entries_read` text NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `forum_userdata`
 --
 
 INSERT INTO `forum_userdata` (`user_id`, `user_type`, `user_name`, `user_real_name`, `gender`, `birthday`, `user_pw`, `user_email`, `email_contact`, `user_hp`, `user_location`, `signature`, `profile`, `logins`, `last_login`, `last_logout`, `user_ip`, `registered`, `category_selection`, `thread_order`, `user_view`, `sidebar`, `fold_threads`, `thread_display`, `new_posting_notification`, `new_user_notification`, `user_lock`, `auto_login_code`, `pwf_code`, `activate_code`, `language`, `time_zone`, `time_difference`, `theme`, `entries_read`) VALUES
-(1, 2, 'MimiSBT', 'Mimi', 0, '0000-00-00', 'b04fbf77b7d07f2a5c4fb13e070a9558f09576e9', '@', 0, '', '', '', '', 14, '2013-12-19 10:50:16', '2013-12-19 11:04:59', '::1', '2013-12-18 18:23:12', NULL, 1, 0, 1, 1, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
-(2, 0, 'amonaghan', 'Andrew', 0, '0000-00-00', 'e79947c608a8ff67a064e3847a70f70f0b8f011a', 'andrewmgh@gmail.com', 0, '', '', '', '', 4, '2013-12-19 10:51:36', '2013-12-19 10:53:53', '::1', '0000-00-00 00:00:00', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', '');
+(1, 2, 'MimiSBT', 'Mimi', 0, '0000-00-00', 'b04fbf77b7d07f2a5c4fb13e070a9558f09576e9', 'Mimi.Kelly@sbt.com', 0, '', '', '', '', 14, '2013-12-19 10:50:16', '2014-01-31 13:09:13', '::1', '2013-10-18 17:36:41', NULL, 1, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(2, 0, 'amonaghan', 'Andrew', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'Andrew.Monaghan@student.ie', 0, '', '', '', '', 4, '2013-12-19 10:51:36', '2013-12-19 10:53:53', '::1', '2013-10-18 17:36:41', NULL, 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(3, 0, 'Ssmith', 'Sarah', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'sarahsmith@college.ie', 0, '', '', '', '', 0, '2014-02-02 18:03:41', '0000-00-00 00:00:00', '', '2013-10-31 13:31:26', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(4, 0, 'eoin_oreilly', 'Eoin', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'eor@test.com', 0, '', '', '', '', 0, '2014-02-03 22:40:09', '0000-00-00 00:00:00', '', '2014-02-03 23:40:09', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -539,7 +540,7 @@ CREATE TABLE IF NOT EXISTS `forum_useronline` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `class_id` int(11) NOT NULL,
+  `class_assigned_to` int(11) NOT NULL,
   `first_name` varchar(255) CHARACTER SET latin1 NOT NULL,
   `last_name` varchar(255) CHARACTER SET latin1 NOT NULL,
   `username` varchar(255) CHARACTER SET latin1 NOT NULL,
@@ -550,21 +551,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `class_id`, `first_name`, `last_name`, `username`, `email`, `account_type`, `password`, `register_date`) VALUES
+INSERT INTO `users` (`user_id`, `class_assigned_to`, `first_name`, `last_name`, `username`, `email`, `account_type`, `password`, `register_date`) VALUES
 (1, 0, 'Mimi', 'Kelly', 'MimiSBT', 'Mimi.Kelly@sbt.com', 'Admin', 'b04fbf77b7d07f2a5c4fb13e070a9558f09576e9', '2013-10-18 17:36:41'),
 (2, 1, 'Andrew', 'Monaghan', 'amonaghan', 'Andrew.Monaghan@student.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-18 17:36:41'),
-(8, 1, 'Sarah', 'Smith', 'Ssmith', 'sarahsmith@college.ie', 'Student', '574e8ecda5d4f43b7cbcb1b92eb92c8bfdfe9ba0', '2013-10-31 13:31:26'),
-(13, 1, 'Brian', 'Jones', 'Brian2013', 'brianjones@test.com', 'Student', 'e9f2cc0c8ed013031c5c7b054347e5facfcbbe20', '2013-11-06 23:02:20'),
-(14, 1, 'Jonathan', 'Brady', 'jonoB', 'jonob@test.com', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-12-05 15:08:47'),
-(15, 1, 'Stuart', 'Smith', 'stuartSmith', 'stuartSmith@test.com', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-12-05 15:09:23'),
-(16, 1, 'Rachael', 'Jones', 'rachael14', 'rachael@test.com', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-12-05 15:10:16'),
-(17, 1, 'Stefan', 'O'' Connor', 'stefan', 'stefan@test.com', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-12-05 15:11:03');
+(3, 1, 'Sarah', 'Smith', 'Ssmith', 'sarahsmith@college.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-31 13:31:26'),
+(4, 8, 'Eoin', 'O''Reilly', 'eoin_oreilly', 'eor@test.com', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2014-02-03 22:40:09');
 
 --
 -- Constraints for dumped tables
@@ -575,8 +572,19 @@ INSERT INTO `users` (`user_id`, `class_id`, `first_name`, `last_name`, `username
 --
 ALTER TABLE `files`
   ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `files_ibfk_2` FOREIGN KEY (`file_type_id`) REFERENCES `allowed_file_types` (`file_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `files_ibfk_3` FOREIGN KEY (`file_sharing_id`) REFERENCES `file_sharing` (`sharing_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `files_ibfk_2` FOREIGN KEY (`file_type_id`) REFERENCES `allowed_file_types` (`file_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `file_sharing`
+--
+ALTER TABLE `file_sharing`
+  ADD CONSTRAINT `file_sharing_ibfk_1` FOREIGN KEY (`sharing_id`) REFERENCES `files` (`file_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `forum_userdata`
+--
+ALTER TABLE `forum_userdata`
+  ADD CONSTRAINT `forum_userdata_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

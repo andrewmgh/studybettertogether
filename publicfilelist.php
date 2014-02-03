@@ -6,7 +6,7 @@ username, sharing_status, file_name, file_short_name, file_size, DATE_FORMAT(DAT
 FROM 
 files 
 INNER JOIN users ON files.owner_id = users.user_id 
-INNER JOIN file_sharing ON files.file_sharing_id = file_sharing.sharing_id
+INNER JOIN file_sharing ON files.file_id = file_sharing.sharing_id
 INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id 
 WHERE sharing_status = 'public'
 _SEARCH;

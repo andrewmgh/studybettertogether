@@ -60,14 +60,15 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	 		//start db transaction to commit file info
 	 		mysqli_autocommit($db_con, false);
 	 		$success = true;
-
-	 		$Uploadquery1 = newQuery ( $db_con,"INSERT INTO file_sharing (`sharing_status` ,`shared_with` ) VALUES ('$sharingStatus', '$specificUsers')");
+	 		
+	 		$Uploadquery1 = newQuery ( $db_con, "INSERT INTO files (`owner_id`, `file_type_id`, `file_name`, `file_path`, `file_size`, `description`, `subject`) VALUES('$userID', '$file_type_ID', '$fileName', '$filePath', '$Size_in_KB', '$description', '$subject')");
 	 		$sharing_id = mysqli_insert_id($db_con);
 	 		if (!$Uploadquery1) {$success = false; }
 	 		
-	 		$Uploadquery2 = newQuery ( $db_con,"INSERT INTO files (`owner_id`, `file_sharing_id`, `file_type_id`, `file_name`, `file_path`, `file_size`, `description`, `subject`) VALUES('$userID', '$sharing_id', '$file_type_ID', '$fileName', '$filePath', '$Size_in_KB', '$description', '$subject')");
+	 		$Uploadquery2 = newQuery ( $db_con, "INSERT INTO file_sharing (`sharing_id`, `sharing_status`, `shared_with` ) VALUES ('$sharing_id', '$sharingStatus', '$specificUsers')");
 	 		if (!$Uploadquery2) {$success = false; }
 	 		
+ 		
 	 		//if db transaction worked.
 	 	 	if ($success) {	
 	 	 		//complete transaction and close db connection
@@ -96,7 +97,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	 	 		//if transaction failed, close the db connection and redirect user to uplaods page with error msg
 	 		else { 
 	 			mysqli_close ($db_con);
-	 			$uploadMsg = "Unfortunately there was an error with your upload. Please try again.";
+	 			$uploadMsg = "Unfortunately there was an unforseen error with your upload. Please try again.";
 	 			header("Location:../../upload.php?Upload=$uploadMsg");
 	 			exit();
 	 		} 

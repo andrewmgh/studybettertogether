@@ -46,19 +46,40 @@ else {
 					}
 					mysqli_free_result($result_classID);
 						
-				$password = encryptPwd($password);
+				$Newpassword = encryptPwd($password);
 				
-				$NewUser = newQuery($db_con, "INSERT INTO users (`class_assigned_to`,`first_name`, `last_name`, `username`, `email`, `password`) VALUES ('" . $class_id . "','" . $firstName . "','" . $lastName . "','" . $userName . "','" . $email . "','" . $password . "')");
-					
-				session_start ();
-				$_SESSION ['username'] = $userName;
-			
-				mysqli_close($db_con);
-				header('Location:../../home.php');
-				exit();
+				//start db transaction to enter a new user
+				mysqli_autocommit($db_con, false);
+				$success = true;
+				
+				$NewUserQuery1 = newQuery($db_con, "INSERT INTO users (`class_assigned_to`,`first_name`, `last_name`, `username`, `email`, `password`) VALUES ('" . $class_id . "','" . $firstName . "','" . $lastName . "','" . $userName . "','" . $email . "','" . $Newpassword . "')");
+				$user_id = mysqli_insert_id($db_con);
+				$regDate = date("Y-m-d H:i:s");
+				
+				if (!$NewUserQuery1) {$success = false; }
+				
+				$NewUserQuery2 = newQuery($db_con, "INSERT INTO `forum_userdata`(`user_id`, `user_name`, `user_real_name`, `user_pw`, `user_email`, `registered`) VALUES ('" . $user_id . "','" . $userName . "','" . $firstName . "','" . $Newpassword . "','" . $email . "','" . $regDate . "')");
+				if (!$NewUserQuery2) {$success = false; }
+				
+				//if db transaction worked, complete transaction, close db connection, start session and redirect user into the application
+				if ($success) {
+					mysqli_commit($db_con);
+					mysqli_close ($db_con);
+				
+					session_start ();
+					$_SESSION ['username'] = $userName;
+					header('Location:../../home.php');
+					exit();
+				}
+				else {
+					mysqli_close ($db_con);
+					$DataError = "Unfortunately there was an unforseen error with your registration. Please try again.";
+					header("Location:../../register.php?Error=$DataError");
+					exit();
+				}
 			}
 			else {
-				header("Location:../../register.php?Error=$regError&Fname=$firstName&Lname=$lastName&email=$email&Uname=$userName&Cname=$classname");
+				header("Location:../../register.php?Error=$regError&Fname=$firstName&Lname=$lastName&email=$email&Uname=$userName&pwd=$password&Cname=$classname&reg=$register_code");
 				exit();
 			}	
 			
@@ -94,13 +115,16 @@ else {
 		}
 		
 		function validateUsername($db_con,$userName){
-					//checks whether username is unique and stores boolean true value in a variable '$username_taken' if so
-					$result_username = newQuery($db_con, "SELECT user_id FROM users WHERE username = '".$userName."'");
-					if (mysqli_num_rows ( $result_username ) >= 1) {
-						$username_taken = true;
-					}
-					mysqli_free_result($result_username);
-		
+			//checks whether username is unique and stores boolean true value in a variable '$username_taken' if so	
+			$result_username = newQuery($db_con, "SELECT user_id FROM users WHERE username = '".$userName."'");
+			if (mysqli_num_rows ( $result_username ) >= 1) {
+				$username_taken = true;
+			}
+			else{
+				$username_taken = false;
+			}
+			mysqli_free_result($result_username);
+			
 			if($userName == ""){
 				return "You have not entered a suitable username <br />";
 			}

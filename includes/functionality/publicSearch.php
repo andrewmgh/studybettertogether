@@ -34,7 +34,7 @@ function publicSearch($db_con, $fileName, $fileOwner, $fileType, $description, $
 $query = <<<_QUERY
 	SELECT file_name, sharing_status, username, file_short_name, description, subject, file_path FROM files 
 	INNER JOIN users ON files.owner_id = users.user_id
-	INNER JOIN file_sharing ON files.file_sharing_id = file_sharing.sharing_id
+	INNER JOIN file_sharing ON files.file_id = file_sharing.sharing_id
 	INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id 
 	WHERE sharing_status = 'public' 
 	AND file_name LIKE '%$fileName%' 
