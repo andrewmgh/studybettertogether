@@ -59,7 +59,7 @@ function displayEditUsers($db_con, $user_id, $msg = NULL)
 	echo "<p><label for='class'>Class Assigned To:</label>\n";
 	echo "<select name='class'>";
 	echo "<option value=\"$className\">$className</option>";
-			$list_of_classes =newQuery($db_con, "SELECT * FROM classes WHERE class_name != '" . $className ."'");  
+			$list_of_classes =newQuery($db_con, "SELECT * FROM classes WHERE class_name != '$className'");  
 			while ( $row3 = mysqli_fetch_array ( $list_of_classes ) ) {
 					echo '<option values=' . $row3["class_name"] . '>' . $row3["class_name"] . '</option>';
 				}
@@ -70,7 +70,7 @@ function displayEditUsers($db_con, $user_id, $msg = NULL)
 	echo "</form>\n</div>\n</div>";
 	
 	closeMySql($db_con, $userResult);
-	echo "<h5><a href = \"admin.php\">Return to Manage Users</a></h5>";
+	echo "<h5><a href = \"manageusers.php\">Return to Manage Users</a></h5>";
 	exit();
 }
 
@@ -106,7 +106,7 @@ function updateUserDetails($db_con, $user_id, $fname, $lname, $username, $email,
 		$updateUser = newQuery($db_con, "UPDATE `users` SET `class_assigned_to` = \"$classID\", `first_name` = \"$fname\", `last_name` = \"$lname\", `username` = \"$username\", `email` = \"$email\", `password` = \"$newPwd\" WHERE `user_id` = \"$user_id\"");
 		$updateUser2 = newQuery($db_con, "UPDATE `forum_userdata` SET `user_name` = \"$username\", `user_real_name` = \"$fname\", `user_pw` = \"$newPwd\" WHERE `user_id` = \"$user_id\"");
 		
-		header("Location:admin.php?UpdateUser=The user \"$username\" has been sucessfully updated");
+		header("Location:manageusers.php?UpdateUser=The user \"$username\" has been sucessfully updated");
 		mysqli_free_result($updateUser2);
 		closeMySql($db_con, $updateUser);
 		exit(); 

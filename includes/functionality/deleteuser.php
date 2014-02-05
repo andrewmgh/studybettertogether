@@ -2,52 +2,64 @@
 	require_once '../db/sql_functions.php';
 	require_once 'common_functions.php';
 	require_once 'sessionManagement.php';
+	
 		
-if ($account_type != 'Admin') {
-	include 'logout.php';
+//Only run the following code if the deleteUser paramater is set and the current user is the administrator
+if ((isset($_GET['deleteUser'])) && ($account_type == 'Admin')) {
+	
+	//Security procedure to prevent a XSS attack from deleting the administrator
+	if(($_GET['deleteUser']) == "1"){
+		header("Location:../../manageusers.php?&UpdateUser=You cannot delete this user");
+		exit();
+	}
+	
+	deleteUserDirectory($db_con, $_GET ['deleteUser']);
+	deleteUserFromDB($db_con, $_GET ['deleteUser']); 
 }
 
-//If the deleteClass paramater is set then run the delete class function
-if (isset($_GET['deleteUser'])){
-	//deleteUser($db_con, $_GET ['deleteUser']); 
-	echo "Hello";
-}
-
-//If none of the above are set then send the user back to the home page
+//If deleteUser is not set or current user is not administrator then log the user out
 else {
 	include 'logout.php';
 }
 
 
-
-//Funtion to delete a class and report a success or failure message back to the user
-function deleteUser($db_con, $delete_id)
+//Recursive funtion to delete the user directory and all their files contained in this directory - Edited from a function found at - http://ie2.php.net/rmdir
+function deleteUserDirectory($db_con, $user_id)
 {
-	//Check to see if the class has students and store the number of students in a variable
-	$countQuery = "SELECT COUNT(class_assigned_to) AS NoPerClass FROM classes INNER JOIN users ON classes.class_id = users.class_assigned_to WHERE users.class_assigned_to = \"$delete_id\" AND account_type = 'Student'";
-	$countQueryResult =newQuery($db_con,$countQuery);
-	$row = mysqli_fetch_array ( $countQueryResult );
-	$classSize =  $row ["NoPerClass"];
-
-	//Retrieve the name of the class
-	$classResult = newQuery($db_con, "SELECT * FROM classes WHERE class_id='$delete_id'");
-	$row2 = mysqli_fetch_array ( $classResult );
-	$className =  $row2 ["class_name"];
-	mysqli_free_result($classResult);
-
-	//If the class has no students it can be deleted. Also deletes class from the forum_category table
-	if ($classSize <=0){
-		$delete1 = newQuery($db_con, "DELETE FROM classes WHERE class_id ='$delete_id'");
-		$delete2 = newQuery($db_con, "DELETE FROM forum_categories WHERE category ='$className'");
-		header("Location:../../manageclasses.php?&UpdateClass=The class \"$className\" has been sucessfully deleted");
-		exit();
-		closeMySql($db_con, $countQueryResult);
+	$user_id = sanatiseInput($db_con, $user_id);
+	$userDirectory = "../../../studybettertogether/files/$user_id";
+	
+	if (is_dir ($userDirectory)) {
+			foreach(glob($userDirectory . '/*') as $file) {
+		        if(is_dir($file)) { 
+		            deleteUserDirectory($file);
+		        } else {
+		            unlink($file);
+		        }
+		    }
+		    rmdir($userDirectory);
 	}
+}
 
-	//If the class has students it cannot be deleted
-	else {
-		header("Location:../../manageclasses.php?&UpdateClass=The class \"$className\" cannot be deleted as it has students assigned to it");
-		exit();
-		closeMySql($db_con, $countQueryResult);
-	}
+
+//Funtion to delete a user from the database and redirect the administrator back to the manage users page with a success message. 
+//As database contstraints are in place - deleting from the SBT.users table will have a ripple effect on all related tables
+function deleteUserFromDB($db_con, $user_id)
+{
+	$user_id = sanatiseInput($db_con, $user_id);
+	
+	//Retrieve username from DB
+	$userResult = newQuery($db_con, "SELECT username FROM users WHERE user_id ='$user_id'");
+	$row = mysqli_fetch_array ( $userResult );
+	$deletedUser =  $row ["username"];
+		
+	$delete = newQuery($db_con, "DELETE FROM users WHERE user_id ='$user_id'");
+	header("Location:../../manageusers.php?&UpdateUser=The user \"$deletedUser\" has been sucessfully deleted");
+	closeMySql($db_con, $userResult);
+	exit();
+	
+	
+	//If user is not the file owner, still need to remove them from file_sharing db
+	
+	
 }

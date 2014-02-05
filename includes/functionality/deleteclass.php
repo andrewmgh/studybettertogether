@@ -3,16 +3,13 @@
 	require_once 'common_functions.php';
 	require_once 'sessionManagement.php';
 		
-if ($account_type != 'Admin') {
-	include 'logout.php';
-}
 
-//If the deleteClass paramater is set then run the delete class function
-if (isset($_GET['deleteClass'])){
+//Only run the following code if the deleteClass paramater is set and the current user is the administrator
+if ((isset($_GET['deleteClass'])) && ($account_type == 'Admin')) {
 	deleteClass($db_con, $_GET ['deleteClass']);
 }
 
-//If none of the above are set then send the user back to the home page
+//If deleteClass is not set or current user is not administrator then log the user out
 else {
 	include 'logout.php';
 }
@@ -22,6 +19,8 @@ else {
 //Funtion to delete a class and report a success or failure message back to the user
 function deleteClass($db_con, $delete_id)
 {
+	$delete_id = sanatiseInput($db_con, $delete_id);
+	
 	//Check to see if the class has students and store the number of students in a variable
 	$countQuery = "SELECT COUNT(class_assigned_to) AS NoPerClass FROM classes INNER JOIN users ON classes.class_id = users.class_assigned_to WHERE users.class_assigned_to = \"$delete_id\" AND account_type = 'Student'";
 	$countQueryResult =newQuery($db_con,$countQuery);

@@ -35,7 +35,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	
 	//Retrieve file extension - set file path - convert specific users array to string
 	$fileExtension = pathinfo ( $fileName, PATHINFO_EXTENSION );
-	$filePath = setFilePath($fileName, $sharingStatus, $username);
+	$filePath = setFilePath($fileName, $userID);
 	$specificUsers = arrayToString($db_con, $specificUsers);
 		
  	//Validate upload form against custom validation functions
@@ -166,21 +166,13 @@ function validateFileType($db_con, $fileExtension){
 	mysqli_free_result ( $result );		
 }
 
-function setFilePath ($fileName, $sharingStatus, $username){
+function setFilePath ($fileName, $user_id){
 	$fileName = str_replace ( ' ', '_', $fileName );
-	$publicFolder = "../../../studybettertogether/files/public/";
-	$privateFolder = "../../../studybettertogether/files/$username/";
 	
-	if ($sharingStatus == "public") {
-		$filePath = $publicFolder . $fileName;
-		return $filePath;
-		} 
-		
-	elseif (($sharingStatus == "private") || ($sharingStatus == "specific")) {
-		$filePath = $privateFolder . $fileName;
-		makeNewUserDirectory($privateFolder);
-		return $filePath;
-	}
+	$userDirectory = "../../../studybettertogether/files/$user_id/";
+	$filePath = $userDirectory . $fileName;
+	makeNewUserDirectory($userDirectory);
+	return $filePath;
 }
 
 function checkIfFileExists ($filePath){

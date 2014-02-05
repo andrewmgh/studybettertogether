@@ -17,7 +17,7 @@ if (isset ( $_SESSION ['username'] )) {
 	$userID = $_SESSION ['userID'];
 	$account_type = $_SESSION['accountType'];
 	
-// session variables to auto log in user to study forum	
+// Ternary If statement to set session variables for auto logging in user to the study forum	
 	$account_type == 'Admin' ? $forumType = "2" : $forumType = "0";
 	
 	$_SESSION['forum_user_id'] = $userID;
@@ -27,8 +27,6 @@ if (isset ( $_SESSION ['username'] )) {
 	
 }
 else {
-	session_destroy();
-	header ( 'Location:http://localhost/studybettertogether/' );
-	exit();
+	include 'logout.php';
 }
 ?>
