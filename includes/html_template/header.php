@@ -44,12 +44,12 @@ require_once 'includes/functionality/sessionManagement.php';
 									<li><a href="acceptablefiles.php">Acceptable Files</a></li>
 								</ul>
 						</li>								
-						<li><a href="searchPublicfiles.php">Public Files</a>
+						<li><a href="search_publicfiles.php">Public Files</a>
 								<ul>
 									<li><a href="publicfilelist.php">Full File list</a></li>
 								</ul>
 						</li>
-						<li><a href="searchPersonalfiles.php"><?php echo "$firstname's Files"?></a>
+						<li><a href="search_personalfiles.php"><?php echo "$firstname's Files"?></a>
 								<ul>
 									<li><a href="personalfilelist.php">Full File list</a></li>
 								</ul>

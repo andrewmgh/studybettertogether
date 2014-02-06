@@ -1,18 +1,17 @@
 <?php 
-if ($_SERVER['REQUEST_METHOD']== "POST") //only runs the below php code if the login form was submitted. 
+if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['publicsearch'])) //only runs the below php code if the public search form was submitted. 
 {
-	if (isset ($_POST ['search'])) {
 	 	//Declare and initialise variables to solve any posible undefined variable errors
 		$fileName = $fileOwner =  $fileType = $description = $subject = "";
 		
 		//Take inputs from search form, clean with sanatiseInput function if necessary and  and store in variables
-		$fileName = sanatiseInput($db_con, $_POST ['fileName']);
-		$fileOwner = sanatiseInput($db_con, $_POST ['fileOwner']);
-		if(isset($_POST ['fileType'])){$fileType = sanatiseInput($db_con, $_POST ['fileType']);} //This isset if function was required to avoide a "Notice: Undefined Index" warning that was occuring
-		$description = sanatiseInput($db_con, $_POST ['description']);
-		$subject = sanatiseInput($db_con, $_POST ['subject']);
+		$fileName = sanatiseInput($db_con, $_GET ['fileName']);
+		$fileOwner = sanatiseInput($db_con, $_GET ['fileOwner']);
+		$fileType = sanatiseInput($db_con, $_GET ['fileType']);
+		$description = sanatiseInput($db_con, $_GET ['description']);
+		$subject = sanatiseInput($db_con, $_GET ['subject']);
 		
-		if($fileName || $fileOwner || $fileType || $description || $subject){
+		if($fileName || $fileOwner || $fileType || $fileType=="" || $description || $subject){
 		
 				$searchResults = publicSearch($db_con, $fileName, $fileOwner, $fileType, $description, $subject);
 
@@ -26,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD']== "POST") //only runs the below php code if the l
 		else {
 			$uploadMsg = "<p>Error...You have not selected any search criteria</p>";
 		}
-	}
 }
 
 function publicSearch($db_con, $fileName, $fileOwner, $fileType, $description, $subject) {

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2014 at 01:05 AM
+-- Generation Time: Feb 06, 2014 at 02:12 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
 --
 
 INSERT INTO `classes` (`class_id`, `class_name`, `class_code`, `class_register_date`, `register_code`) VALUES
-(1, 'IBI Test Class', 'IBI14', '2014-01-08 11:33:30', 'a48a3558a6556285f306bb0db7b5332a2e710399');
+(1, 'IBI Test Class', 'IBI', '2014-01-08 11:33:30', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70');
 
 -- --------------------------------------------------------
 
@@ -116,11 +116,8 @@ INSERT INTO `files` (`file_id`, `owner_id`, `file_type_id`, `file_name`, `file_p
 (2, 2, 2, 'ProjectProposal2- Studytogether.com', '../../../studybettertogether/files/2/ProjectProposal2-_Studytogether.com.docx', '674 kb', 'test', 'test', '2013-12-07 12:53:42'),
 (5, 2, 19, 'Group1_SKO_RequirementsSpecification', '../../../studybettertogether/files/2/Group1_SKO_RequirementsSpecification.pdf', '828 kb', 'desc', 'sub', '2013-12-07 13:10:47'),
 (12, 1, 1, 'CA BPE(1)', '../../../studybettertogether/files/1/CA_BPE(1).doc', '26 kb', 'CA for Business Process Engineering', 'BPE', '2014-02-03 23:42:17'),
-(13, 1, 12, 'BPE-03 Value Engineering Analysis', '../../../studybettertogether/files/1/BPE-03_Value_Engineering_Analysis.pptx', '1,429 kb', '', '', '2014-02-05 10:54:36'),
 (17, 1, 12, 'BPE-07b Lean', '../../../studybettertogether/files/1/BPE-07b_Lean.pptx', '1,269 kb', '', '', '2014-02-05 14:55:30'),
-(18, 1, 12, 'BPE-07a-TQM', '../../../studybettertogether/files/1/BPE-07a-TQM.pptx', '1,342 kb', '', '', '2014-02-05 14:56:23'),
-(19, 1, 12, 'BPE-04 Process Identification', '../../../studybettertogether/files/1/BPE-04_Process_Identification.pptx', '699 kb', 't', 't', '2014-02-05 15:38:38'),
-(20, 1, 19, 'August 2013', '../../../studybettertogether/files/1/August_2013.pdf', '110 kb', 'test', 'test', '2014-02-05 15:42:36');
+(18, 1, 12, 'BPE-07a-TQM', '../../../studybettertogether/files/1/BPE-07a-TQM.pptx', '1,342 kb', '', '', '2014-02-05 14:56:23');
 
 -- --------------------------------------------------------
 
@@ -145,11 +142,8 @@ INSERT INTO `file_sharing` (`sharing_id`, `sharing_status`, `shared_with`) VALUE
 (2, 'specific', '-3-'),
 (5, 'public', ''),
 (12, 'specific', '-2-3-'),
-(13, 'public', ''),
 (17, 'specific', '-2-3-'),
-(18, 'specific', '-2-3-'),
-(19, 'specific', '-2-3-'),
-(20, 'specific', '-2-');
+(18, 'specific', '-2-3-');
 
 -- --------------------------------------------------------
 
@@ -242,9 +236,9 @@ CREATE TABLE IF NOT EXISTS `forum_entries` (
 --
 
 INSERT INTO `forum_entries` (`id`, `pid`, `tid`, `uniqid`, `time`, `last_reply`, `edited`, `edited_by`, `user_id`, `name`, `subject`, `category`, `email`, `hp`, `location`, `ip`, `text`, `tags`, `show_signature`, `email_notification`, `marked`, `locked`, `sticky`, `views`, `spam`, `spam_check_status`, `edit_key`) VALUES
-(19, 0, 19, '52b2e68319d7d', '2013-12-19 12:29:25', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', '[b]Hi all[/b]\r\n\r\nWelcome to our new collaborative learning website! \r\n\r\nHope you have fun :-)', '', 0, 0, 0, 0, 0, 29, 0, 0, ''),
-(20, 19, 19, '52e3e1e9a0b9b', '2014-01-25 16:10:26', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 2, '', 'Welcome', 1, '', '', '', '::1', 'Thanks Mimi', '', 0, 0, 0, 0, 0, 18, 0, 0, ''),
-(21, 20, 19, '52eba2a710f1b', '2014-01-31 13:18:41', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', 'No Prob', '', 0, 0, 0, 0, 0, 13, 0, 0, '');
+(19, 0, 19, '52b2e68319d7d', '2013-12-19 12:29:25', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', '[b]Hi all[/b]\r\n\r\nWelcome to our new collaborative learning website! \r\n\r\nHope you have fun :-)', '', 0, 0, 0, 0, 0, 30, 0, 0, ''),
+(20, 19, 19, '52e3e1e9a0b9b', '2014-01-25 16:10:26', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 2, '', 'Welcome', 1, '', '', '', '::1', 'Thanks Mimi', '', 0, 0, 0, 0, 0, 19, 0, 0, ''),
+(21, 20, 19, '52eba2a710f1b', '2014-01-31 13:18:41', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', 'No Prob', '', 0, 0, 0, 0, 0, 14, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -421,7 +415,7 @@ INSERT INTO `forum_settings` (`name`, `value`) VALUES
 ('cookie_validity_days', '30'),
 ('access_permission_checks', '0'),
 ('daily_actions_time', '3:30'),
-('next_daily_actions', '1391657400'),
+('next_daily_actions', '1391743800'),
 ('auto_lock_old_threads', '0'),
 ('max_read_items', '0'),
 ('delete_ips', '0'),

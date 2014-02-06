@@ -3,7 +3,7 @@
 //Only show main headings in table and have an info button make a jquery pop up appear with more details on each file - http://buckwilson.me/lightboxme/
 
 
-if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['search']))//only runs the below php code if the login form was submitted. 
+if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['search']))//only runs the below php code if the personal search form was submitted. 
 {
 	 	//Declare and initialise variables to solve any posible undefined variable errors
 		$fileName = $fileOwner =  $fileType = $description = $subject = "";
@@ -14,7 +14,7 @@ if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['search']))//only runs t
 				//Take remaining inputs from search form, clean with sanatiseInput function and store in variables
 				$fileName = sanatiseInput($db_con, $_GET ['fileName']);
 				$fileOwner = sanatiseInput($db_con, $_GET ['sharedBy']);
-				if(isset($_GET ['fileType'])){$fileType = sanatiseInput($db_con, $_GET ['fileType']);} //This isset if function was required to avoide a "Notice: Undefined Index" warning that was occuring
+				$fileType = sanatiseInput($db_con, $_GET ['fileType']);
 				$description = sanatiseInput($db_con, $_GET ['description']);
 				$subject = sanatiseInput($db_con, $_GET ['subject']);		
 		
@@ -48,7 +48,7 @@ function personalSearch($db_con, $username, $userID, $sharingStatus, $fileName, 
 	if($sharingStatus == "Files_Shared_With_Me"){
 		$amendedUserID = "-".$userID."-";
 		$query = <<<_QUERY
-		SELECT file_name, username, sharing_status, shared_with, owner_id, file_short_name, description, subject, file_path FROM files
+		SELECT file_id, file_name, username, sharing_status, shared_with, owner_id, file_short_name, description, subject, file_path FROM files
 		INNER JOIN users ON files.owner_id = users.user_id
 		INNER JOIN file_sharing ON files.file_id = file_sharing.sharing_id
 		INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id
@@ -63,7 +63,7 @@ _QUERY;
 		}
 	else{
 		$query = <<<_QUERY
-		SELECT file_name, username, sharing_status, shared_with, owner_id, file_short_name, description, subject, file_path FROM files 
+		SELECT file_id, file_name, username, sharing_status, shared_with, owner_id, file_short_name, description, subject, file_path FROM files 
 		INNER JOIN users ON files.owner_id = users.user_id 
 		INNER JOIN file_sharing ON files.file_id = file_sharing.sharing_id
 		INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id 
@@ -112,25 +112,27 @@ _Search;
 			}	
 
 			//output search results
-			
-			$fileName = htmlentities ( $row ["file_name"] );
-			$filePath = htmlentities ( $row ["file_path"] );
+			$file_ID = htmlentities ( $row ["file_id"] );
 			
 			$searchResults .= "<tr><td>" . htmlentities ( $row ["username"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["sharing_status"] ) . "</td>";
 			$searchResults .= "<td>" . $sharedWith . "</td>";
-			$searchResults .= "<td>" . $fileName . "</td>";
+			$searchResults .= "<td>" . htmlentities ( $row ["file_name"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["file_short_name"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["description"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["subject"] ) . "</td>";
 			$searchResults .= "<td>" . ProtectURL(htmlentities ( $row ["file_path"] )) ."</td>";
-			($row ["username"] == $username) ? $searchResults .= "<td><form action='searchPersonalfiles.php' method='POST'>
-					<input type ='hidden' name='fileName' value=\"$fileName\"\n>
-					<input type ='hidden' name='filePath' value=\"$filePath\"\n>			
-					<input type='submit' name ='delete' value='Delete' onClick=\"return confirm('Are you sure ')\" /></form></td></tr>\n" : $searchResults .= "<td></td></tr>\n";
+			
+			//Only show delete button if the current user is the file owner
+			if ($row ["username"] == $username){
+			$searchResults .= "<td><span onClick=\"return confirm('Are you sure you want to permanently Delete this file? NOTE: This cannot be undone!');\"><a href=\"includes/functionality/deletefile.php?deletefile=". $file_ID . "\"><button>Delete</button></a></span></td>\n</tr>\n";
+			} 
+			else{
+			$searchResults .= "<td></td></tr>\n";	
+			}
 		}
 		
-		 
+		
 		
 		mysqli_free_result($searchQuery);
 		$searchResults .= "</table>";
@@ -142,19 +144,5 @@ _Search;
 	} 
 }
 
-
-
-if (isset($_POST['delete'])) {
-
-	$fileName = $_POST['fileName'];
-	$filePath = $_POST['filePath'];
-
-	//unlink($filePath);
-	
-	$url = $_SERVER["HTTP_REFERER"]; 
-	
-	$uploadMsg = "<p>URL1 $url</p> ";
-	header("Location:".$url."&del=$fileName");
-}
 ?>
 

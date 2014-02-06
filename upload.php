@@ -17,7 +17,7 @@ require_once 'includes/html_template/header.php';
 
 					<p>
 					<label for="uploadfile">Select File:</label> 
-					<input type="file" id="uploadfile" name="uploadfile" />
+					<input type="file" id="uploadfile" name="uploadfile" required/>
 					</p>			
 					<p>
 					<label for="description">Description:</label> 
@@ -29,8 +29,8 @@ require_once 'includes/html_template/header.php';
 					</p>
 					<p>
 					<label for="sharingStatus">Sharing Status: </label> 
-					<select name ="sharingStatus" id = "sharingStatus">
-						  <option value="none" selected style='display:none;'>Select a Sharing Status:</option>
+					<select name ="sharingStatus" id = "sharingStatus" required>
+						  <option value="" selected style='display:none;'>Select a Sharing Status:</option>
 						  <option value="public">Public</option>
 						  <option value="private">Private</option>
 						  <option value="specific">Specific User(s)</option>
@@ -39,8 +39,8 @@ require_once 'includes/html_template/header.php';
 					<p>
 					<label class = "outside_label" for="terms" >Agree to upload terms and conditions: </label> 
 					<span> 
-					Yes <input type="radio" name="terms" value="yes"  />
-					No <input type="radio" name="terms" value="no"  checked="checked" />
+					Yes <input type="radio" name="terms" value="yes" required />
+					No <input type="radio" name="terms" value="no"  />
 					</span>
 					</p>
 					<p id="specificSharingBox">

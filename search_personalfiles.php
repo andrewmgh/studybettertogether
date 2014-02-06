@@ -12,7 +12,7 @@ require_once 'includes/functionality/personalSearch.php';
 				<?php isset($_GET['del']) ? $uploadMsg="<p>The requested file \"".($_GET['del'])."\" has sucessfully been deleted</p>": ""; ?>
 				<?php print isset($uploadMsg) ? '<div class = "hiddenField">' . $uploadMsg . '</div>': ""; ?>
 
-				<form name="upload" action="searchPersonalfiles.php" method="GET" >
+				<form name="upload" action="search_personalfiles.php" method="GET" >
 					<fieldset>
 						<p>
 						<label for="sharingStatus">*Sharing Status:</label> 
@@ -68,7 +68,7 @@ require_once 'includes/functionality/personalSearch.php';
 					</div>
 					
 				</form>
-				<a href ="searchPersonalfiles.php"><button class=\"filesBtn\">Clear Search Results</button></a>
+				<a href ="search_personalfiles.php"><button class=\"filesBtn\">Clear Search Results</button></a>
 				</div>		
 				
 	</div>

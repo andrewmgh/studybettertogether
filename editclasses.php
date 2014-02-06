@@ -45,7 +45,7 @@ function displayEditClasses($db_con, $edit_id, $msg = NULL)
 	echo "<p><label for='classCode'>Class Code:</label>\n"; 
 	echo "<input type='text' id='classCode' name='classCode' value = \"". htmlentities ( $row ["class_code"] ) ."\" required /></p>\n";
 	echo "<p><label for='regCode'>Registration Code:</label>\n";
-	echo "<input type='password' id='regCode' name='regCode' value = \"". htmlentities ( $row ["register_code"] ) ."\" required /></p>\n";
+	echo "<input type='password' id='regCode' name='regCode' placeholder = \"Leave blank if not changing\" /></p>\n";
 	echo "</fieldset>\n";
 	echo "<p class = 'submit'><input type='submit' name ='updateClassDetails' value='Confirm' /></p>";
 	echo "</form>\n</div>\n</div>";
@@ -65,15 +65,21 @@ function updateClassDetails($db_con, $edit_id, $className, $classCode, $regCode)
 	$classCode = sanatiseInput($db_con, $classCode);
 	$regCode = sanatiseInput($db_con, $regCode);
 	
-	//If any of the variables have not been entered then send an error message back to the user
-	if(!($className && $classCode && $regCode)){
-		header("Location:editclasses.php?editClass=$edit_id&Msg=You need to fill in all fields - Please try again");
+	//If any of the variables (apart from reg code) have not been entered then send an error message back to the user
+	if(!($className && $classCode)){
+		header("Location:editclasses.php?editClass=$edit_id&Msg=Please ensure you have filled in the required fields");
 		exit();
 	}
-	//If all variables have been entered, update the class and report a success message back to the user
+	//If the required variables have been entered and depending on whether the regCode was filled in or not - update the class and report a success message back to the user
 	else {
-		$newRegCode = encryptPwd($regCode);
-		$updateClass = newQuery($db_con, "UPDATE `classes` SET `class_name` = '".$className."', `class_code` = '".$classCode."', `register_code` = '".$newRegCode."' WHERE  `class_id` = '$edit_id'");
+		if($regCode){
+			$newRegCode = encryptPwd($regCode);
+			$updateClass = newQuery($db_con, "UPDATE `classes` SET `class_name` = '".$className."', `class_code` = '".$classCode."', `register_code` = '".$newRegCode."' WHERE  `class_id` = '$edit_id'");
+		}
+		else{
+			$updateClass = newQuery($db_con, "UPDATE `classes` SET `class_name` = '".$className."', `class_code` = '".$classCode."' WHERE  `class_id` = '$edit_id'");
+		}
+		
 		header("Location:manageclasses.php?UpdateClass=The class \"$className\" has been sucessfully updated");
 		closeMySql($db_con, $updateClass);
 		exit();
