@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2014 at 12:48 AM
+-- Generation Time: Feb 06, 2014 at 01:05 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -77,15 +77,14 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `register_code` varchar(100) NOT NULL,
   PRIMARY KEY (`class_id`),
   UNIQUE KEY `class_name` (`class_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `classes`
 --
 
 INSERT INTO `classes` (`class_id`, `class_name`, `class_code`, `class_register_date`, `register_code`) VALUES
-(1, 'IBI Test Class', 'IBI', '2014-01-08 11:33:30', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70'),
-(8, 'NCI 4th Year Computing', 'BSHBIS4', '2014-01-31 11:33:30', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70');
+(1, 'IBI Test Class', 'IBI14', '2014-01-08 11:33:30', 'a48a3558a6556285f306bb0db7b5332a2e710399');
 
 -- --------------------------------------------------------
 
@@ -106,17 +105,22 @@ CREATE TABLE IF NOT EXISTS `files` (
   PRIMARY KEY (`file_id`),
   KEY `user_id` (`owner_id`),
   KEY `file_type_id` (`file_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `files`
 --
 
 INSERT INTO `files` (`file_id`, `owner_id`, `file_type_id`, `file_name`, `file_path`, `file_size`, `description`, `subject`, `upload_date`) VALUES
-(1, 2, 2, 'Personal Study Helper', '../../../studybettertogether/files/amonaghan/Personal_Study_Helper.docx', '17 kb', 'studyhelper', 'study', '2013-12-07 12:52:18'),
-(2, 2, 2, 'ProjectProposal2- Studytogether.com', '../../../studybettertogether/files/amonaghan/ProjectProposal2-_Studytogether.com.docx', '674 kb', 'test', 'test', '2013-12-07 12:53:42'),
-(5, 2, 19, 'Group1_SKO_RequirementsSpecification', '../../../studybettertogether/files/public/Group1_SKO_RequirementsSpecification.pdf', '828 kb', 'desc', 'sub', '2013-12-07 13:10:47'),
-(12, 1, 1, 'CA BPE(1)', '../../../studybettertogether/files/MimiSBT/CA_BPE(1).doc', '26 kb', 'CA for Business Process Engineering', 'BPE', '2014-02-03 23:42:17');
+(1, 2, 2, 'Personal Study Helper', '../../../studybettertogether/files/2/Personal_Study_Helper.docx', '17 kb', 'studyhelper', 'study', '2013-12-07 12:52:18'),
+(2, 2, 2, 'ProjectProposal2- Studytogether.com', '../../../studybettertogether/files/2/ProjectProposal2-_Studytogether.com.docx', '674 kb', 'test', 'test', '2013-12-07 12:53:42'),
+(5, 2, 19, 'Group1_SKO_RequirementsSpecification', '../../../studybettertogether/files/2/Group1_SKO_RequirementsSpecification.pdf', '828 kb', 'desc', 'sub', '2013-12-07 13:10:47'),
+(12, 1, 1, 'CA BPE(1)', '../../../studybettertogether/files/1/CA_BPE(1).doc', '26 kb', 'CA for Business Process Engineering', 'BPE', '2014-02-03 23:42:17'),
+(13, 1, 12, 'BPE-03 Value Engineering Analysis', '../../../studybettertogether/files/1/BPE-03_Value_Engineering_Analysis.pptx', '1,429 kb', '', '', '2014-02-05 10:54:36'),
+(17, 1, 12, 'BPE-07b Lean', '../../../studybettertogether/files/1/BPE-07b_Lean.pptx', '1,269 kb', '', '', '2014-02-05 14:55:30'),
+(18, 1, 12, 'BPE-07a-TQM', '../../../studybettertogether/files/1/BPE-07a-TQM.pptx', '1,342 kb', '', '', '2014-02-05 14:56:23'),
+(19, 1, 12, 'BPE-04 Process Identification', '../../../studybettertogether/files/1/BPE-04_Process_Identification.pptx', '699 kb', 't', 't', '2014-02-05 15:38:38'),
+(20, 1, 19, 'August 2013', '../../../studybettertogether/files/1/August_2013.pdf', '110 kb', 'test', 'test', '2014-02-05 15:42:36');
 
 -- --------------------------------------------------------
 
@@ -138,9 +142,14 @@ CREATE TABLE IF NOT EXISTS `file_sharing` (
 
 INSERT INTO `file_sharing` (`sharing_id`, `sharing_status`, `shared_with`) VALUES
 (1, 'private', ''),
-(2, 'specific', 'Ssmith'),
+(2, 'specific', '-3-'),
 (5, 'public', ''),
-(12, 'specific', 'amonaghan,eoin_oreilly');
+(12, 'specific', '-2-3-'),
+(13, 'public', ''),
+(17, 'specific', '-2-3-'),
+(18, 'specific', '-2-3-'),
+(19, 'specific', '-2-3-'),
+(20, 'specific', '-2-');
 
 -- --------------------------------------------------------
 
@@ -175,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
   `description` varchar(255) NOT NULL DEFAULT '',
   `accession` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `forum_categories`
@@ -184,8 +193,7 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
 INSERT INTO `forum_categories` (`id`, `order_id`, `category`, `description`, `accession`) VALUES
 (1, 1, 'General', '', 0),
 (2, 2, 'Social', '', 0),
-(6, 0, 'IBI Test Class', '', 0),
-(7, 0, 'NCI 4th Year Computing', '', 0);
+(6, 0, 'IBI Test Class', '', 0);
 
 -- --------------------------------------------------------
 
@@ -413,7 +421,7 @@ INSERT INTO `forum_settings` (`name`, `value`) VALUES
 ('cookie_validity_days', '30'),
 ('access_permission_checks', '0'),
 ('daily_actions_time', '3:30'),
-('next_daily_actions', '1391484600'),
+('next_daily_actions', '1391657400'),
 ('auto_lock_old_threads', '0'),
 ('max_read_items', '0'),
 ('delete_ips', '0'),
@@ -504,8 +512,7 @@ CREATE TABLE IF NOT EXISTS `forum_userdata` (
 INSERT INTO `forum_userdata` (`user_id`, `user_type`, `user_name`, `user_real_name`, `gender`, `birthday`, `user_pw`, `user_email`, `email_contact`, `user_hp`, `user_location`, `signature`, `profile`, `logins`, `last_login`, `last_logout`, `user_ip`, `registered`, `category_selection`, `thread_order`, `user_view`, `sidebar`, `fold_threads`, `thread_display`, `new_posting_notification`, `new_user_notification`, `user_lock`, `auto_login_code`, `pwf_code`, `activate_code`, `language`, `time_zone`, `time_difference`, `theme`, `entries_read`) VALUES
 (1, 2, 'MimiSBT', 'Mimi', 0, '0000-00-00', 'b04fbf77b7d07f2a5c4fb13e070a9558f09576e9', 'Mimi.Kelly@sbt.com', 0, '', '', '', '', 14, '2013-12-19 10:50:16', '2014-01-31 13:09:13', '::1', '2013-10-18 17:36:41', NULL, 1, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
 (2, 0, 'amonaghan', 'Andrew', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'Andrew.Monaghan@student.ie', 0, '', '', '', '', 4, '2013-12-19 10:51:36', '2013-12-19 10:53:53', '::1', '2013-10-18 17:36:41', NULL, 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
-(3, 0, 'Ssmith', 'Sarah', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'sarahsmith@college.ie', 0, '', '', '', '', 0, '2014-02-02 18:03:41', '0000-00-00 00:00:00', '', '2013-10-31 13:31:26', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
-(4, 0, 'eoin_oreilly', 'Eoin', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'eor@test.com', 0, '', '', '', '', 0, '2014-02-03 22:40:09', '0000-00-00 00:00:00', '', '2014-02-03 23:40:09', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', '');
+(3, 0, 'Ssmith', 'Sarah', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'sarahsmith@college.ie', 0, '', '', '', '', 0, '2014-02-02 18:03:41', '0000-00-00 00:00:00', '', '2013-10-31 13:31:26', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -549,9 +556,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(100) CHARACTER SET latin1 NOT NULL,
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `email` (`email`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `users`
@@ -560,8 +566,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`user_id`, `class_assigned_to`, `first_name`, `last_name`, `username`, `email`, `account_type`, `password`, `register_date`) VALUES
 (1, 0, 'Mimi', 'Kelly', 'MimiSBT', 'Mimi.Kelly@sbt.com', 'Admin', 'b04fbf77b7d07f2a5c4fb13e070a9558f09576e9', '2013-10-18 17:36:41'),
 (2, 1, 'Andrew', 'Monaghan', 'amonaghan', 'Andrew.Monaghan@student.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-18 17:36:41'),
-(3, 1, 'Sarah', 'Smith', 'Ssmith', 'sarahsmith@college.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-31 13:31:26'),
-(4, 8, 'Eoin', 'O''Reilly', 'eoin_oreilly', 'eor@test.com', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2014-02-03 22:40:09');
+(3, 1, 'Sarah', 'Smith', 'Ssmith', 'sarahsmith@college.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-31 13:31:26');
 
 --
 -- Constraints for dumped tables

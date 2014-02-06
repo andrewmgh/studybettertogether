@@ -36,7 +36,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	//Retrieve file extension - set file path - convert specific users array to string
 	$fileExtension = pathinfo ( $fileName, PATHINFO_EXTENSION );
 	$filePath = setFilePath($fileName, $userID);
-	$specificUsers = arrayToString($db_con, $specificUsers);
+	$specificUsersID = arrayToString($db_con, $specificUsers);
 		
  	//Validate upload form against custom validation functions
 	$uploadMsg.= validateSharingStatus($sharingStatus);
@@ -65,7 +65,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	 		$sharing_id = mysqli_insert_id($db_con);
 	 		if (!$Uploadquery1) {$success = false; }
 	 		
-	 		$Uploadquery2 = newQuery ( $db_con, "INSERT INTO file_sharing (`sharing_id`, `sharing_status`, `shared_with` ) VALUES ('$sharing_id', '$sharingStatus', '$specificUsers')");
+	 		$Uploadquery2 = newQuery ( $db_con, "INSERT INTO file_sharing (`sharing_id`, `sharing_status`, `shared_with` ) VALUES ('$sharing_id', '$sharingStatus', '$specificUsersID')");
 	 		if (!$Uploadquery2) {$success = false; }
 	 		
  		
@@ -204,20 +204,27 @@ function makeNewUserDirectory ($dirPath){
 		}  
 }
 
+//Convert array of usernames into string of related user_id's seperated by a dash
 function arrayToString ($db_con, $array){
-	$string = implode(',',$array);
-	$string = sanatiseInput ( $db_con, $string );
+	$string = "-";
+	foreach($array as $key => $value){
+		$value = sanatiseInput ( $db_con, $value );
+		$userResult =newQuery($db_con, "SELECT user_id FROM users WHERE username = '$value'");
+		$row = mysqli_fetch_array ( $userResult );
+		$userID =  $row["user_id"];
+		mysqli_free_result($userResult);
+		$string .= "$userID"."-";
+	}
 	return $string;
 }
 
-function outputSpecificUsers ($specificUsers){
-	if($specificUsers){
-			$array = explode(',', $specificUsers);
-			foreach($array as $key => $value){			
-				$sharedWith.= "<li class='specificuser'>$value</li>";
-			}
-			return "<li><strong>Shared With:</strong> $sharedWith";
-	}
+
+function outputSpecificUsers ($array){
+		foreach($array as $key => $value){
+			$sharedWith.= "<li class='specificuser'>". htmlentities($value). "</li>";
+		}
+	
+		return "<li><strong>Shared With:</strong> $sharedWith";
 }
 
 

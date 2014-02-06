@@ -3,8 +3,7 @@
 
 
 <h2 class = "mainPageHeading">Help Section </h2>
-<p> Coming Soon....
-</p>	
+<p> Coming Soon....</p>	
 
 
 

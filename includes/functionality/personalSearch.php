@@ -3,20 +3,20 @@
 //Only show main headings in table and have an info button make a jquery pop up appear with more details on each file - http://buckwilson.me/lightboxme/
 
 
-if ($_SERVER['REQUEST_METHOD']== "POST") //only runs the below php code if the login form was submitted. 
+if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['search']))//only runs the below php code if the login form was submitted. 
 {
 	 	//Declare and initialise variables to solve any posible undefined variable errors
 		$fileName = $fileOwner =  $fileType = $description = $subject = "";
-		$sharingStatus = sanatiseInput($db_con, $_POST ['sharingStatus']);
+		$sharingStatus = sanatiseInput($db_con, $_GET ['sharingStatus']);
 		
 		//if the user chose a sharing status...
-		if($sharingStatus != "null"){
+		if($sharingStatus != ""){
 				//Take remaining inputs from search form, clean with sanatiseInput function and store in variables
-				$fileName = sanatiseInput($db_con, $_POST ['fileName']);
-				$fileOwner = sanatiseInput($db_con, $_POST ['sharedBy']);
-				if(isset($_POST ['fileType'])){$fileType = sanatiseInput($db_con, $_POST ['fileType']);} //This isset if function was required to avoide a "Notice: Undefined Index" warning that was occuring
-				$description = sanatiseInput($db_con, $_POST ['description']);
-				$subject = sanatiseInput($db_con, $_POST ['subject']);		
+				$fileName = sanatiseInput($db_con, $_GET ['fileName']);
+				$fileOwner = sanatiseInput($db_con, $_GET ['sharedBy']);
+				if(isset($_GET ['fileType'])){$fileType = sanatiseInput($db_con, $_GET ['fileType']);} //This isset if function was required to avoide a "Notice: Undefined Index" warning that was occuring
+				$description = sanatiseInput($db_con, $_GET ['description']);
+				$subject = sanatiseInput($db_con, $_GET ['subject']);		
 		
 				//run the search results function
 				$searchResults = personalSearch($db_con, $username, $userID, $sharingStatus, $fileName, $fileOwner, $fileType, $description, $subject);
@@ -35,17 +35,25 @@ if ($_SERVER['REQUEST_METHOD']== "POST") //only runs the below php code if the l
 	
 }
 
+
 function personalSearch($db_con, $username, $userID, $sharingStatus, $fileName, $fileOwner, $fileType, $description, $subject) {
+	
+	//Change the value of sharingStatus to match what is in the DB.
+	if ($sharingStatus == "My_Public_Files"){$sharingStatus = "public";}
+	if ($sharingStatus == "My_Private_Files"){$sharingStatus = "private";}
+	if ($sharingStatus == "My_Specifically_Shared_Files"){$sharingStatus = "specific";}
+	
 
 	//if statements to specify what query to use
-	if($sharingStatus == "shared_with_me"){
+	if($sharingStatus == "Files_Shared_With_Me"){
+		$amendedUserID = "-".$userID."-";
 		$query = <<<_QUERY
 		SELECT file_name, username, sharing_status, shared_with, owner_id, file_short_name, description, subject, file_path FROM files
 		INNER JOIN users ON files.owner_id = users.user_id
 		INNER JOIN file_sharing ON files.file_id = file_sharing.sharing_id
 		INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id
 		WHERE
-		shared_with LIKE '%$username%'
+		shared_with LIKE '%$amendedUserID%'
 		AND file_name LIKE '%$fileName%'
 		AND username LIKE '%$fileOwner%'
 		AND file_short_name LIKE '%$fileType%'
@@ -90,23 +98,39 @@ $searchResults = <<<_Search
 	</tr>
 _Search;
 		while ( $row = mysqli_fetch_array ( $searchQuery ) ) {
-			// convert string of shared users into array for user friendly display
+			// convert string of user_id's into array of usernames for display
 			$sharedWith = "";
-			$array = explode(',', $row ["shared_with"]);
-			foreach($array as $key => $value)
-			{$sharedWith.= "$value <br />";}
-			
+			$array = explode('-', $row ["shared_with"]);
+			foreach($array as $key => $value){
+				if($value != ""){
+					$username_result =newQuery($db_con, "SELECT username FROM users WHERE user_id = '$value'");
+					$row2 = mysqli_fetch_array ( $username_result );
+					$sharedWith_username =  $row2["username"];
+					mysqli_free_result($username_result);
+					$sharedWith.= "$sharedWith_username<br /> ";
+				}
+			}	
+
 			//output search results
+			
+			$fileName = htmlentities ( $row ["file_name"] );
+			$filePath = htmlentities ( $row ["file_path"] );
+			
 			$searchResults .= "<tr><td>" . htmlentities ( $row ["username"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["sharing_status"] ) . "</td>";
 			$searchResults .= "<td>" . $sharedWith . "</td>";
-			$searchResults .= "<td>" . htmlentities ( $row ["file_name"] ) . "</td>";
+			$searchResults .= "<td>" . $fileName . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["file_short_name"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["description"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["subject"] ) . "</td>";
-			$searchResults .= "<td>" . ProtectURL(( $row ["file_path"] )) ."</td>";
-			($row ["username"] == $username) ? $searchResults .= "<td>delete</td></tr>\n" : $searchResults .= "<td></td></tr>\n";
+			$searchResults .= "<td>" . ProtectURL(htmlentities ( $row ["file_path"] )) ."</td>";
+			($row ["username"] == $username) ? $searchResults .= "<td><form action='searchPersonalfiles.php' method='POST'>
+					<input type ='hidden' name='fileName' value=\"$fileName\"\n>
+					<input type ='hidden' name='filePath' value=\"$filePath\"\n>			
+					<input type='submit' name ='delete' value='Delete' onClick=\"return confirm('Are you sure ')\" /></form></td></tr>\n" : $searchResults .= "<td></td></tr>\n";
 		}
+		
+		 
 		
 		mysqli_free_result($searchQuery);
 		$searchResults .= "</table>";
@@ -118,4 +142,19 @@ _Search;
 	} 
 }
 
+
+
+if (isset($_POST['delete'])) {
+
+	$fileName = $_POST['fileName'];
+	$filePath = $_POST['filePath'];
+
+	//unlink($filePath);
+	
+	$url = $_SERVER["HTTP_REFERER"]; 
+	
+	$uploadMsg = "<p>URL1 $url</p> ";
+	header("Location:".$url."&del=$fileName");
+}
 ?>
+

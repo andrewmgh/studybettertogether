@@ -47,7 +47,7 @@ require_once 'includes/html_template/header.php';
 					<label  for="SpecificSharing">Share with <br />Specific Users: </label>
 					<select id="s1" name="specificSharing[]" multiple="multiple" > <!--size="3" tabindex="1" style="height:150px; width:150px"--> 
 		 						 <?php 
-								$users =newQuery($db_con, "SELECT username FROM users WHERE user_id != '$userID'");
+								$users =newQuery($db_con, "SELECT user_id, username FROM users WHERE user_id != '$userID'");
 								while ( $row = mysqli_fetch_array ( $users ) ) {
 									echo '<option values=' . $row["username"] . '>' . $row["username"] . '</option>';
 								}
