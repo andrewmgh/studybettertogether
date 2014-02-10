@@ -303,7 +303,13 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 			width: 925px;
 			margin: 1% auto 3% auto;
 						}	 
-											
+							
+		#promotion_wraper img {	
+			height:300px;
+			width: 900px;
+			}				
+
+
 
 		#regImg{	
 			float: right;

@@ -36,7 +36,10 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	//Retrieve file extension - set file path - convert specific users array to string
 	$fileExtension = pathinfo ( $fileName, PATHINFO_EXTENSION );
 	$filePath = setFilePath($fileName, $userID);
+	
+	if(!($specificUsers=="")){
 	$specificUsersID = arrayToString($db_con, $specificUsers);
+	}
 		
  	//Validate upload form against custom validation functions
 	$uploadMsg.= validateSharingStatus($sharingStatus);
@@ -76,7 +79,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	 	 		mysqli_close ($db_con);
 	 	 		
 	 	 		//upload file
-				move_uploaded_file($fileTempName, $filePath); 
+	 	 						move_uploaded_file($fileTempName, $filePath); 
 	 	 			 		 		
 				//return success msg with file details and redirect user to uploads page
 				$output = outputSpecificUsers($specificUsers); 
@@ -226,23 +229,4 @@ function outputSpecificUsers ($array){
 	
 		return "<li><strong>Shared With:</strong> $sharedWith";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

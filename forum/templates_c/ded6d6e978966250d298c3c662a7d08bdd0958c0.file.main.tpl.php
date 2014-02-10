@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2014-01-30 18:23:12
+<?php /* Smarty version Smarty-3.1.15, created on 2014-02-09 16:47:15
          compiled from "themes\default\main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:82052b1e810bf84e4-84824454%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ded6d6e978966250d298c3c662a7d08bdd0958c0' => 
     array (
       0 => 'themes\\default\\main.tpl',
-      1 => 1308341558,
+      1 => 1391962241,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_52b1e810d38a39_05335807',
   'variables' => 
   array (
     'language_file' => 0,
@@ -34,9 +36,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'tid' => 0,
     'user' => 0,
     'user_type' => 0,
-    'admin' => 0,
-    'menu' => 0,
-    'item' => 0,
     'subtemplate' => 0,
     'content' => 0,
     'total_users_online' => 0,
@@ -49,8 +48,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'forum_time' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_52b1e810d38a39_05335807',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_52b1e810d38a39_05335807')) {function content_52b1e810d38a39_05335807($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_replace')) include 'C:\\xampp\\htdocs\\studybettertogether\\forum\\modules\\smarty\\plugins\\modifier.replace.php';
 ?><?php  $_config = new Smarty_Internal_Config($_smarty_tpl->tpl_vars['language_file']->value, $_smarty_tpl->smarty, $_smarty_tpl);$_config->loadConfigVars("general", 'local'); ?><?php if ($_smarty_tpl->tpl_vars['subnav_location']->value&&$_smarty_tpl->tpl_vars['subnav_location_var']->value) {?><?php $_smarty_tpl->tpl_vars["subnav_location"] = new Smarty_variable(smarty_modifier_replace($_smarty_tpl->getConfigVariable($_smarty_tpl->tpl_vars['subnav_location']->value),"[var]",$_smarty_tpl->tpl_vars['subnav_location_var']->value), null, 0);?><?php } elseif ($_smarty_tpl->tpl_vars['subnav_location']->value) {?><?php $_smarty_tpl->tpl_vars['subnav_location'] = new Smarty_variable($_smarty_tpl->getConfigVariable($_smarty_tpl->tpl_vars['subnav_location']->value), null, 0);?><?php }?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -130,46 +127,9 @@ index.php?mode=thread&amp;id=<?php echo $_smarty_tpl->tpl_vars['tid']->value;?>
 </div>
 
 <div id="nav">
-
-
 <ul id="usermenu">
-<!--
-<?php if ($_smarty_tpl->tpl_vars['user']->value) {?><li><a href="index.php?mode=user&amp;action=edit_profile" title="<?php echo $_smarty_tpl->getConfigVariable('profile_link_title');?>
-"><strong><?php echo $_smarty_tpl->tpl_vars['user']->value;?>
-</strong></a></li><li><a href="index.php?mode=user" title="<?php echo $_smarty_tpl->getConfigVariable('user_area_link_title');?>
-"><?php echo $_smarty_tpl->getConfigVariable('user_area_link');?>
-</a></li><?php 
 
-
-?><li><a href="index.php?mode=admin" title="<?php echo $_smarty_tpl->getConfigVariable('admin_area_link_title');?>
-"><?php echo $_smarty_tpl->getConfigVariable('admin_area_link');?>
-</a></li><?php 
-
-
-
-?><li><a href="index.php?mode=login" title="<?php echo $_smarty_tpl->getConfigVariable('log_out_link_title');?>
-"><?php echo $_smarty_tpl->getConfigVariable('log_out_link');?>
-</a></li><?php } else { ?><li><a href="index.php?mode=login" title="<?php echo $_smarty_tpl->getConfigVariable('log_in_link_title');?>
-"><?php echo $_smarty_tpl->getConfigVariable('log_in_link');?>
-</a></li><?php if ($_smarty_tpl->tpl_vars['settings']->value['register_mode']!=2) {?><li><a href="index.php?mode=register" title="<?php echo $_smarty_tpl->getConfigVariable('register_link_title');?>
-"><?php echo $_smarty_tpl->getConfigVariable('register_link');?>
-</a></li><?php }?><?php if ($_smarty_tpl->tpl_vars['settings']->value['user_area_public']) {?><li><a href="index.php?mode=user" title="<?php echo $_smarty_tpl->getConfigVariable('user_area_link_title');?>
-"><?php echo $_smarty_tpl->getConfigVariable('user_area_link');?>
-</a></li><?php }?><?php }?>
-<?php if ($_smarty_tpl->tpl_vars['menu']->value) {?>
-<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['menu']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value) {
-$_smarty_tpl->tpl_vars['item']->_loop = true;
-?><li><a href="index.php?mode=page&amp;id=<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-"><?php echo $_smarty_tpl->tpl_vars['item']->value['linkname'];?>
-</a></li><?php } ?>
-<?php }?>
--->
 </ul>
-
-
-
 <form id="topsearch" action="index.php" method="get" title="<?php echo $_smarty_tpl->getConfigVariable('search_title');?>
 " accept-charset="<?php echo $_smarty_tpl->getConfigVariable('charset');?>
 "><div><input type="hidden" name="mode" value="search" /><label for="search-input"><?php echo $_smarty_tpl->getConfigVariable('search_marking');?>
@@ -196,20 +156,14 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 </div>
 
 <div id="footer">
-<div id="footer-1"><?php if ($_smarty_tpl->tpl_vars['total_users_online']->value) {?>
-
-<?php echo smarty_modifier_replace(smarty_modifier_replace($_smarty_tpl->getConfigVariable('counter_users_online'),"[total_postings]",$_smarty_tpl->tpl_vars['total_postings']->value),"[total_threads]",$_smarty_tpl->tpl_vars['total_threads']->value);?>
-
-<?php } else { ?>
-<?php echo smarty_modifier_replace(smarty_modifier_replace($_smarty_tpl->getConfigVariable('counter'),"[total_postings]",$_smarty_tpl->tpl_vars['total_postings']->value),"[total_threads]",$_smarty_tpl->tpl_vars['total_threads']->value);?>
-
+<div id="footer-1"><?php if ($_smarty_tpl->tpl_vars['total_users_online']->value) {?><?php echo smarty_modifier_replace(smarty_modifier_replace(smarty_modifier_replace(smarty_modifier_replace(smarty_modifier_replace(smarty_modifier_replace($_smarty_tpl->getConfigVariable('counter_users_online'),"[total_postings]",$_smarty_tpl->tpl_vars['total_postings']->value),"[total_threads]",$_smarty_tpl->tpl_vars['total_threads']->value),"[registered_users]",$_smarty_tpl->tpl_vars['registered_users']->value),"[total_users_online]",$_smarty_tpl->tpl_vars['total_users_online']->value),"[registered_users_online]",$_smarty_tpl->tpl_vars['registered_users_online']->value),"[unregistered_users_online]",$_smarty_tpl->tpl_vars['unregistered_users_online']->value);?>
+<?php } else { ?><?php echo smarty_modifier_replace(smarty_modifier_replace(smarty_modifier_replace($_smarty_tpl->getConfigVariable('counter'),"[total_postings]",$_smarty_tpl->tpl_vars['total_postings']->value),"[total_threads]",$_smarty_tpl->tpl_vars['total_threads']->value),"[registered_users]",$_smarty_tpl->tpl_vars['registered_users']->value);?>
 <?php }?><br />
 <?php if ($_smarty_tpl->tpl_vars['forum_time_zone']->value) {?><?php echo smarty_modifier_replace(smarty_modifier_replace($_smarty_tpl->getConfigVariable('forum_time_with_time_zone'),'[time]',$_smarty_tpl->tpl_vars['forum_time']->value),'[time_zone]',$_smarty_tpl->tpl_vars['forum_time_zone']->value);?>
 <?php } else { ?><?php echo smarty_modifier_replace($_smarty_tpl->getConfigVariable('forum_time'),'[time]',$_smarty_tpl->tpl_vars['forum_time']->value);?>
 <?php }?></div>
 
 </div>
-
 
 
 <!--[if IE]></div><![endif]-->

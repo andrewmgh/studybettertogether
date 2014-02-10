@@ -51,10 +51,7 @@
 
 <div id="nav">
 <ul id="usermenu">
-{if $user}<li><a href="index.php?mode=user&amp;action=edit_profile" title="{#profile_link_title#}"><strong>{$user}</strong></a></li><li><a href="index.php?mode=user" title="{#user_area_link_title#}">{#user_area_link#}</a></li>{if $admin}<li><a href="index.php?mode=admin" title="{#admin_area_link_title#}">{#admin_area_link#}</a></li>{/if}<li><a href="index.php?mode=login" title="{#log_out_link_title#}">{#log_out_link#}</a></li>{else}<li><a href="index.php?mode=login" title="{#log_in_link_title#}">{#log_in_link#}</a></li>{if $settings.register_mode!=2}<li><a href="index.php?mode=register" title="{#register_link_title#}">{#register_link#}</a></li>{/if}{if $settings.user_area_public}<li><a href="index.php?mode=user" title="{#user_area_link_title#}">{#user_area_link#}</a></li>{/if}{/if}
-{if $menu}
-{foreach $menu as $item}<li><a href="index.php?mode=page&amp;id={$item.id}">{$item.linkname}</a></li>{/foreach}
-{/if}
+
 </ul>
 <form id="topsearch" action="index.php" method="get" title="{#search_title#}" accept-charset="{#charset#}"><div><input type="hidden" name="mode" value="search" /><label for="search-input">{#search_marking#}</label>&nbsp;<input id="search-input" type="text" name="search" value="{#search_default_value#}" /><!--&nbsp;<input type="image" src="templates/{$settings.template}/images/submit.png" alt="[&raquo;]" />--></div></form></div>
 </div>
@@ -75,17 +72,9 @@
 <div id="footer">
 <div id="footer-1">{if $total_users_online}{#counter_users_online#|replace:"[total_postings]":$total_postings|replace:"[total_threads]":$total_threads|replace:"[registered_users]":$registered_users|replace:"[total_users_online]":$total_users_online|replace:"[registered_users_online]":$registered_users_online|replace:"[unregistered_users_online]":$unregistered_users_online}{else}{#counter#|replace:"[total_postings]":$total_postings|replace:"[total_threads]":$total_threads|replace:"[registered_users]":$registered_users}{/if}<br />
 {if $forum_time_zone}{#forum_time_with_time_zone#|replace:'[time]':$forum_time|replace:'[time_zone]':$forum_time_zone}{else}{#forum_time#|replace:'[time]':$forum_time}{/if}</div>
-<div id="footer-2">
-<ul id="footermenu">
-{if $settings.rss_feed==1}<li><a class="rss" href="index.php?mode=rss" title="{#rss_feed_postings_title#}">{#rss_feed_postings#}</a> &nbsp;<a class="rss" href="index.php?mode=rss&amp;items=thread_starts" title="{#rss_feed_new_threads_title#}">{#rss_feed_new_threads#}</a></li>{/if}<li><a href="index.php?mode=contact" title="{#contact_linktitle#}" rel="nofollow">{#contact_link#}</a></li>
-</ul></div>
+
 </div>
 
-{*
-Please donate if you want to remove this link:
-https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=1922497
-*}
-<div id="pbmlf"><a href="http://mylittleforum.net/">powered by my little forum</a></div>
 
 <!--[if IE]></div><![endif]-->
 
