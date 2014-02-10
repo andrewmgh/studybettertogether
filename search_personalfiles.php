@@ -74,6 +74,5 @@ require_once 'includes/functionality/personalSearch.php';
 	</div>
 
 
-<?php print isset($searchResults) ? '<div class = "searchResults">' . $searchResults . '</div>': ""; ?>
-	
+<?php print isset($searchResults) ? '<h4>Search Results</h4><div class = "tabledefault">' . $searchResults . '</div>': ""; ?>
 <?php require_once 'includes/html_template/footer.php';?>

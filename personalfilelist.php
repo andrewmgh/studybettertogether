@@ -18,16 +18,18 @@ $personalFiles = newQuery ( $db_con, $search);
 if (mysqli_num_rows ( $personalFiles ) >= 1) {
 	
 	echo <<<_Table
-	<h5>This page displays the full list of my files available to download</h5> <br />
+		<h5>This page displays the full list of my files available to download</h5> <br />
+	<div class = "tabledefault">
 	<table>
 	<tr>
-	<th>File Owner</th> 
-	<th>File Name</th> 
-	<th>File Type</th> 
-	<th>File Size</th> 
-	<th>Upload Date</th> 
-	<th>Download</th> 
+	<td>File Owner</td> 
+	<td>File Name</td> 
+	<td>File Type</td> 
+	<td>File Size</td> 
+	<td>Upload Date</td> 
+	<td>Download</th> 
 	</tr> 
+	
 _Table;
 	while ( $row = mysqli_fetch_array ( $personalFiles ) ) {
 		echo "<tr><td>" . htmlentities ( $row ["username"] ) . "</td>";
@@ -35,10 +37,10 @@ _Table;
 		echo "<td>" . htmlentities ( $row ["file_short_name"] ) . "</td>";
 		echo "<td>" . htmlentities ( $row ["file_size"] ) . "</td>";
 		echo "<td>" . htmlentities ( $row ["new_date"] ) . "</td>";
-		echo "<td>" . ProtectURL(( $row ["file_path"] )) ."</td></tr>\n";	
+		echo "<td style = \"text-align: center;\">" . ProtectURL(( $row ["file_path"] )) ."</td></tr>\n";	
 	}
 	closeMySql ( $db_con, $personalFiles );
-	echo "</table>";	
+	echo "</table></div>";	
 } 
 
 else {

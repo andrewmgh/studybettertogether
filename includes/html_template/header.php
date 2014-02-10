@@ -11,9 +11,9 @@ require_once 'includes/functionality/sessionManagement.php';
 <head>
 	<meta charset="utf-8">
 	<title>Study Better Together</title>
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/ui.dropdownchecklist.standalone.css" />   
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<?php echo ($_SERVER['PHP_SELF'] == "/studybettertogether/upload.php") ? "<link rel='stylesheet' type='text/css' href='css/ui.dropdownchecklist.standalone.css' />"  : ""; 	?>
 	<link rel="shortcut icon" href="img/sbt_favicon.ico">
 </head>
 
@@ -29,16 +29,8 @@ require_once 'includes/functionality/sessionManagement.php';
 
 						<nav>
 					<ul>
-						<?php echo ($account_type == 'Admin') ? "<li><a href='manageusers.php'>Manage Users</a>\n<ul><li><a href='manageclasses.php'>Manage Classes</a>\n<li><a href='changeFileTypes.php'>Change File Types</a></li></li>\n</ul></li>\n" : ""; ?>
-						<li><a href="home.php">Home</a></li>		
-						<li><a href="study.php">Study Advice</a>
-								<ul>
-									<li><a href="#">Academic Writing</a></li>
-									<li><a href="#">Presentation Skils</a></li>
-									<li><a href="#">Exam Stress</a></li>
-									<li><a href="#">Useful Links</a></li>
-								</ul>
-						</li>		
+					<li><a href="home.php">Home</a></li>
+						<?php echo ($account_type == 'Admin') ? "<li><a href='manageusers.php'>Manage Users</a>\n<ul><li><a href='manageclasses.php'>Manage Classes</a>\n<li><a href='changeFileTypes.php'>Change File Types</a></li></li>\n</ul></li>\n" : ""; ?>		
 						<li><a href="upload.php">Upload Files</a>
 								<ul>
 									<li><a href="acceptablefiles.php">Acceptable Files</a></li>
@@ -56,7 +48,8 @@ require_once 'includes/functionality/sessionManagement.php';
 						</li>	
 						<li><a href="studyforum.php">Study Forum</a>
 								<?php echo ($account_type == 'Admin') ? "<ul><li><a href='studyforum_admin.php'>Forum Admin</a></li></ul></li>" : ""; ?>
-						</li>						
+						</li>	
+						<li><a href="study.php">Study Advice</a></li>						
 						<li id="rightMenu"><a href="help.php">Help</a>
 								<ul>
 									<li><a href="siteusers.php">List of Users</a></li>

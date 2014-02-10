@@ -1,13 +1,14 @@
 <?php require_once 'includes/html_template/header.php';?>
 
 <h2 class = "mainPageHeading">Acceptable File Types</h2>
-
+<div class = "acceptableFiles">
 <h5>The following file types are allowed to be uploaded.</h5> <br />
+			<div class = "tabledefault">
 				<table>
 					<tr>
-						<th>File Name</th>
-						<th>File Description</th>
-						<th>File Extension</th>
+						<td>File Name</td>
+						<td>File Description</td>
+						<td>File Extension</td>
 					</tr>
 					<?php				
 					$allowedFiles =newQuery($db_con, "SELECT * FROM allowed_file_types");
@@ -19,6 +20,6 @@
 					closeMySql($db_con, $allowedFiles);
 					?>
 				</table>
-
-
+			</div>
+</div>
 <?php require_once 'includes/html_template/footer.php';?>

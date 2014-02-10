@@ -43,7 +43,20 @@ function personalSearch($db_con, $username, $userID, $sharingStatus, $fileName, 
 	if ($sharingStatus == "My_Private_Files"){$sharingStatus = "private";}
 	if ($sharingStatus == "My_Specifically_Shared_Files"){$sharingStatus = "specific";}
 	
-
+	//Start creating the results table
+	$searchResults = <<<_Search
+		<table>
+		<tr>
+		<td>File Owner</td>
+		<td>Sharing Status</td>
+		<td>Shared With</td>
+		<td>File Name</td>
+		<td>File Type</td>
+		<td>Description</td>
+		<td>Subject</td>
+		<td>Download</td>
+_Search;
+	
 	//if statements to specify what query to use
 	if($sharingStatus == "Files_Shared_With_Me"){
 		$amendedUserID = "-".$userID."-";
@@ -60,7 +73,8 @@ function personalSearch($db_con, $username, $userID, $sharingStatus, $fileName, 
 		AND description LIKE '%$description%'
 		AND subject LIKE '%$subject%'
 _QUERY;
-		}
+		$searchResults .= "</tr>";
+	}
 	else{
 		$query = <<<_QUERY
 		SELECT file_id, file_name, username, sharing_status, shared_with, owner_id, file_short_name, description, subject, file_path FROM files 
@@ -76,27 +90,14 @@ _QUERY;
 		AND description LIKE '%$description%' 
 		AND subject LIKE '%$subject%'
 _QUERY;
+		$searchResults .= "<td>Delete</td></tr>";
 		}
 
 $searchQuery= newQuery($db_con, $query);
 		
 	//If there is at least one result from the query - output the results, if not then output an error msg.
 	if (mysqli_num_rows ( $searchQuery ) >= 1) {
-$searchResults = <<<_Search
-	<h4>Search Results</h4>
-	<table>
-	<tr>
-	<th>File Owner</th>
-	<th>Sharing Status</th>
-	<th>Shared With</th>	
-	<th>File Name</th>
-	<th>File Type</th>
-	<th>Description</th>
-	<th>Subject</th>
-	<th>Download</th>
-	<th>Del</th>
-	</tr>
-_Search;
+
 		while ( $row = mysqli_fetch_array ( $searchQuery ) ) {
 			// convert string of user_id's into array of usernames for display
 			$sharedWith = "";
@@ -107,11 +108,11 @@ _Search;
 					$row2 = mysqli_fetch_array ( $username_result );
 					$sharedWith_username =  $row2["username"];
 					mysqli_free_result($username_result);
-					$sharedWith.= "$sharedWith_username<br /> ";
+					$sharedWith.= "&#8226;$sharedWith_username<br /> ";
 				}
 			}	
 
-			//output search results
+			//output search results	
 			$file_ID = htmlentities ( $row ["file_id"] );
 			
 			$searchResults .= "<tr><td>" . htmlentities ( $row ["username"] ) . "</td>";
@@ -121,19 +122,17 @@ _Search;
 			$searchResults .= "<td>" . htmlentities ( $row ["file_short_name"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["description"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["subject"] ) . "</td>";
-			$searchResults .= "<td>" . ProtectURL(htmlentities ( $row ["file_path"] )) ."</td>";
+			$searchResults .= "<td style = \"text-align: center;\">" . ProtectURL(htmlentities ( $row ["file_path"] )) ."</td>";
 			
 			//Only show delete button if the current user is the file owner
 			if ($row ["username"] == $username){
-			$searchResults .= "<td><span onClick=\"return confirm('Are you sure you want to permanently Delete this file? NOTE: This cannot be undone!');\"><a href=\"includes/functionality/deletefile.php?deletefile=". $file_ID . "\"><button>Delete</button></a></span></td>\n</tr>\n";
+			$searchResults .= "<td style = \"text-align: center;\"><span onClick=\"return confirm('Are you sure you want to permanently Delete this file? NOTE: This cannot be undone!');\"><a href=\"includes/functionality/deletefile.php?deletefile=". $file_ID . "\"><button>Delete</button></a></span></td>\n</tr>\n";
 			} 
 			else{
-			$searchResults .= "<td></td></tr>\n";	
+			$searchResults .= "</tr>\n";	
 			}
 		}
-		
-		
-		
+	
 		mysqli_free_result($searchQuery);
 		$searchResults .= "</table>";
 		return $searchResults;

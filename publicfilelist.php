@@ -15,16 +15,17 @@ _SEARCH;
 
 <h2 class = "mainPageHeading">Public Files</h2>
 <h5>This page displays the full list of public files available to download</h5> <br />
+				<div class = "tabledefault">
 				<table>
 					<tr>
-						<th>File Owner</th>
-						<th>File Name</th>
-						<th>File Type</th>
-						<th>File Size</th>
-						<th>Upload Date</th>
-						<th>Download</th>
+						<td>File Owner</td>
+						<td>File Name</td>
+						<td>File Type</td>
+						<td>File Size</td>
+						<td>Upload Date</td>
+						<td>Download</td>
 					</tr>
-					<?php				
+						<?php				
 					$publicFiles =newQuery($db_con, $search);
 					while ( $row = mysqli_fetch_array ( $publicFiles ) ) {
 						echo "<tr><td>" . htmlentities ( $row ["username"] ) . "</td>\n";
@@ -32,11 +33,11 @@ _SEARCH;
 						echo "<td>" . htmlentities ( $row ["file_short_name"] ) . "</td>\n";
 						echo "<td>" . htmlentities ( $row ["file_size"] ) . "</td>\n";
 						echo "<td>" . htmlentities ( $row ["new_date"] ) . "</td>\n";
-						echo "<td>" . ProtectURL(( $row ["file_path"] )) ."</td></tr>\n";						
+						echo "<td style = \"text-align: center;\">" . ProtectURL(( $row ["file_path"] )) ."</td></tr>\n";						
 					}
 					closeMySql($db_con, $publicFiles);
 					?>
 				</table>
-
+				</div>
 		
 <?php require_once 'includes/html_template/footer.php';?>

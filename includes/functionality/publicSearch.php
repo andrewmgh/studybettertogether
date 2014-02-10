@@ -48,15 +48,14 @@ $searchQuery= newQuery($db_con, $query);
 	if (mysqli_num_rows ( $searchQuery ) >= 1) {
 	
 $searchResults = <<<_Search
-	<h4>Search Results</h4>
 	<table>
 	<tr>
-	<th>File Owner</th>
-	<th>File Name</th>
-	<th>File Type</th>
-	<th>Description</th>
-	<th>Subject</th>
-	<th>Download</th>
+	<td>File Owner</td>
+	<td>File Name</td>
+	<td>File Type</td>
+	<td>Description</td>
+	<td>Subject</td>
+	<td>Download</td>
 	</tr>
 _Search;
 		while ( $row = mysqli_fetch_array ( $searchQuery ) ) {
@@ -65,7 +64,7 @@ _Search;
 			$searchResults .= "<td>" . htmlentities ( $row ["file_short_name"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["description"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["subject"] ) . "</td>";
-			$searchResults .= "<td>" . ProtectURL(( $row ["file_path"] )) ."</td></tr>\n";
+			$searchResults .= "<td style = \"text-align: center;\">" . ProtectURL(( $row ["file_path"] )) ."</td></tr>\n";
 		}
 		mysqli_free_result($searchQuery);
 		$searchResults .= "</table>";

@@ -38,15 +38,15 @@ if ($account_type != 'Admin') {
 <div class = "classdetails">
 <h4>Class Details</h4>				
 				<?php print isset($_GET['UpdateClass']) ? '<div class = "hiddenField"><p>' . ($_GET['UpdateClass']) . '</p></div>': ""; ?>
-				
-				<table>
+				<div class = "tabledefault">
+				<table id = "center">
 					<tr>
-						<th>Class Name</th>
-						<th>Class Code</th>
-						<th>Class Created</th>
-						<th>No. of Students</th>
-						<th>Edit</th>
-						<th>Delete</th>
+						<td>Class Name</td>
+						<td>Class Code</td>
+						<td>Class Created</td>
+						<td>No. of Students</td>
+						<td>Edit</td>
+						<td>Delete</td>
 					</tr>
 		
 					<?php		
@@ -63,13 +63,14 @@ if ($account_type != 'Admin') {
 								echo "<td>" . htmlentities ( $row2 ["NoPerClass"] ) . "</td>\n";
 							}  
 						
-						echo "<td><a href=\"editclasses.php?editClass=". $classID . "\"><button>Edit</button></a></td>\n";
-						echo "<td><span onClick=\"return confirm('Are you sure you want to Delete this class? This cannot be undone! Also - you can only delete classes that have no students');\"><a href=\"includes/functionality/deleteclass.php?deleteClass=". $classID . "\"><button>Delete</button></a></span></td>\n";
+						echo "<td style = \"text-align: center;\"><a href=\"editclasses.php?editClass=". $classID . "\"><button class='centerBtn'>Edit</button></a></td>\n";
+						echo "<td style = \"text-align: center;\"><span onClick=\"return confirm('Are you sure you want to Delete this class? This cannot be undone! Also - you can only delete classes that have no students');\"><a href=\"includes/functionality/deleteclass.php?deleteClass=". $classID . "\"><button class='centerBtn'>Delete</button></a></span></td>\n";
 						echo "</td></tr>\n\n";
 					}
 					closeMySql($db_con, $classdetails);
 					?>
 				</table>
+				</div>
 </div>		
 						
 <?php require_once 'includes/html_template/footer.php';?>
