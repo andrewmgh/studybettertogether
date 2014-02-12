@@ -8,6 +8,22 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/unoSlider.min.css" type="text/css" />
 <link rel="shortcut icon" href="img/sbt_favicon.ico">
+
+<!-- 
+source: http://unoslider.decodigothemes.com/ 
+Add javascript in head instead of boddy to stop errors in slider on page refresh
+-->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/unoSlider.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		// My Uno Slider
+		window.unoSlider = $('#sliderId').unoSlider({speed:5,animSpeed:2000,width:900});
+
+	});
+</script>
+
+
 </head>
 
 <body>
@@ -71,16 +87,6 @@
 
 
 	</div>
-<!-- source: http://unoslider.decodigothemes.com/ -->
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/unoSlider.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		// My Uno Slider
-		window.unoSlider = $('#sliderId').unoSlider({speed:5,animSpeed:2000,width:900});
-
-	});
-</script>
 
 <!-- 
 UnoSlider Options

@@ -14,6 +14,7 @@ require_once 'includes/functionality/sessionManagement.php';
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<?php echo ($_SERVER['PHP_SELF'] == "/studybettertogether/upload.php") ? "<link rel='stylesheet' type='text/css' href='css/ui.dropdownchecklist.standalone.css' />"  : ""; 	?>
+	<?php echo ($_SERVER['PHP_SELF'] == "/studybettertogether/chatroom.php") ? "<link rel='stylesheet' type='text/css' href='css/chatroom.css' />"  : ""; 	?>
 	<link rel="shortcut icon" href="img/sbt_favicon.ico">
 </head>
 
@@ -47,9 +48,15 @@ require_once 'includes/functionality/sessionManagement.php';
 								</ul>
 						</li>	
 						<li><a href="studyforum.php">Study Forum</a>
-								<?php echo ($account_type == 'Admin') ? "<ul><li><a href='studyforum_admin.php'>Forum Admin</a></li></ul></li>" : ""; ?>
+									<ul>
+									<li><a href="chatroom.php">Chat Room</a></li>
+								<?php echo ($account_type == 'Admin') ? "<li><a href='studyforum_admin.php'>Forum Admin</a></li></ul>" : "</ul>"; ?>
 						</li>	
-						<li><a href="study.php">Study Advice</a></li>						
+						<li><a href="study.php">Study Advice</a>
+							<ul>
+							<li><a href="studylinks.php">Useful Resources</a></li>
+							</ul>
+						</li>						
 						<li id="rightMenu"><a href="help.php">Help</a>
 								<ul>
 									<li><a href="siteusers.php">List of Users</a></li>
