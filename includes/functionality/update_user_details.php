@@ -1,15 +1,15 @@
 <?php
-require_once '../db/sql_functions.php';
-require_once 'common_functions.php';
-require_once 'sessionManagement.php';
 
 //If the update form has been posted then update the user details
 if (isset($_POST ['updateUserDetails'])){
+	require_once '../db/sql_functions.php';
+	require_once 'common_functions.php';
+	require_once 'sessionManagement.php';
 	updateUserDetails($db_con, $_POST ['user_id'], $_POST ['fname'], $_POST ['lname'], $_POST ['username'], $_POST ['email'], $_POST ['password'], $_POST ['class']);
 }
 
 else {
-	include 'logout.php';
+	require_once 'protectfiles.php';
 }
 
 

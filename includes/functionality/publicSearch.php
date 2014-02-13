@@ -1,30 +1,36 @@
 <?php 
-if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['publicsearch'])) //only runs the below php code if the public search form was submitted. 
-{
-	 	//Declare and initialise variables to solve any posible undefined variable errors
-		$fileName = $fileOwner =  $fileType = $description = $subject = "";
-		
-		//Take inputs from search form, clean with sanatiseInput function if necessary and  and store in variables
-		$fileName = sanatiseInput($db_con, $_GET ['fileName']);
-		$fileOwner = sanatiseInput($db_con, $_GET ['fileOwner']);
-		$fileType = sanatiseInput($db_con, $_GET ['fileType']);
-		$description = sanatiseInput($db_con, $_GET ['description']);
-		$subject = sanatiseInput($db_con, $_GET ['subject']);
-		
-		if($fileName || $fileOwner || $fileType || $fileType=="" || $description || $subject){
-		
-				$searchResults = publicSearch($db_con, $fileName, $fileOwner, $fileType, $description, $subject);
+if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/publicSearch.php"){
+	if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['publicsearch'])) //only runs the below php code if the public search form was submitted. 
+	{
+		 	//Declare and initialise variables to solve any posible undefined variable errors
+			$fileName = $fileOwner =  $fileType = $description = $subject = "";
+			
+			//Take inputs from search form, clean with sanatiseInput function if necessary and  and store in variables
+			$fileName = sanatiseInput($db_con, $_GET ['fileName']);
+			$fileOwner = sanatiseInput($db_con, $_GET ['fileOwner']);
+			$fileType = sanatiseInput($db_con, $_GET ['fileType']);
+			$description = sanatiseInput($db_con, $_GET ['description']);
+			$subject = sanatiseInput($db_con, $_GET ['subject']);
+			
+			if($fileName || $fileOwner || $fileType || $fileType=="" || $description || $subject){
+			
+					$searchResults = publicSearch($db_con, $fileName, $fileOwner, $fileType, $description, $subject);
+	
+					if ($searchResults == ""){
+						$uploadMsg = "<p> Sorry $firstname. No files match your search criteria</p>"; 
+						}
+					else {
+						$uploadMsg = "<p> The results of your search are below</p>";
+						} 
+			}
+			else {
+				$uploadMsg = "<p>Error...You have not selected any search criteria</p>";
+			}
+	}
 
-				if ($searchResults == ""){
-					$uploadMsg = "<p> Sorry $firstname. No files match your search criteria</p>"; 
-					}
-				else {
-					$uploadMsg = "<p> The results of your search are below</p>";
-					} 
-		}
-		else {
-			$uploadMsg = "<p>Error...You have not selected any search criteria</p>";
-		}
+}
+else {
+	require_once 'protectfiles.php';
 }
 
 function publicSearch($db_con, $fileName, $fileOwner, $fileType, $description, $subject) {

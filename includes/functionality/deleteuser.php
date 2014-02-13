@@ -19,7 +19,7 @@ if ((isset($_GET['deleteUser'])) && ($account_type == 'Admin')) {
 
 //If deleteUser is not set or current user is not administrator then log the user out
 else {
-	include 'logout.php';
+	require_once 'protectfiles.php';
 }
 
 

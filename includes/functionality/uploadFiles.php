@@ -16,10 +16,8 @@ if ($_SERVER ['REQUEST_METHOD'] == "POST")
 }
 
 else {
-	header('Location:http://localhost/studybettertogether/');
-	exit();
+	require_once 'protectfiles.php';
 }
-
 
 //Overall function to validate upload form
 function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileError, $description, $subject, $sharingStatus, $specificUsers, $terms, $username, $userID ){

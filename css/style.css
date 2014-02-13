@@ -87,9 +87,8 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		}		
 				
 	#main_header nav ul {
-	width: 97%;
+	width: 100%;
 	background: #3B5998; 
-	padding: 0 20px;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -679,10 +678,6 @@ text-align: center;
 }
 
 /* =======HELP PAGES CSS======== */
-
-#help_userdetails {
-	margin: 0;
-}
 
 .classdetails{
 	width: 80%;

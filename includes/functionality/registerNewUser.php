@@ -9,8 +9,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST")
 	
 }
 else {
-	header('Location:http://localhost/studybettertogether/');
-	exit();
+	require_once 'protectfiles.php';
 }		
 
 

@@ -8,6 +8,9 @@ if ($_SERVER['REQUEST_METHOD']== "POST") {
 		loginUser($db_con, $_POST['username'], $_POST ['password']);
 		
 }
+else {
+	require_once 'protectfiles.php';
+}
 
 
 function loginUser($db_con, $username, $password) {
@@ -23,7 +26,7 @@ function loginUser($db_con, $username, $password) {
 	//Login Failed
 		if (!(mysqli_num_rows ($result) == 1)) {
 			$loginError= "Your login details are incorrect";
-			header("Location:../../index.php?Error=$loginError");
+			header("Location:../../index.php?Message=$loginError");
 			closeMySql($db_con, $result);
 			exit();	
 			

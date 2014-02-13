@@ -1,15 +1,15 @@
 <?php
-require_once '../db/sql_functions.php';
-require_once 'common_functions.php';
-require_once 'sessionManagement.php';
 
 //If the update form has been posted then update the class details
 if (isset($_POST ['updateClassDetails'])){
+	require_once '../db/sql_functions.php';
+	require_once 'common_functions.php';
+	require_once 'sessionManagement.php';
 	updateClassDetails($db_con, $_POST ['edit_id'], $_POST ['className'], $_POST ['classCode'], $_POST ['regCode']);
 }
 
 else {
-	include 'logout.php';
+	require_once 'protectfiles.php';
 }
 
 

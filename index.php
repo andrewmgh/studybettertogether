@@ -39,7 +39,7 @@ Add javascript in head instead of boddy to stop errors in slider on page refresh
 						<label for = "password">Password: <input type="password" id="password" name="password" required></label> 
 						<input type="submit" name="login" value="Log In">
 					</form>
-					<?php print isset($_GET['Error']) ? '<span id = "login_error">' . ($_GET['Error']) . '</span>': ""; ?>
+					<?php print isset($_GET['Message']) ? '<span id = "login_error">' . ($_GET['Message']) . '</span>': ""; ?>
 				</span>
 				<nav><p>.... collaborative learning through sharing resources, asking questions and discussing issues ....</p></nav>		
 		</div>

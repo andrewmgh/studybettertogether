@@ -1,38 +1,42 @@
 <?php 
 //Use Full Index searches on fields using Match / against SQL queries
 //Only show main headings in table and have an info button make a jquery pop up appear with more details on each file - http://buckwilson.me/lightboxme/
+if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/personalSearch.php"){
 
-
-if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['search']))//only runs the below php code if the personal search form was submitted. 
-{
-	 	//Declare and initialise variables to solve any posible undefined variable errors
-		$fileName = $fileOwner =  $fileType = $description = $subject = "";
-		$sharingStatus = sanatiseInput($db_con, $_GET ['sharingStatus']);
-		
-		//if the user chose a sharing status...
-		if($sharingStatus != ""){
-				//Take remaining inputs from search form, clean with sanatiseInput function and store in variables
-				$fileName = sanatiseInput($db_con, $_GET ['fileName']);
-				$fileOwner = sanatiseInput($db_con, $_GET ['sharedBy']);
-				$fileType = sanatiseInput($db_con, $_GET ['fileType']);
-				$description = sanatiseInput($db_con, $_GET ['description']);
-				$subject = sanatiseInput($db_con, $_GET ['subject']);		
-		
-				//run the search results function
-				$searchResults = personalSearch($db_con, $username, $userID, $sharingStatus, $fileName, $fileOwner, $fileType, $description, $subject);
-
-				//if no results are found, output an error, else output a success msg
-				if ($searchResults == ""){
-					$uploadMsg = "<p> Sorry $firstname. No files match your search criteria</p>"; 
-					}
-				else {
-					$uploadMsg = "<p> The results of your search are below</p>";
-					} 
-		}
-		else {
-			$uploadMsg = "<p>You first need to select a sharing status</p>";
-		}
+	if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['search']))//only runs the below php code if the personal search form was submitted. 
+	{
+		 	//Declare and initialise variables to solve any posible undefined variable errors
+			$fileName = $fileOwner =  $fileType = $description = $subject = "";
+			$sharingStatus = sanatiseInput($db_con, $_GET ['sharingStatus']);
+			
+			//if the user chose a sharing status...
+			if($sharingStatus != ""){
+					//Take remaining inputs from search form, clean with sanatiseInput function and store in variables
+					$fileName = sanatiseInput($db_con, $_GET ['fileName']);
+					$fileOwner = sanatiseInput($db_con, $_GET ['sharedBy']);
+					$fileType = sanatiseInput($db_con, $_GET ['fileType']);
+					$description = sanatiseInput($db_con, $_GET ['description']);
+					$subject = sanatiseInput($db_con, $_GET ['subject']);		
+			
+					//run the search results function
+					$searchResults = personalSearch($db_con, $username, $userID, $sharingStatus, $fileName, $fileOwner, $fileType, $description, $subject);
 	
+					//if no results are found, output an error, else output a success msg
+					if ($searchResults == ""){
+						$uploadMsg = "<p> Sorry $firstname. No files match your search criteria</p>"; 
+						}
+					else {
+						$uploadMsg = "<p> The results of your search are below</p>";
+						} 
+			}
+			else {
+				$uploadMsg = "<p>You first need to select a sharing status</p>";
+			}
+		
+	}
+}
+else {
+	require_once 'protectfiles.php';
 }
 
 

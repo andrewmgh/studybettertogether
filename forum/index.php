@@ -30,7 +30,7 @@ define('THEMES_DIR', 'themes');
 
 session_start();
 
-if (!(isset ( $_SESSION ['username'] ))) { header ( 'Location:http://localhost/studybettertogether/' );	exit(); }  //Added in by Andrew
+if (!(isset ( $_SESSION ['username'] ))) { require_once '../includes/functionality/protectfiles.php'; }  //Added in by Andrew
 
 include('config/db_settings.php');
 include('includes/functions.inc.php');
