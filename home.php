@@ -14,8 +14,8 @@
 	</tr>
 	<tr>
 		<td class ="column1"><a href ="upload.php"><img alt="Upload Files" src="img/upload.png" height="125" width="125" /></a></td>
-		<td class ="column2"><a href ="searchPublicfiles.php"><img alt="Search Public Files" src="img/searchPublic2.png" height="125" width="125" /></a></td>
-		<td class ="column3"><a href ="searchPersonalfiles.php"><img alt="Search Personal Files" src="img/searchPrivate2.png" height="125" width="125" /></a></td>
+		<td class ="column2"><a href ="search_publicfiles.php"><img alt="Search Public Files" src="img/searchPublic2.png" height="125" width="125" /></a></td>
+		<td class ="column3"><a href ="search_personalfiles.php"><img alt="Search Personal Files" src="img/searchPrivate2.png" height="125" width="125" /></a></td>
 	</tr>
 	<tr>
 		<td class ="description">Upload and share notes, essays, projects or any other type of study resources. Choose to share files with all users, with specific users or even choose not to share your files at all.</td>
