@@ -54,9 +54,12 @@ Add javascript in head instead of boddy to stop errors in slider on page refresh
 				
 					<div id="sliderId">
 					  <ul>
-					    <li class="current"><img src="img/slider/Collaborative_Learning.jpg" alt=""></li>
-					    <li><img src="img/slider/teamwork.png" alt=""></li>
-
+					    <li class="current"><img src="img/slider/Collaborative_Learning.jpg" ></li>
+					    <li><img src="img/slider/teamwork.png" alt="" ></li>
+					    <li><img src="img/slider/sharefiles.jpg" alt=""></li>
+					    <li><img src="img/slider/forum2.png" alt="" ></li>	
+					    <li><img src="img/slider/studytips.jpg" alt="" ></li>
+					 						
 					  </ul>
 					  
 					</div>

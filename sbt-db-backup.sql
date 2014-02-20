@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2014 at 02:12 PM
+-- Generation Time: Feb 20, 2014 at 11:13 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -77,14 +77,15 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `register_code` varchar(100) NOT NULL,
   PRIMARY KEY (`class_id`),
   UNIQUE KEY `class_name` (`class_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `classes`
 --
 
 INSERT INTO `classes` (`class_id`, `class_name`, `class_code`, `class_register_date`, `register_code`) VALUES
-(1, 'IBI Test Class', 'IBI', '2014-01-08 11:33:30', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70');
+(1, 'IBI Test Class', 'IBI', '2014-01-08 11:33:30', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70'),
+(2, 'NCI 4th Year Computing', 'BSHBSCE', '2014-02-10 23:00:33', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70');
 
 -- --------------------------------------------------------
 
@@ -104,8 +105,9 @@ CREATE TABLE IF NOT EXISTS `files` (
   `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`file_id`),
   KEY `user_id` (`owner_id`),
-  KEY `file_type_id` (`file_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+  KEY `file_type_id` (`file_type_id`),
+  FULLTEXT KEY `file_name` (`file_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `files`
@@ -178,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
   `description` varchar(255) NOT NULL DEFAULT '',
   `accession` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `forum_categories`
@@ -187,7 +189,8 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
 INSERT INTO `forum_categories` (`id`, `order_id`, `category`, `description`, `accession`) VALUES
 (1, 1, 'General', '', 0),
 (2, 2, 'Social', '', 0),
-(6, 0, 'IBI Test Class', '', 0);
+(6, 0, 'IBI Test Class', '', 0),
+(7, 0, 'NCI 4th Year Computing', '', 0);
 
 -- --------------------------------------------------------
 
@@ -236,9 +239,9 @@ CREATE TABLE IF NOT EXISTS `forum_entries` (
 --
 
 INSERT INTO `forum_entries` (`id`, `pid`, `tid`, `uniqid`, `time`, `last_reply`, `edited`, `edited_by`, `user_id`, `name`, `subject`, `category`, `email`, `hp`, `location`, `ip`, `text`, `tags`, `show_signature`, `email_notification`, `marked`, `locked`, `sticky`, `views`, `spam`, `spam_check_status`, `edit_key`) VALUES
-(19, 0, 19, '52b2e68319d7d', '2013-12-19 12:29:25', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', '[b]Hi all[/b]\r\n\r\nWelcome to our new collaborative learning website! \r\n\r\nHope you have fun :-)', '', 0, 0, 0, 0, 0, 30, 0, 0, ''),
-(20, 19, 19, '52e3e1e9a0b9b', '2014-01-25 16:10:26', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 2, '', 'Welcome', 1, '', '', '', '::1', 'Thanks Mimi', '', 0, 0, 0, 0, 0, 19, 0, 0, ''),
-(21, 20, 19, '52eba2a710f1b', '2014-01-31 13:18:41', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', 'No Prob', '', 0, 0, 0, 0, 0, 14, 0, 0, '');
+(19, 0, 19, '52b2e68319d7d', '2013-12-19 12:29:25', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', '[b]Hi all[/b]\r\n\r\nWelcome to our new collaborative learning website! \r\n\r\nHope you have fun :-)', '', 0, 0, 0, 0, 0, 32, 0, 0, ''),
+(20, 19, 19, '52e3e1e9a0b9b', '2014-01-25 16:10:26', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 2, '', 'Welcome', 1, '', '', '', '::1', 'Thanks Mimi', '', 0, 0, 0, 0, 0, 21, 0, 0, ''),
+(21, 20, 19, '52eba2a710f1b', '2014-01-31 13:18:41', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', 'No Prob', '', 0, 0, 0, 0, 0, 16, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -415,7 +418,7 @@ INSERT INTO `forum_settings` (`name`, `value`) VALUES
 ('cookie_validity_days', '30'),
 ('access_permission_checks', '0'),
 ('daily_actions_time', '3:30'),
-('next_daily_actions', '1391743800'),
+('next_daily_actions', '1392348600'),
 ('auto_lock_old_threads', '0'),
 ('max_read_items', '0'),
 ('delete_ips', '0'),
