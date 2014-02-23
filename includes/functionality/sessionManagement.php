@@ -25,6 +25,20 @@ if (isset ( $_SESSION ['username'] )) {
 		$_SESSION['forum_user_id'] = $userID;
 	    $_SESSION['forum_user_name'] = $username;
 	    $_SESSION['forum_user_type'] = $forumType;
+	 /*	$_SESSION['ajaxChatUserName'] = $username;
+	 	$_SESSION['ajaxChatUserID'] = $userID;
+	    $_SESSION['ajaxChatLoginUserName'] = $username;
+	     ajaxChatUserRole
+	    [ajaxChatUserName] => admin 
+	    [ajaxChatLoginUserName] => admin 
+	    [ajaxChatUserRole] => 3 
+	    [ajaxChatLoggedIn] => 1 
+	    [ajaxChatLoginTimeStamp] => 1393162874 
+	    [ajaxChatIP] => ::1 
+	    [ajaxChatChannel] => 0 
+	    [ajaxChatChannelEnterTimeStamp] => 1393162874 
+	    [ajaxChatStatusUpdateTimeStamp] => 1393163236 
+	    [ajaxChatInactiveCheckTimeStamp] => 1393163179 */
 
 	    
 	    //Source: http://stackoverflow.com/questions/520237/how-do-i-expire-a-php-session-after-30-minutes
