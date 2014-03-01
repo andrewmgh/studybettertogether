@@ -30,7 +30,7 @@
 			<div class="main_form">
 					<h3>Registration Form</h3>
 					<?php print isset($_GET['Error']) ? '<div class = "hiddenField">' . ($_GET['Error']) . '</div>': ""; ?>
-					<form name="registerForm" action="includes/functionality/registerNewUser.php" method="POST">
+					<form name="registerForm" action="includes/functionality/registerNewUser.php" method="POST" onsubmit="return validateRegForm()">
 						<fieldset>
 						<p>
 						<label for="firstname">First Name: </label> 
@@ -95,7 +95,8 @@
 	</footer>
 
 	</div>
-
+<script src="js/form_validation.js"></script>
+	
 </body>
 </html>
 
