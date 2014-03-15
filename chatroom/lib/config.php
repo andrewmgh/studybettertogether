@@ -22,11 +22,11 @@ $config['dbConnection'] = array();
 // Database hostname:
 $config['dbConnection']['host'] = 'localhost';
 // Database username:
-$config['dbConnection']['user'] = 's561021_sbtadmin';
+$config['dbConnection']['user'] = 'sbtadmin';
 // Database password:
-$config['dbConnection']['pass'] = 'welearn2014';
+$config['dbConnection']['pass'] = 'welearn';
 // Database name:
-$config['dbConnection']['name'] = 's561021_sbt';
+$config['dbConnection']['name'] = 'sbt';
 // Database type:
 $config['dbConnection']['type'] = null;
 // Database link:
@@ -53,7 +53,7 @@ $config['langNames'] = array(
 // Available styles:
 $config['styleAvailable'] = array('beige','black','grey','Oxygen','Lithium','Sulfur','Cobalt','Mercury','Uranium','Plum','prosilver','subblack2','subSilver','Core','MyBB','vBulletin');
 // Default style:
-$config['styleDefault'] = 'prosilver';
+$config['styleDefault'] = 'subSilver';
 
 // The encoding used for the XHTML content:
 $config['contentEncoding'] = 'UTF-8';

@@ -21,19 +21,20 @@ require_once 'includes/html_template/header.php';
 					</p>			
 					<p>
 					<label for="description">Description:</label> 
-					<textarea placeholder="Optional" name = "description" ></textarea>
+					<textarea placeholder="Optional" name = "description"><?php print isset($_GET['Desc']) ? ($_GET['Desc']) : "";?></textarea>
 					</p>
 					<p>
 					<label for="subject">Subject: </label> 
-					<input type="text" id="subject" name="subject" placeholder="Optional" />
+					<input type="text" id="subject" name="subject" placeholder="Optional" value ="<?php print isset($_GET['Sub']) ? ($_GET['Sub']) : "";?>"/>
 					</p>
 					<p>
 					<label for="sharingStatus">Sharing Status: </label> 
-					<select name ="sharingStatus" id = "sharingStatus" required>
-						  <option value="" selected style='display:none;'>Select a Sharing Status:</option>
-						  <option value="public">Public</option>
-						  <option value="private">Private</option>
-						  <option value="specific">Specific User(s)</option>
+					<select name ="sharingStatus" id = "sharingStatus" required>	
+						<?php print isset($_GET['SharingS']) ? "<option value=\"$_GET[SharingS]\">$_GET[SharingS]</option>" : "<option value=\"\" selected style='display:none;'>Select a Sharing Status: </option>";?> 
+						<!--    <option value="" selected style='display:none;'>Select a Sharing Status:</option>-->
+						  <option value="Public">Public</option>
+						  <option value="Private">Private</option>
+						  <option value="Specific">Specific User(s)</option>
 					</select>
 					</p>
 					<p>
@@ -89,7 +90,7 @@ require_once 'includes/html_template/header.php';
 		toggle_SpecificSharingBox = function () {
 		    $("#specificSharingBox").hide();
 		    
-		    if ($(this).val() == 'specific' ){
+		    if ($(this).val() == 'Specific' ){
 		    $("#specificSharingBox").fadeIn(500);
 		    }
 		    

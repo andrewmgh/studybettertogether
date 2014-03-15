@@ -99,13 +99,13 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	 		else { 
 	 			mysqli_close ($db_con);
 	 			$uploadMsg = "Unfortunately there was an unforseen error with your upload. Please try again.";
-	 			header("Location:../../upload.php?Upload=$uploadMsg");
+	 			header("Location:../../upload.php?Upload=$uploadMsg&Desc=$description&Sub=$subject&SharingS=$sharingStatus");
 	 			exit();
 	 		} 
  	}
  	//if upload validation failed, redirect user to uploads page with error messages
 	else {
-		header("Location:../../upload.php?Upload=$uploadMsg");
+		header("Location:../../upload.php?Upload=$uploadMsg&Desc=$description&Sub=$subject&SharingS=$sharingStatus");
 		exit();	
 	} 
 }
@@ -114,13 +114,13 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 
 //Individual Upload Form Validation Functions
 function validateSharingStatus($sharingStatus){
-	if($sharingStatus == "public"){
+	if($sharingStatus == "Public"){
 		return "";
 	}
-	else if ($sharingStatus == "private"){
+	else if ($sharingStatus == "Private"){
 		return "";
 	}
-	else if ($sharingStatus == "specific"){
+	else if ($sharingStatus == "Specific"){
 		return "";
 	}
 	else {
@@ -129,7 +129,7 @@ function validateSharingStatus($sharingStatus){
 }
 
 function validateSpecificSharing ($sharingStatus, $specificUsers){
-	if(($sharingStatus == "specific") && ($specificUsers == "") ){
+	if(($sharingStatus == "Specific") && ($specificUsers == "") ){
 			return "You have chosen Specific User Sharing but have not specified any users  <br />";
 		}
 	else{
