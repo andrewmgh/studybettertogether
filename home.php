@@ -13,9 +13,9 @@
 		<th class ="column3"><p>Search <?php echo $firstname; ?>'s Files</p></th>
 	</tr>
 	<tr>
-		<td class ="column1"><a href ="upload.php"><img alt="Upload Files" src="img/upload.png" height="125" width="125" /></a></td>
-		<td class ="column2"><a href ="search_publicfiles.php"><img alt="Search Public Files" src="img/searchPublic2.png" height="125" width="125" /></a></td>
-		<td class ="column3"><a href ="search_personalfiles.php"><img alt="Search Personal Files" src="img/searchPrivate2.png" height="125" width="125" /></a></td>
+		<td class ="column1"><a href ="upload.php"><img alt="Upload Files" src="img/upload.jpg" height="125" width="125" /></a></td>
+		<td class ="column2"><a href ="search_publicfiles.php"><img alt="Search Public Files" src="img/searchPublic.jpg" height="125" width="125" /></a></td>
+		<td class ="column3"><a href ="search_personalfiles.php"><img alt="Search Personal Files" src="img/searchPrivate.jpg" height="125" width="125" /></a></td>
 	</tr>
 	<tr>
 		<td class ="description">Upload and share notes, essays, projects or any other type of study resources. Choose to share files with all users, with specific users or even choose not to share your files at all.</td>
@@ -29,18 +29,18 @@
 	</tr>
 	<tr>
 		<th class ="column1"><p>Chat on the Study Forum </p></th>
-		<th class ="column2"><p>View Study Advice</p></th>
+		<th class ="column2"><p>Log into the Chatroom</p></th>
 		<th class ="column3"><p>Find Help</p></th>
 	</tr>
 	<tr>
-		<td class ="column1"><a href ="studyforum.php"><img alt="Study Forum" src="img/chat.png" height="125" width="125" /></a></td>
-		<td class ="column2"><a href ="study.php"><img alt="Study Advice" src="img/study.jpg" height="125" width="125" /></a></td>
+		<td class ="column1"><a href ="studyforum.php"><img alt="Study Forum" src="img/chat.jpg" height="125" width="125" /></a></td>
+		<td class ="column2"><a href ="chatroom.php"><img alt="Chat Room" src="img/chatroom.jpg" height="125" width="205" /></a></td>
 		<td class ="column3"><a href ="help.php"><img alt="Help Page" src="img/support.jpg" height="125" width="125" /></a></td>
 	</tr>
 	<tr>
 		<td class ="description">Stuck on a project and don't know who to ask? Use the study forum to ask questions, discusss college projects and talk about any study related topics.</td>
-		<td class ="description">Looking for study tips and advice. This section will help you find what you are looking for.</td>
-		<td class ="description">Unsure how to use this site? This is the page for you.</td>
+		<td class ="description">Want to chat with other students right now? Log into the chatroom and see who else is online.</td>
+		<td class ="description">Unsure how to use this site? Here you will find a detailed user-manual that shows step by step how to use all the features on this website..</td>
 	</tr>
 </table>
 </div>	

@@ -33,7 +33,7 @@ require_once 'includes/functionality/sessionManagement.php';
 						<nav>
 					<ul>
 					<li><a href="home.php">Home</a></li>
-						<?php echo ($account_type == 'Admin') ? "<li><a href='manageusers.php'>Manage Users</a>\n<ul><li><a href='manageclasses.php'>Manage Classes</a>\n<li><a href='changeFileTypes.php'>Change File Types</a></li></li>\n</ul></li>\n" : ""; ?>		
+						<?php echo ($account_type == 'Admin') ? "<li><a href='manageusers.php'>Manage Users</a>\n<ul><li><a href='manageclasses.php'>Manage Classes</a>\n</li>\n</ul></li>\n" : ""; ?>		
 						<li><a href="upload.php">Upload Files</a>
 								<ul>
 									<li><a href="acceptablefiles.php">Acceptable Files</a></li>

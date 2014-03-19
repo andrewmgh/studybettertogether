@@ -22,14 +22,11 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		
 		#outer_header_wrapper{
 		width: 100%;	
-		
 		}
 		
 		#outer_content_wrapper {
 		width: 100%;		
-		background-image: url("../img/background.png");	
 		min-height: 400px;
-		
 		}
 		
 		#inner_content_wrapper {
@@ -47,7 +44,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		#outer_footer_wrapper {
 		
 		width: 100%;		
-		background-image: url("../img/background.png");	
+		
 		min-height: 400px;
 		padding-top: 50px;
 		
@@ -69,7 +66,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 			color: #404040;
 			line-height:1.45;
 			text-align:justify;
-			background-image: url("../img/background.png");	
+			background-image: url("../img/background.jpg");	
 		}
 		
 		.clearfloats {

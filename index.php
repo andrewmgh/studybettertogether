@@ -69,7 +69,7 @@ Add javascript in head instead of boddy to stop errors in slider on page refresh
 			</div>	
 			
 			<div id ="welcomeText">		
-				<div id="regImg"><a href= "register.php"><img src="img/registerbtn.png" alt = "register"></a></div><!-- Register Button - http://www.ibeaonline.org/assets/button.jpg -->
+				<div id="regImg"><a href= "register.php"><img src="img/registerbtn.jpg" alt = "register"></a></div><!-- Register Button - http://www.ibeaonline.org/assets/button.jpg -->
 		
 				<div id ="siteDescription">	
 					<p><strong>StudyBetterTogether</strong> is a web application designed to promote collaborative learning among college students by providing a facility to share study resources, ask questions and discuss college related topics online.</p>
