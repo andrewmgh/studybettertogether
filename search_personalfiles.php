@@ -10,14 +10,16 @@ require_once 'includes/functionality/personalSearch.php';
 			<h3>Search My Files</h3>
 		
 				<?php isset($_GET['del']) ? $uploadMsg="<p>The requested file \"".($_GET['del'])."\" has sucessfully been deleted</p>": ""; ?>
+				<?php isset($_GET['error']) ? $uploadMsg= "<p>You cannot delete a file that you do not own!</p>": ""; ?>
 				<?php print isset($uploadMsg) ? '<div class = "hiddenField">' . $uploadMsg . '</div>': ""; ?>
 
 				<form name="upload" action="search_personalfiles.php" method="GET" >
 					<fieldset>
 						<p>
-						<label for="sharingStatus">*Sharing Status:</label> 
+						<label for="sharingStatus">Sharing Status:</label> 
 						<select name ="sharingStatus" required>
-						<?php print isset($_GET['sharingStatus']) ? '<option value="'.$_GET['sharingStatus'].'">'.$_GET['sharingStatus'].'</option>' : '<option value="" selected style="display:none;">Select a Sharing Status:</option>'; ?>						
+						<?php print isset($_GET['sharingStatus']) ? '<option value="'.$_GET['sharingStatus'].'">'.$_GET['sharingStatus'].'</option>' : '<option value="All_My_Files">All My Files</option>'; ?>						
+							  
 							  <option value="My_Public_Files">My Public Files</option>
 							  <option value="My_Private_Files">My Private Files</option>
 							  <option value="My_Specifically_Shared_Files">My Specifically Shared Files</option>

@@ -39,7 +39,7 @@ function deleteuserFile($db_con, $file_id, $user_id, $url)
 
 	}
 	else{
-		header("Location:../../search_personalfiles.php?del=You cannot delete a file that you do not own!");
+		header("Location:../../search_personalfiles.php?error=true");
 		closeMySql($db_con, $ownerQuery);
 		exit();
 	}
