@@ -8,17 +8,17 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 /*  ==============GLOBAL CSS STYLES===============
 		
 		TEXT STYLES */
-		h1 {font-size:1.7em; font-weight: bold; padding: .5em;}
-		h2 {font-size:1.5em; font-weight: bold;	padding: .4em;}
-		h3 {font-size:1.3em; font-weight: bold; padding: .3em;}
-		h4 {font-size:1.2em; font-weight: bold; padding: .2em;}
-		h5 {font-size:1em; font-weight: bold; padding: .1em;}
-		h6 {font-size:0.8em; font-weight: bold; padding: .1em;}
-		p {font-size:0.9em; padding: .1em; }
+		h1 {font-size: 32px; font-weight: bold; padding: .5em;}
+		h2 {font-size: 24px; font-weight: bold;	padding: .4em;}
+		h3 {font-size: 19px; font-weight: bold; padding: .3em;}
+		h4 {font-size: 16px;; font-weight: bold; padding: .2em;}
+		h5 {font-size: 13px; font-weight: bold; padding: .1em;}
+		h6 {font-size: 11px; font-weight: bold; padding: .1em;}
 		
-		/* *{border: solid grey 1px !important;}
 		
-		=======FORMATTING WRAPPER STYLES======== */
+/* 		 *{border: solid grey 1px !important;}*/
+		
+		=======FORMATTING WRAPPER STYLES======== 
 		
 		#outer_header_wrapper{
 		width: 100%;	
@@ -64,7 +64,9 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		
 		body {
 			height: 100%;
-			font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+			font-family: verdana,helvetica,arial,sans-serif;
+			font-size: 13px;
+			color: #404040;
 			line-height:1.45;
 			text-align:justify;
 			background-image: url("../img/background.png");	
@@ -81,7 +83,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		}	
 		#main_header nav {
 			margin: 0.5% auto;
-			font-size: 1em;
+			font-size: 15px;
 			height: 43px;
 			text-align: center;
 		}		
@@ -110,19 +112,17 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 	height: 29px;
 	color: #ffffff;
 	padding-top: 4px;
-	font-size: 1em;
+	font-size: 15px;
 		}	
 	
 	#main_header nav ul li{
 		text-align: center;
 		display: inline-block;
-		
 		}	
 
 	#main_header nav ul li a {
-		display: block; padding: 5px 25px;
+		display: block; padding: 5px 22px;
 		color: #FFFFFF; text-decoration: none;
-	
 		}	
 	#main_header nav ul li:hover {
 			background: #293E6A;
@@ -149,8 +149,9 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 			float: none; 
 			border-left: none;
 			border-top: 1px solid #3B5998;
-			
+			font-size: 14px;
 			position: relative;
+				width: 175px;
 		}
 	#main_header nav ul ul li a {
 				padding: 5px 20px;
@@ -219,7 +220,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 	border-width:0px 1px 1px 0px;
 	text-align:left;
 	padding:5px;
-	font-size:12px;
+	font-size:13px;
 	font-family:Arial;
 	font-weight:normal;
 	color:#000000;
@@ -263,7 +264,6 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		 form input[type = "submit"], a button {
 		 background: #627AAD; 
 		     color: #FFFFFF;
-		     font-size: 12px;
 		     font-style:italic;
 		     border: 1px solid #ddd;
 		     -moz-border-radius: 5px; 
@@ -272,8 +272,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		     border-radius: 5px;
 		   	 height: 25px;
 		  	  margin-bottom: -1px;
-		  	  vertical-align: bottom;
-		  	 
+		  	  vertical-align: bottom; 
 		 }
 		
 		form input[type = "submit"]:hover, a button:hover {
@@ -285,7 +284,6 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 			}
 	
 		#main_footer p {
-			font-size: 0.9em;
 			text-align: center;
 			font-family:"Times New Roman", Times, serif;
 			color: red;	
@@ -304,7 +302,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		#logout p {
 		color: #003D99;
 		display: inline;
-		font-size: 0.8em;
+		font-size: 12px;
 		margin-right: 4px; 
 		font-weight: bold;  
 		}
@@ -350,6 +348,9 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		     font-weight:bold;
 		 }
 		 
+		 #login h6 {
+		margin-top:5px;
+		 }
 		  
 		 #login form #username, 
 		 #login form #password {
@@ -361,27 +362,25 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		 	 -o-border-radius: 5px;         
 		     border-radius: 5px;
 		     padding: 3px 0 3px 0;
-		     margin-bottom: -1px;
-		     font-size: 0.8em;
-		     
+		     margin-bottom: -1px;		     
 		 }
 		  
 		 #login form input[type = "submit"] {
-		     width: 55px;     
+		     width: 60px;
+		     height: 27px;     
 		    }
 		
 		#login_error {
 			width: 260px;
 			margin: 0 auto;
 			color: red;
-			font-size: 0.8em;
 			font-style:italic;
 			padding: 3px 0 0 0;
 		}	
 			
  		#promotion_wraper {
 			width: 925px;
-			margin: 1% auto 3% auto;
+			margin: 1% auto 5% auto;
 						}	 
 							
 		#promotion_wraper img {	
@@ -390,30 +389,34 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 			}				
 
 
+#welcomeText{
+	margin: 0 50px;
+}
+#welcomeText p{
+	margin-top: 15px;
+}
+#welcomeText strong, #regText h3{
+	font-size: 22px;
+	color: #005AA6;
+}
 
-		#regImg{	
-			float: right;
-			width: 260px;
-			margin: 10px 40px 20px 20px;
-			border: 2px solid #ffffff; 
-			-moz-border-radius: 50px;
-		    -webkit-border-radius: 50px;
-		 	-o-border-radius: 50px;    
-		     border-radius: 50px;
-		     padding: 2%;
-		
-		}	
-	
-	#regImg p{	
-			text-align: center;
-			
-		}
-	#regText {
-	float: left;
-	width: 580px;
-	margin: 20px 0 0 50px;
-	}
-		
+#bulletTitle{
+	font-size: 18px;
+	color: #005AA6;
+}
+
+#siteDescription{
+	width: 700px;
+}
+#siteDescription ul {
+	margin-left: 30px;
+}
+
+#regImg{	
+	float: right;			
+	padding: 2%;
+/* 	margin-top: 50px;	 */
+}	
 /* =======MAIN FORM======== */
 
 		.main_form {
@@ -441,7 +444,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		} 
 		
 		.main_form label {
-			font-size: 1.1em;
+			font-size: 14px;
 			color: #293E6A;
 			font-weight: bold;
 			display: inline-block;
@@ -467,12 +470,11 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		.main_form input[type = "submit"]	{
 		margin-top: 2%;
 		width: 100px;
-		font-size: 1em;
+		font-size: 14px;
 		height: 30px;
 		}
 		
 		.hiddenField{
-			font-size: 0.8em;
 		    text-align: center;
 		    color: red;
 		    padding: 1%;
@@ -485,7 +487,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		}	
 		
 		.hiddenField p {
-			font-size: 1.2em;
+			font-size: 15px;
 			font-weight: bold;
 			font-style: normal;
 			margin: 0 0 5px 0;
@@ -493,7 +495,12 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		}
 	
 /* =======REGISTRATION PAGE CSS======== */	
-
+#regText{
+	margin: 20px 75px 0 75px;
+}
+#regText p{
+	margin: 0 10px;
+}	
 #registerForm {
 	width: 60%;
 	margin: 1% auto;
@@ -509,82 +516,21 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 }		
 
 #registerForm label{
-	width: 150px;
+	width: 200px;
 }	
 	
-#registerForm input[type = "text"], #registerForm input[type = "password"], #registerForm input[type = "email"], #registerForm select{	
+#registerForm input[type = "text"], #registerForm input[type = "password"], #registerForm input[type = "email"]{	
 	width: 250px;
 }
 
+#registerForm select{	
+	width: 262px;
+}
+
 #registerForm fieldset {
-margin-left: 22%;
+margin-left: 65px;
 }	
 
-
-/* =======UPLOADS PAGE CSS======== */	
-
-
-#uploadForm, #editDetailsForm {
-	width: 70%;
-	margin: 2% auto 3% auto; !important
-}	
-
-#uploadForm fieldset, #editDetailsForm fieldset {
-margin: 2% 7% 0 7%;
-}	
-
-#uploadForm.hiddenField, #editDetailsForm.hiddenField, {
-	margin: 0 0 30px 0;
-}		
-
-#uploadForm p, #editDetailsForm p {
-	margin: 5px 0;
-	}
-	
-#uploadForm label {
-	width: 150px;
-}	
-#uploadForm .outside_label {
-	width: 300px;	
-}
-
-#uploadForm input[type = "text"], #uploadForm input[type = "password"], #uploadForm input[type = "file"], #uploadForm textarea {	
-	width: 400px;
-}
-
-#uploadForm textarea {
-	resize: none;
-	height: 75px
-}		
-
-.filesBtn:hover {
-	font-weight: normal; 
-	}
-
-#uploadForm select {
-	width: 410px;
-	
-}		
-
-.uploadSuccess {
-	text-align:left;
-	margin-left: 20%;
-	font-style: normal;
-	color: #000000;;
-}
-
-.uploadSuccess ul li {
-	list-style:none;
-}
-
-.specificuser {
-	list-style-type:disc !important; 
-	margin-left: 100px;
-	}
-
-.TaC_bullets {
-	margin: 0 0 10px 50px ;
-}
 
 /* ========	UPDATE USER PASSWORD CSS ========== */
 
@@ -689,7 +635,25 @@ width: 90%;
 margin: 0 auto;
 }
 
-/* =======PROFILE PAGE CSS======== */
+#editDetailsForm {
+	width: 70%;
+	margin: 2% auto 3% auto; !important
+}	
+
+#editDetailsForm fieldset {
+margin: 2% 7% 0 7%;
+}	
+
+#editDetailsForm.hiddenField {
+	margin: 0 0 30px 0;
+}	
+	
+#editDetailsForm p {
+	margin: 5px 0;
+	}
+	
+	
+/* =======HOME PAGE CSS======== */
 		
 		
 #siteContent {
@@ -701,7 +665,7 @@ margin: 0 auto;
 
 #siteContent table{
 border: none;
-font-size: 14px;
+font-size: 13px;
 }
 
 #siteContent .column1, #siteContent .column2, #siteContent .column3,  #siteContent .description{

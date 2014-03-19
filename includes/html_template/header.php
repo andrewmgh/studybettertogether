@@ -15,6 +15,8 @@ require_once 'includes/functionality/sessionManagement.php';
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<?php echo ($_SERVER['PHP_SELF'] == "/studybettertogether/upload.php") ? "<link rel='stylesheet' type='text/css' href='css/ui.dropdownchecklist.standalone.css' />"  : ""; 	?>
 	<?php echo ($_SERVER['PHP_SELF'] == "/studybettertogether/chatroom.php") ? "<link rel='stylesheet' type='text/css' href='css/chatroom.css' />"  : ""; 	?>
+	<?php echo ($_SERVER['PHP_SELF'] == "/studybettertogether/changepassword.php") ? "<script src='js/form_validation.js'></script>"  : ""; 	?>
+	
 	<link rel="shortcut icon" href="img/sbt_favicon.ico">
 </head>
 
@@ -22,7 +24,7 @@ require_once 'includes/functionality/sessionManagement.php';
 <div id="outer_header_wrapper">
 	<header>
 		<div id="main_header">
-			<img src="img/SBT_logo.png" alt="logo">
+			<a href="home.php"><img src="img/SBT_logo.png" alt="logo"></a>
 
 			<span id="logout" onClick="return confirm('Are you sure you want to logout?');">
 			<?php echo "<p>You are logged in as: <strong> $username </strong></p> <a href='includes/functionality/logout.php'><button>Logout</button></a>" ?>

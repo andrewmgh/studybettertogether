@@ -7,7 +7,7 @@ require_once 'includes/functionality/personalSearch.php';
 
 <div class ="searchForm">
 			<div class="main_form">
-			<h2>Search My Files</h2>
+			<h3>Search My Files</h3>
 		
 				<?php isset($_GET['del']) ? $uploadMsg="<p>The requested file \"".($_GET['del'])."\" has sucessfully been deleted</p>": ""; ?>
 				<?php print isset($uploadMsg) ? '<div class = "hiddenField">' . $uploadMsg . '</div>': ""; ?>

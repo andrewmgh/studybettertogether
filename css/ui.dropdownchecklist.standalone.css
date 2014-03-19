@@ -68,3 +68,99 @@
 	padding: 1px 2px 2px 2px;
 	
 }
+
+/* As the below CSS is specific to the uploads page, I am putting it here instead of the main css */
+
+/* =======UPLOADS PAGE CSS======== */	
+
+
+#uploadForm {
+	width: 70%;
+	margin: 2% auto 3% auto; !important
+}	
+
+#uploadForm fieldset {
+margin: 2% 7% 0 7%;
+}	
+
+#uploadForm.hiddenField {
+	margin: 0 0 30px 0;
+}		
+
+#uploadForm p {
+	margin: 5px 0;
+	}
+	
+#uploadForm label {
+	width: 150px;
+}	
+#uploadForm .outside_label {
+	width: 350px;	
+}
+
+#uploadForm input[type = "text"], #uploadForm input[type = "password"], #uploadForm input[type = "file"], #uploadForm textarea {	
+	width: 400px;
+}
+
+#uploadForm textarea {
+	resize: none;
+	height: 75px
+}		
+
+.filesBtn:hover {
+	font-weight: normal; 
+	}
+
+#uploadForm select {
+	width: 410px;
+	
+}		
+
+.uploadSuccess {
+	text-align: center;
+	font-style: normal;
+	color: #000000;
+	margin-bottom: 15px;
+}
+
+.uploadSuccess h4{
+	font-size: 18px;
+	color: #005AA6;
+	margin-bottom: 5px;
+}
+.specificuser {
+	list-style-type:disc !important; 
+	margin-left: 100px;
+	}
+
+.TaC_bullets {
+	margin: 0 0 10px 50px ;
+}
+
+.fileDetails {
+	padding:5px;
+	text-align: left;
+	margin: 0 auto;
+}
+
+.fileDetails td{
+	padding: 1px 10px;
+}
+
+.fileDetails td ul{
+	margin-left: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

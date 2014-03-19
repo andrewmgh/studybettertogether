@@ -4,14 +4,54 @@ require_once 'includes/html_template/header.php';
 
 <h2 class = "mainPageHeading">Upload Files</h2>
 <p>By selecting an option from the "Sharing Status" drop down menu, you can choose to either share files with everyone (Public), share files with specific users (Specific-Sharing) or else upload your own private files (Private).
-<strong>The maximum allowed file size is 2mb.</strong> </p>
+<strong>The maximum allowed file size is 5mb.</strong> </p>
 
 
-<div id ="uploadForm">
-			<div class="main_form">
-			
+		<div id ="uploadForm">
 		
-				<?php print isset($_GET['Upload']) ? '<div class = "hiddenField">' . ($_GET['Upload']) . '</div>': ""; ?>
+			
+		<?php 
+	
+		//Once a file has sucessfully been uploaded, this code will retreive the uploaded file details from the URL using and display them to the user.
+				print isset($_GET['Upload']) ? '<div class = "hiddenField">' . ($_GET['Upload']) . '</div>': ""; 
+				if (isset($_GET['Sucess'])) {
+					print" <div class=\"uploadSuccess\">
+							<h4> Success! - the following file has been uploaded: </h4>
+							<table class=\"fileDetails\">
+							<tr>
+							<td><strong>Name:</strong></td>
+							<td>". $_GET['Name'] ."</td>
+							</tr>
+							<tr>
+							<td><strong>Size:</strong></td>
+							<td>". $_GET['Size'] ."</td>
+							</tr>
+							<tr>
+							<td><strong>Type:</strong></td>
+							<td>".$_GET['Type'] ."</td>
+							</tr>
+							<tr>
+							<td><strong>Owner:</strong></td>
+							<td>". $_GET['Owner'] ."</td>
+							</tr>
+							<tr>
+							<td><strong>Sharing Status:</strong></td>
+							<td>". $_GET['Sharing'] ."</td>
+							</tr>"; 
+										
+					if (!($_GET['Specific'])=="") {
+					print"	<tr>
+							<td><strong>Shared With:</strong></td>
+							<td><ul>".$_GET['Specific']."</ul></td>
+							</tr>
+							</table></div>";
+						}
+					else{
+						print"</table></div>";
+					}
+				}
+		?>
+		<div class="main_form">
 				<form name="upload" action="includes/functionality/uploadFiles.php" method="POST" enctype="multipart/form-data">
 					<fieldset>
 

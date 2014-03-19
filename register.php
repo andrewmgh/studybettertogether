@@ -13,7 +13,7 @@
 	<div id="outer_header_wrapper">
 		<header>
 			<div id="main_header">
-				<img src="img/SBT_logo.png" alt="logo">
+				<a href="index.php"><img src="img/SBT_logo.png" alt="logo"></a>
 				<span id="returnHome">
 					<a href="index.php"><button>Back to Home Page</button></a>
 				</span>
@@ -84,6 +84,12 @@
 				</div>	
 		
 			</div>
+		<div id="regText">
+		<h3>How to register?</h3>
+		<p>To register a new account you will first  need a registration code from your lecturer. 
+		Once you have this code, fill in the above registration form and click Register. <strong>Happy Studying!</strong></p>
+		</div>		
+			
 		</div>
 	</div>
 	</div>

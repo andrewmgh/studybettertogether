@@ -11,8 +11,8 @@ if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/change
 			$PasswordValid = false;
 	
 			//Take inputs from new password form, clean with sanatiseInput function and store in variables
-			$newPassword = sanatiseInput($db_con, $_POST['newPassword']);
-			$confirmPassword = sanatiseInput($db_con, $_POST['confirmPassword']);
+			$newPassword = sanatiseInput($db_con, $_POST['password']);
+			$confirmPassword = sanatiseInput($db_con, $_POST['password_confirm']);
 	
 			// Validate Password
 			if($newPassword == "" || $confirmPassword == ""){

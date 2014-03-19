@@ -7,7 +7,7 @@ require_once 'includes/functionality/publicSearch.php';
 
 <div class ="searchForm">
 			<div class="main_form">
-			<h2>Search Public Files</h2>
+			<h3>Search Public Files</h3>
 		
 				<?php print isset($uploadMsg) ? '<div class = "hiddenField">' . $uploadMsg . '</div>': ""; ?>
 

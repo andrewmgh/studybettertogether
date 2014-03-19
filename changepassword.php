@@ -7,14 +7,15 @@ require_once 'includes/functionality/changeUserPassword.php';
 <div class ="inline_form">
 	<div class="main_form">
 				<?php print isset($PwdMsg) ? '<div class = "hiddenField">' . $PwdMsg . '</div>': ""; ?>
-				<form name="updateuserpassword" action="changepassword.php" method="POST">
+				<form onsubmit="return validatePassword()" name="updateuserpassword" action="changepassword.php" method="POST" >
+				
 						<p>
 						<label for="newPassword">New Password: </label> 
-						<input type="password" id="newPassword" name="newPassword" autofocus/>
+						<input type="password" id="password" name="password" autofocus required/>
 						</p>				
 						<p>
 						<label for="confirmPassword">Confirm Password: </label> 
-						<input type="password" id="confirmPassword" name="confirmPassword" />
+						<input type="password" id="password_confirm" name="password_confirm" required/>
 						</p>	
 						<p>
 						<input type="submit" name ="changePassword" value="Confirm" />
@@ -22,7 +23,8 @@ require_once 'includes/functionality/changeUserPassword.php';
 					</form>
 	</div>				
 </div>	
-			
-<?php require_once 'includes/html_template/footer.php';?>
+<?php
+
+ require_once 'includes/html_template/footer.php';?>
 
 

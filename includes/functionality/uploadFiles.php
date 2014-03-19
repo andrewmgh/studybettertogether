@@ -9,7 +9,7 @@ if ($_SERVER ['REQUEST_METHOD'] == "POST")
 	}
 	
 	else {
-		$uploadMsg = "Please choose a file to upload that is under 2mb";
+		$uploadMsg = "Please choose a file to upload that is under 5mb";
 		header("Location:../../upload.php?Upload=$uploadMsg");
 		exit();	
 	}
@@ -48,60 +48,49 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	$uploadMsg.= checkIfFileExists ($filePath);
 	 
 	if ($uploadMsg == "")	{
-	 		//retreive additional info on file type to display to user
-			$fileName = stripFileExtension($fileName, $fileExtension);
-			$Size_in_KB = number_format ( $fileSize / 1024 ) . ' kb';
-			$Result_fileID = newQuery ( $db_con, "SELECT file_type_id, file_description from allowed_file_types WHERE file_ext ='$fileExtension'" );
-			if ($row = mysqli_fetch_array ( $Result_fileID )) {
-				$file_type_ID = $row ['file_type_id'];
-				$file_description = $row ['file_description'];
-			} 
-			mysqli_free_result($Result_fileID);
-			
-	 		//start db transaction to commit file info
-	 		mysqli_autocommit($db_con, false);
-	 		$success = true;
+		 		//retreive additional info on file type to display to user
+				$fileName = stripFileExtension($fileName, $fileExtension);
+				$Size_in_KB = number_format ( $fileSize / 1024 ) . ' kb';
+				$Result_fileID = newQuery ( $db_con, "SELECT file_type_id, file_description from allowed_file_types WHERE file_ext ='$fileExtension'" );
+				if ($row = mysqli_fetch_array ( $Result_fileID )) {
+					$file_type_ID = $row ['file_type_id'];
+					$file_description = $row ['file_description'];
+				} 
+				mysqli_free_result($Result_fileID);
+				
+		 		//start db transaction to commit file info
+		 		mysqli_autocommit($db_con, false);
+		 		$success = true;
+		 		
+		 		$Uploadquery1 = newQuery ( $db_con, "INSERT INTO files (`owner_id`, `file_type_id`, `file_name`, `file_path`, `file_size`, `description`, `subject`) VALUES('$userID', '$file_type_ID', '$fileName', '$filePath', '$Size_in_KB', '$description', '$subject')");
+		 		$sharing_id = mysqli_insert_id($db_con);
+		 		if (!$Uploadquery1) {$success = false; }
+		 		
+		 		$Uploadquery2 = newQuery ( $db_con, "INSERT INTO file_sharing (`sharing_id`, `sharing_status`, `shared_with` ) VALUES ('$sharing_id', '$sharingStatus', '$specificUsersID')");
+		 		if (!$Uploadquery2) {$success = false; }
+		 		
 	 		
-	 		$Uploadquery1 = newQuery ( $db_con, "INSERT INTO files (`owner_id`, `file_type_id`, `file_name`, `file_path`, `file_size`, `description`, `subject`) VALUES('$userID', '$file_type_ID', '$fileName', '$filePath', '$Size_in_KB', '$description', '$subject')");
-	 		$sharing_id = mysqli_insert_id($db_con);
-	 		if (!$Uploadquery1) {$success = false; }
-	 		
-	 		$Uploadquery2 = newQuery ( $db_con, "INSERT INTO file_sharing (`sharing_id`, `sharing_status`, `shared_with` ) VALUES ('$sharing_id', '$sharingStatus', '$specificUsersID')");
-	 		if (!$Uploadquery2) {$success = false; }
-	 		
- 		
-	 		//if db transaction worked.
-	 	 	if ($success) {	
-	 	 		//complete transaction and close db connection
-	 	 		mysqli_commit($db_con); 
-	 	 		mysqli_close ($db_con);
-	 	 		
-	 	 		//upload file
-	 	 						move_uploaded_file($fileTempName, $filePath); 
-	 	 			 		 		
-				//return success msg with file details and redirect user to uploads page
-				$output = outputSpecificUsers($specificUsers); 
-				$uploadMsg = "<p> The following file was successfully uploaded: </p>
-				<div class=\"uploadSuccess\">
-				<ul>
-				<li><strong>Name:</strong> $fileName </li>
-				<li><strong>Size:</strong> $Size_in_KB</li>
-				<li><strong>Type:</strong> $file_description</li>
-				<li><strong>Owner:</strong> $username</li>
-				<li><strong>Sharing Status:</strong> $sharingStatus</li>
-				$output
-				</ul>
-				</div>";		 
-				header("Location:../../upload.php?Upload=$uploadMsg");
-				exit(); 			
-	 	 	} 
-	 	 		//if transaction failed, close the db connection and redirect user to uplaods page with error msg
-	 		else { 
-	 			mysqli_close ($db_con);
-	 			$uploadMsg = "Unfortunately there was an unforseen error with your upload. Please try again.";
-	 			header("Location:../../upload.php?Upload=$uploadMsg&Desc=$description&Sub=$subject&SharingS=$sharingStatus");
-	 			exit();
-	 		} 
+		 		//if db transaction worked.
+		 	 	if ($success) {	
+		 	 		//complete transaction and close db connection
+		 	 		mysqli_commit($db_con); 
+		 	 		mysqli_close ($db_con);
+		 	 		
+		 	 		//upload file
+		 	 		move_uploaded_file($fileTempName, $filePath); 
+		 	 			 		 		
+					//return details of uploaded file and redirect user to uploads page
+					$output = outputSpecificUsers($specificUsers); 
+					header("Location:../../upload.php?Sucess=$uploadMsg&Name=$fileName&Size=$Size_in_KB&Type=$file_description&Owner=$username&Sharing=$sharingStatus&Specific=$output");
+					exit(); 			
+		 	 	} 
+		 	 		//if transaction failed, close the db connection and redirect user to uplaods page with error msg
+		 		else { 
+		 			mysqli_close ($db_con);
+		 			$uploadMsg = "Unfortunately there was an unforseen error with your upload. Please try again.";
+		 			header("Location:../../upload.php?Upload=$uploadMsg&Desc=$description&Sub=$subject&SharingS=$sharingStatus");
+		 			exit();
+		 		} 
  	}
  	//if upload validation failed, redirect user to uploads page with error messages
 	else {
@@ -138,12 +127,12 @@ function validateSpecificSharing ($sharingStatus, $specificUsers){
 }
 
 function validateFileSize($fileSize){
-	$maxfileSize ="2097152";
+	$maxfileSize ="5242880"; //5 mb
 		
 	if ($fileSize > 0 && $fileSize <= $maxfileSize) {
 		return "";
 	} else {
-		return "The file must be between 1byte and 2 mb<br />";
+		return "The file must be between 1byte and 5 mb<br />";
 	}
 }
 
@@ -221,10 +210,11 @@ function arrayToString ($db_con, $array){
 
 
 function outputSpecificUsers ($array){
+	
 		foreach($array as $key => $value){
-			$sharedWith.= "<li class='specificuser'>". htmlentities($value). "</li>";
+			$sharedWith.= "<li>".htmlentities($value)."</li>";
 		}
 	
-		return "<li><strong>Shared With:</strong> $sharedWith";
+		return $sharedWith;
 }
 ?>
