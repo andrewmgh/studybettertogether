@@ -78,10 +78,10 @@ _QUERY;
 		<td>Shared With</td>
 		<td>File Name</td>
 		<td>File Type</td>
-		<td>Size</td>
 		<td>Description</td>
 		<td>Subject</td>
 		<td>Upload Date</td>
+		<td>Size</td>				
 		<td></td>
 		</tr>
 _Search;
@@ -113,10 +113,10 @@ _QUERY;
 		<td>Shared With</td>
 		<td>File Name</td>
 		<td>File Type</td>
-		<td>Size</td>
 		<td>Description</td>
 		<td>Subject</td>
 		<td>Upload Date</td>
+		<td>Size</td>				
 		<td></td>
 		<td></td>		
 		</tr>
@@ -158,10 +158,10 @@ $searchQuery= newQuery($db_con, $query);
 			$searchResults .= "<td>" . $sharedWith . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["file_name"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["file_short_name"] ) . "</td>";
-			$searchResults .= "<td>" . htmlentities ( $row ["file_size"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["description"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["subject"] ) . "</td>";
-			$searchResults .= "<td>" . htmlentities ( $row ["new_date"] ) . "</td>";			
+			$searchResults .= "<td>" . htmlentities ( $row ["new_date"] ) . "</td>";
+			$searchResults .= "<td>" . htmlentities ( $row ["file_size"] ) . "</td>";						
 			$searchResults .= "<td style = \"text-align: center;\">" . ProtectURL(htmlentities ( $row ["file_path"] )) ."</td>";
 			
 			//Only show delete button if the current user is the file owner

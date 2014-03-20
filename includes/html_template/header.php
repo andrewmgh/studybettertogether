@@ -24,7 +24,7 @@ require_once 'includes/functionality/sessionManagement.php';
 <div id="outer_header_wrapper">
 	<header>
 		<div id="main_header">
-			<a href="home.php"><img src="img/SBT_logo.png" alt="logo"></a>
+			<a href="home.php"><img src="img/SBT_logo.png" alt="SBT_logo" title="SBT_logo"></a>
 
 			<span id="logout" onClick="return confirm('Are you sure you want to logout?');">
 			<?php echo "<p>You are logged in as: <strong> $username </strong></p> <a href='includes/functionality/logout.php'><button>Logout</button></a>" ?>
@@ -39,16 +39,8 @@ require_once 'includes/functionality/sessionManagement.php';
 									<li><a href="acceptablefiles.php">Acceptable Files</a></li>
 								</ul>
 						</li>								
-						<li><a href="search_publicfiles.php">Public Files</a>
-								<ul>
-									<li><a href="publicfilelist.php">Full File list</a></li>
-								</ul>
-						</li>
-						<li><a href="search_personalfiles.php"><?php echo "$firstname's Files"?></a>
-								<ul>
-									<li><a href="personalfilelist.php">Full File list</a></li>
-								</ul>
-						</li>	
+						<li><a href="search_publicfiles.php">Public Files</a></li>
+						<li><a href="search_personalfiles.php"><?php echo "$firstname's Files"?></a></li>	
 						<li><a href="studyforum.php">Study Forum</a>
 									<ul>
 									<li><a href="chatroom.php">Chat Room</a></li>

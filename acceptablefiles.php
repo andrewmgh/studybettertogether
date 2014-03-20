@@ -2,7 +2,8 @@
 
 <h2 class = "mainPageHeading">Acceptable File Types</h2>
 <div class = "acceptableFiles">
-<h5>The following file types are allowed to be uploaded.</h5> <br />
+<h5>The following file types are allowed to be uploaded. 
+If you want to request a new file type be added then simply contact <a href="mailto:admin@studybettertogether.com?Subject=Request New File Type">Here</a></h5> <br />
 			<div class = "tabledefault">
 				<table>
 					<tr>

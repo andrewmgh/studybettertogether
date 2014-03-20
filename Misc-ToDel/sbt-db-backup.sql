@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2014 at 06:30 PM
+-- Generation Time: Mar 20, 2014 at 10:47 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `ajax_chat_messages` (
   PRIMARY KEY (`id`),
   KEY `message_condition` (`id`,`channel`,`dateTime`),
   KEY `dateTime` (`dateTime`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `ajax_chat_messages`
@@ -90,7 +90,20 @@ INSERT INTO `ajax_chat_messages` (`id`, `userID`, `userName`, `userRole`, `chann
 (11, 2147483647, 'ChatBot', 4, 0, '2014-02-23 17:13:31', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login MimiSBT'),
 (12, 2147483647, 'ChatBot', 4, 0, '2014-02-23 17:13:33', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout MimiSBT'),
 (13, 2147483647, 'ChatBot', 4, 0, '2014-02-23 17:13:34', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login MimiSBT'),
-(14, 2147483647, 'ChatBot', 4, 0, '2014-02-23 17:16:03', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan');
+(14, 2147483647, 'ChatBot', 4, 0, '2014-02-23 17:16:03', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(15, 2147483647, 'ChatBot', 4, 0, '2014-03-15 15:20:21', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(16, 2147483647, 'ChatBot', 4, 0, '2014-03-15 15:21:40', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login MimiSBT'),
+(17, 2147483647, 'ChatBot', 4, 0, '2014-03-15 15:21:49', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout MimiSBT'),
+(18, 2147483647, 'ChatBot', 4, 0, '2014-03-15 15:21:50', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login MimiSBT'),
+(19, 2147483647, 'ChatBot', 4, 0, '2014-03-15 15:21:54', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/roll MimiSBT 1d6 1'),
+(21, 2147483647, 'ChatBot', 4, 1000000001, '2014-03-15 15:22:01', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/delete 20'),
+(22, 2147483647, 'ChatBot', 4, 0, '2014-03-15 15:22:02', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout MimiSBT'),
+(23, 2147483647, 'ChatBot', 4, 0, '2014-03-19 12:29:30', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(24, 2147483647, 'ChatBot', 4, 0, '2014-03-19 13:01:08', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login MimiSBT'),
+(25, 2147483647, 'ChatBot', 4, 0, '2014-03-19 13:01:12', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout MimiSBT'),
+(26, 2147483647, 'ChatBot', 4, 0, '2014-03-19 18:06:49', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(27, 2147483647, 'ChatBot', 4, 0, '2014-03-19 20:20:06', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(28, 2147483647, 'ChatBot', 4, 0, '2014-03-19 20:20:21', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan');
 
 -- --------------------------------------------------------
 
@@ -194,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `files` (
   KEY `user_id` (`owner_id`),
   KEY `file_type_id` (`file_type_id`),
   FULLTEXT KEY `file_name` (`file_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `files`
@@ -206,7 +219,15 @@ INSERT INTO `files` (`file_id`, `owner_id`, `file_type_id`, `file_name`, `file_p
 (5, 2, 19, 'Group1_SKO_RequirementsSpecification', '../../../studybettertogether/files/2/Group1_SKO_RequirementsSpecification.pdf', '828 kb', 'desc', 'sub', '2013-12-07 13:10:47'),
 (12, 1, 1, 'CA BPE(1)', '../../../studybettertogether/files/1/CA_BPE(1).doc', '26 kb', 'CA for Business Process Engineering', 'BPE', '2014-02-03 23:42:17'),
 (17, 1, 12, 'BPE-07b Lean', '../../../studybettertogether/files/1/BPE-07b_Lean.pptx', '1,269 kb', '', '', '2014-02-05 14:55:30'),
-(18, 1, 12, 'BPE-07a-TQM', '../../../studybettertogether/files/1/BPE-07a-TQM.pptx', '1,342 kb', '', '', '2014-02-05 14:56:23');
+(18, 1, 12, 'BPE-07a-TQM', '../../../studybettertogether/files/1/BPE-07a-TQM.pptx', '1,342 kb', '', '', '2014-02-05 14:56:23'),
+(26, 2, 2, 'test - Copy (6) - Copy', '../../../studybettertogether/files/2/test_-_Copy_(6)_-_Copy.docx', '13 kb', 'tEEEss', 'test', '2014-03-19 16:59:59'),
+(27, 2, 2, 'test - Copy (5) - Copy', '../../../studybettertogether/files/2/test_-_Copy_(5)_-_Copy.docx', '13 kb', '', '', '2014-03-19 17:11:30'),
+(28, 2, 2, 'test - Copy (3) - Copy', '../../../studybettertogether/files/2/test_-_Copy_(3)_-_Copy.docx', '13 kb', '', '', '2014-03-19 17:12:55'),
+(29, 2, 2, 'test - Copy (4) - Copy', '../../../studybettertogether/files/2/test_-_Copy_(4)_-_Copy.docx', '13 kb', '', '', '2014-03-19 17:20:02'),
+(30, 2, 5, 'bmi_group_calculator_english', '../../../studybettertogether/files/2/bmi_group_calculator_english.xls', '3,989 kb', '', '', '2014-03-19 17:20:44'),
+(31, 2, 19, 'chy3cert-charity (1)', '../../../studybettertogether/files/2/chy3cert-charity_(1).pdf', '240 kb', '', '', '2014-03-19 17:22:24'),
+(32, 2, 19, 'chy3cert-charity (2)', '../../../studybettertogether/files/2/chy3cert-charity_(2).pdf', '240 kb', '', '', '2014-03-19 17:22:55'),
+(33, 2, 2, '2013 Tax reclaim Letter_Monaghan', '../../../studybettertogether/files/2/2013_Tax_reclaim_Letter_Monaghan.docx', '78 kb', '', '', '2014-03-19 17:25:52');
 
 -- --------------------------------------------------------
 
@@ -232,7 +253,15 @@ INSERT INTO `file_sharing` (`sharing_id`, `sharing_status`, `shared_with`) VALUE
 (5, 'public', ''),
 (12, 'specific', '-2-3-'),
 (17, 'specific', '-2-3-'),
-(18, 'specific', '-2-3-');
+(18, 'specific', '-2-3-'),
+(26, 'public', ''),
+(27, 'specific', '-1-3-'),
+(28, 'specific', '-1-3-'),
+(29, 'specific', '-1-3-'),
+(30, 'specific', '-1-3-'),
+(31, 'specific', '-1-3-'),
+(32, 'specific', '-1-3-'),
+(33, 'specific', '-1-3-');
 
 -- --------------------------------------------------------
 
@@ -326,9 +355,9 @@ CREATE TABLE IF NOT EXISTS `forum_entries` (
 --
 
 INSERT INTO `forum_entries` (`id`, `pid`, `tid`, `uniqid`, `time`, `last_reply`, `edited`, `edited_by`, `user_id`, `name`, `subject`, `category`, `email`, `hp`, `location`, `ip`, `text`, `tags`, `show_signature`, `email_notification`, `marked`, `locked`, `sticky`, `views`, `spam`, `spam_check_status`, `edit_key`) VALUES
-(19, 0, 19, '52b2e68319d7d', '2013-12-19 12:29:25', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', '[b]Hi all[/b]\r\n\r\nWelcome to our new collaborative learning website! \r\n\r\nHope you have fun :-)', '', 0, 0, 0, 0, 0, 33, 0, 0, ''),
-(20, 19, 19, '52e3e1e9a0b9b', '2014-01-25 16:10:26', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 2, '', 'Welcome', 1, '', '', '', '::1', 'Thanks Mimi', '', 0, 0, 0, 0, 0, 22, 0, 0, ''),
-(21, 20, 19, '52eba2a710f1b', '2014-01-31 13:18:41', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', 'No Prob', '', 0, 0, 0, 0, 0, 17, 0, 0, '');
+(19, 0, 19, '52b2e68319d7d', '2013-12-19 12:29:25', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', '[b]Hi all[/b]\r\n\r\nWelcome to our new collaborative learning website! \r\n\r\nHope you have fun :-)', '', 0, 0, 0, 0, 0, 35, 0, 0, ''),
+(20, 19, 19, '52e3e1e9a0b9b', '2014-01-25 16:10:26', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 2, '', 'Welcome', 1, '', '', '', '::1', 'Thanks Mimi', '', 0, 0, 0, 0, 0, 24, 0, 0, ''),
+(21, 20, 19, '52eba2a710f1b', '2014-01-31 13:18:41', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', 'No Prob', '', 0, 0, 0, 0, 0, 19, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -505,7 +534,7 @@ INSERT INTO `forum_settings` (`name`, `value`) VALUES
 ('cookie_validity_days', '30'),
 ('access_permission_checks', '0'),
 ('daily_actions_time', '3:30'),
-('next_daily_actions', '1393212600'),
+('next_daily_actions', '1395372600'),
 ('auto_lock_old_threads', '0'),
 ('max_read_items', '0'),
 ('delete_ips', '0'),

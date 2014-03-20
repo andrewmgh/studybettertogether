@@ -36,7 +36,7 @@ else {
 function publicSearch($db_con, $fileName, $fileOwner, $fileType, $description, $subject) {
 	
 $query = <<<_QUERY
-	SELECT file_name, sharing_status, username, file_short_name, description, subject, file_path FROM files 
+	SELECT file_name, sharing_status, username, file_short_name, description, subject, DATE_FORMAT(DATE(upload_date),'%D %b %Y') AS new_date, file_size, file_path FROM files 
 	INNER JOIN users ON files.owner_id = users.user_id
 	INNER JOIN file_sharing ON files.file_id = file_sharing.sharing_id
 	INNER JOIN allowed_file_types ON files.file_type_id = allowed_file_types.file_type_id 
@@ -54,15 +54,17 @@ $searchQuery= newQuery($db_con, $query);
 	if (mysqli_num_rows ( $searchQuery ) >= 1) {
 	
 $searchResults = <<<_Search
-	<table>
-	<tr>
-	<td>File Owner</td>
-	<td>File Name</td>
-	<td>File Type</td>
-	<td>Description</td>
-	<td>Subject</td>
-	<td>Download</td>
-	</tr>
+		<table>
+		<tr>
+		<td>File Owner</td>
+		<td>File Name</td>
+		<td>File Type</td>
+		<td>Description</td>
+		<td>Subject</td>
+		<td>Upload Date</td>
+		<td>Size</td>				
+		<td></td>
+		</tr>
 _Search;
 		while ( $row = mysqli_fetch_array ( $searchQuery ) ) {
 			$searchResults .= "<tr><td>" . htmlentities ( $row ["username"] ) . "</td>";
@@ -70,6 +72,8 @@ _Search;
 			$searchResults .= "<td>" . htmlentities ( $row ["file_short_name"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["description"] ) . "</td>";
 			$searchResults .= "<td>" . htmlentities ( $row ["subject"] ) . "</td>";
+			$searchResults .= "<td>" . htmlentities ( $row ["new_date"] ) . "</td>";
+			$searchResults .= "<td>" . htmlentities ( $row ["file_size"] ) . "</td>";			
 			$searchResults .= "<td style = \"text-align: center;\">" . ProtectURL(( $row ["file_path"] )) ."</td></tr>\n";
 		}
 		mysqli_free_result($searchQuery);

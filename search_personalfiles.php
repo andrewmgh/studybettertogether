@@ -18,12 +18,13 @@ require_once 'includes/functionality/personalSearch.php';
 						<p>
 						<label for="sharingStatus">Sharing Status:</label> 
 						<select name ="sharingStatus" required>
-						<?php print isset($_GET['sharingStatus']) ? '<option value="'.$_GET['sharingStatus'].'">'.$_GET['sharingStatus'].'</option>' : '<option value="All_My_Files">All My Files</option>'; ?>						
-							  
-							  <option value="My_Public_Files">My Public Files</option>
-							  <option value="My_Private_Files">My Private Files</option>
-							  <option value="My_Specifically_Shared_Files">My Specifically Shared Files</option>
-							  <option value="Files_Shared_With_Me">Files Shared With Me</option>
+					
+						<?php print isset($_GET['sharingStatus']) ? '<option value="'.$_GET['sharingStatus'].'">'. str_replace("_", " ", $_GET['sharingStatus']).'</option>' : ""; ?>						
+						<?php print ($_GET['sharingStatus']=="All_My_Files") ? "" : '<option value="All_My_Files">All My Files</option>'; ?>		  
+						<?php print ($_GET['sharingStatus']=="My_Public_Files") ? "" : '<option value="My_Public_Files">My Public Files</option>'; ?>	
+						<?php print ($_GET['sharingStatus']=="My_Private_Files") ? "" : '<option value="My_Private_Files">My Private Files</option>'; ?>	
+						<?php print ($_GET['sharingStatus']=="My_Specifically_Shared_Files") ? "" : '<option value="My_Specifically_Shared_Files">My Specifically Shared Files</option>'; ?>	
+						<?php print ($_GET['sharingStatus']=="Files_Shared_With_Me") ? "" : '<option value="Files_Shared_With_Me">Files Shared With Me</option>'; ?>	
 						</select>
 						</p>
 						

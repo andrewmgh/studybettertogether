@@ -31,7 +31,7 @@ Add javascript in head instead of boddy to stop errors in slider on page refresh
 	<div id="outer_header_wrapper">
 		<header>
 			<div id="main_header">
-				<a href="index.php"><img src="img/SBT_logo.png" alt="logo"></a>
+				<a href="index.php"><img src="img/SBT_logo.png" alt="SBT_logo" title="SBT_logo"></a>
 
 				<span id="login">
 					<form name="login" action="includes/functionality/login.php" method="POST">
@@ -56,11 +56,11 @@ Add javascript in head instead of boddy to stop errors in slider on page refresh
 				
 					<div id="sliderId">
 					  <ul>
-					    <li class="current"><img src="img/slider/Collaborative_Learning.jpg" ></li>
-					    <li><img src="img/slider/teamwork.png" alt="" ></li>
-					    <li><img src="img/slider/sharefiles.jpg" alt=""></li>
-					    <li><img src="img/slider/forum2.png" alt="" ></li>	
-					    <li><img src="img/slider/studytips.jpg" alt="" ></li>
+					    <li class="current"><img src="img/slider/Collaborative_Learning.jpg" alt="collaborative learning"></li>
+					    <li><img src="img/slider/teamwork.png" alt="teamwork" ></li>
+					    <li><img src="img/slider/sharefiles.jpg" alt="sharing files"></li>
+					    <li><img src="img/slider/forum2.png" alt="study forum" ></li>	
+					    <li><img src="img/slider/studytips.jpg" alt="study tips" ></li>
 					 						
 					  </ul>
 					  
@@ -69,7 +69,7 @@ Add javascript in head instead of boddy to stop errors in slider on page refresh
 			</div>	
 			
 			<div id ="welcomeText">		
-				<div id="regImg"><a href= "register.php"><img src="img/registerbtn.jpg" alt = "register"></a></div><!-- Register Button - http://www.ibeaonline.org/assets/button.jpg -->
+				<div id="regImg"><a href= "register.php"><img src="img/registerbtn.jpg" alt="register"></a></div><!-- Register Button - http://www.ibeaonline.org/assets/button.jpg -->
 		
 				<div id ="siteDescription">	
 					<p><strong>StudyBetterTogether</strong> is a web application designed to promote collaborative learning among college students by providing a facility to share study resources, ask questions and discuss college related topics online.</p>
