@@ -19,6 +19,7 @@ function loginUser($db_con, $username, $password) {
 	$password = sanatiseInput($db_con, $password);
 	
 	//Validate username and password against DB
+	$username = strtolower($username);
 	$password = encryptPwd($password);
 	$result = newQuery($db_con, "SELECT * FROM users WHERE username='$username' and password='$password'");
 	$row = mysqli_fetch_array($result);

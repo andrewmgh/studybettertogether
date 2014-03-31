@@ -25,6 +25,7 @@ else {
 			$password_confirm = sanatiseInput($db_con, $password_confirm);
 			$classname = sanatiseInput($db_con, $classname);
 			$register_code = sanatiseInput($db_con, $register_code);
+			$userName = strtolower($userName);
 			
 			//Validate the registration based on the validation functions below. Either append the error message or a blank string "" to the variable $regError
 			$regError = validateFirstName($firstName);
