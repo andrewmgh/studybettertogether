@@ -6,6 +6,9 @@ if (isset ( $_SESSION ['username'] )) {
 	
 		$username = $_SESSION ['username'];
 		
+	//update last_activity field in DB
+		mysqli_query($db_con,"UPDATE users SET last_activity = NOW() where username = '$username'");
+		
 	// select the data from DB and store in session
 		$sessionSearch = newQuery($db_con, "SELECT first_name, user_id, account_type FROM users WHERE username = '".$username."'");
 				if (mysqli_num_rows ( $sessionSearch ) == 1) {
@@ -25,39 +28,34 @@ if (isset ( $_SESSION ['username'] )) {
 		$_SESSION['forum_user_id'] = $userID;
 	    $_SESSION['forum_user_name'] = $username;
 	    $_SESSION['forum_user_type'] = $forumType;
-	 /*	$_SESSION['ajaxChatUserName'] = $username;
-	 	$_SESSION['ajaxChatUserID'] = $userID;
-	    $_SESSION['ajaxChatLoginUserName'] = $username;
-	     ajaxChatUserRole
-	    [ajaxChatUserName] => admin 
-	    [ajaxChatLoginUserName] => admin 
-	    [ajaxChatUserRole] => 3 
-	    [ajaxChatLoggedIn] => 1 
-	    [ajaxChatLoginTimeStamp] => 1393162874 
-	    [ajaxChatIP] => ::1 
-	    [ajaxChatChannel] => 0 
-	    [ajaxChatChannelEnterTimeStamp] => 1393162874 
-	    [ajaxChatStatusUpdateTimeStamp] => 1393163236 
-	    [ajaxChatInactiveCheckTimeStamp] => 1393163179 */
 
 	    
-	    //Source: http://stackoverflow.com/questions/520237/how-do-i-expire-a-php-session-after-30-minutes
-	    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {	// last request was more than 30 minutes ago 1800 seconds
-	    	
-	    	$history_filename ="chatroom_files/" .date( "Y-m-d" ) . "_log.html";
-	    	$fp = fopen($history_filename, 'a');
-	    	fwrite($fp, "<div class='msgln'><i><b>$username</b> has left the chat session.</i><br></div>");
-	    	fclose($fp);
-	    	 
-	    	session_unset();     // unset $_SESSION variable for the run-time
-	    	session_destroy();   // destroy session data in storage
+	//Log users out after 30 minutes of inactivity
+	//Based on a script found at: http://www.dynamicdrive.com/forums/showthread.php?25939-Automatic-Logout-after-15-minutes-of-inactive	
+		
+		$timeLimit = 30; // Set timeout minutes
+		$timeLimit = $timeLimit * 60; // Converts minutes to seconds
+		
+		if (isset($_SESSION['start_time'])) {
+		    $elapsed_time = time() - $_SESSION['start_time'];
+		    if ($elapsed_time >= $timeLimit) {
+			
+			//Sign user out of Chatroom
+			$_SESSION['ajaxChatLoggedIn'] = 0;
+			$delResult = newQuery($db_con, "DELETE FROM ajax_chat_online WHERE userID ='$userID'");
+					
+			//Destroy session and redirect user to index page
+			session_unset();
+			session_destroy();
 	    	
 	    	$loginError = "Your session has expired - please login again";
 			header("location:http://localhost/studybettertogether/index.php?Message=$loginError");   
 
-	    	//header("location:http://studybettertogether.com/index.php?Error=$loginError");   	
-	     }
-	    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+	    	closeMySql($db_con, $delResult);
+			exit();   	    
+		    }
+		}
+		$_SESSION['start_time'] = time();
 	
 }
 else {

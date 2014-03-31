@@ -12,12 +12,8 @@
 	session_destroy();
 	$loginError = "You have sucessfully logged out";
 	header("location:http://localhost/studybettertogether/index.php?Message=$loginError");
-	exit();
 	
-	//header("location:http://studybettertogether.com/");
-	//$_SESSION = array();
-	//setcookie(session_name(), '', time() - 2592000, '/');
-	//session_destroy();
-
+	closeMySql($db_con, $delResult);
+	exit();
 
 ?>

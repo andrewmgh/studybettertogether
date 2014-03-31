@@ -32,7 +32,12 @@ require_once 'includes/functionality/sessionManagement.php';
 
 						<nav>
 					<ul>
-					<li><a href="home.php">Home</a></li>
+					<li><a href="home.php">Home</a>
+						<ul>
+						<li><a href="survey.php">Feedback Survey</a></li>
+						</ul>
+					</li>
+					
 						<?php echo ($account_type == 'Admin') ? "<li><a href='manageusers.php'>Manage Users</a>\n<ul><li><a href='manageclasses.php'>Manage Classes</a>\n</li>\n</ul></li>\n" : ""; ?>		
 						<li><a href="upload.php">Upload Files</a>
 								<ul>

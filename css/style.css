@@ -44,7 +44,6 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		#outer_footer_wrapper {
 		
 		width: 100%;		
-		
 		min-height: 400px;
 		padding-top: 50px;
 		
@@ -56,7 +55,6 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		margin: 0 auto 20px auto;
 		padding: 1% 0%;
 		min-height: 500px;
-       
 		}
 		
 		body {
@@ -95,7 +93,6 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 	list-style: none;
 	position: relative;
 	display: inline-table;
-	min-height: 33px;
 	}	
 	
 	#main_header nav p{
@@ -145,10 +142,9 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 	#main_header nav ul ul li {
 			float: none; 
 			border-left: none;
-			border-top: 1px solid #3B5998;
 			font-size: 14px;
 			position: relative;
-				width: 175px;
+			width: 175px;
 		}
 	#main_header nav ul ul li a {
 				padding: 5px 20px;
@@ -280,12 +276,18 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 				background-color: #FF0000; 
 			}
 	
-		#main_footer p {
+		#main_footer p{
 			text-align: center;
 			font-family:"Times New Roman", Times, serif;
 			color: red;	
-			 font-weight: bold;
+			font-weight: bold;
 		}
+		
+		#main_footer h4{
+			text-align: center;
+			font-weight: bold;
+		}
+		
 		
 		strong {
 		    font-style: normal;
@@ -345,9 +347,6 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		     font-weight:bold;
 		 }
 		 
-		 #login h6 {
-		margin-top:5px;
-		 }
 		  
 		 #login form #username, 
 		 #login form #password {
@@ -702,3 +701,15 @@ margin: 0 auto;
 	margin: 20px auto;
 	text-align: center;
 }
+
+#studyResources{
+width: 80%;
+margin: 10px auto;
+}
+
+/* =======CHATROOM======== */
+
+.iframe{
+margin-bottom: 180px;
+}
+

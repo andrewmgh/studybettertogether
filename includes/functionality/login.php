@@ -33,10 +33,17 @@ function loginUser($db_con, $username, $password) {
 		}
 	//Login Success	
 		else {
+			//Start Session
 			session_start();
 			$_SESSION ['username'] = $username;
-			header('Location:../../home.php');
+			
+			
+			//Register User as logged-in in DB
+			$loggedIn= newQuery($db_con,"UPDATE users SET last_login = now() where username = '$username'");
 			closeMySql($db_con, $result);
+			
+			//Redirect user to home page
+			header('Location:../../home.php');
 			exit();		
 		}	
 }

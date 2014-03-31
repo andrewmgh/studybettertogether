@@ -53,7 +53,7 @@ $config['langNames'] = array(
 // Available styles:
 $config['styleAvailable'] = array('beige','black','grey','Oxygen','Lithium','Sulfur','Cobalt','Mercury','Uranium','Plum','prosilver','subblack2','subSilver','Core','MyBB','vBulletin');
 // Default style:
-$config['styleDefault'] = 'subSilver';
+$config['styleDefault'] = 'proSilver';
 
 // The encoding used for the XHTML content:
 $config['contentEncoding'] = 'UTF-8';
