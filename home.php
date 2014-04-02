@@ -20,7 +20,7 @@
 	<tr>
 		<td class ="description">Upload and share notes, essays, projects or any other type of study resources. Choose to share files with all users, with specific users or even choose not to share your files at all.</td>
 		<td class ="description">In this section you can search for and download all Public files. These are files that have been shared with all users.</td>
-		<td class ="description">Here you can search for and download all your own files. These are either files that you have chosen not to share or else files that have been specifically shared with you by another user.</td>
+		<td class ="description">Here you can search for and download all your own files. These are files that either you have uploaded yourself or else files that have been shared with you by another student.</td>
 	</tr>
 	<tr class="addSpace">
 	<td></td>
