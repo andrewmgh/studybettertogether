@@ -18,7 +18,7 @@
 		<td class ="column3"><a href ="search_personalfiles.php"><img alt="Search Personal Files" title="Search Personal Files" src="img/searchPrivate.jpg" height="125" width="125" /></a></td>
 	</tr>
 	<tr>
-		<td class ="description">Upload and share notes, essays, projects or any other type of study resources. Choose to share files with all users, with specific users or even choose not to share your files at all.</td>
+		<td class ="description">Upload and share notes, essays, projects or any other type of study resource. Choose from three different types of sharing status- Personal, Public or Specific-User sharing.</td>
 		<td class ="description">In this section you can search for and download all Public files. These are files that have been shared with all users.</td>
 		<td class ="description">Here you can search for and download all your own files. These are files that either you have uploaded yourself or else files that have been shared with you by another student.</td>
 	</tr>

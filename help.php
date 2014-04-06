@@ -6,7 +6,7 @@
 
 <div class = "pdf">
 <iframe
-src="http://www.studybettertogether.com/resources/SBT_UserManual_Draft1.pdf" 
+src="http://www.studybettertogether.com/resources/SBT_UserManual.pdf" 
 data-auto-height="false" 
 scrolling="yes" 
 type = "application/pdf"

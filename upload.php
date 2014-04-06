@@ -87,13 +87,39 @@ require_once 'includes/html_template/header.php';
 					<p id="specificSharingBox">
 					<label  for="SpecificSharing">Share with <br />Specific Users: </label>
 					<select id="s1" name="specificSharing[]" multiple="multiple" > <!--size="3" tabindex="1" style="height:150px; width:150px"--> 
-		 						 <?php 
-								$users =newQuery($db_con, "SELECT user_id, username FROM users WHERE user_id != '$userID'");
-								while ( $row = mysqli_fetch_array ( $users ) ) {
-									echo '<option values=' . $row["username"] . '>' . $row["username"] . '</option>';
-								}
-								mysqli_free_result($users);
-								?>
+		 				<?php  
+		 					 if($userID == "1"){
+										$users =newQuery($db_con, "SELECT user_id, username FROM users WHERE user_id != '$userID'");
+										while ( $row = mysqli_fetch_array ( $users ) ) {
+											echo '<option values=' . $row["username"] . '>' . $row["username"] . '</option>';
+										}
+										mysqli_free_result($users);
+								}		 					
+		 						 
+							else {
+									 //Retrieve username of Administrator and provide the Administrator as the first option
+			 						 $result_admin = newQuery($db_con, "SELECT username FROM users WHERE user_id ='1'");
+			 						 if ($row = mysqli_fetch_array($result_admin)) {
+			 						 	$admin = $row['username'];
+			 						 }
+			 						 mysqli_free_result($result_admin);
+			 						 echo '<option values=' . $admin . '>' . $admin . '</option>';
+									
+									//Reteive the user's Class ID
+									$result_classID = newQuery($db_con, "SELECT class_assigned_to FROM users WHERE user_id ='$userID'");
+			 						 if ($row = mysqli_fetch_array($result_classID)) {
+			 						 	$class_id = $row['class_assigned_to'];
+			 						 }
+			 						 mysqli_free_result($result_classID);		 		
+		 						 
+			 						 //Only show users belonging to same Class
+									$users =newQuery($db_con, "SELECT user_id, username FROM users WHERE user_id != '$userID' AND class_assigned_to = '$class_id'");
+									while ( $row = mysqli_fetch_array ( $users ) ) {
+										echo '<option values=' . $row["username"] . '>' . $row["username"] . '</option>';
+									}
+									mysqli_free_result($users);
+							}
+		 			?>
 		  			</select>
  					</p> 					
 					</fieldset>	
@@ -103,9 +129,8 @@ require_once 'includes/html_template/header.php';
 				</form>
 				</div>		
 	</div>
+
 	
-
-
 <h4>Upload Terms and Conditions</h4>
 	<ul class ="TaC_bullets">
 	<li><p>Any unlawful, unethical or inapropriate content is strictly banned from this site.</li>
