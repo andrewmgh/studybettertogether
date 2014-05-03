@@ -32,7 +32,7 @@ function displayEditClasses($db_con, $edit_id, $msg = NULL)
 	echo "<div id ='editDetailsForm'> \n <div class='main_form'>";
 	print $msg ? '<div class = "hiddenField">' . ($_GET['Msg']) . '</div>': ""; 
 					
-	echo "<form name='editClassDetails' action='includes/functionality/update_class_details.php' method='POST'>";
+	echo "<form onsubmit=\"return validatePassword()\" name='editClassDetails' action='includes/functionality/update_class_details.php' method='POST'>";
 	echo "<fieldset>\n";
 	echo "<input type ='hidden' name='edit_id' value=\"$edit_id\"\n";
 	echo "<p><label for='className'>Class Name:</label>\n";
@@ -40,7 +40,9 @@ function displayEditClasses($db_con, $edit_id, $msg = NULL)
 	echo "<p><label for='classCode'>Class Code:</label>\n"; 
 	echo "<input type='text' id='classCode' name='classCode' value = \"". htmlentities ( $row ["class_code"] ) ."\" required /></p>\n";
 	echo "<p><label for='regCode'>Registration Code:</label>\n";
-	echo "<input type='password' id='regCode' name='regCode' placeholder = \"Leave blank if not changing\" /></p>\n";
+	echo "<input type='password' id='password' name='password' placeholder = \"Leave blank if not changing\" /></p>\n";
+	echo "<p><label for='ConfirmRegCode'>Confirm Reg Code:</label>\n";
+	echo "<input type='password' id='password_confirm' name='password_confirm' placeholder = \"Leave blank if not changing\" /></p>\n";
 	echo "</fieldset>\n";
 	echo "<p class = 'submit'><input type='submit' name ='updateClassDetails' value='Confirm' /></p>";
 	echo "</form>\n</div>\n</div>";

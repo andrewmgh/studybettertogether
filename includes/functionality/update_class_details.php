@@ -5,7 +5,7 @@ if (isset($_POST ['updateClassDetails'])){
 	require_once '../db/sql_functions.php';
 	require_once 'common_functions.php';
 	require_once 'sessionManagement.php';
-	updateClassDetails($db_con, $_POST ['edit_id'], $_POST ['className'], $_POST ['classCode'], $_POST ['regCode']);
+	updateClassDetails($db_con, $_POST ['edit_id'], $_POST ['className'], $_POST ['classCode'], $_POST ['password']);
 }
 
 else {
@@ -31,10 +31,12 @@ function updateClassDetails($db_con, $edit_id, $className, $classCode, $regCode)
 	else {
 		if($regCode){
 			$newRegCode = encryptPwd($regCode);
-			$updateClass = newQuery($db_con, "UPDATE `classes` SET `class_name` = '".$className."', `class_code` = '".$classCode."', `register_code` = '".$newRegCode."' WHERE  `class_id` = '$edit_id'");
+			$updateClass1 = newQuery($db_con, "UPDATE `classes` SET `class_name` = '".$className."', `class_code` = '".$classCode."', `register_code` = '".$newRegCode."' WHERE  `class_id` = '$edit_id'");
+			$updateClass2 = newQuery($db_con, "UPDATE `forum_categories` SET `category` = '".$className."' WHERE  `class_id` = '$edit_id'");
 		}
 		else{
-			$updateClass = newQuery($db_con, "UPDATE `classes` SET `class_name` = '".$className."', `class_code` = '".$classCode."' WHERE  `class_id` = '$edit_id'");
+			$updateClass1 = newQuery($db_con, "UPDATE `classes` SET `class_name` = '".$className."', `class_code` = '".$classCode."' WHERE  `class_id` = '$edit_id'");
+			$updateClass2 = newQuery($db_con, "UPDATE `forum_categories` SET `category` = '".$className."' WHERE  `class_id` = '$edit_id'");
 		}
 
 		header("Location:../../manageclasses.php?UpdateClass=The class \"$className\" has been sucessfully updated");

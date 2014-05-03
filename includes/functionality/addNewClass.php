@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD']== "POST")
 	require_once '../db/sql_functions.php';
 	require_once 'common_functions.php';
 
-	addnewClass($db_con, $_POST ['className'], $_POST ['classCode'], $_POST ['regCode']);
+	addnewClass($db_con, $_POST ['className'], $_POST ['classCode'], $_POST ['password']);
 
 }
 else {
@@ -32,9 +32,12 @@ function addnewClass ($db_con, $className, $classCode, $registratonCode){
 		//encrypt registration code and add a new class to the DB
 		$newRegCode = encryptPwd($registratonCode);
 		$newClass = newQuery($db_con, "INSERT INTO `classes`(`class_name`, `class_code`, `register_code`) VALUES ('".$className."','".$classCode."','".$newRegCode."')");
-
+		
+		// retrieve the class id from the previous query
+		$class_id = mysqli_insert_id($db_con);
+		
 		//add the new class as a category on the study forum
-		$newCategory = newQuery($db_con, "INSERT INTO `forum_categories`(`category`) VALUES ('".$className."')");
+		$newCategory = newQuery($db_con, "INSERT INTO `forum_categories`(`class_id`, `category`) VALUES ('".$class_id."', '".$className."')");
 		
 		$successMsg = '<p>A new class has been successfully created.</p>';
 		

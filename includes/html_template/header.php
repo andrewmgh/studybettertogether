@@ -13,9 +13,16 @@ require_once 'includes/functionality/sessionManagement.php';
 	<title>Study Better Together</title>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<?php echo ($_SERVER['PHP_SELF'] == "/studybettertogether/upload.php") ? "<link rel='stylesheet' type='text/css' href='css/ui.dropdownchecklist.standalone.css' />"  : ""; 	?>
-	<?php echo ($_SERVER['PHP_SELF'] == "/studybettertogether/chatroom.php") ? "<link rel='stylesheet' type='text/css' href='css/chatroom.css' />"  : ""; 	?>
-	<?php echo ($_SERVER['PHP_SELF'] == "/studybettertogether/changepassword.php") ? "<script src='js/form_validation.js'></script>"  : ""; 	?>
+	<?php 
+	//detects the URL and inserts link to JavaScript file if necessary
+	echo ($_SERVER['PHP_SELF'] == "/studybettertogether/upload.php") ? "<link rel='stylesheet' type='text/css' href='css/ui.dropdownchecklist.standalone.css' />"  : ""; 	
+	echo ($_SERVER['PHP_SELF'] == "/studybettertogether/chatroom.php") ? "<link rel='stylesheet' type='text/css' href='css/chatroom.css' />"  : ""; 	
+	if ($_SERVER['PHP_SELF'] == "/studybettertogether/changepassword.php" 
+		|| $_SERVER['PHP_SELF'] == "/studybettertogether/editusers.php" 
+		|| $_SERVER['PHP_SELF'] == "/studybettertogether/editclasses.php" 
+		|| $_SERVER['PHP_SELF'] == "/studybettertogether/manageclasses.php") {
+			echo "<script src='js/form_validation.js'></script>" ;} 	
+	?>
 	
 	<link rel="shortcut icon" href="img/sbt_favicon.ico">
 </head>

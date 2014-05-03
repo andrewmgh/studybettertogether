@@ -8,11 +8,11 @@ if ($account_type != 'Admin') {
 <h2 class = "mainPageHeading">Manage Classes</h2>
 
 <h4>Add a New Class</h4>
-	<div id ="newClass">
+
 	<div class ="inline_form">
 	<div class="main_form">
 				<?php print isset($_GET['Msg']) ? '<div class = "hiddenField">' . ($_GET['Msg']) . '</div>': ""; ?>
-				<form name="add_new_class" id="add_new_class" action="includes/functionality/addNewClass.php" method="POST">
+				<form onsubmit="return validatePassword()" name="add_new_class" id="add_new_class" action="includes/functionality/addNewClass.php" method="POST">
 					<p>
 					<label for="className">Class Name: </label> 
 					<input type="text" id="className" name="className" value ="<?php print isset($_GET['className']) ? ($_GET['className']) : "";?>" required />
@@ -23,20 +23,24 @@ if ($account_type != 'Admin') {
 					</p>				
 					<p>
 					<label for="regCode">Registration Code: </label> 
-					<input type="password" id="regCode" name="regCode" required/>
+					<input type="password" id="password" name="password" required/>
 					</p>	
 					<p>
+					<label for="regCode">Confirm Reg Code: </label> 
+					<input type="password" id="password_confirm" name="password_confirm" required/>
+					</p>	
+					
 					<input type="submit" name ="submitNewClass" value="Confirm" />
-					</p>
+					
 				</form>
 	</div>
 	</div>					
-	</div>
 
 
+<br />
+<h4>Class Details</h4>				
 
 <div class = "classdetails">
-<h4>Class Details</h4>				
 				<?php print isset($_GET['UpdateClass']) ? '<div class = "hiddenField"><p>' . ($_GET['UpdateClass']) . '</p></div>': ""; ?>
 				<div class = "tabledefault">
 				<table id = "center">

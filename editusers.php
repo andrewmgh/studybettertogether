@@ -37,7 +37,7 @@ function displayEditUsers($db_con, $user_id, $msg = NULL)
 	echo "<div id ='editDetailsForm'> \n <div class='main_form'>";
 	print $msg ? '<div class = "hiddenField">' . ($_GET['Msg']) . '</div>': ""; 
 					
-	echo "<form name='editUserDetails' action='includes/functionality/update_user_details.php' method='POST'>";
+	echo "<form onsubmit=\"return validatePassword()\" name='editUserDetails' action='includes/functionality/update_user_details.php' method='POST'>";
 	echo "<fieldset>\n";
 	echo "<input type ='hidden' name='user_id' value=\"$user_id\"\n";
 	echo "<p><label for='fname'>First Name:</label>\n"; 
@@ -50,6 +50,8 @@ function displayEditUsers($db_con, $user_id, $msg = NULL)
 	echo "<input type='email' id='email' name='email' value = \"". htmlentities ( $row ["email"] ) ."\" required /></p>\n";	
 	echo "<p><label for='password'>User Password:</label>\n";
 	echo "<input type='password' id='password' name='password' placeholder = \"Leave blank if not changing\"  /></p>\n";
+	echo "<p><label for='New password'>Confirm Password:</label>\n";
+	echo "<input type='password' id='password_confirm' name='password_confirm' placeholder = \"Leave blank if not changing\"  /></p>\n";	
 	echo "<p><label for='class'>Class Assigned To:</label>\n";
 	echo "<select name='class'>";
 	echo "<option value=\"$className\">$className</option>";

@@ -88,6 +88,7 @@ require_once 'includes/html_template/header.php';
 					<label  for="SpecificSharing">Share with <br />Specific Users: </label>
 					<select id="s1" name="specificSharing[]" multiple="multiple" > <!--size="3" tabindex="1" style="height:150px; width:150px"--> 
 		 				<?php  
+		 				//Administrator - Mimi - can specifically share files with anyone, other users (students) can only specifically share files with students registered to their same class
 		 					 if($userID == "1"){
 										$users =newQuery($db_con, "SELECT user_id, username FROM users WHERE user_id != '$userID'");
 										while ( $row = mysqli_fetch_array ( $users ) ) {
