@@ -52,7 +52,7 @@ require_once 'includes/html_template/header.php';
 				}
 		?>
 		<div class="main_form">
-				<form name="upload" action="includes/functionality/uploadFiles.php" method="POST" enctype="multipart/form-data">
+				<form onsubmit="return validateTC()" name="upload" action="includes/functionality/uploadFiles.php" method="POST" enctype="multipart/form-data">
 					<fieldset>
 
 					<p>
@@ -80,7 +80,7 @@ require_once 'includes/html_template/header.php';
 					<p>
 					<label class = "outside_label" for="terms" >Agree to upload terms and conditions: </label> 
 					<span> 
-					Yes <input type="radio" name="terms" value="yes" required />
+					Yes <input type="radio" name="terms" value="yes" id = "yes" required />
 					No <input type="radio" name="terms" value="no"  />
 					</span>
 					</p>
@@ -166,5 +166,14 @@ require_once 'includes/html_template/header.php';
 		    $("#sharingStatus").change(toggle_SpecificSharingBox);
 		    toggle_SpecificSharingBox.apply($("#sharingStatus"));
 		});
+
+	//Validation Function for Terms & Conditions Radio Box
+		function validateTC()
+		{
+			var yes = document.getElementById('yes').checked;	
+			if (!yes){
+					  alert("You need to accept the Terms and Conditions before you can upload a file. Please try again");
+					  return false;
+		}}	
 </script>	
 <?php require_once 'includes/html_template/footer.php';?>
