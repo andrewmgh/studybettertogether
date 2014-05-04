@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2014 at 10:47 PM
+-- Generation Time: May 04, 2014 at 04:43 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `ajax_chat_messages` (
   PRIMARY KEY (`id`),
   KEY `message_condition` (`id`,`channel`,`dateTime`),
   KEY `dateTime` (`dateTime`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=91 ;
 
 --
 -- Dumping data for table `ajax_chat_messages`
@@ -103,7 +103,67 @@ INSERT INTO `ajax_chat_messages` (`id`, `userID`, `userName`, `userRole`, `chann
 (25, 2147483647, 'ChatBot', 4, 0, '2014-03-19 13:01:12', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout MimiSBT'),
 (26, 2147483647, 'ChatBot', 4, 0, '2014-03-19 18:06:49', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
 (27, 2147483647, 'ChatBot', 4, 0, '2014-03-19 20:20:06', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
-(28, 2147483647, 'ChatBot', 4, 0, '2014-03-19 20:20:21', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan');
+(28, 2147483647, 'ChatBot', 4, 0, '2014-03-19 20:20:21', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(29, 2147483647, 'ChatBot', 4, 0, '2014-03-20 22:31:14', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(30, 2147483647, 'ChatBot', 4, 0, '2014-03-20 22:31:15', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(31, 2147483647, 'ChatBot', 4, 0, '2014-03-20 22:31:16', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(32, 2, 'amonaghan', 1, 0, '2014-03-20 22:39:46', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', 'Hey Mimi'),
+(33, 2147483647, 'ChatBot', 4, 0, '2014-03-20 22:41:21', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(34, 2147483647, 'ChatBot', 4, 0, '2014-03-23 11:19:32', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(35, 2147483647, 'ChatBot', 4, 0, '2014-03-23 11:31:03', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(36, 2147483647, 'ChatBot', 4, 0, '2014-03-23 11:32:05', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(37, 2147483647, 'ChatBot', 4, 0, '2014-03-23 11:32:38', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(38, 2147483647, 'ChatBot', 4, 0, '2014-03-23 15:47:02', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(39, 2147483647, 'ChatBot', 4, 0, '2014-03-23 15:47:03', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(40, 2147483647, 'ChatBot', 4, 0, '2014-03-23 16:07:44', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(41, 2147483647, 'ChatBot', 4, 0, '2014-03-23 16:11:04', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(42, 2147483647, 'ChatBot', 4, 0, '2014-03-23 16:11:09', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(43, 2147483647, 'ChatBot', 4, 0, '2014-03-23 16:11:12', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(44, 2147483647, 'ChatBot', 4, 0, '2014-03-23 16:11:47', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(45, 2147483647, 'ChatBot', 4, 0, '2014-03-23 16:12:20', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(46, 2147483647, 'ChatBot', 4, 0, '2014-03-23 16:13:22', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(47, 2147483647, 'ChatBot', 4, 0, '2014-03-23 16:13:23', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(48, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:33:21', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login MimiSBT'),
+(49, 1, 'MimiSBT', 3, 0, '2014-03-29 13:33:25', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', 'gi'),
+(50, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:48:30', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login MimiSBT'),
+(51, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:48:33', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout MimiSBT'),
+(52, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:49:00', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login MimiSBT'),
+(53, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:49:02', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout MimiSBT'),
+(54, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:49:03', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login MimiSBT'),
+(55, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:49:04', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout MimiSBT'),
+(56, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:49:18', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(57, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:49:23', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(58, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:49:24', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(59, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:49:26', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(60, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:49:28', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(61, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:51:18', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(62, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:51:19', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(63, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:51:20', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(64, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:51:21', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(65, 2147483647, 'ChatBot', 4, 0, '2014-03-29 13:51:22', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(66, 2147483647, 'ChatBot', 4, 0, '2014-03-29 15:42:20', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(67, 2147483647, 'ChatBot', 4, 0, '2014-03-29 15:42:21', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(68, 2147483647, 'ChatBot', 4, 0, '2014-03-29 15:43:45', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(69, 2147483647, 'ChatBot', 4, 0, '2014-03-29 15:43:46', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout amonaghan'),
+(70, 2147483647, 'ChatBot', 4, 0, '2014-04-02 19:41:38', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan'),
+(71, 2147483647, 'ChatBot', 4, 0, '2014-04-02 19:42:31', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login mimikelly'),
+(72, 1, 'mimikelly', 3, 0, '2014-04-02 19:46:28', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', 'Hey'),
+(73, 1, 'mimikelly', 3, 0, '2014-04-02 19:46:34', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', 'How are you?'),
+(76, 2147483647, 'ChatBot', 4, 0, '2014-04-02 19:46:55', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/delete 74'),
+(77, 2147483647, 'ChatBot', 4, 0, '2014-04-02 19:46:57', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/delete 75'),
+(78, 2, 'amonaghan', 1, 0, '2014-04-02 19:47:05', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', 'I''m great. How are you?'),
+(79, 1, 'mimikelly', 3, 0, '2014-04-02 19:47:15', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', 'Great :)'),
+(80, 2147483647, 'ChatBot', 4, 0, '2014-04-02 19:47:51', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout mimikelly'),
+(81, 2147483647, 'ChatBot', 4, 0, '2014-04-02 19:47:53', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login mimikelly'),
+(82, 2147483647, 'ChatBot', 4, 0, '2014-04-02 19:51:44', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout mimikelly Timeout'),
+(83, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:19:09', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login mimikelly'),
+(84, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:19:38', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout mimikelly'),
+(85, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:19:39', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login mimikelly'),
+(86, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:19:53', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout mimikelly'),
+(87, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:19:54', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login mimikelly'),
+(88, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:21:08', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout mimikelly'),
+(89, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:21:09', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login mimikelly'),
+(90, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:21:10', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout mimikelly');
 
 -- --------------------------------------------------------
 
@@ -135,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `allowed_file_types` (
   `file_description` varchar(255) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`file_type_id`),
   KEY `file_id` (`file_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `allowed_file_types`
@@ -161,7 +221,15 @@ INSERT INTO `allowed_file_types` (`file_type_id`, `file_ext`, `file_short_name`,
 (17, 'pub', 'Publisher File', 'Microsoft Publisher document file'),
 (18, 'gif', 'GIF Picture', 'Graphics Interchange Format'),
 (19, 'pdf', 'PDF File', 'Portable Document Format'),
-(20, 'csv', 'Comma Seperated File', 'Comma Seperated File');
+(20, 'csv', 'Comma Seperated File', 'Comma Seperated File'),
+(21, 'rtf', 'Rich Text Doc', 'Rich Text Format File'),
+(22, 'txt', 'Text File', 'Plain Text File'),
+(23, 'xml', 'XML File', 'Extensible Markup Language'),
+(24, 'sql', 'SQL File', 'Structured Query Language Data File'),
+(25, 'png', 'PNG Picture', 'Portable Network Graphic'),
+(26, 'jpg', 'JPG Picture', 'JPEG Image'),
+(27, 'bmp', 'BMP Picture', 'Bitmap Image File'),
+(28, 'gif', 'GIF Picture', 'Graphics Interchange Format');
 
 -- --------------------------------------------------------
 
@@ -176,7 +244,8 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `class_register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `register_code` varchar(100) NOT NULL,
   PRIMARY KEY (`class_id`),
-  UNIQUE KEY `class_name` (`class_name`)
+  UNIQUE KEY `class_name` (`class_name`),
+  KEY `class_name_2` (`class_name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -184,8 +253,8 @@ CREATE TABLE IF NOT EXISTS `classes` (
 --
 
 INSERT INTO `classes` (`class_id`, `class_name`, `class_code`, `class_register_date`, `register_code`) VALUES
-(1, 'IBI Test Class', 'IBI', '2014-01-08 11:33:30', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70'),
-(2, 'NCI 4th Year Computing', 'BSHBSCE', '2014-02-10 23:00:33', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70');
+(1, 'IBI Test Class', 'IBI', '2014-01-08 11:33:30', '6794597a61ecac094c75f6ae849678ca8172fbca'),
+(2, 'NCI 4th Year Computing', 'BSHBSCE', '2014-02-10 23:00:33', '6794597a61ecac094c75f6ae849678ca8172fbca');
 
 -- --------------------------------------------------------
 
@@ -292,21 +361,23 @@ INSERT INTO `forum_banlists` (`name`, `list`) VALUES
 CREATE TABLE IF NOT EXISTS `forum_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL DEFAULT '0',
+  `class_id` int(11) DEFAULT NULL,
   `category` varchar(255) NOT NULL DEFAULT '',
   `description` varchar(255) NOT NULL DEFAULT '',
   `accession` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `category` (`category`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `forum_categories`
 --
 
-INSERT INTO `forum_categories` (`id`, `order_id`, `category`, `description`, `accession`) VALUES
-(1, 1, 'General', '', 0),
-(2, 2, 'Social', '', 0),
-(6, 0, 'IBI Test Class', '', 0),
-(7, 0, 'NCI 4th Year Computing', '', 0);
+INSERT INTO `forum_categories` (`id`, `order_id`, `class_id`, `category`, `description`, `accession`) VALUES
+(1, 1, 0, 'General', '', 0),
+(2, 2, 0, 'Social', '', 0),
+(6, 0, 1, 'IBI Test Class', '', 0),
+(7, 0, 2, 'NCI 4th Year Computing', '', 0);
 
 -- --------------------------------------------------------
 
@@ -534,7 +605,7 @@ INSERT INTO `forum_settings` (`name`, `value`) VALUES
 ('cookie_validity_days', '30'),
 ('access_permission_checks', '0'),
 ('daily_actions_time', '3:30'),
-('next_daily_actions', '1395372600'),
+('next_daily_actions', '1399260600'),
 ('auto_lock_old_threads', '0'),
 ('max_read_items', '0'),
 ('delete_ips', '0'),
@@ -625,7 +696,8 @@ CREATE TABLE IF NOT EXISTS `forum_userdata` (
 INSERT INTO `forum_userdata` (`user_id`, `user_type`, `user_name`, `user_real_name`, `gender`, `birthday`, `user_pw`, `user_email`, `email_contact`, `user_hp`, `user_location`, `signature`, `profile`, `logins`, `last_login`, `last_logout`, `user_ip`, `registered`, `category_selection`, `thread_order`, `user_view`, `sidebar`, `fold_threads`, `thread_display`, `new_posting_notification`, `new_user_notification`, `user_lock`, `auto_login_code`, `pwf_code`, `activate_code`, `language`, `time_zone`, `time_difference`, `theme`, `entries_read`) VALUES
 (1, 2, 'MimiSBT', 'Mimi', 0, '0000-00-00', 'b04fbf77b7d07f2a5c4fb13e070a9558f09576e9', 'Mimi.Kelly@sbt.com', 0, '', '', '', '', 14, '2013-12-19 10:50:16', '2014-01-31 13:09:13', '::1', '2013-10-18 17:36:41', NULL, 1, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
 (2, 0, 'amonaghan', 'Andrew', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'Andrew.Monaghan@student.ie', 0, '', '', '', '', 4, '2013-12-19 10:51:36', '2013-12-19 10:53:53', '::1', '2013-10-18 17:36:41', NULL, 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
-(3, 0, 'Ssmith', 'Sarah', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'sarahsmith@college.ie', 0, '', '', '', '', 0, '2014-02-02 18:03:41', '0000-00-00 00:00:00', '', '2013-10-31 13:31:26', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', '');
+(3, 0, 'sarahsmith', 'Sarah', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'sarahsmith@college.ie', 0, '', '', '', '', 0, '2014-02-02 18:03:41', '0000-00-00 00:00:00', '', '2013-10-31 13:31:26', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(4, 0, 'brianjones', 'Brian', 0, '0000-00-00', '391317357d8f3148c2e04b1e7a78462fa96f242b', 'brian@test.com', 0, '', '', '', '', 0, '2014-03-31 18:27:29', '0000-00-00 00:00:00', '', '2014-03-31 19:27:29', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -668,18 +740,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `account_type` varchar(8) CHARACTER SET latin1 NOT NULL DEFAULT 'Student',
   `password` varchar(100) CHARACTER SET latin1 NOT NULL,
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_login` timestamp NULL DEFAULT NULL,
+  `last_activity` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `class_assigned_to`, `first_name`, `last_name`, `username`, `email`, `account_type`, `password`, `register_date`) VALUES
-(1, 0, 'Mimi', 'Kelly', 'MimiSBT', 'Mimi.Kelly@sbt.com', 'Admin', 'b04fbf77b7d07f2a5c4fb13e070a9558f09576e9', '2013-10-18 17:36:41'),
-(2, 1, 'Andrew', 'Monaghan', 'amonaghan', 'Andrew.Monaghan@student.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-18 17:36:41'),
-(3, 1, 'Sarah', 'Smith', 'Ssmith', 'sarahsmith@college.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-31 13:31:26');
+INSERT INTO `users` (`user_id`, `class_assigned_to`, `first_name`, `last_name`, `username`, `email`, `account_type`, `password`, `register_date`, `last_login`, `last_activity`) VALUES
+(1, 0, 'Mimi', 'Kelly', 'mimikelly', 'Mimi.Kelly@sbt.com', 'Admin', '6794597a61ecac094c75f6ae849678ca8172fbca', '2013-10-18 17:36:41', '2014-05-04 14:37:23', '2014-05-04 14:37:41'),
+(2, 1, 'Andrew', 'Monaghan', 'amonaghan', 'Andrew.Monaghan@student.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-18 17:36:41', '2014-05-04 09:22:38', '2014-05-04 09:38:57'),
+(3, 2, 'Sarah', 'Smith', 'sarahsmith', 'sarahsmith@college.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-31 13:31:26', NULL, NULL),
+(4, 1, 'Brian', 'Jones', 'brianjones', 'brian@test.com', 'Student', '391317357d8f3148c2e04b1e7a78462fa96f242b', '2014-03-31 18:27:29', NULL, '2014-03-31 18:28:09');
 
 --
 -- Constraints for dumped tables

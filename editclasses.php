@@ -4,7 +4,7 @@ if ($account_type != 'Admin') {
 	header ( "location: index.php" );
 }
 
-echo "<h2 class = \"mainPageHeading\">Edit Classes </h2>";
+echo "<h2 class = \"mainPageHeading\">Edit Class Details </h2>";
 
 //If either the editClass parameter or the Msg parameter are set then show the edit classes form
 if ((isset($_GET['editClass'])) || ((isset($_GET['Msg'])))){
