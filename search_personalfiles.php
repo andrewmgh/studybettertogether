@@ -71,7 +71,7 @@ require_once 'includes/functionality/personalSearch.php';
 					</div>
 					
 				</form>
-				<a href ="search_personalfiles.php"><button class=\"filesBtn\">Clear Search Results</button></a>
+				<a href ="search_personalfiles.php"><button>Clear Search Results</button></a>
 				</div>		
 				
 	</div>

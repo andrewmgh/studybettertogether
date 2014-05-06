@@ -75,21 +75,10 @@ Add javascript in head instead of boddy to stop errors in slider on page refresh
 					<p><strong>StudyBetterTogether</strong> is a web application designed to promote collaborative learning among college students by providing a facility to share study resources, ask questions and discuss college related topics online.</p>
 					<p>The idea for this project originated from my strong interest in e-learning along with my own experience as a class representative in which I recognised a strong need for the collaborative learning features that my web application aims to provide.
 					</p>					
-					
-					<!-- <p id="bulletTitle">StudyBetterTogether provides the following functionality:</p>
-						<ul>
-							<li> advanced file sharing (private, public or specific-user sharing) </li> 
-							<li> advanced file searching and download (search by multiple criteria) </li> 
-							<li> study forum to discuss college related topics or ask for advice on projects </li> 
-							<li> chat room to allow students communicate in real-time </li> 
-							<li> access to study tips and advice </li> 
-							<li> administration control for managing users and registering new classes </li> 
-						</ul>
-				</div>			 -->
-			</div>
-
+		</div>
 			</div>
 			</div>
+		</div>
 		</div>
 	<div class="clearfloats"></div>
 	<div id="outer_footer_wrapper">
@@ -100,20 +89,6 @@ Add javascript in head instead of boddy to stop errors in slider on page refresh
 
 
 	</div>
-
-<!-- 
-UnoSlider Options
-animSpeed:  250,           // animation speed for the transition
-speed:      5,	           // seconds
-auto:       true,          // false stops the slider from auto rotating
-easing:     'swing',       // 'linear' or 'swing'. Can be extended with jQuery Easing Plugin
-next:       false,         // '#next' ? optional selector for the next button
-prev:       false,         // '#prev' ? optional selector for the previous button
-pause:      false,         // '#pause' ? optional selector for the pause button
-bullets:    false,         // wether to show bulleted navigation or not.
-selector:   'li'           // which child selector to use when looking for slides. Default is 'li'.
-width:      false          // defaults to auto width, but can be overriden with a number. Example: 300
- -->
 </body>
 </html>
 

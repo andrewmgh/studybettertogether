@@ -57,7 +57,7 @@ require_once 'includes/functionality/publicSearch.php';
 					<input type="submit" name ="publicsearch" value="Search" />
 					</div>
 				</form>
-				<a href ="search_publicfiles.php"><button class=\"filesBtn\">Clear Search Results</button></a>
+				<a href ="search_publicfiles.php"><button>Clear Search Results</button></a>
 				</div>		
 	</div>
 
