@@ -87,7 +87,7 @@
 		<div id="regText">
 		<h3>How to register?</h3>
 		<p>To register a new account you will first  need a registration code from your lecturer. 
-		Once you have this code, fill in the above registration form and click Register. <strong>Happy Studying!</strong></p>
+		Once you have this code, fill in the above registration form and click Register.</p>
 		</div>		
 			
 		</div>
