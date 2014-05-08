@@ -31,10 +31,13 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	$sharingStatus = sanatiseInput ( $db_con, $sharingStatus);
 	$terms = sanatiseInput ( $db_con, $terms );
 	
-	//Retrieve file extension - set file path - convert specific users array to string
+	//Retrieve file extension 
 	$fileExtension = pathinfo ( $fileName, PATHINFO_EXTENSION );
+	
+	//set file path
 	$filePath = setFilePath($fileName, $userID);
 	
+	//convert specific users array to string
 	if(!($specificUsers=="")){
 	$specificUsersID = arrayToString($db_con, $specificUsers);
 	}
@@ -95,6 +98,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
  	//if upload validation failed, redirect user to uploads page with error messages
 	else {
 		header("Location:../../upload.php?Upload=$uploadMsg&Desc=$description&Sub=$subject&SharingS=$sharingStatus");
+		
 		exit();	
 	} 
 }
