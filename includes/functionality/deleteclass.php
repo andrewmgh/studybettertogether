@@ -38,7 +38,7 @@ function deleteClass($db_con, $delete_id)
 	if ($classSize <=0){
 		$delete1 = newQuery($db_con, "DELETE FROM classes WHERE class_id ='$delete_id'");
 		$delete2 = newQuery($db_con, "DELETE FROM forum_categories WHERE class_id ='$delete_id'");
-		header("Location:../../manageclasses.php?&UpdateClass=The class \"$className\" has been sucessfully deleted");
+		header("Location:../../manageclasses.php?&UpdateClass=The class \"$className\" has been successfully deleted");
 		exit();
 		closeMySql($db_con, $countQueryResult);
 	}

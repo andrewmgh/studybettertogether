@@ -54,7 +54,7 @@ function deleteUserFromDB($db_con, $user_id)
 	$deletedUser =  $row ["username"];
 		
 	$delete = newQuery($db_con, "DELETE FROM users WHERE user_id ='$user_id'");
-	header("Location:../../manageusers.php?&UpdateUser=The user \"$deletedUser\" has been sucessfully deleted");
+	header("Location:../../manageusers.php?&UpdateUser=The user \"$deletedUser\" has been successfully deleted");
 	closeMySql($db_con, $userResult);
 	exit();
 	

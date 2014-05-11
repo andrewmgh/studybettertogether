@@ -39,7 +39,7 @@ function updateClassDetails($db_con, $edit_id, $className, $classCode, $regCode)
 			$updateClass2 = newQuery($db_con, "UPDATE `forum_categories` SET `category` = '".$className."' WHERE  `class_id` = '$edit_id'");
 		}
 
-		header("Location:../../manageclasses.php?UpdateClass=The class \"$className\" has been sucessfully updated");
+		header("Location:../../manageclasses.php?UpdateClass=The class \"$className\" has been successfully updated");
 		exit();
 	}
 }

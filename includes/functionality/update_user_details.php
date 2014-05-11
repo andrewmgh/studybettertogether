@@ -50,7 +50,7 @@ function updateUserDetails($db_con, $user_id, $fname, $lname, $username, $email,
 			$updateUser2 = newQuery($db_con, "UPDATE `forum_userdata` SET `user_name` = \"$username\", `user_real_name` = \"$fname\" WHERE `user_id` = \"$user_id\"");
 		}
 
-		header("Location:../../manageusers.php?UpdateUser=The user \"$username\" has been sucessfully updated");
+		header("Location:../../manageusers.php?UpdateUser=The user \"$username\" has been successfully updated");
 		exit();
 	}
 }

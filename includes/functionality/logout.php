@@ -10,7 +10,7 @@
 	//Destroy session and redirect user to index page
 	session_unset();
 	session_destroy();
-	$loginError = "You have sucessfully logged out";
+	$loginError = "You have successfully logged out";
 	header("location:http://localhost/studybettertogether/index.php?Message=$loginError");
 	
 	closeMySql($db_con, $delResult);

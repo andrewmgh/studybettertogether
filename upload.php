@@ -12,7 +12,7 @@ require_once 'includes/html_template/header.php';
 			
 		<?php 
 	
-		//Once a file has sucessfully been uploaded, this code will retreive the uploaded file details from the URL using and display them to the user.
+		//Once a file has successfully been uploaded, this code will retreive the uploaded file details from the URL using and display them to the user.
 				print isset($_GET['Upload']) ? '<div class = "hiddenField">' . ($_GET['Upload']) . '</div>': ""; 
 				if (isset($_GET['Success'])) {
 					print" <div class=\"uploadSuccess\">

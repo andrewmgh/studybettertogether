@@ -162,8 +162,8 @@ $searchQuery= newQuery($db_con, $query);
 			$searchResults .= "<td>" . htmlentities ( $row ["file_size"] ) . "</td>";						
 			$searchResults .= "<td style = \"text-align: center;\">" . ProtectURL(htmlentities ( $row ["file_path"] )) ."</td>";
 			
-			//Only show delete button if the current user is the file owner
-			if ($row ["username"] == $username){
+			//Only provide delete option if the current user is the file owner
+			if ($row ["owner_id"] == $userID){
 			$searchResults .= "<td style = \"text-align: center;\"><span onClick=\"return confirm('Are you sure you want to permanently Delete this file? NOTE: This cannot be undone!');\"><a href=\"includes/functionality/deletefile.php?deletefile=". $file_ID . "\"><img alt=\"Delete\" title=\"Delete\" src=\"img/delete.png\"/></a></span></td>\n</tr>\n";
 			} 
 			else{
