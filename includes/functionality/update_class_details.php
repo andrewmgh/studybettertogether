@@ -16,11 +16,11 @@ else {
 //Function to update class details
 function updateClassDetails($db_con, $edit_id, $className, $classCode, $regCode)
 {
-	//Take inputs from form, clean with sanatiseInput function and store in variables
-	$edit_id = sanatiseInput($db_con, $edit_id);
-	$className = sanatiseInput($db_con, $className);
-	$classCode = sanatiseInput($db_con, $classCode);
-	$regCode = sanatiseInput($db_con, $regCode);
+	//Take inputs from form, clean with sanitiseInput function and store in variables
+	$edit_id = sanitiseInput($db_con, $edit_id);
+	$className = sanitiseInput($db_con, $className);
+	$classCode = sanitiseInput($db_con, $classCode);
+	$regCode = sanitiseInput($db_con, $regCode);
 
 	//If any of the variables (apart from reg code) have not been entered then send an error message back to the user
 	if(!($className && $classCode)){

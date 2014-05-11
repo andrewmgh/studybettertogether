@@ -5,12 +5,12 @@ if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/public
 		 	//Declare and initialise variables to solve any posible undefined variable errors
 			$fileName = $fileOwner =  $fileType = $description = $subject = "";
 			
-			//Take inputs from search form, clean with sanatiseInput function if necessary and  and store in variables
-			$fileName = sanatiseInput($db_con, $_GET ['fileName']);
-			$fileOwner = sanatiseInput($db_con, $_GET ['fileOwner']);
-			$fileType = sanatiseInput($db_con, $_GET ['fileType']);
-			$description = sanatiseInput($db_con, $_GET ['description']);
-			$subject = sanatiseInput($db_con, $_GET ['subject']);
+			//Take inputs from search form, clean with sanitiseInput function if necessary and  and store in variables
+			$fileName = sanitiseInput($db_con, $_GET ['fileName']);
+			$fileOwner = sanitiseInput($db_con, $_GET ['fileOwner']);
+			$fileType = sanitiseInput($db_con, $_GET ['fileType']);
+			$description = sanitiseInput($db_con, $_GET ['description']);
+			$subject = sanitiseInput($db_con, $_GET ['subject']);
 			
 			if($fileName || $fileOwner || $fileType || $fileType=="" || $description || $subject){
 			

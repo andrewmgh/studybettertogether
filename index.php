@@ -11,7 +11,7 @@
 
 <!-- 
 source: http://unoslider.decodigothemes.com/ 
-Add javascript in head instead of boddy to stop errors in slider on page refresh
+I've added javascript to the head instead of the body to stop errors in slider on page refresh
 -->
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/unoSlider.min.js"></script>

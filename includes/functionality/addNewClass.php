@@ -14,10 +14,10 @@ else {
 //Overall Function to add a new class
 function addnewClass ($db_con, $className, $classCode, $registratonCode){
 		
-	//Take inputs from form, clean with sanatiseInput function and store in variables
-	$className = sanatiseInput($db_con, $className);
-	$classCode = sanatiseInput($db_con, $classCode);
-	$registratonCode = sanatiseInput($db_con, $registratonCode);
+	//Take inputs from form, clean with sanitiseInput function and store in variables
+	$className = sanitiseInput($db_con, $className);
+	$classCode = sanitiseInput($db_con, $classCode);
+	$registratonCode = sanitiseInput($db_con, $registratonCode);
 
 		
 	//Validate the inputs based on the validation functions below. Either append the error message or a blank string "" to the variable $Error

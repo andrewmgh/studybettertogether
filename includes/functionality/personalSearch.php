@@ -1,22 +1,20 @@
 <?php 
-//Use Full Index searches on fields using Match / against SQL queries
-//Only show main headings in table and have an info button make a jquery pop up appear with more details on each file - http://buckwilson.me/lightboxme/
 if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/personalSearch.php"){
 
 	if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['search']))//only runs the below php code if the personal search form was submitted. 
 	{
 		 	//Declare and initialise variables to solve any posible undefined variable errors
 			$fileName = $fileOwner =  $fileType = $description = $subject = "";
-			$sharingStatus = sanatiseInput($db_con, $_GET ['sharingStatus']);
+			$sharingStatus = sanitiseInput($db_con, $_GET ['sharingStatus']);
 			
 			//if the user chose a sharing status...
 			if($sharingStatus != ""){
-					//Take remaining inputs from search form, clean with sanatiseInput function and store in variables
-					$fileName = sanatiseInput($db_con, $_GET ['fileName']);
-					$fileOwner = sanatiseInput($db_con, $_GET ['sharedBy']);
-					$fileType = sanatiseInput($db_con, $_GET ['fileType']);
-					$description = sanatiseInput($db_con, $_GET ['description']);
-					$subject = sanatiseInput($db_con, $_GET ['subject']);		
+					//Take remaining inputs from search form, clean with sanitiseInput function and store in variables
+					$fileName = sanitiseInput($db_con, $_GET ['fileName']);
+					$fileOwner = sanitiseInput($db_con, $_GET ['sharedBy']);
+					$fileType = sanitiseInput($db_con, $_GET ['fileType']);
+					$description = sanitiseInput($db_con, $_GET ['description']);
+					$subject = sanitiseInput($db_con, $_GET ['subject']);		
 			
 					//run the search results function
 					$searchResults = personalSearch($db_con, $username, $userID, $sharingStatus, $fileName, $fileOwner, $fileType, $description, $subject);

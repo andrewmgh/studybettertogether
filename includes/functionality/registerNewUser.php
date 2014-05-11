@@ -16,15 +16,15 @@ else {
 		//Overall Registration Function
 		function validateRegistrationForm ($db_con, $firstName, $lastName, $email, $userName, $password, $password_confirm, $classname, $register_code){
 			
-			//Take inputs from registration form, clean with sanatiseInput function and store in variables
-			$firstName = sanatiseInput($db_con, $firstName);
-			$lastName = sanatiseInput($db_con, $lastName);
-			$email = sanatiseInput($db_con, $email);
-			$userName = sanatiseInput($db_con, $userName);
-			$password = sanatiseInput($db_con, $password);
-			$password_confirm = sanatiseInput($db_con, $password_confirm);
-			$classname = sanatiseInput($db_con, $classname);
-			$register_code = sanatiseInput($db_con, $register_code);
+			//Take inputs from registration form, clean with sanitiseInput function and store in variables
+			$firstName = sanitiseInput($db_con, $firstName);
+			$lastName = sanitiseInput($db_con, $lastName);
+			$email = sanitiseInput($db_con, $email);
+			$userName = sanitiseInput($db_con, $userName);
+			$password = sanitiseInput($db_con, $password);
+			$password_confirm = sanitiseInput($db_con, $password_confirm);
+			$classname = sanitiseInput($db_con, $classname);
+			$register_code = sanitiseInput($db_con, $register_code);
 			$userName = strtolower($userName);
 			
 			//Validate the registration based on the validation functions below. Either append the error message or a blank string "" to the variable $regError

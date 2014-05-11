@@ -20,7 +20,7 @@ else {
 //Funtion to delete a class and report a success or failure message back to the user
 function deleteClass($db_con, $delete_id)
 {
-	$delete_id = sanatiseInput($db_con, $delete_id);
+	$delete_id = sanitiseInput($db_con, $delete_id);
 	
 	//Check to see if the class has students and store the number of students in a variable
 	$countQuery = "SELECT COUNT(class_assigned_to) AS NoPerClass FROM classes INNER JOIN users ON classes.class_id = users.class_assigned_to WHERE users.class_assigned_to = \"$delete_id\" AND account_type = 'Student'";

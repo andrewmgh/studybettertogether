@@ -586,7 +586,7 @@ text-align: center;
  .searchForm p {
 	display: inline-block;
 	margin: 0 18px;
-	
+	vertical-align: top;
 	}
 
 .searchResults table{

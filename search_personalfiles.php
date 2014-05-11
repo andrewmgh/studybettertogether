@@ -9,7 +9,7 @@ require_once 'includes/functionality/personalSearch.php';
 			<div class="main_form">
 			<h3>Search My Files</h3>
 		
-				<?php isset($_GET['del']) ? $uploadMsg="<p>The requested file \"".($_GET['del'])."\" has sucessfully been deleted</p>": ""; ?>
+				<?php isset($_GET['del']) ? $uploadMsg="<p>The requested file \"".($_GET['del'])."\" has successfully been deleted</p>": ""; ?>
 				<?php isset($_GET['error']) ? $uploadMsg= "<p>You cannot delete a file that you do not own!</p>": ""; ?>
 				<?php print isset($uploadMsg) ? '<div class = "hiddenField">' . $uploadMsg . '</div>': ""; ?>
 

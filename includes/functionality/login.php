@@ -14,9 +14,9 @@ else {
 
 
 function loginUser($db_con, $username, $password) {
-	//Take inputs from login form, clean with sanatiseInput function and store in variables
-	$username = sanatiseInput($db_con, $username);
-	$password = sanatiseInput($db_con, $password);
+	//Take inputs from login form, clean with sanitiseInput function and store in variables
+	$username = sanitiseInput($db_con, $username);
+	$password = sanitiseInput($db_con, $password);
 	
 	//Validate username and password against DB
 	$username = strtolower($username);

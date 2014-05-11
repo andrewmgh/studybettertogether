@@ -26,7 +26,7 @@ else {
 //Recursive funtion to delete the user directory and all their files contained in this directory - Edited from a function found at - http://ie2.php.net/rmdir
 function deleteUserDirectory($db_con, $user_id)
 {
-	$user_id = sanatiseInput($db_con, $user_id);
+	$user_id = sanitiseInput($db_con, $user_id);
 	$userDirectory = "../../../studybettertogether/files/$user_id";
 	
 	if (is_dir ($userDirectory)) {
@@ -46,7 +46,7 @@ function deleteUserDirectory($db_con, $user_id)
 //As database contstraints are in place - deleting from the SBT.users table will have a ripple effect on all related tables
 function deleteUserFromDB($db_con, $user_id)
 {
-	$user_id = sanatiseInput($db_con, $user_id);
+	$user_id = sanitiseInput($db_con, $user_id);
 	
 	//Retrieve username from DB
 	$userResult = newQuery($db_con, "SELECT username FROM users WHERE user_id ='$user_id'");

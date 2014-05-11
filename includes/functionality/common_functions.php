@@ -1,8 +1,8 @@
 <?php
 if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/common_functions.php"){
 	
-	//functions to sanatise all input 
-	function sanatiseInput($db_con,$userInput)
+	//functions to sanitise all input 
+	function sanitiseInput($db_con,$userInput)
 	{
 		$userInput = stripslashes($userInput);
 		$userInput = htmlentities($userInput);

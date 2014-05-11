@@ -23,7 +23,7 @@ else {
 function displayEditClasses($db_con, $edit_id, $msg = NULL)
 {
 	//Select class details from the database based on the class id
-	$edit_id = sanatiseInput($db_con, $edit_id);
+	$edit_id = sanitiseInput($db_con, $edit_id);
 	$classResult = newQuery($db_con, "SELECT * FROM classes WHERE class_id='$edit_id'");
 	$row = mysqli_fetch_array ( $classResult );
 	

@@ -22,14 +22,14 @@ else {
 //Overall function to validate upload form
 function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileError, $description, $subject, $sharingStatus, $specificUsers, $terms, $username, $userID ){
 	
-	//Retrieve, sanitize and store in variables all information needed for file upload
-	$fileName = sanatiseInput ( $db_con, $fileName );
-	$fileSize = sanatiseInput ( $db_con, $fileSize );
-	$fileError = sanatiseInput ( $db_con, $fileError );
-	$description = sanatiseInput ( $db_con, $description );
-	$subject = sanatiseInput ( $db_con, $subject );
-	$sharingStatus = sanatiseInput ( $db_con, $sharingStatus);
-	$terms = sanatiseInput ( $db_con, $terms );
+	//Retrieve, sanitise and store in variables all information needed for file upload
+	$fileName = sanitiseInput ( $db_con, $fileName );
+	$fileSize = sanitiseInput ( $db_con, $fileSize );
+	$fileError = sanitiseInput ( $db_con, $fileError );
+	$description = sanitiseInput ( $db_con, $description );
+	$subject = sanitiseInput ( $db_con, $subject );
+	$sharingStatus = sanitiseInput ( $db_con, $sharingStatus);
+	$terms = sanitiseInput ( $db_con, $terms );
 	
 	//Retrieve file extension 
 	$fileExtension = pathinfo ( $fileName, PATHINFO_EXTENSION );
@@ -51,7 +51,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	$uploadMsg.= checkIfFileExists ($filePath);
 	 
 	if ($uploadMsg == "")	{
-		 		//retreive additional info on file type to display to user
+		 		//retrieve additional info on file type to display to user
 				$fileName = stripFileExtension($fileName, $fileExtension);
 				$Size_in_KB = number_format ( $fileSize / 1024 ) . ' kb';
 				$Result_fileID = newQuery ( $db_con, "SELECT file_type_id, file_description from allowed_file_types WHERE file_ext ='$fileExtension'" );
@@ -81,16 +81,17 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 		 	 		
 		 	 		//upload file
 		 	 		move_uploaded_file($fileTempName, $filePath); 
+		 	 		chmod($filePath, 0755);
 		 	 			 		 		
 					//return details of uploaded file and redirect user to uploads page
 					$output = outputSpecificUsers($specificUsers); 
-					header("Location:../../upload.php?Sucess=$uploadMsg&Name=$fileName&Size=$Size_in_KB&Type=$file_description&Owner=$username&Sharing=$sharingStatus&Specific=$output");
+					header("Location:../../upload.php?Success=$uploadMsg&Name=$fileName&Size=$Size_in_KB&Type=$file_description&Owner=$username&Sharing=$sharingStatus&Specific=$output");
 					exit(); 			
 		 	 	} 
-		 	 		//if transaction failed, close the db connection and redirect user to uplaods page with error msg
+		 	 		//if transaction failed, close the db connection and redirect user to uploads page with error msg
 		 		else { 
 		 			mysqli_close ($db_con);
-		 			$uploadMsg = "Unfortunately there was an unforseen error with your upload. Please try again.";
+		 			$uploadMsg = "Unfortunately there was an unforeseen error with your upload. Please try again.";
 		 			header("Location:../../upload.php?Upload=$uploadMsg&Desc=$description&Sub=$subject&SharingS=$sharingStatus");
 		 			exit();
 		 		} 
@@ -189,20 +190,21 @@ function stripFileExtension ($fileName,$fileExtension){
 function makeNewUserDirectory ($dirPath){
 			//Create a new directory for the user
 		if (!is_dir ($dirPath)) {
-			mkdir ($dirPath);
+			mkdir ($dirPath, 0755);
 			
 			//Add a blank index file in directory to stop other users viewing directory contents
 			$indexFile = "$dirPath"."index.html";
-			$fh = fopen("$indexFile", 'w');
+			$fh = fopen("$indexFile", 'w+');
 			fclose($fh);
 		}  
 }
+
 
 //Convert array of usernames into string of related user_id's seperated by a dash
 function arrayToString ($db_con, $array){
 	$string = "-";
 	foreach($array as $key => $value){
-		$value = sanatiseInput ( $db_con, $value );
+		$value = sanitiseInput ( $db_con, $value );
 		$userResult =newQuery($db_con, "SELECT user_id FROM users WHERE username = '$value'");
 		$row = mysqli_fetch_array ( $userResult );
 		$userID =  $row["user_id"];

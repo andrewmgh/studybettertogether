@@ -16,14 +16,14 @@ else {
 //Function to update user details
 function updateUserDetails($db_con, $user_id, $fname, $lname, $username, $email, $password, $className)
 {
-	//Take inputs from form, clean with sanatiseInput function and store in variables
-	$user_id = sanatiseInput($db_con, $user_id);
-	$fname = sanatiseInput($db_con, $fname);
-	$lname = sanatiseInput($db_con, $lname);
-	$username = sanatiseInput($db_con, $username);
-	$email = sanatiseInput($db_con, $email);
-	$password = sanatiseInput($db_con, $password);
-	$className = sanatiseInput($db_con, $className);
+	//Take inputs from form, clean with sanitiseInput function and store in variables
+	$user_id = sanitiseInput($db_con, $user_id);
+	$fname = sanitiseInput($db_con, $fname);
+	$lname = sanitiseInput($db_con, $lname);
+	$username = sanitiseInput($db_con, $username);
+	$email = sanitiseInput($db_con, $email);
+	$password = sanitiseInput($db_con, $password);
+	$className = sanitiseInput($db_con, $className);
 
 	//Select class id based on class name
 	$result_classID = newQuery($db_con, "SELECT class_id FROM classes WHERE class_name =\"$className\"");

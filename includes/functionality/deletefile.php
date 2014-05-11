@@ -17,7 +17,7 @@ else {
 function deleteuserFile($db_con, $file_id, $user_id, $url)
 {
 	
-	$file_id = sanatiseInput($db_con, $file_id);
+	$file_id = sanitiseInput($db_con, $file_id);
 	
 	//If function to only delete the file if the user currently logged in is the file owner
 	$ownerQuery = newQuery($db_con, "SELECT owner_id, file_name, file_path FROM files WHERE file_id ='$file_id' AND owner_id ='$user_id'");
@@ -43,9 +43,7 @@ function deleteuserFile($db_con, $file_id, $user_id, $url)
 		closeMySql($db_con, $ownerQuery);
 		exit();
 	}
-	
-	//echo '<a href="Javascript:window.history.back();">&laquo; Go back.</a>';
-	//Or else use session variable to save current page with parameters on personalSearch.php
+
 }
 
 ?>	

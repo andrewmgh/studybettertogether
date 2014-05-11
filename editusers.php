@@ -22,7 +22,7 @@ else {
 function displayEditUsers($db_con, $user_id, $msg = NULL)
 {
 	//Select user details from the database based on the user id
-	$user_id = sanatiseInput($db_con, $user_id);
+	$user_id = sanitiseInput($db_con, $user_id);
 	$userResult = newQuery($db_con, "SELECT * FROM users WHERE user_id='$user_id'");
 	$row = mysqli_fetch_array ( $userResult );
 	
