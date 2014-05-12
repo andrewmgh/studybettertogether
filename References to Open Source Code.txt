@@ -1,0 +1,17 @@
+Open Source Code
+The following list outlines the open source code incorporated into the website but not created by the developer.
+
+1.	All code contained in the folder ‘forum’.  This folder contains the study forum which was incorporated into the website.
+Source: http://mylittleforum.net/ 
+
+2.	All code contained in the folder ‘chatroom’ and the CSS file ‘chatroom.css’. This folder contains the AJAX chatroom which was incorporated into the website.
+Source: http://frug.github.io/AJAX-Chat/ 
+
+3.	The JavaScript ‘ui.dropdownchecklist.js’ and CSS file ‘ui.dropdownchecklist.standalone.css’. These files were used in the ‘upload.php’ page to enable a dropdown check list for the specific-user sharing options.
+Source: https://code.google.com/p/dropdown-check-list/ 
+
+4.	The JavaScript ‘unoSlider.js’ and CSS file ‘unoSlider.css’. These files were used on the ‘index.php’ page to create the image slider.
+Source: http://unoslider.decodigothemes.com/
+
+5.	The CSS file ‘reset.css’ which was used to reset all CSS styles across the website.
+Source: http://html5doctor.com/html-5-reset-stylesheet/

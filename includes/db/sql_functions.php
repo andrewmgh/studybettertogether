@@ -12,9 +12,7 @@ if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/db/sql_functions.php
 		}
 		return $result;
 	}
-	
-	
-	
+		
 	//MySQLi function to free sql results and close db connection
 	function closeMySql($db_con, $result){
 		mysqli_free_result($result);

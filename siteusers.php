@@ -5,7 +5,7 @@ require_once 'includes/html_template/header.php';
 <h2 class = "mainPageHeading">List of all Registered Users</h2>
 
 <p>Use this table to identify the username of other students </p>
-
+<br />
 <div class = "userdetails">
 				
 				<div class = "tabledefault">

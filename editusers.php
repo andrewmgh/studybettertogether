@@ -33,7 +33,7 @@ function displayEditUsers($db_con, $user_id, $msg = NULL)
 	}
 	mysqli_free_result($result_className);
 	
-	//Display the form with the values set as the user details
+	//Display the form with the values preset as the user details
 	echo "<div id ='editDetailsForm'> \n <div class='main_form'>";
 	print $msg ? '<div class = "hiddenField">' . ($_GET['Msg']) . '</div>': ""; 
 					

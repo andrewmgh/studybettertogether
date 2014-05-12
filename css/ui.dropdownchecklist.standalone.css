@@ -1,5 +1,11 @@
 /** Minimal stand-alone css for dropdownchecklist support
-    We highly recommend using JQuery ThemeRoller instead  
+   /*
+    * ui.dropdownchecklist
+    *
+    * Copyright (c) 2008-2010 Adrian Tosca, Copyright (c) 2010-2011 Ittrium LLC
+    * Dual licensed under the MIT (MIT-LICENSE.txt) OR GPL (GPL-LICENSE.txt) licenses.
+    *
+*
 */
 .ui-dropdownchecklist {
 	font-size: 13px;
@@ -69,7 +75,8 @@
 	
 }
 
-/* As the below CSS is specific to the uploads page, I am putting it here instead of the main css */
+/* Comment from website developer - Andrew Monaghan
+As the below CSS is specific to the uploads page, I am putting it here instead of the main css */
 
 /* =======UPLOADS PAGE CSS======== */	
 

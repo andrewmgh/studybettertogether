@@ -11,7 +11,7 @@
 
 <!-- 
 source: http://unoslider.decodigothemes.com/ 
-I've added javascript to the head instead of the body to stop errors in slider on page refresh
+I've added javaScript to the head instead of the body in order to stop CSS errors that were occurring in the slider on page refresh
 -->
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/unoSlider.min.js"></script>
@@ -39,7 +39,10 @@ I've added javascript to the head instead of the body to stop errors in slider o
 						<label for = "password">Password: <input type="password" id="password" name="password" required></label> 
 						<input type="submit" name="login" value="Log In">
 					</form>
-					<?php print isset($_GET['Message']) ? '<span id = "login_error">' . ($_GET['Message']) . '</span>': ""; ?>
+					<?php 
+					//Display the login error message only if it is sent via a URL parameter
+					print isset($_GET['Message']) ? '<span id = "login_error">' . ($_GET['Message']) . '</span>': ""; 
+					?>
 					<h6>Forgotten your password? - Please contact <a href="mailto:admin@studybettertogether.com?Subject=Password Reset">Here</a></h6>
 					
 				</span>

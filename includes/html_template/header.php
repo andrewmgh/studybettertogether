@@ -14,7 +14,7 @@ require_once 'includes/functionality/sessionManagement.php';
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<?php 
-	//detects the URL and inserts link to JavaScript file if necessary
+	//detects the URL of the given page and inserts a link to a CSS file or JavaScript file if necessary. This avoids loading these files on all pages when they are only needed on certain pages.
 	echo ($_SERVER['PHP_SELF'] == "/studybettertogether/upload.php") ? "<link rel='stylesheet' type='text/css' href='css/ui.dropdownchecklist.standalone.css' />"  : ""; 	
 	echo ($_SERVER['PHP_SELF'] == "/studybettertogether/chatroom.php") ? "<link rel='stylesheet' type='text/css' href='css/chatroom.css' />"  : ""; 	
 	if ($_SERVER['PHP_SELF'] == "/studybettertogether/changepassword.php" 
@@ -45,7 +45,10 @@ require_once 'includes/functionality/sessionManagement.php';
 						</ul>
 					</li>
 					
-						<?php echo ($account_type == 'Admin') ? "<li><a href='manageusers.php'>Manage Users</a>\n<ul><li><a href='manageclasses.php'>Manage Classes</a>\n</li>\n</ul></li>\n" : ""; ?>		
+						<?php 
+						//Only show the Manage Users or Manage Classes pages if the user logged in is the administrator
+						echo ($account_type == 'Admin') ? "<li><a href='manageusers.php'>Manage Users</a>\n<ul><li><a href='manageclasses.php'>Manage Classes</a>\n</li>\n</ul></li>\n" : ""; 
+						?>		
 						<li><a href="upload.php">Upload Files</a>
 								<ul>
 									<li><a href="acceptablefiles.php">Acceptable Files</a></li>
@@ -56,7 +59,10 @@ require_once 'includes/functionality/sessionManagement.php';
 						<li><a href="studyforum.php">Study Forum</a>
 									<ul>
 									<li><a href="chatroom.php">Chat Room</a></li>
-								<?php echo ($account_type == 'Admin') ? "<li><a href='studyforum_admin.php'>Forum Admin</a></li></ul>" : "</ul>"; ?>
+								<?php 
+								//Only show the Forum Admin page if the user logged in is the administrator
+								echo ($account_type == 'Admin') ? "<li><a href='studyforum_admin.php'>Forum Admin</a></li></ul>" : "</ul>"; 
+								?>
 						</li>	
 						<li><a href="study.php">Study Advice</a>
 							<ul>

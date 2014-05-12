@@ -27,6 +27,7 @@ require_once 'includes/functionality/publicSearch.php';
 						<label for="fileType">File Type: </label> 
 						<select name ="fileType">
 								<?php 
+								//Selects file types from db and displays them to user via a dropdown list. Also ensures dropdown list is sticky by retrieving the search value from the URL parameter
 								print isset($_GET['fileType'])&&($_GET['fileType'])!="" ? '<option value="'.$_GET['fileType'].'">'.$_GET['fileType'].'</option>' : ''; 
 								print '<option value="">Any File Type:</option>';
 								$list_of_file_types =newQuery($db_con, "SELECT * FROM allowed_file_types");

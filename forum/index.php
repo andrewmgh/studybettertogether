@@ -29,8 +29,8 @@ define('LANG_DIR', 'lang');
 define('THEMES_DIR', 'themes');
 
 session_start();
-
-if (!(isset ( $_SESSION ['username'] ))) { require_once '../includes/functionality/protectfiles.php'; }  //Added in by Andrew
+//The following line of code was added by Andrew Monaghan to ensure that this forum is only accessible by users logged into the studybettertogether website
+if (!(isset ( $_SESSION ['username'] ))) { require_once '../includes/functionality/protectfiles.php'; }  
 
 include('config/db_settings.php');
 include('includes/functions.inc.php');

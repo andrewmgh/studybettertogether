@@ -1,5 +1,6 @@
 <?php 
 require_once 'includes/html_template/header.php';
+//Ensure that only the administrator can access this page
 if ($account_type != 'Admin') {
 	header ( "location: profile.php" );
 }

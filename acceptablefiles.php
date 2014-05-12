@@ -11,7 +11,8 @@ If you want to request a new file type be added then simply contact <a href="mai
 						<td>File Description</td>
 						<td>File Extension</td>
 					</tr>
-					<?php				
+					<?php
+					//select accepted files from database and show in HTML table				
 					$allowedFiles =newQuery($db_con, "SELECT * FROM allowed_file_types");
 					while ( $row = mysqli_fetch_array ( $allowedFiles ) ) {
 						echo "<tr><td>" . htmlentities ( $row ["file_short_name"] ) . "</td>\n";

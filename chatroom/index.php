@@ -8,7 +8,8 @@
  */
 
 session_start();
-if (!(isset ( $_SESSION ['username'] ))) { require_once '../includes/functionality/protectfiles.php'; }  //Added in by Andrew
+//The following line of code was added by Andrew Monaghan to ensure that this chat room is only accessible by users logged into the studybettertogether website
+if (!(isset ( $_SESSION ['username'] ))) { require_once '../includes/functionality/protectfiles.php'; } 
 
 // Suppress errors.
 error_reporting(0);

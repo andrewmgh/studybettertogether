@@ -27,8 +27,7 @@ function displayEditClasses($db_con, $edit_id, $msg = NULL)
 	$classResult = newQuery($db_con, "SELECT * FROM classes WHERE class_id='$edit_id'");
 	$row = mysqli_fetch_array ( $classResult );
 	
-	//Display the form with the values set as the class details
-	//echo"<h3>Use the below form to edit the class details</h3>";
+	//Display the form with the values preset as the class details
 	echo "<div id ='editDetailsForm'> \n <div class='main_form'>";
 	print $msg ? '<div class = "hiddenField">' . ($_GET['Msg']) . '</div>': ""; 
 					

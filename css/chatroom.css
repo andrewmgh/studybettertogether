@@ -1,4 +1,12 @@
- 
+/*
+ * @package AJAX_Chat
+ * @author Sebastian Tschan
+ * @author Philip Nicolcev
+ * @copyright (c) Sebastian Tschan
+ * @license Modified MIT License
+ * @link https://blueimp.net/ajax/
+ */
+  
  #chat_wrapper {
 	margin:10px auto;
 	padding-bottom:25px;

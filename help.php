@@ -5,6 +5,7 @@
 <h2 class = "mainPageHeading">Help Section </h2>
 
 <div class = "pdf">
+
 <iframe
 src="http://www.studybettertogether.com/resources/SBT_UserManual.pdf" 
 data-auto-height="false" 

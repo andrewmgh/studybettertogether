@@ -12,7 +12,7 @@ require_once 'includes/html_template/header.php';
 			
 		<?php 
 	
-		//Once a file has successfully been uploaded, this code will retreive the uploaded file details from the URL using and display them to the user.
+		//Once a file has been successfully uploaded, this code will retrieve the uploaded file details from the URL and display them to the user.
 				print isset($_GET['Upload']) ? '<div class = "hiddenField">' . ($_GET['Upload']) . '</div>': ""; 
 				if (isset($_GET['Success'])) {
 					print" <div class=\"uploadSuccess\">
@@ -38,7 +38,7 @@ require_once 'includes/html_template/header.php';
 							<td><strong>Sharing Status:</strong></td>
 							<td>". $_GET['Sharing'] ."</td>
 							</tr>"; 
-										
+		//Only display the specific section details if the user chose specific sharing								
 					if (!($_GET['Specific'])=="") {
 					print"	<tr>
 							<td><strong>Shared With:</strong></td>
@@ -70,8 +70,10 @@ require_once 'includes/html_template/header.php';
 					<p>
 					<label for="sharingStatus">Sharing Status: </label> 
 					<select name ="sharingStatus" id = "sharingStatus" required>	
-						<?php print isset($_GET['SharingS']) ? "<option value=\"$_GET[SharingS]\">$_GET[SharingS]</option>" : "<option value=\"\" selected style='display:none;'>Select a Sharing Status: </option>";?> 
-						<!--    <option value="" selected style='display:none;'>Select a Sharing Status:</option>-->
+						<?php 
+						//If the sharing status is returned as a URL parameter than show it as a value - thus keeping the form "sticky"
+						print isset($_GET['SharingS']) ? "<option value=\"$_GET[SharingS]\">$_GET[SharingS]</option>" : "<option value=\"\" selected style='display:none;'>Select a Sharing Status: </option>";
+						?> 
 						  <option value="Public">Public</option>
 						  <option value="Private">Private</option>
 						  <option value="Specific">Specific User(s)</option>
@@ -88,7 +90,7 @@ require_once 'includes/html_template/header.php';
 					<label  for="SpecificSharing">Share with <br />Specific Users: </label>
 					<select id="s1" name="specificSharing[]" multiple="multiple" > <!--size="3" tabindex="1" style="height:150px; width:150px"--> 
 		 				<?php  
-		 				//Administrator - Mimi - can specifically share files with anyone, other users (students) can only specifically share files with students registered to their same class
+		 				//The administrator can specifically share files with anyone, 
 		 					 if($userID == "1"){
 										$users =newQuery($db_con, "SELECT user_id, username FROM users WHERE user_id != '$userID'");
 										while ( $row = mysqli_fetch_array ( $users ) ) {
@@ -97,8 +99,9 @@ require_once 'includes/html_template/header.php';
 										mysqli_free_result($users);
 								}		 					
 		 						 
+						//Other users (students) can only specifically share files with students registered to their same class		
 							else {
-									 //Retrieve username of Administrator and provide the Administrator as the first option
+									 //Retrieve username of the Administrator and then provide the Administrator as the first specific-sharing option
 			 						 $result_admin = newQuery($db_con, "SELECT username FROM users WHERE user_id ='1'");
 			 						 if ($row = mysqli_fetch_array($result_admin)) {
 			 						 	$admin = $row['username'];
@@ -106,14 +109,14 @@ require_once 'includes/html_template/header.php';
 			 						 mysqli_free_result($result_admin);
 			 						 echo '<option values=' . $admin . '>' . $admin . '</option>';
 									
-									//Reteive the user's Class ID
+									//Retrieve the user's Class ID
 									$result_classID = newQuery($db_con, "SELECT class_assigned_to FROM users WHERE user_id ='$userID'");
 			 						 if ($row = mysqli_fetch_array($result_classID)) {
 			 						 	$class_id = $row['class_assigned_to'];
 			 						 }
 			 						 mysqli_free_result($result_classID);		 		
 		 						 
-			 						 //Only show users belonging to same Class
+			 						 //Only display the option to share files with other users belonging to same Class
 									$users =newQuery($db_con, "SELECT user_id, username FROM users WHERE user_id != '$userID' AND class_assigned_to = '$class_id'");
 									while ( $row = mysqli_fetch_array ( $users ) ) {
 										echo '<option values=' . $row["username"] . '>' . $row["username"] . '</option>';
@@ -134,10 +137,10 @@ require_once 'includes/html_template/header.php';
 	
 <h4>Upload Terms and Conditions</h4>
 	<ul class ="TaC_bullets">
-	<li><p>Any unlawful, unethical or inapropriate content is strictly banned from this site.</li>
-	<li><p>This includes, but is not limited to any malicious content (computer viruses, worms, malware etc), drug related content, pornographic content or any content that is designed to harrass another user.</p></li>
+	<li><p>Any unlawful, unethical or inappropriate  content is strictly banned from this site.</li>
+	<li><p>This includes, but is not limited to any malicious content (computer viruses, worms, malware etc), drug related content, pornographic content or any content that is designed to harass another user.</p></li>
 	<li><p>Please use your own judgement when deciding what to upload</p></li>
-	<li><p>If you have to ask youself "Should I upload this?" - than the answer is probably no!</p></li>
+	<li><p>If you have to ask yourself "Should I upload this?" - than the answer is probably no!</p></li>
 	</ul>
 <p><strong>Any users found to be in breach of these terms will be banned and removed from this site </strong></p>
 

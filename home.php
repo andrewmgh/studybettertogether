@@ -38,9 +38,9 @@
 		<td class ="column3"><a href ="help.php"><img alt="Help Page" title="Help Page" src="img/support.jpg" height="125" width="125" /></a></td>
 	</tr>
 	<tr>
-		<td class ="description">Stuck on a project and don't know who to ask? Use the study forum to ask questions, discusss college projects and talk about any study related topics.</td>
+		<td class ="description">Stuck on a project and don't know who to ask? Use the study forum to ask questions, discuss college projects and talk about any study related topics.</td>
 		<td class ="description">Want to chat with other students right now? Log into the chatroom and see who else is online.</td>
-		<td class ="description">Unsure how to use this site? Here you will find a detailed user-manual that shows step by step how to use all the features on this website..</td>
+		<td class ="description">Unsure how to use this site? Here you will find a detailed user-manual that shows step by step how to use all the features on this website.</td>
 	</tr>
 </table>
 </div>	

@@ -61,6 +61,7 @@
 						<select name ="classname" required>
 								<?php print isset($_GET['Cname']) ? "<option value=\"$_GET[Cname]\">$_GET[Cname]</option>" : "<option value=\"\" disabled selected style='display:none;'>Choose from one of the following: </option>";?>
 								<?php
+								//search the database for the class names and display them to the user via a dropdown list								
 								require_once 'includes/functionality/common_functions.php';
 								require_once 'includes/db/sql_functions.php';
 								isset($_GET['Cname']) ? $list_of_classes =newQuery($db_con, "SELECT * FROM classes WHERE class_name != '" . $_GET['Cname'] ."'") : $list_of_classes =newQuery($db_con, "SELECT * FROM classes");

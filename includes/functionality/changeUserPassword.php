@@ -6,7 +6,7 @@ if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/change
 		//Create new user password
 		if (isset ($_POST ['changePassword'])){  //only runs the below php code if the login form was submitted
 	
-			//Declare and initialise variables to solve any posible undefined variable errors
+			//Declare and initialise variables to solve any possible undefined variable errors
 			$newPassword = $confirmPassword = $PwdMsg ="";
 			$PasswordValid = false;
 	

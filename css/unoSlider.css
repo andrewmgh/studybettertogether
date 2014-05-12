@@ -1,3 +1,11 @@
+/*
+ * UnoSlider
+ * This script is a plugin for jQuery
+ * Version: 1.0.4
+ * Author: Nelson Polanco
+ * http://unoslider.npmedia.net
+ */
+
 .unoSlider ul,
 .unoSlider .sliderView {
     min-height: 450px;

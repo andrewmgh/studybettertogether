@@ -1,7 +1,6 @@
 /*
-Inspiration was taken from - http://www.wix.com/website-template/view/html/979?originUrl=http%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fbusiness-services%2Fcommunity-education%2F1&bookName=create-master-current-141013&galleryDocIndex=4
-
-Menu bar was adapted from this tutorial - http://www.1stwebdesigner.com/css/create-a-responsive-website-video-tutorial/
+Menu bar was adapted from these two tutorials - 
+http://www.1stwebdesigner.com/css/create-a-responsive-website-video-tutorial/
 http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 
 */
@@ -15,10 +14,8 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		h5 {font-size: 13px; font-weight: bold; padding: .1em;}
 		h6 {font-size: 11px; font-weight: bold; padding: .1em;}
 		
-		
-/* 		 *{border: solid grey 1px !important;}*/
-		
-		=======FORMATTING WRAPPER STYLES======== 
+			
+	/* 	=======FORMATTING WRAPPER STYLES======== */
 		
 		#outer_header_wrapper{
 		width: 100%;	
@@ -49,7 +46,6 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 		
 		}
 		
-		/* this is only used to apply left and right padding to the main content on all pages. I tried to do this on the inner-content wrapper but it won't work*/
 		#main_content {
 		width: 95%;
 		margin: 0 auto 20px auto;
@@ -156,7 +152,9 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 	#main_header nav ul ul ul {
 		position: absolute; left: 100%; top:0;
 	}
-		/* ======= GLOBAL TABLE STYLES ======== */		
+	
+	
+/* ======= GLOBAL TABLE STYLES ======== */		
 /* Source: http://www.csstablegenerator.com/?table_id=3 */
 .tabledefault {
 	margin:0px;padding:0px;
@@ -319,7 +317,9 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 	color: #000055;
 	}
 
-/* =======INDEX PAGE CSS======== login form - http://stackoverflow.com/questions/6106353/css-html-header-with-login-form*/
+/* =======INDEX PAGE CSS======== 
+login form based on design found at: http://stackoverflow.com/questions/6106353/css-html-header-with-login-form
+*/
 
 	#inner_content_wrapperNoBorder {
 		width: 1060px;
@@ -411,7 +411,7 @@ http://line25.com/tutorials/how-to-create-a-pure-css-dropdown-menu
 #regImg{	
 	float: right;			
 	padding: 2%;
-/* 	margin-top: 50px;	 */
+
 }	
 /* =======MAIN FORM======== */
 
