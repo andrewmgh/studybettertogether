@@ -38,7 +38,7 @@ function uploadFile($db_con, $fileName, $fileSize, $fileTempName, $fileError, $d
 	//set file path
 	$filePath = setFilePath($fileName, $userID);
 	
-	//if neeeded, convert specific users array to a string
+	//if needed, convert specific users array to a string
 	if(!($specificUsers=="")){
 	$specificUsersID = arrayToString($db_con, $specificUsers);
 	}
@@ -50,14 +50,15 @@ function uploadFile($db_con, $fileName, $fileSize, $fileTempName, $fileError, $d
 	$uploadMsg.= validateTerms($terms);
 	$uploadMsg.= validateFileType($db_con, $fileExtension);
 	$uploadMsg.= checkIfFileExists ($filePath);
-	 
+
+	//if there were no upload validation errors....
 	if ($uploadMsg == "")	{
-		 	//retrieve additional info on file type to display to user
+		 //retrieve additional info on file type to display to user
 				
 				//retrieve file name less the file extension
 				$fileName = stripFileExtension($fileName, $fileExtension);
 				
-				//convert file size to a more readible format
+				//convert file size to a more readable format
 				$Size_in_KB = number_format ( $fileSize / 1024 ) . ' kb';
 				
 				//select the file type ID and the file description from the db
@@ -68,7 +69,10 @@ function uploadFile($db_con, $fileName, $fileSize, $fileTempName, $fileError, $d
 				} 
 				mysqli_free_result($Result_fileID);
 				
-		 	//start db transaction to commit file info
+				//if needed, convert specific users to a bulleted list
+				$output = outputSpecificUsers($db_con, $specificUsers);
+			
+		//start database transaction to commit file info
 		 		mysqli_autocommit($db_con, false);
 		 		$success = true;
 		 		
@@ -80,9 +84,9 @@ function uploadFile($db_con, $fileName, $fileSize, $fileTempName, $fileError, $d
 		 		if (!$Uploadquery2) {$success = false; }
 		 		
 	 		
-		 	//if db transaction worked.
+		//if database transaction worked.
 		 	 	if ($success) {	
-		 	 		//complete transaction and close db connection
+		 	 		//complete transaction and close database connection
 		 	 		mysqli_commit($db_con); 
 		 	 		mysqli_close ($db_con);
 		 	 		
@@ -91,12 +95,11 @@ function uploadFile($db_con, $fileName, $fileSize, $fileTempName, $fileError, $d
 		 	 		chmod($filePath, 0755);
 		 	 			 		 		
 					//return details of uploaded file and redirect user to uploads page
-					$output = outputSpecificUsers($specificUsers); 
 					header("Location:../../upload.php?Success=$uploadMsg&Name=$fileName&Size=$Size_in_KB&Type=$file_description&Owner=$username&Sharing=$sharingStatus&Specific=$output");
 					exit(); 			
 		 	 	} 
 				
-		 	 //if transaction failed, close the db connection and redirect user to uploads page with error msg
+		 	 //if transaction failed, close the database connection and redirect user to uploads page with error msg
 		 		else { 
 		 			mysqli_close ($db_con);
 		 			$uploadMsg = "Unfortunately there was an unforeseen error with your upload. Please try again.";
@@ -161,7 +164,7 @@ function validateTerms($terms){
 }
 
 function validateFileType($db_con, $fileExtension){
-//ensures that the uploaded file was one of the allowed file types as specified by the allowed_file_types table in the db
+//ensures that the uploaded file was one of the allowed file types as specified by the allowed_file_types table in the database
 	$result = newQuery($db_con, "SELECT * from allowed_file_types WHERE file_ext ='$fileExtension'" );
 	$row = mysqli_fetch_array($result);
 	if (mysqli_num_rows ($result) == 1) {
@@ -215,28 +218,28 @@ function makeNewUserDirectory ($dirPath){
 }
 
 function arrayToString ($db_con, $array){
-//takes in the array of usernames from specific sharing and converts these into a string of related user_id's seperated by a dash
-//used to store the users whom a file is specifically shared with by ID instead of username
+//takes in the array of user ID's from specific sharing and converts these into a string seperated by a dash
 	$string = "-";
 	foreach($array as $key => $value){
 		$value = sanitiseInput ( $db_con, $value ); //sanitise each value in the array
-		$userResult =newQuery($db_con, "SELECT user_id FROM users WHERE username = '$value'"); //select the user ID based on the username
-		$row = mysqli_fetch_array ( $userResult );
-		$userID =  $row["user_id"];
-		mysqli_free_result($userResult);
-		$string .= "$userID"."-"; //append the user ID to a string seperated by a dash
+		$string .= "$value"."-"; //append the user ID to a string seperated by a dash
 	}
 	return $string;
 }
 
-function outputSpecificUsers ($array){
-//takes in the array of usernames from specific sharing (if set) and converts these into a bulleted list to display to the user
+function outputSpecificUsers ($db_con, $array){
+//takes in the array of user ID's from specific sharing (if set), retrieves the relevant usernames and then converts these into a bulleted list to display to the user
 	if (isset($array)) {
 		foreach($array as $key => $value){
-			$sharedWith.= "- ".htmlentities($value)."<br />";
+			$userResult =newQuery($db_con, "SELECT username FROM users WHERE user_id = '$value'"); //select the username based on the user ID
+			$row = mysqli_fetch_array ( $userResult );
+			$username =  $row["username"];
+			mysqli_free_result($userResult);
+			$sharedWith.= "<li>".htmlentities($username)."</li>"; //append the username to a bulleted list
 		}
 		return $sharedWith;
 	}
+	
 	else{
 	return "";
 	}

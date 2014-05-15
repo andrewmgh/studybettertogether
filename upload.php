@@ -94,7 +94,7 @@ require_once 'includes/html_template/header.php';
 		 					 if($userID == "1"){
 										$users =newQuery($db_con, "SELECT user_id, username FROM users WHERE user_id != '$userID'");
 										while ( $row = mysqli_fetch_array ( $users ) ) {
-											echo '<option values=' . $row["username"] . '>' . $row["username"] . '</option>';
+											echo '<option value=' . $row["user_id"] . '>' . $row["username"] . '</option>' ."\n";
 										}
 										mysqli_free_result($users);
 								}		 					
@@ -107,7 +107,7 @@ require_once 'includes/html_template/header.php';
 			 						 	$admin = $row['username'];
 			 						 }
 			 						 mysqli_free_result($result_admin);
-			 						 echo '<option values=' . $admin . '>' . $admin . '</option>';
+			 						 echo '<option value=1>' . $admin . '</option>' ."\n";
 									
 									//Retrieve the user's Class ID
 									$result_classID = newQuery($db_con, "SELECT class_assigned_to FROM users WHERE user_id ='$userID'");
@@ -119,7 +119,7 @@ require_once 'includes/html_template/header.php';
 			 						 //Only display the option to share files with other users belonging to same Class
 									$users =newQuery($db_con, "SELECT user_id, username FROM users WHERE user_id != '$userID' AND class_assigned_to = '$class_id'");
 									while ( $row = mysqli_fetch_array ( $users ) ) {
-										echo '<option values=' . $row["username"] . '>' . $row["username"] . '</option>';
+										echo '<option value=' . $row["user_id"] . '>' . $row["username"] . '</option>' ."\n";
 									}
 									mysqli_free_result($users);
 							}
