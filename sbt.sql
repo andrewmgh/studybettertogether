@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2014 at 10:03 PM
+-- Generation Time: May 15, 2014 at 10:26 PM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `ajax_chat_messages` (
   PRIMARY KEY (`id`),
   KEY `message_condition` (`id`,`channel`,`dateTime`),
   KEY `dateTime` (`dateTime`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=92 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=93 ;
 
 --
 -- Dumping data for table `ajax_chat_messages`
@@ -164,7 +164,8 @@ INSERT INTO `ajax_chat_messages` (`id`, `userID`, `userName`, `userRole`, `chann
 (88, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:21:08', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout mimikelly'),
 (89, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:21:09', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login mimikelly'),
 (90, 2147483647, 'ChatBot', 4, 0, '2014-05-03 17:21:10', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/logout mimikelly'),
-(91, 2147483647, 'ChatBot', 4, 0, '2014-05-10 16:34:38', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login mimikelly');
+(91, 2147483647, 'ChatBot', 4, 0, '2014-05-10 16:34:38', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login mimikelly'),
+(92, 2147483647, 'ChatBot', 4, 0, '2014-05-15 21:23:14', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '/login amonaghan');
 
 -- --------------------------------------------------------
 
@@ -253,8 +254,8 @@ CREATE TABLE IF NOT EXISTS `classes` (
 --
 
 INSERT INTO `classes` (`class_id`, `class_name`, `class_code`, `class_register_date`, `register_code`) VALUES
-(1, 'IBI Test Class', 'IBI', '2014-01-08 11:33:30', '6794597a61ecac094c75f6ae849678ca8172fbca'),
-(2, 'NCI 4th Year Computing', 'BSHBSCE', '2014-02-10 23:00:33', '6794597a61ecac094c75f6ae849678ca8172fbca');
+(3, 'NCI 4th Year Computing', 'BSHBSCE', '2014-02-10 23:00:33', '6794597a61ecac094c75f6ae849678ca8172fbca'),
+(5, 'IBI Test Class', 'IBI', '2014-01-08 11:33:30', '6794597a61ecac094c75f6ae849678ca8172fbca');
 
 -- --------------------------------------------------------
 
@@ -276,27 +277,34 @@ CREATE TABLE IF NOT EXISTS `files` (
   KEY `user_id` (`owner_id`),
   KEY `file_type_id` (`file_type_id`),
   FULLTEXT KEY `file_name` (`file_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `files`
 --
 
 INSERT INTO `files` (`file_id`, `owner_id`, `file_type_id`, `file_name`, `file_path`, `file_size`, `description`, `subject`, `upload_date`) VALUES
-(1, 2, 2, 'Personal Study Helper', '../../../studybettertogether/files/2/Personal_Study_Helper.docx', '17 kb', 'studyhelper', 'study', '2013-12-07 12:52:18'),
-(2, 2, 2, 'ProjectProposal2- Studytogether.com', '../../../studybettertogether/files/2/ProjectProposal2-_Studytogether.com.docx', '674 kb', 'test', 'test', '2013-12-07 12:53:42'),
-(5, 2, 19, 'Group1_SKO_RequirementsSpecification', '../../../studybettertogether/files/2/Group1_SKO_RequirementsSpecification.pdf', '828 kb', 'desc', 'sub', '2013-12-07 13:10:47'),
-(12, 1, 1, 'CA BPE(1)', '../../../studybettertogether/files/1/CA_BPE(1).doc', '26 kb', 'CA for Business Process Engineering', 'BPE', '2014-02-03 23:42:17'),
-(17, 1, 12, 'BPE-07b Lean', '../../../studybettertogether/files/1/BPE-07b_Lean.pptx', '1,269 kb', '', '', '2014-02-05 14:55:30'),
-(18, 1, 12, 'BPE-07a-TQM', '../../../studybettertogether/files/1/BPE-07a-TQM.pptx', '1,342 kb', '', '', '2014-02-05 14:56:23'),
-(27, 2, 2, 'test - Copy (5) - Copy', '../../../studybettertogether/files/2/test_-_Copy_(5)_-_Copy.docx', '13 kb', '', '', '2014-03-19 17:11:30'),
-(28, 2, 2, 'test - Copy (3) - Copy', '../../../studybettertogether/files/2/test_-_Copy_(3)_-_Copy.docx', '13 kb', '', '', '2014-03-19 17:12:55'),
-(29, 2, 2, 'test - Copy (4) - Copy', '../../../studybettertogether/files/2/test_-_Copy_(4)_-_Copy.docx', '13 kb', '', '', '2014-03-19 17:20:02'),
-(30, 2, 5, 'bmi_group_calculator_english', '../../../studybettertogether/files/2/bmi_group_calculator_english.xls', '3,989 kb', '', '', '2014-03-19 17:20:44'),
-(34, 1, 25, 'image2', '../../../studybettertogether/files/1/image2.png', '47 kb', '', '', '2014-05-15 19:14:36'),
-(35, 2, 22, 'tesdt', '../../../studybettertogether/files/2/tesdt.txt', '0 kb', '', '', '2014-05-15 19:22:11'),
-(44, 2, 25, 'image2', '../../../studybettertogether/files/2/image2.png', '47 kb', '', '', '2014-05-15 19:49:34'),
-(45, 1, 2, 'ProjectProposal-StudyBetterTogether', '../../../studybettertogether/files/1/ProjectProposal-StudyBetterTogether.docx', '674 kb', '', '', '2014-05-15 19:50:09');
+(1, 2, 2, 'Personal Study Helper', '../../files/2/Personal_Study_Helper.docx', '17 kb', 'studyhelper', 'study', '2013-12-07 12:52:18'),
+(2, 2, 2, 'ProjectProposal2- Studytogether.com', '../../files/2/ProjectProposal2-_Studytogether.com.docx', '674 kb', 'test', 'test', '2013-12-07 12:53:42'),
+(5, 1, 12, 'BPE-07b Lean', '../../files/1/BPE-07b_Lean.pptx', '1,269 kb', '', '', '2014-02-05 14:55:30'),
+(19, 1, 1, 'Timeplan1', '../../files/1/Timeplan1.doc', '42 kb', '', 'Study Skills', '2014-02-13 15:03:29'),
+(20, 1, 1, 'Academic Guidence Seminar 2014', '../../files/1/Academic_Guidence_Seminar_2014.doc', '45 kb', 'AG Seminar 2014', 'AG Seminar for MA Students', '2014-02-19 09:14:10'),
+(21, 1, 1, 'NTS Lecture Notes 15-16', '../../files/1/NTS_Lecture_Notes_15-16.doc', '64 kb', 'NTS Lecture Notes 15-16', 'New Testament Survey', '2014-02-19 09:21:54'),
+(25, 2, 2, '4th Year Project Booklet Information-AndrewMonaghan', '../../files/2/4th_Year_Project_Booklet_Information-AndrewMonaghan.docx', '18 kb', 'This is a test', 'Test', '2014-03-19 15:29:55'),
+(34, 1, 2, 'Meetings with Client', '../../files/1/Meetings_with_Client.docx', '16 kb', 'Meetings', 'These are the meetings', '2014-03-19 17:47:06'),
+(37, 2, 2, 'History Notes 1', '../../files/2/History_Notes_1.docx', '10 kb', 'Notes on Section 1', 'History', '2014-04-06 15:40:44'),
+(38, 2, 2, 'History Notes 2', '../../files/2/History_Notes_2.docx', '10 kb', 'Notes on section 2', 'History', '2014-04-06 15:40:58'),
+(39, 2, 2, 'History Notes 3', '../../files/2/History_Notes_3.docx', '10 kb', 'Notes on section 3', 'History', '2014-04-06 15:41:13'),
+(40, 9, 26, 'Koala', '../../files/9/Koala.jpg', '763 kb', 'My pet Koala!', 'Animals', '2014-04-09 12:19:31'),
+(41, 10, 26, 'Lighthouse', '../../files/10/Lighthouse.jpg', '548 kb', 'My New Home!', 'Lighthouse', '2014-04-09 12:39:24'),
+(42, 12, 19, 'vc-dimension', '../../files/12/vc-dimension.pdf', '1,531 kb', 'VC-D', 'Machine Learning', '2014-04-11 14:25:25'),
+(43, 14, 19, 'The Scarlet Thread', '../../files/14/The_Scarlet_Thread.pdf', '488 kb', 'W.A.Criswell''s famous sermon', 'The Scarlet thread through the Bible', '2014-04-14 09:36:57'),
+(44, 19, 26, 'snowboard-ragazzo-neve-01', '../../files/19/snowboard-ragazzo-neve-01.jpg', '76 kb', 'test ', '', '2014-04-18 08:30:51'),
+(45, 20, 25, 'googleplay', '../../files/20/googleplay.png', '1 kb', 'Test Upload', 'Test Upload', '2014-04-18 09:18:27'),
+(47, 22, 19, 'DNS Explained', '../../files/22/DNS_Explained.pdf', '116 kb', 'Never again', 'Distributed Systems', '2014-05-03 19:30:18'),
+(49, 2, 19, 'phpsec_cheatsheet', '../../files/2/phpsec_cheatsheet.pdf', '174 kb', 'PHP Cheat Sheet', 'PHP', '2014-05-04 08:52:57'),
+(52, 2, 19, 'SBT_UserManual', '../../files/2/SBT_UserManual.pdf', '1,988 kb', 'User Manual', '', '2014-05-10 15:56:58'),
+(53, 2, 9, '9. Transaction Processing', '../../files/2/9._Transaction_Processing.ppt', '903 kb', 'Transaction Processing Lecture for BNS', 'Business Network Security', '2014-05-11 08:32:03');
 
 -- --------------------------------------------------------
 
@@ -319,18 +327,25 @@ CREATE TABLE IF NOT EXISTS `file_sharing` (
 INSERT INTO `file_sharing` (`sharing_id`, `sharing_status`, `shared_with`) VALUES
 (1, 'private', ''),
 (2, 'specific', '-3-'),
-(5, 'public', ''),
-(12, 'specific', '-2-3-'),
-(17, 'specific', '-2-3-'),
-(18, 'specific', '-2-3-'),
-(27, 'specific', '-1-3-'),
-(28, 'specific', '-1-3-'),
-(29, 'specific', '-1-3-'),
-(30, 'specific', '-1-3-'),
-(34, 'specific', '-2-4-3-'),
-(35, 'public', ''),
-(44, 'specific', '-1-4-'),
-(45, 'specific', '-2-');
+(5, 'specific', '-2-3-'),
+(19, 'public', ''),
+(20, 'public', ''),
+(21, 'specific', '-2-'),
+(25, 'private', ''),
+(34, 'specific', '-2-'),
+(37, 'public', ''),
+(38, 'public', ''),
+(39, 'public', ''),
+(40, 'private', ''),
+(41, 'private', ''),
+(42, 'public', ''),
+(43, 'public', ''),
+(44, 'specific', '-2-18-'),
+(45, 'private', ''),
+(47, 'public', ''),
+(49, 'public', ''),
+(52, 'public', ''),
+(53, 'public', '');
 
 -- --------------------------------------------------------
 
@@ -376,9 +391,8 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
 INSERT INTO `forum_categories` (`id`, `order_id`, `class_id`, `category`, `description`, `accession`) VALUES
 (1, 1, 0, 'General', '', 0),
 (2, 2, 0, 'Social', '', 0),
-(6, 0, 1, 'IBI Test Class', '', 0),
-(7, 0, 2, 'NCI 4th Year Computing', '', 0),
-(8, 0, 3, 'testt', '', 0);
+(6, 0, 5, 'IBI Test Class', '', 0),
+(7, 0, 3, 'NCI 4th Year Computing', '', 0);
 
 -- --------------------------------------------------------
 
@@ -420,16 +434,28 @@ CREATE TABLE IF NOT EXISTS `forum_entries` (
   KEY `category` (`category`),
   KEY `pid` (`pid`),
   KEY `sticky` (`sticky`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `forum_entries`
 --
 
 INSERT INTO `forum_entries` (`id`, `pid`, `tid`, `uniqid`, `time`, `last_reply`, `edited`, `edited_by`, `user_id`, `name`, `subject`, `category`, `email`, `hp`, `location`, `ip`, `text`, `tags`, `show_signature`, `email_notification`, `marked`, `locked`, `sticky`, `views`, `spam`, `spam_check_status`, `edit_key`) VALUES
-(19, 0, 19, '52b2e68319d7d', '2013-12-19 12:29:25', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', '[b]Hi all[/b]\r\n\r\nWelcome to our new collaborative learning website! \r\n\r\nHope you have fun :-)', '', 0, 0, 0, 0, 0, 35, 0, 0, ''),
-(20, 19, 19, '52e3e1e9a0b9b', '2014-01-25 16:10:26', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 2, '', 'Welcome', 1, '', '', '', '::1', 'Thanks Mimi', '', 0, 0, 0, 0, 0, 24, 0, 0, ''),
-(21, 20, 19, '52eba2a710f1b', '2014-01-31 13:18:41', '2014-01-31 13:18:41', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', 'No Prob', '', 0, 0, 0, 0, 0, 19, 0, 0, '');
+(19, 0, 19, '52b2e68319d7d', '2013-12-19 12:29:25', '2014-04-09 12:25:50', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '::1', '[b]Hi all[/b]\r\n\r\nWelcome to our new collaborative learning website! \r\n\r\nHope you have fun :-)', '', 0, 0, 0, 0, 0, 72, 0, 0, ''),
+(20, 19, 19, '52e3e1e9a0b9b', '2014-01-25 16:10:26', '2014-04-09 12:25:50', '0000-00-00 00:00:00', NULL, 2, '', 'Welcome', 1, '', '', '', '::1', 'Thanks Mimi', '', 0, 0, 0, 0, 0, 55, 0, 0, ''),
+(22, 20, 19, '52faa928b48ac', '2014-02-11 22:50:25', '2014-04-09 12:25:50', '0000-00-00 00:00:00', NULL, 1, '', 'Welcome', 1, '', '', '', '92.251.255.13', 'NP', '', 0, 0, 0, 0, 0, 26, 0, 0, ''),
+(24, 0, 24, '5304cfcedb01d', '2014-02-19 15:38:22', '2014-02-19 15:38:22', '0000-00-00 00:00:00', NULL, 1, '', 'Anyone else stuck on ca1', 6, '', '', '', '92.251.255.13', 'Anyone', '', 0, 0, 0, 0, 0, 9, 0, 0, ''),
+(25, 0, 25, '533c0758e819c', '2014-04-02 11:50:27', '2014-04-15 10:28:39', '0000-00-00 00:00:00', NULL, 2, '', 'What do you think of this website?', 7, '', '', '', '193.120.247.194', 'Hi all\r\n\r\nPlease let me know what you think of the website and any suggestions you have.\r\n\r\nCheers\r\nAndrew', '', 0, 0, 0, 0, 0, 16, 0, 0, ''),
+(27, 0, 27, '534184200aaa2', '2014-04-06 15:44:01', '2014-04-06 15:44:01', '0000-00-00 00:00:00', NULL, 1, '', 'Any suggestions for the Study Links', 7, '', '', '', '80.111.107.217', 'Reply here with any links you have found that you want added to the Useful Resources page.', '', 0, 0, 0, 0, 0, 6, 0, 0, ''),
+(28, 22, 19, '53454a071df75', '2014-04-09 12:25:50', '2014-04-09 12:25:50', '0000-00-00 00:00:00', NULL, 9, '', 'Welcome', 1, '', '', '', '86.47.90.179', 'Loving this learning website!!!!:-D [img]images/uploaded/2014040913253953454a5332980.jpg[/img]', '', 0, 0, 0, 0, 0, 6, 0, 0, ''),
+(29, 0, 29, '53454a779e296', '2014-04-09 12:28:13', '2014-04-15 10:28:10', '0000-00-00 00:00:00', NULL, 9, '', 'Party at my house!!', 7, '', '', '', '86.47.90.179', 'House Party at mine,on May 9th! \r\nLet me know you if you can make it.\r\n:-P', '', 0, 0, 0, 0, 0, 15, 0, 0, ''),
+(30, 29, 29, '53454dacc6a12', '2014-04-09 12:41:02', '2014-04-15 10:28:10', '0000-00-00 00:00:00', NULL, 10, '', 'Party at my house!!', 7, '', '', '', '86.47.90.179', 'I''ll be there! :-)', '', 0, 0, 0, 0, 0, 13, 0, 0, ''),
+(31, 29, 29, '53465c269db14', '2014-04-10 07:54:17', '2014-04-15 10:28:10', '0000-00-00 00:00:00', NULL, 11, '', 'Party at my house!!', 7, '', '', '', '86.47.90.179', 'Cool. What do you need me to bring?', '', 0, 0, 0, 0, 0, 10, 0, 0, ''),
+(32, 25, 25, '53465c59c3bd4', '2014-04-10 07:55:28', '2014-04-15 10:28:39', '0000-00-00 00:00:00', NULL, 11, '', 'What do you think of this website?', 7, '', '', '', '86.47.90.179', 'Andrew,\r\nthis is a very user friendly site.\r\nWell done on your hard work.', '', 0, 0, 0, 0, 0, 10, 0, 0, ''),
+(33, 31, 29, '534d17bd8d6a4', '2014-04-15 10:28:10', '2014-04-15 10:28:10', '0000-00-00 00:00:00', NULL, 17, '', 'Party at my house!!', 7, '', '', '', '86.47.90.179', 'Noooo we''re in London that day :(', '', 0, 0, 0, 0, 0, 6, 0, 0, ''),
+(34, 25, 25, '534d17d7f3a17', '2014-04-15 10:28:39', '2014-04-15 10:28:39', '0000-00-00 00:00:00', NULL, 17, '', 'What do you think of this website?', 7, '', '', '', '86.47.90.179', 'It looks great, Andrew. Well done!', '', 0, 0, 0, 0, 0, 6, 0, 0, ''),
+(35, 0, 35, '5350f582de512', '2014-04-18 08:52:26', '2014-05-04 13:45:10', '0000-00-00 00:00:00', NULL, 19, '', 'I love noodels', 5, '', '', '', '109.255.63.225', 'Alex and Eoin likes boys\r\n\r\n[img=left]http://www.iwallpaper.co/wallpaper/fs/other/i_love_guys-320x480-6P2Q.jpg[/img]', '', 0, 0, 0, 0, 0, 7, 0, 0, ''),
+(36, 35, 35, '536652584fdf5', '2014-05-04 13:45:10', '2014-05-04 13:45:10', '0000-00-00 00:00:00', NULL, 23, '', 'I love noodels', 5, '', '', '', '46.7.90.45', 'You always have to lower the tone Dan...', '', 0, 0, 0, 0, 0, 2, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -450,7 +476,19 @@ CREATE TABLE IF NOT EXISTS `forum_entries_cache` (
 INSERT INTO `forum_entries_cache` (`cache_id`, `cache_text`) VALUES
 (19, '<p><strong>Hi all</strong></p>\n<p>Welcome to our new collaborative learning website! </p>\n<p>Hope you have fun <img src="images/smilies/smile.png" alt=":-)" /></p>\n'),
 (20, '<p>Thanks Mimi</p>\n'),
-(21, '<p>No Prob</p>\n');
+(22, '<p>NP</p>\n'),
+(24, '<p>Anyone</p>\n'),
+(25, '<p>Hi all</p>\n<p>Please let me know what you think of the website and any suggestions you have.</p>\n<p>Cheers<br />\nAndrew</p>\n'),
+(27, '<p>Reply here with any links you have found that you want added to the Useful Resources page.</p>\n'),
+(28, '<p>Loving this learning website!!!!<img src="images/smilies/biggrin.png" alt=":-D" /> <img src="images/uploaded/2014040913253953454a5332980.jpg" alt="[image]" /></p>\n'),
+(29, '<p>House Party at mine,on May 9th! <br />\nLet me know you if you can make it.<br />\n<img src="images/smilies/tongue.png" alt=":-P" /></p>\n'),
+(30, '<p>I''ll be there! <img src="images/smilies/smile.png" alt=":-)" /></p>\n'),
+(31, '<p>Cool. What do you need me to bring?</p>\n'),
+(32, '<p>Andrew,<br />\nthis is a very user friendly site.<br />\nWell done on your hard work.</p>\n'),
+(33, '<p>Noooo we''re in London that day :(</p>\n'),
+(34, '<p>It looks great, Andrew. Well done!</p>\n'),
+(35, '<p>Alex and Eoin likes boys</p>\n<p><img src="http://www.iwallpaper.co/wallpaper/fs/other/i_love_guys-320x480-6P2Q.jpg" class="left" alt="[image]" /></p>\n'),
+(36, '<p>You always have to lower the tone Dan...</p>\n');
 
 -- --------------------------------------------------------
 
@@ -697,8 +735,28 @@ CREATE TABLE IF NOT EXISTS `forum_userdata` (
 INSERT INTO `forum_userdata` (`user_id`, `user_type`, `user_name`, `user_real_name`, `gender`, `birthday`, `user_pw`, `user_email`, `email_contact`, `user_hp`, `user_location`, `signature`, `profile`, `logins`, `last_login`, `last_logout`, `user_ip`, `registered`, `category_selection`, `thread_order`, `user_view`, `sidebar`, `fold_threads`, `thread_display`, `new_posting_notification`, `new_user_notification`, `user_lock`, `auto_login_code`, `pwf_code`, `activate_code`, `language`, `time_zone`, `time_difference`, `theme`, `entries_read`) VALUES
 (1, 2, 'MimiSBT', 'Mimi', 0, '0000-00-00', 'b04fbf77b7d07f2a5c4fb13e070a9558f09576e9', 'Mimi.Kelly@sbt.com', 0, '', '', '', '', 14, '2013-12-19 10:50:16', '2014-01-31 13:09:13', '::1', '2013-10-18 17:36:41', NULL, 1, 1, 1, 1, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
 (2, 0, 'amonaghan', 'Andrew', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'Andrew.Monaghan@student.ie', 0, '', '', '', '', 4, '2013-12-19 10:51:36', '2013-12-19 10:53:53', '::1', '2013-10-18 17:36:41', NULL, 0, 0, 1, 1, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
-(3, 0, 'sarahsmith', 'Sarah', 0, '0000-00-00', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', 'sarahsmith@college.ie', 0, '', '', '', '', 0, '2014-02-02 18:03:41', '0000-00-00 00:00:00', '', '2013-10-31 13:31:26', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
-(4, 0, 'brianjones', 'Brian', 0, '0000-00-00', '391317357d8f3148c2e04b1e7a78462fa96f242b', 'brian@test.com', 0, '', '', '', '', 0, '2014-03-31 18:27:29', '0000-00-00 00:00:00', '', '2014-03-31 19:27:29', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', '');
+(3, 0, 'sarah2014', 'Sarah', 0, '0000-00-00', '6794597a61ecac094c75f6ae849678ca8172fbca', 'sarahsmith@college.ie', 0, '', '', '', '', 0, '2014-02-02 18:03:41', '0000-00-00 00:00:00', '', '2013-10-31 13:31:26', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(5, 0, 'tester', 'Tester', 0, '0000-00-00', '6794597a61ecac094c75f6ae849678ca8172fbca', 'Test@test.com', 0, '', '', '', '', 0, '2014-03-26 16:54:22', '0000-00-00 00:00:00', '', '2014-03-26 16:54:22', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(8, 0, 'tony10', 'Tony ', 0, '0000-00-00', '272cb43f7d1a5c1a8e0f344acbc58ad30b4c6c8a', 'bergin@ppg.com', 0, '', '', '', '', 0, '2014-04-07 18:45:07', '0000-00-00 00:00:00', '', '2014-04-07 18:45:07', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(9, 0, 'lisamonique7', 'Lisa', 0, '0000-00-00', '553dfc8e205c61c4146c2c7604d791c8fdc1e1a1', 'lisamonique@ibi.ie', 0, '', '', '', '', 0, '2014-04-09 12:18:02', '0000-00-00 00:00:00', '', '2014-04-09 12:18:02', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(10, 0, 'heinrich1968', 'Heinrich', 0, '0000-00-00', '553dfc8e205c61c4146c2c7604d791c8fdc1e1a1', 'hoffieshof@ymail.com', 0, '', '', '', '', 0, '2014-04-09 12:38:21', '0000-00-00 00:00:00', '', '2014-04-09 12:38:21', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(11, 0, 'louisehalpin', 'Louise', 0, '0000-00-00', '6794597a61ecac094c75f6ae849678ca8172fbca', 'louise@ibi.ie', 0, '', '', '', '', 0, '2014-04-10 07:47:59', '0000-00-00 00:00:00', '', '2014-04-10 07:47:59', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(12, 0, 'shawnxxiong', 'Xiong', 0, '0000-00-00', '92de854865ce545076bb2530a498977546a85896', 'shawnxxiong@gmail.com', 0, '', '', '', '', 0, '2014-04-11 14:21:48', '0000-00-00 00:00:00', '', '2014-04-11 14:21:48', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(13, 0, 'tinabergin6', 'Tina ', 0, '0000-00-00', '9f995500fc08287d543657e60e373d680b6e1859', 'test@gmail.cpm', 0, '', '', '', '', 0, '2014-04-11 16:13:56', '0000-00-00 00:00:00', '', '2014-04-11 16:13:56', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(14, 0, 'turkthrust', 'Ken', 0, '0000-00-00', '8e92afdd8a977879beb29e3ce0a808be802bbad8', 'k.acmck@hotmail.com', 0, '', '', '', '', 0, '2014-04-14 09:31:58', '0000-00-00 00:00:00', '', '2014-04-14 09:31:58', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(15, 0, 'ncurtis', 'Naomi', 0, '0000-00-00', 'f1b535182d5ae440fc1eebcff302a75add3eaa45', 'nadams@tcd.ie', 0, '', '', '', '', 0, '2014-04-14 15:37:07', '0000-00-00 00:00:00', '', '2014-04-14 15:37:07', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(16, 0, 'adamsjen', 'Jennifer ', 0, '0000-00-00', 'a41b0c8b726b6907d165b25dc477ecf88a8f0db1', 'adamsjen52@yahoo.com', 0, '', '', '', '', 0, '2014-04-14 16:36:28', '0000-00-00 00:00:00', '', '2014-04-14 16:36:28', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(17, 0, 'byrned17', 'Deborah', 0, '0000-00-00', 'a266c82ee0af551ee2b128cb77abc8ef310dc588', 'byrned17@tcd.ie', 0, '', '', '', '', 0, '2014-04-15 08:51:43', '0000-00-00 00:00:00', '', '2014-04-15 08:51:43', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(18, 0, 'ajqshake', 'Alex', 0, '0000-00-00', '4f52734dd6867581f039dfb231212be10f8d0a59', 'quigley.alex@gmail.com', 0, '', '', '', '', 0, '2014-04-18 08:20:53', '0000-00-00 00:00:00', '', '2014-04-18 08:20:53', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(19, 0, 'danielozac', 'Daniel ', 0, '0000-00-00', 'eac96d7c3360e94a81e5e54de26f91002d3b7e80', 'danielozac@gmail.com', 0, '', '', '', '', 0, '2014-04-18 08:21:39', '0000-00-00 00:00:00', '', '2014-04-18 08:21:39', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(20, 0, 'johann', 'Johann', 0, '0000-00-00', '5d0538d6e41df3bd9ad3464bc97301f6a4a2a71f', 'mjtaljaard@gmail.com', 0, '', '', '', '', 0, '2014-04-18 09:17:25', '0000-00-00 00:00:00', '', '2014-04-18 09:17:25', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(22, 0, 'mikef14', 'Mike', 0, '0000-00-00', '1367f1470cd7aa2ae2d872543b0d67a71294d8bc', 'notgivingyouthat@gmail.com', 0, '', '', '', '', 0, '2014-05-03 19:26:04', '0000-00-00 00:00:00', '', '2014-05-03 19:26:04', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(23, 0, 'phughes450', 'Paula', 0, '0000-00-00', 'b3154bdafe1d97895d0b017364f4f67536b52e91', 'phughes450@gmail.com', 0, '', '', '', '', 0, '2014-05-04 13:42:56', '0000-00-00 00:00:00', '', '2014-05-04 13:42:56', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(24, 0, 'johndots', 'John', 0, '0000-00-00', '783a93854923436ac31436b1f6eda791a0994a91', 'johndots@gmail.com', 0, '', '', '', '', 0, '2014-05-05 09:33:57', '0000-00-00 00:00:00', '', '2014-05-05 09:33:57', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(25, 0, 'canuinti', 'Patrick', 0, '0000-00-00', '58a556da9f6e61dd256f077aa91a1413fe93c7e7', 'saitmck@gmail.com', 0, '', '', '', '', 0, '2014-05-06 12:46:11', '0000-00-00 00:00:00', '', '2014-05-06 12:46:11', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(26, 0, 'darthvader', 'Darth', 0, '0000-00-00', 'd2503b33d21a57ad1d9e722a795359cf73595008', 'philiphamo@hotmail.com', 0, '', '', '', '', 0, '2014-05-08 15:33:52', '0000-00-00 00:00:00', '', '2014-05-08 15:33:52', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(27, 0, 'christina', 'Christina', 0, '0000-00-00', '6794597a61ecac094c75f6ae849678ca8172fbca', 'christina@ou.com', 0, '', '', '', '', 0, '2014-05-11 09:11:17', '0000-00-00 00:00:00', '', '2014-05-11 09:11:17', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', ''),
+(28, 0, 'eoinmc1', 'Eoin', 0, '0000-00-00', '6794597a61ecac094c75f6ae849678ca8172fbca', 'eoinmc@gmail.com', 0, '', '', '', '', 0, '2014-05-11 20:02:13', '0000-00-00 00:00:00', '', '2014-05-11 20:02:13', NULL, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -745,7 +803,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_activity` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `users`
@@ -753,9 +811,29 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`user_id`, `class_assigned_to`, `first_name`, `last_name`, `username`, `email`, `account_type`, `password`, `register_date`, `last_login`, `last_activity`) VALUES
 (1, 0, 'Mimi', 'Kelly', 'mimikelly', 'Mimi.Kelly@sbt.com', 'Admin', '6794597a61ecac094c75f6ae849678ca8172fbca', '2013-10-18 17:36:41', '2014-05-15 19:49:42', '2014-05-15 19:50:16'),
-(2, 1, 'Andrew', 'Monaghan', 'amonaghan', 'Andrew.Monaghan@student.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-18 17:36:41', '2014-05-15 19:21:59', '2014-05-15 19:49:38'),
-(3, 2, 'Sarah', 'Smith', 'sarahsmith', 'sarahsmith@college.ie', 'Student', '0c8e67d4df37e989aefb2cb92a6b8961e5c32e70', '2013-10-31 13:31:26', NULL, NULL),
-(4, 1, 'Brian', 'Jones', 'brianjones', 'brian@test.com', 'Student', '391317357d8f3148c2e04b1e7a78462fa96f242b', '2014-03-31 18:27:29', NULL, '2014-03-31 18:28:09');
+(2, 3, 'Andrew', 'Monaghan', 'amonaghan', 'Andrew.Monaghan@student.ie', 'Student', '6794597a61ecac094c75f6ae849678ca8172fbca', '2013-10-18 17:36:41', '2014-05-15 20:25:39', '2014-05-15 20:25:39'),
+(3, 5, 'Sarah', 'Smith', 'sarah2014', 'sarahsmith@college.ie', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2013-10-31 13:31:26', '2014-04-06 15:30:57', '2014-04-06 15:31:24'),
+(5, 5, 'Tester', 'Tester', 'tester', 'Test@test.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-03-26 16:54:22', '2014-05-11 18:59:31', '2014-05-10 16:06:01'),
+(8, 5, 'Tony ', 'Bergin', 'tony10', 'bergin@ppg.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-07 18:45:07', NULL, '2014-04-07 18:53:41'),
+(9, 5, 'Lisa', 'Hoffmann', 'lisamonique7', 'lisamonique@ibi.ie', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-09 12:18:02', NULL, '2014-04-09 12:33:54'),
+(10, 5, 'Heinrich', 'Hoffmann', 'heinrich1968', 'hoffieshof@ymail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-09 12:38:21', '2014-04-10 06:29:55', '2014-04-10 06:35:50'),
+(11, 5, 'Louise', 'Halpin', 'louisehalpin', 'louise@ibi.ie', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-10 07:47:59', NULL, '2014-04-10 07:58:00'),
+(12, 5, 'Xiong', 'Xiong', 'shawnxxiong', 'shawnxxiong@gmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-11 14:21:48', NULL, '2014-04-11 14:26:52'),
+(13, 5, 'Tina ', 'kelly', 'tinabergin6', 'test@gmail.cpm', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-11 16:13:56', NULL, '2014-04-11 16:14:22'),
+(14, 5, 'Ken', 'McKnight', 'turkthrust', 'k.acmck@hotmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-14 09:31:58', NULL, '2014-04-14 09:39:33'),
+(15, 5, 'Naomi', 'Curtis', 'ncurtis', 'nadams@tcd.ie', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-14 15:37:07', '2014-04-14 15:38:35', '2014-04-14 15:43:02'),
+(16, 5, 'Jennifer ', 'Adams ', 'adamsjen', 'adamsjen52@yahoo.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-14 16:36:28', NULL, '2014-04-14 19:26:03'),
+(17, 5, 'Deborah', 'Byrne', 'byrned17', 'byrned17@tcd.ie', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-15 08:51:43', '2014-04-15 10:27:25', '2014-04-15 10:28:54'),
+(18, 3, 'Alex', 'Quigley', 'ajqshake', 'quigley.alex@gmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-18 08:20:53', NULL, '2014-04-18 08:24:26'),
+(19, 3, 'Daniel ', 'Ozac', 'danielozac', 'danielozac@gmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-18 08:21:39', NULL, '2014-04-18 08:53:27'),
+(20, 3, 'Johann', 'Taljaard', 'johann', 'mjtaljaard@gmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-04-18 09:17:25', NULL, '2014-04-18 09:57:27'),
+(22, 3, 'Mike', 'Farkas', 'mikef14', 'notgivingyouthat@gmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-05-03 19:26:04', NULL, '2014-05-03 19:32:22'),
+(23, 3, 'Paula', 'Hughes', 'phughes450', 'phughes450@gmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-05-04 13:42:56', NULL, '2014-05-04 13:46:01'),
+(24, 3, 'John', 'Doherty', 'johndots', 'johndots@gmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-05-05 09:33:57', NULL, '2014-05-05 09:36:20'),
+(25, 3, 'Patrick', 'Mckernan', 'canuinti', 'saitmck@gmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-05-06 12:46:11', NULL, '2014-05-06 12:48:50'),
+(26, 3, 'Darth', 'Vader', 'darthvader', 'philiphamo@hotmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-05-08 15:33:52', NULL, '2014-05-08 15:37:45'),
+(27, 5, 'Christina', 'Mulvey', 'christina', 'christina@ou.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-05-11 09:11:17', '2014-05-11 09:11:41', '2014-05-11 09:15:45'),
+(28, 3, 'Eoin', 'Mc', 'eoinmc1', 'eoinmc@gmail.com', 'Student', 'ab8bdbb5ac8230ac725642cf0b4d387405d0a2ac', '2014-05-11 20:02:13', NULL, '2014-05-11 20:03:06');
 
 --
 -- Constraints for dumped tables
