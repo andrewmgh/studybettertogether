@@ -1,4 +1,5 @@
 <?php
+// Do not allow a user navigate directly to this page. 
 if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/changeUserPassword.php"){
 	
 	if ($_SERVER['REQUEST_METHOD']== "POST") //only runs the below php code if the login form was submitted.

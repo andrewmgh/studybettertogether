@@ -1,6 +1,6 @@
 <?php
 
-//If the update form has been posted then update the class details
+//only runs the below php code if requested by a POST method. This is a security measure to stop people navigating directly to this URL
 if (isset($_POST ['updateClassDetails'])){
 	require_once '../db/sql_functions.php';
 	require_once 'common_functions.php';

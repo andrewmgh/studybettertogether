@@ -1,11 +1,12 @@
 <?php
+//only runs the below php code if requested by a POST method. This is a security measure to stop people navigating directly to this URL
 if ($_SERVER ['REQUEST_METHOD'] == "POST") 
 {
 	if ( ($_FILES ['uploadfile'] ['name']) != "") {
 		require_once '../db/sql_functions.php';
 		require_once 'common_functions.php';
 		require_once 'sessionManagement.php';
-		validateFileUpload($db_con, $_FILES ['uploadfile'] ['name'], $_FILES ['uploadfile'] ['size'], $_FILES ['uploadfile'] ['tmp_name'], $_FILES ['uploadfile'] ['error'], $_POST ['description'], $_POST ['subject'], $_POST ['sharingStatus'], $_POST['specificSharing'], $_POST ['terms'], $username, $userID);
+		uploadFile($db_con, $_FILES ['uploadfile'] ['name'], $_FILES ['uploadfile'] ['size'], $_FILES ['uploadfile'] ['tmp_name'], $_FILES ['uploadfile'] ['error'], $_POST ['description'], $_POST ['subject'], $_POST ['sharingStatus'], $_POST['specificSharing'], $_POST ['terms'], $username, $userID);
 	}
 	
 	else {
@@ -19,8 +20,8 @@ else {
 	require_once 'protectfiles.php';
 }
 
-//Overall function to validate upload form
-function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileError, $description, $subject, $sharingStatus, $specificUsers, $terms, $username, $userID ){
+//Overall function to validate upload form, upload the file to server and commit file details to database.
+function uploadFile($db_con, $fileName, $fileSize, $fileTempName, $fileError, $description, $subject, $sharingStatus, $specificUsers, $terms, $username, $userID ){
 	
 	//Retrieve, sanitise and store in variables all information needed for file upload
 	$fileName = sanitiseInput ( $db_con, $fileName );
@@ -37,12 +38,12 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	//set file path
 	$filePath = setFilePath($fileName, $userID);
 	
-	//convert specific users array to string
+	//if neeeded, convert specific users array to a string
 	if(!($specificUsers=="")){
 	$specificUsersID = arrayToString($db_con, $specificUsers);
 	}
 		
- 	//Validate upload form against custom validation functions
+ 	//Validate upload form against individual validation functions
 	$uploadMsg.= validateSharingStatus($sharingStatus);
 	$uploadMsg.= validateSpecificSharing($sharingStatus, $specificUsers);
 	$uploadMsg.= validateFileSize($fileSize);
@@ -51,9 +52,15 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 	$uploadMsg.= checkIfFileExists ($filePath);
 	 
 	if ($uploadMsg == "")	{
-		 		//retrieve additional info on file type to display to user
+		 	//retrieve additional info on file type to display to user
+				
+				//retrieve file name less the file extension
 				$fileName = stripFileExtension($fileName, $fileExtension);
+				
+				//convert file size to a more readible format
 				$Size_in_KB = number_format ( $fileSize / 1024 ) . ' kb';
+				
+				//select the file type ID and the file description from the db
 				$Result_fileID = newQuery ( $db_con, "SELECT file_type_id, file_description from allowed_file_types WHERE file_ext ='$fileExtension'" );
 				if ($row = mysqli_fetch_array ( $Result_fileID )) {
 					$file_type_ID = $row ['file_type_id'];
@@ -61,7 +68,7 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 				} 
 				mysqli_free_result($Result_fileID);
 				
-		 		//start db transaction to commit file info
+		 	//start db transaction to commit file info
 		 		mysqli_autocommit($db_con, false);
 		 		$success = true;
 		 		
@@ -73,13 +80,13 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 		 		if (!$Uploadquery2) {$success = false; }
 		 		
 	 		
-		 		//if db transaction worked.
+		 	//if db transaction worked.
 		 	 	if ($success) {	
 		 	 		//complete transaction and close db connection
 		 	 		mysqli_commit($db_con); 
 		 	 		mysqli_close ($db_con);
 		 	 		
-		 	 		//upload file
+		 	 		//upload file to server
 		 	 		move_uploaded_file($fileTempName, $filePath); 
 		 	 		chmod($filePath, 0755);
 		 	 			 		 		
@@ -88,7 +95,8 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 					header("Location:../../upload.php?Success=$uploadMsg&Name=$fileName&Size=$Size_in_KB&Type=$file_description&Owner=$username&Sharing=$sharingStatus&Specific=$output");
 					exit(); 			
 		 	 	} 
-		 	 		//if transaction failed, close the db connection and redirect user to uploads page with error msg
+				
+		 	 //if transaction failed, close the db connection and redirect user to uploads page with error msg
 		 		else { 
 		 			mysqli_close ($db_con);
 		 			$uploadMsg = "Unfortunately there was an unforeseen error with your upload. Please try again.";
@@ -106,8 +114,9 @@ function validateFileUpload($db_con, $fileName, $fileSize, $fileTempName, $fileE
 
 
 
-//Individual Upload Form Validation Functions
+//multiple functions used in validating the upload form and converting the data to a readable format
 function validateSharingStatus($sharingStatus){
+//ensures that the sharing status is correct
 	if($sharingStatus == "Public"){
 		return "";
 	}
@@ -123,6 +132,7 @@ function validateSharingStatus($sharingStatus){
 }
 
 function validateSpecificSharing ($sharingStatus, $specificUsers){
+//if the specific sharing status is selected, then at least one specific user to share the file with must also be selected
 	if(($sharingStatus == "Specific") && ($specificUsers == "") ){
 			return "You have chosen Specific User Sharing but have not specified any users  <br />";
 		}
@@ -132,8 +142,8 @@ function validateSpecificSharing ($sharingStatus, $specificUsers){
 }
 
 function validateFileSize($fileSize){
-	$maxfileSize ="5242880"; //5 mb
-		
+//ensures that the file size is under the set limit - 5mb
+	$maxfileSize ="5242880"; 
 	if ($fileSize > 0 && $fileSize <= $maxfileSize) {
 		return "";
 	} else {
@@ -142,6 +152,7 @@ function validateFileSize($fileSize){
 }
 
 function validateTerms($terms){
+//ensures that the upload terms and conditions were accepted
 	if ($terms == "yes") {
 		return "";
 	} else {
@@ -150,6 +161,7 @@ function validateTerms($terms){
 }
 
 function validateFileType($db_con, $fileExtension){
+//ensures that the uploaded file was one of the allowed file types as specified by the allowed_file_types table in the db
 	$result = newQuery($db_con, "SELECT * from allowed_file_types WHERE file_ext ='$fileExtension'" );
 	$row = mysqli_fetch_array($result);
 	if (mysqli_num_rows ($result) == 1) {
@@ -162,15 +174,17 @@ function validateFileType($db_con, $fileExtension){
 }
 
 function setFilePath ($fileName, $user_id){
-	$fileName = str_replace ( ' ', '_', $fileName );
+//sets the file path for the uploaded file and creates a new user directory if needed
 	
-	$userDirectory = "../../../studybettertogether/files/$user_id/";
-	$filePath = $userDirectory . $fileName;
-	makeNewUserDirectory($userDirectory);
+	$fileName = str_replace ( ' ', '_', $fileName );//replace any spaces in the file name with underscores to avoid possible naming issues
+	$userDirectory = "../../../studybettertogether/files/$user_id/";//set the user directory path
+	$filePath = $userDirectory . $fileName; //the file path is the directory path plus the file name
+	makeNewUserDirectory($userDirectory); //run this function to create a new user directory if needed
 	return $filePath;
 }
 
 function checkIfFileExists ($filePath){
+//ensures that the uploaded file does not overwrite a previously uploaded file of the same name
 	if (file_exists($filePath)) {
 		return "Sorry a file with this name already exists, please rename file and try again <br />";
 	} else {
@@ -179,7 +193,8 @@ function checkIfFileExists ($filePath){
 }
 
 function stripFileExtension ($fileName,$fileExtension){
-	//Source: http://stackoverflow.com/questions/5573334/remove-a-part-of-a-string-but-only-when-it-is-at-the-end-of-the-string
+//removes the file extension from the full file name for the purpose of separating the file name and file extension when displaying the uploaded file details to the user
+//based on this source: http://stackoverflow.com/questions/5573334/remove-a-part-of-a-string-but-only-when-it-is-at-the-end-of-the-string
 	$fileExtension_withDot = "." . "$fileExtension";
 	if (substr ( $fileName, - strlen ( $fileExtension_withDot ) ) === $fileExtension_withDot) {
 		$fileName = substr ( $fileName, 0, - strlen ( $fileExtension_withDot ) );
@@ -188,39 +203,42 @@ function stripFileExtension ($fileName,$fileExtension){
 }
 
 function makeNewUserDirectory ($dirPath){
-			//Create a new directory for the user
-		if (!is_dir ($dirPath)) {
-			mkdir ($dirPath, 0755);
-			
-			//Add a blank index file in directory to stop other users viewing directory contents
-			$indexFile = "$dirPath"."index.html";
-			$fh = fopen("$indexFile", 'w+');
-			fclose($fh);
-		}  
+//Create a new directory for the user if not already created
+	if (!is_dir ($dirPath)) {
+		mkdir ($dirPath, 0755);
+	
+		//Add a blank index file in this new directory to stop people from viewing directory contents
+		$indexFile = "$dirPath"."index.html";
+		$fh = fopen("$indexFile", 'w+');
+		fclose($fh);
+	}  
 }
 
-
-//Convert array of usernames into string of related user_id's seperated by a dash
 function arrayToString ($db_con, $array){
+//takes in the array of usernames from specific sharing and converts these into a string of related user_id's seperated by a dash
+//used to store the users whom a file is specifically shared with by ID instead of username
 	$string = "-";
 	foreach($array as $key => $value){
-		$value = sanitiseInput ( $db_con, $value );
-		$userResult =newQuery($db_con, "SELECT user_id FROM users WHERE username = '$value'");
+		$value = sanitiseInput ( $db_con, $value ); //sanitise each value in the array
+		$userResult =newQuery($db_con, "SELECT user_id FROM users WHERE username = '$value'"); //select the user ID based on the username
 		$row = mysqli_fetch_array ( $userResult );
 		$userID =  $row["user_id"];
 		mysqli_free_result($userResult);
-		$string .= "$userID"."-";
+		$string .= "$userID"."-"; //append the user ID to a string seperated by a dash
 	}
 	return $string;
 }
 
-
 function outputSpecificUsers ($array){
-	
+//takes in the array of usernames from specific sharing (if set) and converts these into a bulleted list to display to the user
+	if (isset($array)) {
 		foreach($array as $key => $value){
-			$sharedWith.= "<li>".htmlentities($value)."</li>";
+			$sharedWith.= "- ".htmlentities($value)."<br />";
 		}
-	
 		return $sharedWith;
+	}
+	else{
+	return "";
+	}
 }
 ?>

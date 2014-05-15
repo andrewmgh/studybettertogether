@@ -1,5 +1,5 @@
 <?php
-//only runs the below php code requested by a POST method. This is a security measure to stop people navigating directly to this URL
+//only runs the below php code if requested by a POST method. This is a security measure to stop people navigating directly to this URL
 if ($_SERVER['REQUEST_METHOD']== "POST") 
 {
 		require_once '../db/sql_functions.php';

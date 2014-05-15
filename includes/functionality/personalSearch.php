@@ -1,4 +1,5 @@
 <?php 
+// Do not allow a user navigate directly to this page.
 if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/personalSearch.php"){
 
 	if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['search']))//only runs the below php code if the personal search form was submitted. 

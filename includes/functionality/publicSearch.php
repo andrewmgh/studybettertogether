@@ -1,5 +1,7 @@
 <?php 
+// Do not allow a user navigate directly to this page.
 if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/publicSearch.php"){
+
 	if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['publicsearch'])) //only runs the below php code if the public search form was submitted. 
 	{
 		 	//Declare and initialise variables to solve any posible undefined variable errors

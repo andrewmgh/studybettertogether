@@ -1,7 +1,8 @@
 <?php
+// Do not allow a user navigate directly to this page.
 if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/common_functions.php"){
 	
-	//functions to sanitise all input 
+	//function to sanitise all input 
 	function sanitiseInput($db_con,$userInput)
 	{
 		$userInput = stripslashes($userInput);
@@ -11,7 +12,7 @@ if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/common
 		return $userInput;
 	}
 	
-	// Encrypt and salt passwords
+	// function to encrypt and salt passwords
 	function encryptPwd($password)
 	{
 		$Salt1 = 'Rt2,m!';
@@ -21,7 +22,7 @@ if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/common
 	}
 	
 	
-	//Embedded Javascript function to hide URL from downloads. This is to stop users navigating directly to the files directory and also to aid usability a download button is displayed
+	// function that uses javaScript to hide download URL from files. The purpose for this is to stop users from navigating directly to the files directory. Also to aid usability a download button is displayed.
 	function ProtectURL ($file_path){
 		$file_path = htmlentities($file_path);
 		$downloadlink = "<a style =\"cursor: pointer\" onclick =\"javascript: window.location = "."'". $file_path . "';\"". "><img alt=\"Download\" title=\"Download\" src=\"img/download.png\"/></a>";

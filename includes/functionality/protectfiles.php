@@ -7,6 +7,6 @@ if (session_status() == PHP_SESSION_ACTIVE){
 }
 $loginError = "You need to be logged in to view this page";
 header("location:http://localhost/studybettertogether/index.php?Message=$loginError");
-//header("location:http://studybettertogether.com/index.php?Message=$loginError");
+//Replace this line if on live site  -  header("location:http://studybettertogether.com/index.php?Message=$loginError");
 exit();
 ?>

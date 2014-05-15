@@ -1,4 +1,4 @@
-Open Source Code
+Open Source Code:
 The following list outlines the open source code incorporated into the website but not created by the developer.
 
 1.	All code contained in the folder ‘forum’.  This folder contains the study forum which was incorporated into the website.
