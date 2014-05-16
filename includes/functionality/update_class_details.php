@@ -22,7 +22,7 @@ function updateClassDetails($db_con, $edit_id, $className, $classCode, $regCode)
 	$classCode = sanitiseInput($db_con, $classCode);
 	$regCode = sanitiseInput($db_con, $regCode);
 
-	//If any of the variables (apart from reg code) have not been entered then send an error message back to the user
+	//If any of the variables (apart from registration code) have not been entered then send an error message back to the user
 	if(!($className && $classCode)){
 		header("Location:../../editclasses.php?editClass=$edit_id&Msg=Please ensure you have filled in the required fields");
 		exit();

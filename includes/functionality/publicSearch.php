@@ -4,7 +4,7 @@ if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/public
 
 	if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['publicsearch'])) //only runs the below php code if the public search form was submitted. 
 	{
-		 	//Declare and initialise variables to solve any posible undefined variable errors
+		 	//Declare and initialise variables to solve any possible undefined variable errors
 			$fileName = $fileOwner =  $fileType = $description = $subject = "";
 			
 			//Take inputs from search form, clean with sanitiseInput function if necessary and  and store in variables

@@ -4,7 +4,7 @@
 	require_once 'sessionManagement.php';
 		
 
-//Only run the following code if the deleteClass paramater is set and the current user is the administrator
+//Only run the following code if the deleteClass parameter is set and the current user is the administrator
 if ((isset($_GET['deleteClass'])) && ($account_type == 'Admin')) {
 	deleteClass($db_con, $_GET ['deleteClass']);
 }
@@ -17,7 +17,7 @@ else {
 
 
 
-//Funtion to delete a class and report a success or failure message back to the user
+//Function to delete a class and report a success or failure message back to the user
 function deleteClass($db_con, $delete_id)
 {
 	$delete_id = sanitiseInput($db_con, $delete_id);

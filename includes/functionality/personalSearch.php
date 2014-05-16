@@ -4,7 +4,7 @@ if(($_SERVER['PHP_SELF']) != "/studybettertogether/includes/functionality/person
 
 	if (($_SERVER['REQUEST_METHOD']== "GET") && isset($_GET['search']))//only runs the below php code if the personal search form was submitted. 
 	{
-		 	//Declare and initialise variables to solve any posible undefined variable errors
+		 	//Declare and initialise variables to solve any possible undefined variable errors
 			$fileName = $fileOwner =  $fileType = $description = $subject = "";
 			$sharingStatus = sanitiseInput($db_con, $_GET ['sharingStatus']);
 			

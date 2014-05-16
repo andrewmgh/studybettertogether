@@ -4,7 +4,7 @@
 	require_once 'sessionManagement.php';
 	
 		
-//Only run the following code if the deleteUser paramater is set and the current user is the administrator
+//Only run the following code if the deleteUser parameter is set and the current user is the administrator
 if ((isset($_GET['deleteUser'])) && ($account_type == 'Admin')) {
 	
 	//Security procedure to prevent a XSS attack from deleting the administrator
@@ -23,7 +23,7 @@ else {
 }
 
 
-//Recursive funtion to delete the user directory and all their files contained in this directory - Edited from a function found at - http://ie2.php.net/rmdir
+//Recursive function to delete the user directory and all their files contained in this directory - Edited from a function found at - http://ie2.php.net/rmdir
 function deleteUserDirectory($db_con, $user_id)
 {
 	$user_id = sanitiseInput($db_con, $user_id);
@@ -42,8 +42,8 @@ function deleteUserDirectory($db_con, $user_id)
 }
 
 
-//Funtion to delete a user from the database and redirect the administrator back to the manage users page with a success message. 
-//As database contstraints are in place - deleting from the SBT.users table will have a ripple effect on all related tables
+//Function to delete a user from the database and redirect the administrator back to the manage users page with a success message. 
+//As database constraints are in place - deleting from the SBT.users table will have a ripple effect on all related tables
 function deleteUserFromDB($db_con, $user_id)
 {
 	$user_id = sanitiseInput($db_con, $user_id);
@@ -57,9 +57,4 @@ function deleteUserFromDB($db_con, $user_id)
 	header("Location:../../manageusers.php?&UpdateUser=The user \"$deletedUser\" has been successfully deleted");
 	closeMySql($db_con, $userResult);
 	exit();
-	
-	
-	//If user is not the file owner, still need to remove them from file_sharing db
-	
-	
 }

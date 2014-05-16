@@ -1,5 +1,5 @@
 <?php 
-//Only run the following code if the deletefile paramater is set
+//Only run the following code if the deletefile parameter is set
 if ((isset($_GET['deletefile']))) {
 	require_once '../db/sql_functions.php';
 	require_once 'common_functions.php';
