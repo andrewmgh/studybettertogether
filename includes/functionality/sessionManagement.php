@@ -22,9 +22,10 @@ if (isset ( $_SESSION ['username'] )) {
 		$userID = $_SESSION ['userID'];
 		$account_type = $_SESSION['accountType'];
 		
-	// Ternary If statement to set session variables for auto logging in user to the study forum	
+	// Ternary If statement to provide administrator with administration rights to the study forum
 		$account_type == 'Admin' ? $forumType = "2" : $forumType = "0";
-		
+
+	//Set session variables for auto logging in user to the study forum
 		$_SESSION['forum_user_id'] = $userID;
 	    $_SESSION['forum_user_name'] = $username;
 	    $_SESSION['forum_user_type'] = $forumType;
